@@ -654,7 +654,7 @@ define([
             return window.location.pathname + (qs ? '?' + qs : '');
         }
 
-        function doLoadMore() {
+         function doLoadMore() {
             if (_isLoadingMore || _nextStartIndex >= _totalCount) return;
             _isLoadingMore = true;
             $('.plp-loader').show();
@@ -667,6 +667,13 @@ define([
                 if ($newItems.length) {
                     _$body.find('[data-mz-productlist]').append($newItems);
                     _nextStartIndex += _pageSize;
+
+                    // Re-apply grid layout and event handlers to new items
+                    setTimeout(function() {
+                        GridLayoutSwitching();
+                        updateItemImagePath();
+                        productImpression();
+                    }, 100);
                 }
 
                 _isLoadingMore = false;
@@ -680,6 +687,7 @@ define([
                 $('.plp-loader').hide();
             });
         }
+
 
         $(document).ready(function () {
             searchFilter();
