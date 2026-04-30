@@ -1,0 +1,11 @@
+<div class="mz-signup-header-container">
+    <h1 class="mz-pagetitle">{{ pageTitle }}</h1>
+    <div class="mz-signup-info">
+        {% if header %}
+        <span>{{ header }}</span>
+        {% else %}
+        <span>{{ labels.signUpHeaderText }}</span><br>
+        <span>{{labels.signUpHeaderText2}}</span>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="order-invoice-right-section">
+    <div class="order-row">
+        <div class="label-heading">{{labels.totalBeforeDiscount}} <br/> <span class="tbd">الإجمالي قبل الخصم</span></div>
+        <div class="label-text">{{model.currencyCode}} {{model.data.order_TotalBeforeVATDiscount|floatformat(pageContext.currencyInfo.precision)}}</div>
+    </div>
+    <div class="order-row">
+        <div class="label-heading">{{labels.discount}} <br/> <span class="discountArabic"> تخفيض </span> </div>
+        <div class="label-text">{{model.currencyCode}} {{order.discountTotal|floatformat(pageContext.currencyInfo.precision)}}</div>
+    </div>
+    <div class="order-row">
+        <div class="label-heading">{{labels.invoiceDeliveryBlob}} <br/> <span class="dcArabic">رسوم التوصيل</span> </div>
+        <div class="label-text">{{model.currencyCode}} {{order.shippingTotal|floatformat(pageContext.currencyInfo.precision)}}</div>
+    </div>
+    <div class="order-row">
+        <div class="label-heading">{{labels.subtotal}} <br/> <span class="stArabic">المجموع الفرعي</span></div>
+        <div class="label-text">{{model.currencyCode}} {{order.subtotal|floatformat(pageContext.currencyInfo.precision)}}</div>
+    </div>
+    <div class="order-row last-row">
+        <div class="bottom-row"></div>
+    </div>
+    <div class="order-row total-amount">
+        <div class="label-heading">{{labels.total}} <br/> <span class="totalArabic">المجموع</span> </div>
+        <div class="label-text">{{model.currencyCode}} {{order.total|floatformat(pageContext.currencyInfo.precision)}}</div>
+    </div>
+</div> 

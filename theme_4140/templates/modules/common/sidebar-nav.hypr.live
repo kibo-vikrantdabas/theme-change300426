@@ -1,0 +1,20 @@
+<h3 class="sidebar-nav-text">{{ labels.contentNeedSomeHelp }}</h3>
+<ul class="sidebar-nav">
+    <li><a href="{{siteContext.siteSubdirectory}}/need-help">{{ labels.contentNeedSomeHelp }}</a></li>
+    <li><a href="{{siteContext.siteSubdirectory}}/personal-details">{{ labels.contentPersonalDetails }}</a></li>
+    <li><a href="{{siteContext.siteSubdirectory}}/delivery-collection">{{ labels.contentDeliveryCollection }}</a></li> 
+    <li><a href="{{siteContext.siteSubdirectory}}/store-collection">{{ labels.storeCollection }}</a></li> 
+    <li><a href="{{siteContext.siteSubdirectory}}/return-refund">{{ labels.contentReturnRefunds }}</a></li>
+    <li><a href="{{siteContext.siteSubdirectory}}/size-guide">{{ labels.contentGuides }}</a></li>
+    <li><a href="{{siteContext.siteSubdirectory}}/contact">{{ labels.contentContact }}</a></li>
+     <li><a href="https://www.mybluerewards.com/rewards/faqs">{{ labels.contentBlue }}</a></li>
+    <li><a href="{{siteContext.siteSubdirectory}}/orderpayment">{{ labels.contentPayment }}</a></li>
+    {% comment %} <li><a href="{{siteContext.siteSubdirectory}}/maintenance">{{ labels.contentOffers }}</a></li> {% endcomment %}
+     <li><a href="{{siteContext.siteSubdirectory}}/offers-terms-conditions">{{ labels.contentTerms }}</a></li>
+    <li><a href="{{siteContext.siteSubdirectory}}/gift-card">{{ labels.contentGift }}</a></li>
+    <li><a href="{{siteContext.siteSubdirectory}}/clothing-homeware">{{ labels.contentClothing }}</a></li>
+     {% comment %} <li><a href="{{siteContext.siteSubdirectory}}/how-to-shop">{{ labels.contentHowToShop }}</a></li> {% endcomment %}
+    <li><a href="{{siteContext.siteSubdirectory}}/cancel-order">{{ labels.contentAmend }}</a></li>
+    {% comment %} <li><a href="{{siteContext.siteSubdirectory}}/technical-information">{{ labels.contentTechInfo }}</a></li> {% endcomment %}
+     {% comment %} <li><a href="{{siteContext.siteSubdirectory}}/about-mark-spencer">{{ labels.contentAbout }}</a></li> {% endcomment %}
+</ul>

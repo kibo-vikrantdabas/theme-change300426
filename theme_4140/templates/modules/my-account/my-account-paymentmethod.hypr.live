@@ -1,0 +1,8 @@
+﻿{% extends "modules/common/payment-method" %}
+{% block module-classes %}mz-paymentmethod-myaccount{% endblock %}
+{% block payment-method-actions %}
+  {% if hasRequiredBehavior %}
+    <a class="mz-paymentmethod-edit" href="#" data-mz-action="beginEditCard" data-mz-addNew="showHideBlock" data-mz-card="{{ model.id }}">{{ labels.edit }}</a>
+    <a class="mz-paymentmethod-delete delete-action-link" href="javascript:;" data-mz-action="beginDeleteCard" data-mz-card="{{ model.id }}">{{ labels.remove }}</a>
+  {% endif %}
+{% endblock payment-method-actions %}

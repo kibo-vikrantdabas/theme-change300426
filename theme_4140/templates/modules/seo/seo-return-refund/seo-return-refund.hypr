@@ -1,0 +1,4 @@
+{% if pageContext.cmsContext.template.path == 'return-refund' %}
+    {% include "modules/seo/seo-return-refund/seo-return-refund-faq" %}
+    {% include "modules/seo/seo-return-refund/seo-return-refund-howTo" %}
+{% endif %}

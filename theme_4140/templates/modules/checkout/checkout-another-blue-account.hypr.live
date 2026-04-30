@@ -1,0 +1,18 @@
+<div class="mz-blueAnotherAccountContainer">
+    <div class="mz-mobileNumberEnterMessage">{{labels.blueEnterNumber}}</div>
+    <div class="mz-cashBackMessage">{{labels.blueMessage}} </div>
+    <div class="mz-blueaccountFormContainer">
+        <div class="mz-mobileNumberLabel">{{labels.mobileNumber}}*</div>
+        <select id="dialingcodes" class="mz-countryCodeContainer" dir="ltr" name="dialingCode" data-mz-value="dialingCode" disabled>
+                <option value="{{themeSettings.countrySpecificDialingCode}}" class="mz-countryCode" {% if model.dialingCode == themeSettings.countrySpecificDialingCode %} selected {% endif %}>{{themeSettings.countrySpecificDialingCode}}</option>
+                {% for code in themeSettings.dialingCodes %}
+                      {% if code != themeSettings.countrySpecificDialingCode %}
+                         <option value="{{code}}" class="mz-countryCode" {% if model.dialingCode == code %} selected {% endif %}>{{code}}</option>
+                      {% endif %}
+                {% endfor %}
+        </select>
+        <input type="number" class="mz-mobileNumberInput mz-preventArrowKey" placeholder="{{labels.signUpFormMobile}}" value="{{model.blueAccountMobileNumber}}" name="blueAccountMobileNumber" data-mz-value="blueAccountMobileNumber">
+        {% if model.isMobileNumberInvalid %} <div class="mz-wrongMobileMessage">{{labels.noBlueAccountLink}}</div>{% endif %}
+        <button id="mz-submitMobileNumber" class="mz-mobileNumberSubmit {% if model.isAllowLoading %} mz-loader-btn {% endif %}" >{{labels.submit}}</button>
+    </div>
+</div>

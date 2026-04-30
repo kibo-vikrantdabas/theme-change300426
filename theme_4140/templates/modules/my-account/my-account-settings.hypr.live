@@ -1,0 +1,33 @@
+﻿<div class="mz-accountsettings">
+  <h3 class="mz-l-stack-sectiontitle setting-heading">{{ labels.aboutYou }}{% if not editing %}<a href class="mz-link-edit-accountsettings hidden" data-mz-action="startEdit">{{ labels.edit }}</a>{% endif %}</h3>
+  <p class="mz-l-paragraph">{{labels.personalDetailsDescription}}</p>
+  <hr class="acc-settings-hr">
+  {% comment %} <div class="mz-accountsettings-section mz-accountsettings-name {% if editing %} is-editing {% endif %}"> {% endcomment %}
+<div class="mz-accountsettings-aboutyou">
+  <div class="accountsettings-alert-message hidden">
+      <ul class="is-showing mz-success">
+          <li class="mz-message-item" ></li>
+      </ul>
+    </div>
+   
+    {% include "modules/my-account/settings-view/name-view" %}
+
+    {% include "modules/my-account/settings-view/gender-view" %}
+
+    {% include "modules/my-account/settings-view/dob-view" %}
+    
+    {% include "modules/my-account/settings-view/mobile-number-view" %}
+
+    {% include "modules/my-account/settings-view/email-view" %}
+
+    {% include "modules/my-account/settings-view/password-view" %}
+    <hr>
+
+  </div>
+
+  
+  {% include "modules/my-account/settings-view/custom-attributes-view" %}
+  
+  <button class="mz-button mz-button-small mz-accountsettings-editdone"  id ="saveabout" data-accountID="{{ model.id }}" data-mz-action="finishEdit">{{ labels.save }}</button>
+ 
+</div>

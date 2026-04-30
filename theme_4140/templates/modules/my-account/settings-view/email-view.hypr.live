@@ -1,0 +1,9 @@
+<div class="mz-accountsettings-email">
+    <label class="mz-account-settings-label-name">{{ labels.email }}* </label>
+    <div class="input-holder">
+        <input class="mz-accountsettings-email-address update-email-action-view  {% if model.emailAddress != "" %}bdr {% endif %}" type="text" placeholder="{{ labels.emailAddress }}" data-mz-value="emailAddress" value="{{ model.emailAddress }}" />
+        <div class="mz-accountsettings-displayemail email-readonly-view">{{ model.emailAddress|default(model.userName) }}</div>
+        <button class="mz-accountsettings-editbutton pass-edit edit-email-address email-readonly-view">{{ labels.edit }}</button>
+        <button class="mz-accountsettings update-email-action-view cancel-edit-email-address" >&nbsp;</button>
+    </div>
+</div>

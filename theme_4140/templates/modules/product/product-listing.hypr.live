@@ -1,0 +1,129 @@
+﻿<div class="mz-productlisting {% block module-classes %}{% endblock module-classes %}" data-mz-product="{{ model.productCode }}" data-mz-productName="{{ model.content.productName }}" data-mz-price="{{ model.price.price }}">
+    <div class="mz-productlisting-image">        
+        {% block product-image %}
+        <a href="{% make_url "product" model %}" {% if model.mainImage.altText %}title="{{model.mainImage.altText}}"{% endif %} onclick="window.globalEventBus.emit('productClickEvent', {'productName': '{{model.content.productName}}','productCode': '{{model.productCode}}','price': '{{model.price.price}}'})">
+            {% if model.mainImage.imageUrl %}
+                <img src="{% make_url "image" model.mainImage with max=themeSettings.listProductThumbSize as_parameter %}"
+loading="lazy" {% if model.mainImage.altText %}alt="{{model.mainImage.altText}}"{% else %}alt="product-main-image"{% endif %}   loading="lazy"/>
+            {% else %}
+                <span class="mz-productlisting-imageplaceholder"><span class="mz-productlisting-imageplaceholdertext">{{ labels.productImagePlaceholder }}</span></span>
+            {% endif %}
+            {% comment %} {% if pageContext.cmsContext.template.path|lower == "category" or pageContext.cmsContext.template.path|lower == "search-results" %} {% endcomment %}
+            {% if pageContext.cmsContext.template.path|lower != "home" %}
+              {% if model.price.onSale %}  
+              <span class="mz-product-detail-badge sale-badge"><span>{{themeSettings.saleLabel}}</span></span>
+              {% endif %}
+              {% if model.hasPriceRange %}  
+                  {% if model.priceRange.lower.onSale and model.priceRange.upper.onSale %}
+                    <span class="mz-product-detail-badge sale-badge"><span>{{themeSettings.saleLabel}}</span></span>
+                  {% endif %}
+              {% endif %}
+              {% with model.properties|findwhere("attributeFQN", "tenant~badges1") as badge %}
+                    {% if badge %}
+                        {% with badge.values|first as value%}
+                            <span class="mz-product-detail-badge"><span>{{value.stringValue}}</span></span>
+                        {% endwith %}
+                    {% endif %}
+              {% endwith %}
+            {% endif %}
+            {% for cat in model.categories %}
+             {% if themeSettings.promotionalParentCategoryId %}
+              {% if cat.parentCategoryId == themeSettings.promotionalParentCategoryId %}
+                <span class="mz-product-promotions-offer"><span>{{cat.content.name}}</span></span>
+              {% endif %}
+            {% endif %}
+            {% endfor %}
+         
+            {% if model.price.discount.discounts.length %}
+            {% for discount in model.price.discount.discounts %}
+                <span class="mz-product-promotions-offer">{{discount.name}}</span>
+            {% endfor %}
+            {% endif %}
+            {% if model.hasPriceRange and model.priceRange %}
+              {% for discount in model.priceRange.lower.discount.discounts %}
+                  <span class="mz-product-promotions-offer">{{discount.name}}</span>
+              {% endfor %}
+            {% endif %}
+        </a>
+        {% endblock product-image %}
+    </div>
+    <div class="mz-productlisting-info">
+        {% if pageContext.cmsContext.template.path|lower == "category" or pageContext.cmsContext.template.path|lower == "search" or pageContext.cmsContext.template.path|lower == "search-results" or pageContext.cmsContext.template.path|lower == "product" %}
+            {% with model.properties|findwhere("attributeFQN","tenant~brand") as brandObject %}
+              {% if brandObject and brandObject.values %}
+                  <div class="mz-brand-name">{{brandObject.values|first|prop('stringValue')|upper}}</div>
+              {% endif %}
+            {% endwith %}
+        {% endif %}
+        <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
+        {% if model.content.productShortDescription and themeSettings.listProductShortDesc %}
+        <p class="mz-productlisting-shortdesc">{{ model.content.productShortDescription|truncatewords(themeSettings.maxProductSummaryWords)|safe }}</p>
+        {% endif %}
+        {% block product-code %}
+        {% if themeSettings.listProductCode %}
+        <div class="mz-productlisting-productcode">{{model.productCode}}</div>
+        {% endif %}
+        {% endblock product-code %}
+
+        {% if model.volumePriceRange %}
+        <div class="mz-volume-pricing">
+            <span itemprop="minPrice" class="mz-volume-price-lower">
+                {% include "modules/common/volume-price" with model=model.volumePriceRange.lower %}
+            </span>
+            <span itemprop="maxPrice" class="mz-volume-price-upper">
+                {% include "modules/common/volume-price" with model=model.volumePriceRange.upper %}
+            </span>
+        </div>
+        {% else %}
+            {% include "modules/product/price-stack-plp" %}
+        {% endif %}
+          <div class="mz-productoptions-color-container">
+            {% for option in model.options %}
+              {% if option.attributeDetail.inputType == "List" %}
+                {% if option.attributeFQN|lower == 'tenant~colour' or option.attributeFQN|lower == 'tenant~color' %}
+                  {% if pageContext.cmsContext.template.path|lower == "category" or pageContext.cmsContext.template.path|lower == "search" or pageContext.cmsContext.template.path|lower == "search-results" %}
+                    {% if option.values.length > 1 %}
+                      <div class="mz-colour-swatches-container-plp">
+                        {% for value in option.values %}
+                        {% with value.value|split("_")|first as swatchCode%} 
+                            {% include "modules/product/plp-img-swatch" with swatchCode=swatchCode color=value.value %}
+                        {% endwith %}
+                        {% endfor %}
+                      </div>
+                    {% comment %} <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Colourwheel.svg" class="img-color-icon-mobile" alt="color"> {% endcomment %}
+                    <div class="mz-img-color-option-count"> {{option.values.length}}  {{labels.colorOptionCount}}</div>   
+                   {% endif %}
+                  {% endif %}        
+                {% endif %}
+              {% endif %} 
+            {% endfor %}
+          </div>
+        
+        {% if model.price.onSale %}
+          <div class="mz-item-sale">Sale</div>
+        {% endif %}
+        {% block product-extrainfo %}
+        {% if dealOfTheDay %}
+          {% if dealOfTheDay.savings %}
+            {% if model.price.discount.impact %}
+              <p class="mz-productlisting-savings">You save: {{ model.price.discount.impact|currency }}</p>
+            {% endif %}
+          {% endif %}
+          {% if dealOfTheDay.expirationDate %}
+            {% if model.price.discount.discount.expirationDate %}
+              <p class="mz-productlisting-expirationdate">Expires: {{ model.price.discount.discount.expirationDate|date("F j, Y") }}</p>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+          {% for cat in model.categories %}
+           {% if themeSettings.promotionalParentCategoryId %}
+              {% if cat.parentCategoryId == themeSettings.promotionalParentCategoryId %}
+                {% if cat.content.description %}
+                  <span class="mz-product-promotions-offer-discription"><span>{{cat.content.description|split('|')|first}}</span></span>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endblock product-extrainfo %}
+    </div>
+</div>

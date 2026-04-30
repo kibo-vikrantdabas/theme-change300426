@@ -1,0 +1,75 @@
+{% comment %} <h1>{{ labels.myOrders}}</h1> {% endcomment %}
+<dd>{{ model.orderNumber }}</dd>
+<div class="mz-orderlisting-headings">
+    <span id="mz-listing-paragraph">{{ labels.orderHistoryDescription }}</span>
+    <div class="mz-order-time-dropdown">
+        <select class="mz-order-time">
+            <option value="rec">{{ labels.recentOrders }}</option>
+            <option value="six">{{ labels.last6Months }}</option>
+            <option value="six+">{{ labels.sixMonthPlus }}</option>
+        </select>
+    </div>
+</div>
+<hr class="top-hr">
+<div class= "mz-orders">
+<div class="mz-orderlisting">
+    <div class="mz-orderlisting-detail">
+        {% block order-details %}
+            <ul class="mz-orderlisting-details-list">
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.orderNumber }}</dt>
+                    </dl>
+                </li>
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.orderDate }}</dt>
+                    </dl>
+                </li>
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.items }}</dt>
+                    </dl>
+                </li>
+                {% for payment in model.payments %}
+                    {% if payment.billingInfo.paymentType == "PurchaseOrder" and payment.status != "Voided" %}
+                    <li class="mz-orderlisting-details-item">
+                        <dl class="mz-propertylist mz-propertylist-order">
+                            <dt>{{ labels.purchaseOrderNumber }}</dt>
+                        </dl>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.orderStatus }}</dt>
+                    </dl>
+                </li>
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.totalValue }}</dt>
+                    </dl>
+                </li>
+                {% if model.amountRefunded > 0 %}
+                    <li class="mz-orderlisting-details-item">
+                        <dl class="mz-propertylist mz-propertylist-order">
+                            <dt>{{ labels.refund }}</dt>
+                            <dd>{{ model.amountRefunded|currency }}</dd>
+                        </dl>
+                    </li>
+                {% endif %}
+
+                {% comment %} {% if model.fulfillmentInfo.fulfillmentContact %} {% endcomment %}
+                    <li class="mz-orderlisting-details-item">
+                        <dl class="mz-propertylist mz-propertylist-order">
+                            {% block order-shipped-to %}
+                                <dt>{{ labels.action }}</dt>
+                            {% endblock order-shipped-to %}
+                        </dl>
+                    </li>
+                {% comment %} {% endif %} {% endcomment %}
+            </ul>
+        {% endblock order-details %}
+    </div>
+</div>
+</div>

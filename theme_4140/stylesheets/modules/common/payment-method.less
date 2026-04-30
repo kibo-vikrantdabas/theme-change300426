@@ -1,0 +1,174 @@
+﻿
+.mz-myaccount{
+    .mz-paymentmethod {
+        .mz-paymentmethod-actions {
+            padding: 0 15px;
+            @media only screen and (max-width:767px) {
+                margin-bottom: 20px;
+            }
+            @media only screen and (min-width:768px) {
+                margin-bottom: 40px;
+            }
+        }
+    }
+}
+.mz-paymentmethod {
+    .mz-paymentmethod-actions {
+        a {
+            .permalink(@grey);
+            display: inline-block;
+        }
+    }
+    .mz-paymentmethod-methoddetails {
+        position: relative;
+        align-items: flex-start;
+        margin-top: 0;
+        .savedcards-container{
+            padding: 15px;
+        }
+    }
+    .primary-card-block {
+        box-sizing: border-box;
+        border: 1px solid @ctaBtnColor;
+        background-color: @white;
+        box-shadow: 0 0 5px 0 rgba(142,142,142,0.5);
+    }
+}
+.is-primary, .is-not-primary {
+    width: 100%;
+    padding: 15px 0px 15px 15px;
+    box-sizing: border-box;
+    min-height: 56px;
+}
+.is-primary{
+    background: @savedpriamry;
+    img {
+        width: 26px;
+        margin-right: 5px;
+    }
+}
+//to be removed later
+.payment-methods-container, .mz-accountaddressbook {
+    .mz-l-stack-sectiontitle {
+        padding-bottom: 10px;
+        border-bottom: none;
+    }
+    .cards-info {
+        font-size: 18px;
+        border-bottom: 1px solid @linkHoverColor;
+        padding-bottom: 10px;
+    }
+}
+.mz-paymentmethod-cardnumber {
+    margin-top: 10px;
+    color: @grey;
+    strong{
+        color: @black;
+    }
+}
+.edit-action-link, .delete-action-link {
+    position: relative;
+    &:before {
+        width: 30px;
+        height: 30px;
+        background-size: 50% 50%;
+        content: '';
+        display: inline-block;
+        position: absolute;
+        background-repeat: no-repeat;
+        left: 5px;
+        top: 9px;
+    }
+}
+.delete-action-link {
+     &:before {
+        background-image: url('@{iconsPath}/svg/Add.svg');
+
+    }
+}
+.edit-action-link {
+     &:before {
+        background-image: url('@{iconsPath}/svg/edit.svg');
+    }
+}
+
+
+
+.savedcards-wrapper {
+    min-height: 340px;
+    border: 1px solid @savedBG;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-top: 0;
+    box-shadow: 0 0 5px 0 rgba(142,142,142,0.5);
+    box-sizing: border-box;
+    position: relative;
+    float: none;
+    @media only screen and (min-width:@desktopGridWidth) {
+        width: 100%;
+    }
+    a {
+        text-decoration: none;
+    }
+    dd{
+        margin: 0;
+        color: @blackColor;
+        dl{
+            margin: 0;
+        }
+    }
+    .mz-paymentmethod-actions, .mz-accountaddressbook-actions{
+         a {
+            text-decoration: none;
+            background: @sliderProgress;
+            font-weight: 700;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        a:last-child{
+            margin-right: 0;
+        }
+    }
+    .mz-paymentmethod-actions{
+        a{
+            padding: 6px 15px;
+            border: 1px solid @lightWhite;
+        }
+        .mz-paymentmethod-delete{
+            padding: 6px 15px 6px 30px;
+        }
+    }
+    .mz-accountaddressbook-actions{
+        a{
+            padding: 6px 15px 6px 30px;
+        }
+    }
+    .title {
+        font-weight: 600;
+        color: @black;
+        font-size: 20px;
+        margin: 10px 0 5px 0;
+    }
+
+}
+.no-savedcards-wrapper {
+    width: 100%;
+    text-align: center;
+    padding: 0 15px;
+    justify-content: center;
+    img {
+        width: 120px;
+    }
+
+}
+.cards-list, .no-savedcards-wrapper{
+    margin-bottom: 0px;
+}
+// Added for default address fixes
+.is-primary.primary-card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}

@@ -1,0 +1,90 @@
+﻿<div class="mz-utilitynav">
+    {% if user.isAuthenticated %}
+    <div class="mz-for-mobile-wishlist">
+      <div id="wishlist-popover-mobile">
+        {% include "modules/page-header/wishlist-popover" %}
+        {% require_script "modules/wishlist" %}
+         </div>
+        
+    </div>
+    {%else%}
+  <div class="mz-for-mobile-wishlist">
+    <div id="wishlist-popover-mobile-guest">
+        {% include "modules/page-header/wishlist-popover" %}
+        {% require_script "modules/wishlist" %}
+         </div>
+        
+
+  </div>
+    {%endif%}
+    <div class="mz-utilitynav-list">
+        {% comment %}
+        The below require_script tag does not render anything in the place it's actually inserted; it instead adds the script to a list of scripts which are then included at the end of the page by RequireJS.
+        Use require_script to load AMD modules that are wrapped in define() or require() function calls.
+        {% endcomment %}
+        {% require_script "modules/login-links" %}
+        {% if themeSettings.akamaiEdgeControlEnabled %}
+            <div class="mz-utilitynav-item mz-profile-icon-container afg-sign-popup logged-in" hidden>
+                    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Profile.svg" alt="signin-icon" data-mz-action="login" data-placement="bottom" class="mz-utility-signin-icon mz-display-popup">
+                    <a class="display-in-mobile" href="{{siteContext.siteSubdirectory}}/myaccount"> <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Profile.svg" alt="signin-icon" data-mz-action="login" data-placement="bottom" class="mz-utility-signin-icon"></a>
+                    {% include "modules/page-header/signin-popover"  userLoggedInStatus=true%}
+            </div>
+            <div class="mz-utilitynav-item mz-sigin-container afg-sign-popup guest-user" hidden>
+                    <button data-mz-action="login" data-placement="bottom" class="mz-utility-signin mz-display-popup">{{ labels.signIn|replace("In", "in") }}</button>
+                    <a class="display-in-mobile-unauth" href="{{siteContext.siteSubdirectory}}/user/login"> <button data-mz-action="login" data-placement="bottom" class="mz-utility-signin-mobile">{{ labels.signIn|replace("In", "in") }}</button></a>
+                    {% include "modules/page-header/signin-popover"  userLoggedInStatus=false %}
+            </div>
+        {%else%}
+            {% if user.isAuthenticated %}
+                <div class="mz-utilitynav-item mz-profile-icon-container afg-sign-popup">
+                    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Profile.svg" alt="signin-icon" data-mz-action="login" data-placement="bottom" class="mz-utility-signin-icon mz-display-popup">
+                    <a class="display-in-mobile" href="{{siteContext.siteSubdirectory}}/myaccount"> <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Profile.svg" alt="signin-icon" data-mz-action="login" data-placement="bottom" class="mz-utility-signin-icon"></a>
+                    {% include "modules/page-header/signin-popover"  userLoggedInStatus=true%}
+                </div>
+       
+            {%else%}
+                <div class="mz-utilitynav-item mz-sigin-container afg-sign-popup">
+                    <button data-mz-action="login" data-placement="bottom" class="mz-utility-signin mz-display-popup">{{ labels.signIn|replace("In", "in") }}</button>
+                    <a class="display-in-mobile-unauth" href="{{siteContext.siteSubdirectory}}/user/login"> <button data-mz-action="login" data-placement="bottom" class="mz-utility-signin-mobile">{{ labels.signIn|replace("In", "in") }}</button></a>
+                    {% include "modules/page-header/signin-popover"  userLoggedInStatus=false %}
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="mz-utilitynav-item mz-wishlist-container">
+            <div class="wishlist-popup">
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart.svg" alt="wishlist-icon" class="mz-wishlist-icon">
+                {% comment %} <span class="wishlist-loader" style="display:none;"></span> {% endcomment %}
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart-green-wishlist.svg" alt="wishlist-icon" class="mz-wishlist-icon mz-wishlist-icon-green" style="display:none;">
+                <span class="afg-wishlist-count" data-mz-role="wishlistMonitor"></span>
+            </div>
+            <div id="wishlist-popover">
+                {% include "modules/page-header/wishlist-popover" %}
+                {% require_script "modules/wishlist" %}
+            </div>
+                {% comment %} </div> {% endcomment %}
+            
+        </div> 
+        <div class="mz-utilitynav-item">  
+            <div class="mz-bag-container">
+                <a class="mz-utilitynav-link mz-utilitynav-link-cart" href="{% make_url 'cart' %}" id="bagpopupID">
+                    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Bag.svg" alt="bag-icon" class="mz-empty-bag-icon bag-icon">
+                    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}BagFilled.svg" alt="bag-filled-icon" class="bag-iconfilled hidden"  >
+                    <span class="mz-cartmonitor" data-mz-role="cartmonitor">0</span>
+                </a>  
+            </div>    
+             {% comment %} <div class="mz-cart-modal"> {% endcomment %}
+             {% include "modules/page-header/cart-popover" %}
+             {% comment %} </div> {% endcomment %}
+             {% require_script "modules/cart-monitor" %}
+        </div>
+    </div>
+    {% if themeSettings.allowFilterByLocationInventory %}
+        <div id="mz-my-store-header" class="mz-my-store-anonymous">
+            <div id="mz-my-store-header-text"></div>
+            <div class="mz-my-store-header-container">
+                <div id="mz-my-store-header-change-store-link"></div>
+                <img src="{{siteContext.cdnPrefix}}/resources/images/location-pin.png"/>
+            </div>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,114 @@
+<div style="{% if columnAlignment|lower != 'center' %} text-align:{{alignment|lower}}; {% endif %}"class="featured-image">
+
+    {% if Model.config.isCarouselBanner %}
+        {% set_var customeEvent='carousel banner' %}
+    {% else %}
+        {% set_var customeEvent='modules' %}
+    {% endif %}
+
+    {% if columnAlignment|lower == "top" %}
+    {% if link %} <a href="{{linkUrl}}" class="featured-link-wrapper" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{link|lower}}'}})" title = '{%if img %}{{img.altText}}{%endif%}'></a> {% endif %}
+        <div class="featured-text at-top">
+            {% if displayTitle %}
+                {% if title %}
+                    <p {% if themeSettings.isArabicLanguageSite%} style="{% if alignment|lower == 'center' %} text-align:{{alignment|lower}}; {% endif %}"{% endif %}>{{title}}</p>
+                {% endif %}
+            {% endif %}
+                <div class="home-buttons" {% if themeSettings.isArabicLanguageSite%} style="{% if alignment|lower == 'center' %} text-align:{{alignment|lower}}; {% endif %}"{% endif %}>
+            {% if link%}
+                <a class="feature-image-link" href="{{linkUrl}}" class="" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{link|lower}}'}})">{{ link }}</a>
+            {% endif %}
+            {% if linkSecondary%}
+                <a class="feature-image-link" href="{{linkUrlSecondary}}" class="" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{linkSecondary|lower}}'}})">{{ linkSecondary }}</a>
+            {% endif %}
+             </div>
+        </div>
+    {% endif %}
+
+    {% if columnAlignment|lower == "center" %}
+        <div class="featured-text" style="position:absolute;top:50%;right:50%;">
+                {% if displayTitle %}
+                    {% if link %}
+                        <p> <a href="{{linkUrl}}" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{link|lower}}'}})"> {{title}} </a> </p>
+                    {% else %}
+                        <p>{{title}}</p>
+                    {% endif %}
+                {% endif %}
+                {% if link%}
+                    <a class="feature-image-link" href="{{linkUrl}}" class="" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{link|lower}}'}})">{{ link }}</a>
+                {% endif %}
+                {% if linkSecondary%}
+                    <a class="feature-image-link" href="{{linkUrlSecondary}}" class="" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{linkSecondary|lower}}'}})">{{ linkSecondary }}</a>
+                {% endif %}
+        </div>
+    {% endif %}
+
+
+    <div class="feature-image-product-image mz-cms-image" data-mz-cms-image="{% json_attribute img|default:'{}' %}">
+
+        {% if not img  %}
+            <img class="mz-cms-image-cover" alt="add-photos" style="background-image: url('/admin/scripts/resources/images/legacy/AddPhotos.png');"></div>
+        {% endif %}
+
+        {% if img %}
+            <a href="{{linkUrl}}" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{link|lower}}'}})" title = '{%if img %}{{img.altText}}{%endif%}'>
+            <img
+                class="mz-cms-image-cover feature-image-content"
+                data-alt="image-cover-icon"
+                {% if img.width == '' || img.height == ''  %}
+                    with max = 250 as_parameter
+                {% endif %} 
+                    
+                style="
+                {% if img.height != ''  %}
+                    height: {{img.height}}px; 
+                {% endif %}
+                
+                {% if img.width != '' %}
+                    width:{{img.width}}px;   
+                {% endif %}
+                min-height: 140px;
+
+                "
+                src="{{img.imageUrl}}"
+                loading="lazy"
+                fetchpriority="high"
+                >
+            </a>
+        {% endif %}        
+
+    </div>
+
+    {% if columnAlignment|lower == "bottom" %}
+        <div class="featured-text at-bottom">
+            {% if displayTitle %}
+                {% if link %}
+                    <p> <a href="{{linkUrl}}" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{link|lower}}'}})"> {{title}} </a> </p>
+                {% else %}
+                    <p>{{title}}</p>
+                {% endif %}
+            {% endif %}
+            {% if link %}
+                <a class="feature-image-link" href="{{linkUrl}}" class="" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{link|lower}}'}})">{{ link }}</a>
+            {% endif %}
+            {% if linkSecondary%}
+                <a class="feature-image-link" href="{{linkUrlSecondary}}" class="" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{linkSecondary|lower}}'}})">{{ linkSecondary }}</a>
+            {% endif %}
+        </div>
+    {% endif %} 
+    <div class="previous"></div>
+    <div class="next gtmNext"></div>
+
+</div>
+<div class="home-buttons-mobile">
+{% if link%}
+    <a class="feature-image-link link-primary" href="{{linkUrl}}" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{link|lower}}'}})" class="">{{ link }}</a>
+{% endif %}
+{% if linksecondary%}
+    <a class="feature-image-link link-secondary" href="{{linksecondaryUrl}}" class="" onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': '{{customeEvent}}', 'event_params': { event_act:'{{sectionName|lower}}:{{title|lower}}', event_lbl: '{{linksecondary|lower}}'}})">{{ linksecondary }}</a>
+{% endif %}
+</div>
+
+
+
+

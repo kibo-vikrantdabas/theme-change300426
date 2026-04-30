@@ -1,0 +1,118 @@
+
+{% set hideStoreVal = false %}
+
+{% for item in location.attributes  %}
+    {% if item.fullyQualifiedName == 'tenant~is-hide-storefront' %}
+        {% for hidestore in item.values %}
+		  {% if hidestore %}
+			{% set hideStoreVal = true %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+{% endfor %}
+
+<div class="location-select-dropdown-container mz-locationlisting {% if hideStoreVal == true %} hidden {% endif %}" data-mz-action="toggleDropdown" data-mz-displayDrop="{{location.code}}" data-mz-storeName="{{location.name}}">
+	<div class="location-select-container {% if model.activeDropdown == location.code %} active {% endif %}" style="display:flex"  id="{{location.name}}"data-mz-cart-item= "">
+		<div class="location-dropdown-container {% if model.activeDropdown == location.code %} active {% endif %}" style="flex:1">
+			<h4 class="location-select-name">{{location.index}}. 
+				{% if themeSettings.isArabicLanguageSite %}
+				{% for item in location.attributes  %}
+					{% if item.fullyQualifiedName == 'tenant~ar-location-name' %}
+						{% for locationName in item.values %}
+								{{ locationName }}
+						{% endfor %}
+					{% endif %}	
+				{% endfor %}
+				{% else %}
+					{{location.name}}
+				{% endif %}
+			</h4>
+			<div class='location-info-container'>
+				<div class="location-distance-display">{{location.approxDistance}} {{labels.km}}</div>
+			</div>
+		</div>
+	</div>
+	<div class="dropdown-info-container">
+		<div class="mz-locationlisting-details">
+			<div class="mz-addresssummary">
+				{% comment %} {% include "modules/common/address-summary" with locationFlag=true %} {% endcomment %}
+				{% if themeSettings.isArabicLanguageSite %}
+					{% for item in location.attributes  %}
+						{% if item.fullyQualifiedName == 'tenant~ar-physical-address' %}
+							{% for locationAddress in item.values %}
+								<div class="department-list-name">
+									{{ locationAddress }}
+								</div>
+							{% endfor %}
+						{% endif %}	
+					{% endfor %}
+				{% else %}
+					<div class="mz-location-name">{{ location.firstName }} {{ location.lastNameOrSurname }}</div>
+					<div class="mz-location-first-address">{{ location.address.address1 }}</div>
+					{% if location.address.address2 %}
+						<div class="mz-location-second-address">{{ location.address.address2 }}</div>
+					{% endif %}
+					{% if location.address.address3 %}
+						<div class="mz-location-third-address">{{ location.address.address3 }}</div>
+					{% endif %}
+					<div class="mz-location-city">{{ location.address.cityOrTown }}</div> 
+					{% if location.address.stateOrProvince != "n/a" %}<div class="mz-location-state"> {{ location.address.stateOrProvince }} </div>{%endif%}  
+				{% endif %}
+				{% if location.phone %}
+						<div class="mz-location-phone-number"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}CallPhone.svg" alt="telephone-image" class="telephone-icon">{{ location.phone }}</div>
+				{% endif %}
+				{% if location.fulfillmentTypes %}
+					{% for type in  location.fulfillmentTypes %}
+						{% if type.code|lower == "sp" %}
+							<div class="mz-click-collect">{{labels.clickAndCollect}}</div>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="mz-location-openingtime" data-mz-action="toggleHoursDropdown" data-mz-isHrsActive="false">
+				<div class="mz-openingtime-title {% if model.isHrsActive %} active {% endif%}">
+					<label for="location-openingtimes">
+						<span class="icon-container-closed">
+							<img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="Chevron" class="mz-openingtime-open-icon">
+						</span>
+						{{labels.openingtimes}}
+					</label>
+				</div>
+				<div class="mz-openingtime-details {% if model.isHrsActive %} active {% endif%}">
+					<div class="mz-openingtime-hours">
+					<span class="monday">{{labels.mondayForOpeningHours}}:</span>  <span>{{location.regularHours.monday.label}} </span><br>
+					<span class="tuesday">{{labels.tuesdayForOpeningHours}}:</span> <span>{{location.regularHours.tuesday.label}}</span><br>
+					<span class="wednesday">{{labels.wednesdayForOpeningHours}}:</span> <span>{{location.regularHours.wednesday.label}}</span><br>
+					<span class="thursday">{{labels.thursdayForOpeningHours}}:</span> <span>{{location.regularHours.thursday.label}}</span><br>
+					<span class="friday">{{labels.fridayForOpeningHours}}:</span>  <span>{{location.regularHours.friday.label}}</span><br>
+					<span class="saturday">{{labels.saturdayForOpeningHours}}:</span> <span>{{location.regularHours.saturday.label}}</span><br>
+					<span class="sunday">{{labels.sundayForOpeningHours}}:</span> <span>{{location.regularHours.sunday.label}}</span>
+					</div>
+				</div>
+			</div>
+			{% comment %}<div class="mz-location-departments" data-mz-action="toggleDepartmentDropdown">
+				<div class="mz-department-title {% if model.isDptActive %} active {% endif%}">
+					<label for="location-department">
+						<span class="icon-container-department-closed">
+							<img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="Chevron" class="mz-department-open-icon">
+						</span>
+						{{labels.departments}}
+					</label>
+				</div>
+				<div class="mz-location-departments {% if model.isDptActive %} active {% endif%}">
+					<div class="mz-location-department-list">
+					{% for item in location.attributes  %}
+					    {% if item.fullyQualifiedName == 'tenant~location-department1' %}
+							{% for department in item.values|first|split(",") %}
+								<div class="department-list-name">
+									{{ department }}
+								</div>
+							{% endfor %}
+						{% endif %}	
+					{% endfor %}
+					</div>
+				</div>
+			</div>{% endcomment %}
+		</div>
+	</div>
+</div>

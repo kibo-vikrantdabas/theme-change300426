@@ -1,0 +1,44 @@
+.mz-promo-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: @fontFamily;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 21px;
+        color: #000000;
+       // border-bottom: 1px solid #ccc;
+       
+        a{
+            text-decoration: none !important;
+        }
+
+        a:hover {
+            text-decoration: underline !important;
+        }
+
+        .separator {
+            height: 15.5px;
+            border-left: 1px solid #000000;
+            margin-left: 10px;
+            margin-right: 10px;            
+        }
+
+        @media @mobileScreens {
+            display: none;
+        }
+
+        @media @tabletScreens{
+            display:none;
+        }
+        .mz-cms-content {
+            padding: 0!important;
+        }
+        .mz-content-widget-inner-wrap {
+            padding: 8.5px 0;
+            display: flex;
+            align-items: center;
+            flex-flow: wrap;
+        }
+    }

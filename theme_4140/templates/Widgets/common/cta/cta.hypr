@@ -1,0 +1,7 @@
+{% with Model.config.ctaTitle as ctaTitle %}
+{% with Model.config.linkUrl as linkUrl %}
+{% with Model.config.buttonType as buttonType %}
+        {% include "widgets/common/cta/cta-content" %}
+{% endwith %}
+{% endwith %}
+{% endwith %}

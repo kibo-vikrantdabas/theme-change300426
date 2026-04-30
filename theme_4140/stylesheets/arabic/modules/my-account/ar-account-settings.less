@@ -1,0 +1,1648 @@
+.mz-myaccount .mz-l-pagecontent{
+    padding-left: 0px !important;
+    width: 100%;
+    padding-right: 0;
+}
+
+.account-setting-body .myacc__breadcrumbs {
+    display: none;
+}
+
+.mz-accountsettings {
+    .mz-accountsettings-displayname,
+    .mz-accountsettings-displayemail,
+    .mz-accountsettings-displayphone {
+        display: inline-block;
+        margin-right: @gutter/4;
+    }
+
+    .setting-heading {
+        font-weight: 600 !important;
+        font-size: 48px!important;
+        letter-spacing: 0;
+    }
+
+    .mz-accountsettings-displayname {
+        font-size: @fontSizeLarger;
+        margin: 0 @gutter/4 0 0;
+    }
+
+    .mz-accountsettings-section {
+        padding-top: @gutter/2;
+        min-height: @gutter*1.5;
+    }
+
+    /*.mz-accountsettings-sectionheader {
+        border-top: 1px solid #eee;
+        padding-top: 5px;
+
+    }*/
+
+    .mz-accountsettings-name {
+        input, button {
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+
+    }
+
+    .mz-accountsettings-firstname,
+    .mz-accountsettings-lastname {
+        width: 80px;
+        font-size: @fontSizeLarger;
+        height: @fontSizeLarger + 4;
+    }
+    .mz-accountsettings-password {
+       display: inline-block !important;
+       width:100%;
+        > div {
+            width: 100%;
+            float: left;
+
+            label, input {
+                display: inline-block;
+                margin-bottom: @gutter;
+                vertical-align: middle;
+                width: 140px;
+            }
+           
+        }
+
+        .mz-password-actions {
+            margin-bottom: @gutter * 2;
+        }
+       
+        
+    }
+
+    .mz-accountsettings-firstname,
+    .mz-accountsettings-lastname {
+        width: 200px;
+        font-size: @fontSize + .5;
+    }
+
+    .mz-accountsettings-acceptsmarketing {
+        clear: both;
+        label { vertical-align: middle; }
+    }
+}
+//change password
+.change-password-section{
+    .mz-accountsettings-password{
+        &.remove-dotted-line {
+            border: none;
+            margin: 0;
+            padding-top: 8px;
+            .mz-passwordChanged-msg {
+                border: 1px solid #E1ECD1;
+                border-radius: 3px;
+                background-color: #F5F9E6;
+                padding: 18px;
+                font-size: 18px;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 24px;
+                color: @black;
+                position: relative;
+                align-items: center;
+                margin-bottom: 40px;
+                justify-content: flex-start!important;                
+                @media @mobileScreens {
+                    margin-bottom: 20px;
+                    align-items: flex-start;
+                    padding: 18px 23px 18px 18px;
+                }
+                &::before {
+                    content: '';
+                    position: relative;                            
+                    background-image: url('../resources/images/icons/svg/Green-Tick-bg.svg');
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    width: 28px;
+                    height: 28px;
+                    margin-right: 12px;
+                    background-size: 28px;
+                    @media @mobileScreens {
+                        width: 35px;                        
+                    }
+                    @media (max-width: 368px) {
+                        width: 36px; 
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 767px){
+
+    .change-password-section{
+        h3{
+            color:#333333 !important;
+        }
+        label{
+            color:#333333 !important;
+            width: 200px;
+            margin-top: .5rem;
+        }
+        .mz-accountsettings-password{
+            width: 550px;
+            padding: 1rem 0 1rem 0rem;
+            margin-top: .5rem;
+            border-width: 1px 0 0px 0;
+            border-style: dotted;
+            border-color: #666666;
+            div{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                p{
+                    width: 350px;
+                    margin: 0rem 0 20px 0;
+                    color: #666666;
+                }
+            } 
+            input.invalid{
+                border: 1px solid #A6192E;
+            }
+            
+            .account-old-passowrd-error-msg, .account-passowrd-error-msg, .account-confirm-passowrd-error-msg{
+                color: #A6192E;
+            }
+            .eye-image {
+                height: 16px;
+                width: 25px;
+                object-fit: cover;
+            }
+            
+            .eye-text {
+                color: #333333;
+                font-family: @fontFamily;
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 21px;
+                text-align: right;
+            }
+            
+            .eye {
+                position: absolute;
+                /* left: 142px; */
+                /* top: 11px; */
+                margin-left: 14px;
+                cursor: pointer;
+                right: 39%;
+                /* top: 66%; */
+                padding-top: 10px;
+            
+                @media @tabletScreens {
+                   margin-right: 7px;
+                }
+                @media only screen and (min-width: 768px) and (max-width: 850px){
+                    right: 37% !important;
+                    padding-top: 37px !important;
+                }
+            }
+            .inline-error-message {
+                background-color: #FFF3F4;
+                border: 1px solid #FFC1C9;
+                color: #EA122A;
+                font-size: 1.2em;
+                padding: 0.8em 0.6em;
+                width: 350px;
+                margin-bottom: 10px;
+                position: relative;
+                @media @mobileScreens{
+                    width: 100%;
+                }
+            }
+            .inline-error-message-arrow {
+                background: url(../resources/images/error-box-bottom.png) no-repeat;
+                bottom: -8px;
+                height: 8px;
+                right: 1em;
+                position: absolute;
+                width: 24px;
+            }
+    
+        }
+        .messaging.error-msg{
+            border-color: #FCC3C9;
+            color: #EA122A;
+            border: 1px solid;
+            clear: both;
+            margin-bottom: -0.5em;
+            padding: 0.5em 2.5em 0.5em 2.8em;
+            position: relative;
+            width: 550px;
+            font-family: 'MSLONDON';
+            background-position: -215px -469px;
+            background: url(../resources/images/global_icon_bgs.png) -210px -463px no-repeat #FFF3F4;
+            @media only screen and (max-width: 768px){
+                width: 100%;
+                margin-bottom: 0.5em;
+            }
+            ul {
+                padding: 0 15px 0 0;
+            }
+        }
+         .mz-change-password-below{
+            width: 500px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #666666;
+            margin-bottom: 20px;
+            line-height: 24px;
+        }
+
+        .mz-accountsettings-currentpasswordlabel{
+            // margin-left: -50px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .mz-accountsettings-currentpassword{
+           border-radius: 0;
+            margin-bottom: 20px;
+            height: 30px;
+            padding: 0 5px;
+            width: 338px;
+            border: 1px solid #CCCCCC;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 5px 0 #DDDDDD;
+        }
+        .mz-accountsettings-newpasswordlabel{
+            // margin-left: -50px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .mz-accountsettings-newpassword{
+            border-radius: 0;
+            margin-bottom: 10px;
+            height: 30px;
+            width: 338px;
+            padding: 0 5px;
+            border: 1px solid #CCCCCC;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 5px 0 #DDDDDD;
+        }
+        .mz-accountsettings-confirmpasswordlabel{
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .mz-accountsettings-confirmpassword{
+            border-radius: 0;
+            width: 338px;
+            height: 30px;
+            padding: 0 5px;
+            border: 1px solid #CCCCCC;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 5px 0 #DDDDDD;
+            margin-bottom: 4px;
+        }
+        .mz-password-speacification{
+            width: 300px;
+            margin: 0 0 20px 190px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .mz-accountsettings-passworddone{
+            box-sizing: border-box;
+            height: 30px;
+            width: 68px;
+            border: 1px solid #CCCCCC;
+            background-color: #F2F2F2;
+            margin-left: 0;
+            border-radius: 0;
+            color: #C2C2C2;
+            font-weight: bold;
+        }
+        .mz-password-actions{
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-width: 1px 0 0px 0;
+            border-style: dotted;
+            border-color: #666666;
+
+            button{
+                border-radius: 0 !important;
+            }
+        }
+
+
+ }
+    }
+
+    //change password
+    @media only screen and (max-width: 767px){
+
+        .change-password-section{
+            h3{
+                color:#333333 !important;
+                font-size: 16px;
+            }
+            label{
+                color:#333333 !important;
+                width:130px;
+                margin-top: 0;
+            }
+            .mz-accountsettings-password{
+               // width: 550px;
+                padding: 1rem 0 1rem 0rem;
+                margin-top: .5rem;
+                border-width: 1px 0 0px 0;
+                border-style: dotted;
+                border-color: #666666;
+
+                &.changepassword-text{
+                    display: flex;
+                    justify-content: space-between;
+                    width: 53%;
+                }
+                div{
+                    display: flex;
+                    flex-direction: unset!important;
+                    justify-content: space-between;                
+                    
+                    label{
+                        font-size: 16px;
+                        font-weight: 600;
+                        width: 72%!important;
+                        color: @black!important;
+                        margin-bottom: 0!important;
+                        margin-top: 10px!important;
+                    }
+                    input[type="password"]{
+                        width: 59%;
+                        height: 30px;
+                        padding: 0 5px;
+                        margin-bottom: 20px;
+                    }
+                    p{
+                        width: 63%;
+                        margin: 0rem 0 20px 0;
+                        font-size: 12px;
+                    }
+                    &:nth-child(3) {
+                        input[type="password"]{
+                            margin-bottom: 5px;
+                        }
+                    }
+                    
+                }
+                .eye{
+                    position: absolute;
+                    left: 26px;
+                    padding-top: 10px; 
+                }
+                
+            }
+        }
+
+
+      
+        .change-password-section{
+            margin-left: 0px;
+            .mz-l-stack-sectiontitle{
+                font-size: 28px !important;
+                color: #333333;
+            }
+            .mz-change-password-below{
+                //width: 350px !important;
+                font-size: 16px;
+                font-weight: 600;
+                color: #666666;
+            }
+
+            .mz-accountsettings-currentpasswordlabel{
+                // margin-left: -50px;
+                font-size: 16px;
+                font-weight: 600;
+            }
+            .mz-accountsettings-currentpassword{
+               margin-bottom: 1rem;
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+            }
+            .mz-accountsettings-newpasswordlabel{
+                // margin-left: -50px;
+                font-size: 16px;
+                font-weight: 600;
+            }
+            .mz-accountsettings-newpassword{
+               
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+            }
+            .mz-accountsettings-confirmpasswordlabel{
+                font-size: 16px;
+                font-weight: 600;
+            }
+            .mz-accountsettings-confirmpassword{
+                
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+            }
+            
+            .mz-accountsettings-passworddone{
+                box-sizing: border-box;
+                height: 40px;
+                width: 100%;
+                margin-left: 5px;
+                border: 1px solid #CCCCCC;
+                background-color: #F2F2F2;
+                border-radius: 0px;
+                color: #C2C2C2;
+                font-weight: bold;
+            }
+            .mz-password-actions {
+                padding-top: 1rem;
+                border-top: 1px dotted #333333;
+                margin-top: 1.5rem;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 850px){
+      .eye {
+        right: 36% !important;
+        padding-top: 37px !important;
+      }
+     
+    }
+
+    //About you page
+    @media only screen and (min-width: 768px){
+    .mz-myaccount {
+        .mz-accountsettings {
+            .mz-l-stack-sectiontitle {
+                font-size: 48px !important;
+            }
+        }
+    }
+    .mz-accountsettings{
+
+        .mz-l-stack-sectiontitle{            
+            font-weight: bold;
+            color: #333333;
+            border-bottom: none !important;
+        }
+        .mz-l-paragraph{
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+            color:#666;
+            line-height: 24px;
+        }
+        hr{
+            width: 100%;
+        }
+        .mz-accountsettings-title{
+            .mz-account-settings-label-name{
+                font-size: 16px;
+                font-weight: 600;
+            }
+            #title{
+                margin-left: 0;
+                box-sizing: border-box;
+                height: 30px;
+                width: 150px;
+                border: none;
+                background-color: transparent;
+                box-shadow: none;
+                z-index: 9;
+                position: relative;
+            }
+        }
+        .mz-accountsettings-firstnamefull{
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            max-width: 550px;
+            .mz-accountsettings-firstname{
+                margin-left: 60px;
+                width: 350px;
+                height: 32px;
+                box-sizing: border-box;
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+            }
+        }
+        .mz-accountsettings-lastnamefull{
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            max-width: 550px;
+            .mz-accountsettings-lastname{
+                margin-left: 60px;
+                width: 350px;
+                height: 32px;
+                box-sizing: border-box;
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+            }
+        }
+        .mz-accountsettings-gender{
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            max-width: 359px;
+            display: flex;
+            justify-content: space-between;
+            .mz-account-settings-label-name {
+                position: relative;
+                &:after{
+                    display: none;
+                    background: url('@{iconsPath}/help.svg') no-repeat;
+                    width: 20px;
+                    margin-top:5px;
+                    margin-left:5px;
+                    height: 20px;
+                    background-size: contain;
+                    position: absolute;
+                    // display: inline-block;
+                    content: '';
+                    left:101%;
+                    top:0px;
+                }
+            }
+            .input-holder {
+                display: flex;
+                align-items: center;
+                color: #666;
+            }
+            .male-radio{
+                margin-left: 95px;
+                width: 18px;
+                height: 18px;
+                margin-top: 0;
+                margin-right: 8px;
+                outline: none;
+            }
+            .female-radio{
+                margin-left: 16px;
+                width: 18px;
+                height: 18px;
+                margin-top: 0;
+                margin-right: 8px;
+                outline: none;
+            }
+        }
+        .mz-accountsettings-dob{
+            margin-top: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            max-width: 450px;
+            .mz-account-settings-label-name{
+                position: relative;
+                    &:after{
+                        display: none;
+                        background: url('@{iconsPath}/help.svg') no-repeat;
+                        width: 20px;
+                        height: 20px;
+                        background-size: contain;
+                        position: absolute;
+                        // display: inline-block;
+                        content: '';
+                        margin-top: 5px;
+                        margin-left:5px;
+                        left:101%;
+                        top:0px;
+                    }
+            }
+            #day{
+                box-sizing: border-box;
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+                margin-left: 50px;
+                width: 67px;
+                text-align: center;
+                appearance: none;
+            }
+            #month{
+                box-sizing: border-box;
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+                width: 67px;
+                text-align: center;
+                appearance: none;
+            }
+            #year{
+                box-sizing: border-box;
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+                width: 67px;
+                text-align: center;
+                appearance: none;
+            }
+            .input-holder {
+                span {
+                    padding: 0 3px;
+                }
+            }
+            span{
+                height: 10px;
+                @media(max-width:768px){
+                    height: 100%;
+                    width: 2%;
+                    position: relative;
+                    display: inline-block;
+                }
+            }
+        }
+        .mz-accountsettings-contactaddress{
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            max-width: 693px;
+            display: flex;
+            justify-content: space-between;
+            .fancy-dropdown{
+                width: 350px;
+                margin-left: 12px;
+                @media(max-width:768px){
+                    margin-left: 0px;  
+                }
+            }
+            .input-holder {
+                display: flex;
+                align-items: center;
+            }
+            #address{
+                margin-left: 0;
+                width: 431px;
+                height: 32px;
+                box-sizing: border-box;
+                border: none;
+                background-color: transparent;
+                box-shadow: none;
+                z-index: 10;
+                position: relative;
+            }
+            a{
+                text-decoration: underline;
+                font-size: 14px;
+                font-weight: bold;
+                display: inline-block;
+                line-height: 21px;
+                float: right;
+                margin-left: 10px;
+            }
+        }
+
+        .mz-accountsettings-mobile{
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            max-width: 551px;
+            display: flex;
+            justify-content: space-between;
+            .mz-account-settings-label-name{
+                position: relative;
+                    &:after{
+                        display: none;
+                        background: url('@{iconsPath}/help.svg') no-repeat;
+                        width: 20px;
+                            height: 20px;
+                            background-size: contain;
+                        position: absolute;
+                       // display: inline-block;
+                        content: '';
+                        margin-top: 5px;
+                        margin-left:5px;
+                        left:101%;
+                        top:0px;
+                    }
+            }
+            .mz-accountsettings-mobileinput{
+                margin-left: 10px;
+                height: 32px;
+                width: 250px;
+                box-sizing: border-box;
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+            }
+            input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+            #code{
+                box-sizing: border-box;
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+                margin-left: 100px;
+                height: 32px;
+                width: 90px;
+                appearance: none;
+                direction: rtl;
+            }
+        }
+        .mz-accountsettings-email{
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            max-width: 484px;
+            display: flex;
+            justify-content: space-between;
+            .mz-accountsettings-displayemail{
+                margin-left: 30px;
+            }
+            .mz-accountsettings-email-address{
+                margin-left: 33px;
+                width: 350px;
+                height: 32px;
+                box-sizing: border-box;
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                box-shadow: 0 0 5px 0 #DDDDDD;
+                
+            }
+            .mz-accountsettings-editbutton{
+                background: url('@{iconsPath}/edit.svg') no-repeat;
+                background-size: 50% 50%;
+                display: inline-block;
+                box-sizing: border-box;
+                height: 25px;
+                border: 1px solid #ccc;
+                background-color: #eee;
+                text-align: right;
+                width: 55px;
+                background-position: -2px 5px;
+                font-weight: bold;
+                font-size: 14px;
+            }
+        }
+        .mz-accountsettings-password{
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 600;            
+            max-width: 292px;
+            display: flex!important;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            p{
+                margin-top: -10px;
+                margin-left: 68px;
+                font-size: 20px;
+                font-weight: bold;
+                display: inline;
+                line-height: 28px;
+            }
+            .mz-accountsettings-editbutton{
+                background: url('@{iconsPath}/edit.svg') no-repeat;
+                background-size: 50% 50%;
+                display: inline-block;
+                box-sizing: border-box;
+                height: 25px;
+                border: 1px solid #ccc;
+                background-color: #eee;
+                text-align: right;
+                width: 55px;
+                background-position: -2px 5px;
+                font-weight: bold;
+                font-size: 14px;
+                color: @grey;
+                letter-spacing: 0;
+                line-height: 21px;
+            }
+        }
+        .mz-accountsettings-editdone{
+            margin-left: 280px;
+            height: 40px;
+            width: 50%;
+            border: 1px solid #CCCCCC;
+            background-color: #F2F2F2;
+            border-radius: 0px;
+        }        
+
+    }
+}
+
+    @media only screen and (max-width: 767px){
+        .mz-accountsettings{
+        //   .mz-myaccount.mz-l-pagecontent{
+        //       padding: 0px;
+        //   }
+            .mz-l-stack-sectiontitle{
+                font-size: 28px !important;
+                font-weight: 600;
+                color: #333333;
+                border-bottom: none !important;
+            }
+            .mz-l-paragraph{
+                font-size: 18px;
+                font-weight: 600;
+                width: 350px;
+                color: @grey;
+            }
+            .mz-accountsettings-title{
+                .mz-account-settings-label-name{
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+                #title{
+                    box-sizing: border-box;
+                    height: 32px;
+                    width: 120%;
+                    border: none;
+                    background-color: transparent;
+                    box-shadow: none;
+                    position: relative;
+                    z-index: 9;
+                    @media(max-width:768px){
+                        margin-left:0px;
+                    }
+                }
+            }
+            .mz-accountsettings-firstnamefull{
+                margin-top: 25px;
+                font-size: 16px;
+                font-weight: 600;
+                .mz-accountsettings-firstname{
+                    margin-left: 50px;
+                    width: 58%;
+                    height: 32px;
+                    box-sizing: border-box;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    box-shadow: 0 0 5px 0 #DDDDDD;
+                    @media(max-width:768px){
+                        width:100%;
+                        margin-left:0px;
+                    }
+                }
+            }
+            .mz-accountsettings-lastnamefull{
+                margin-top: 25px;
+                font-size: 16px;
+                font-weight: 600;
+                .mz-accountsettings-lastname{
+                    margin-left: 50px;
+                    width: 58%;
+                    height: 32px;
+                    box-sizing: border-box;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    box-shadow: 0 0 5px 0 #DDDDDD;
+                    @media(max-width:768px){
+                        width:100%;
+                        margin-left:0px;
+                    }
+                }
+            }
+            .mz-accountsettings-gender{
+                margin-top: 25px;
+                font-size: 16px;
+                font-weight: 600;
+                .mz-account-settings-label-name {
+                    position: relative;
+                    &:after{
+                        display: none;
+                        background: url('@{iconsPath}/help.svg') no-repeat;
+                        width: 20px;
+                        height: 20px;
+                        background-size: contain;
+                        position: absolute;
+                    //    display: inline-block;
+                        content: '';
+                        margin-left:5px;
+                        margin-top:5px;
+                        left:101%;
+                        top:0px;
+                    }
+                }
+                .male-radio{
+                    margin-left: 85px;
+                    @media(max-width:768px){
+                        margin-left:0px;
+                    }
+                }
+                .female-radio{
+                    margin-left: 10px;
+                }
+            }
+            .mz-accountsettings-dob{
+                margin-top: 25px;
+                font-size: 16px;
+                font-weight: 600;
+                .mz-account-settings-label-name{
+                    position: relative;
+                        &:after{
+                            display: none;
+                            background: url('@{iconsPath}/help.svg') no-repeat;
+                            width: 20px;
+                            height: 20px;
+                            background-size: contain;
+                            position: absolute;
+                          //  display: inline-block;
+                            content: '';
+                            margin-top: 5px;
+                            margin-left: 5px;
+                            left:101%;
+                        top:0px;
+                        }
+                }
+                .input-holder{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                #day{
+                    box-sizing: border-box;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    box-shadow: 0 0 5px 0 #DDDDDD;
+                    margin-left: 40px;
+                    width: 15%;
+                    appearance: none;
+                    text-align: center;
+                    @media(max-width:768px){
+                        width:25%;
+                        margin-left:0px;
+                    }
+                }
+                #month{
+                    box-sizing: border-box;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    box-shadow: 0 0 5px 0 #DDDDDD;
+                    width: 15%;
+                    appearance: none;
+                    text-align: center;
+                    @media(max-width:768px){
+                        width:25%;
+                    }
+                }
+                #year{
+                    box-sizing: border-box;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    box-shadow: 0 0 5px 0 #DDDDDD;
+                    width: 18%;
+                    appearance: none;
+                    text-align: center;
+                    @media(max-width:768px){
+                        width:34%;
+                        float:right;
+                    }
+                }
+                span{
+                    height: 10px;
+                    padding:3px;
+                }
+            }
+            .mz-accountsettings-contactaddress{
+                margin-top: 25px;
+                font-size: 16px;
+                font-weight: 600;
+                .fancy-dropdown{
+                    width: 100%;
+                    @media(max-width:768px){
+                        margin-left: 0px;  
+                    }
+                }
+                .mz-accountsettings-contact{
+                    height: 34px;
+                    margin-left: 10px;
+                    width: 59%;
+                    box-sizing: border-box;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    box-shadow: 0 0 5px 0 #DDDDDD;
+                }
+                select{ 
+                    @media(max-width:768px){
+                        width:120%;
+                        border:none;
+                        height: 34px;
+                        box-sizing: border-box;
+                        background-color: transparent;
+                        box-shadow: none;
+                        z-index: 10;
+                        position: relative;
+                    }
+                }
+                a{
+                    text-decoration: underline;
+                    font-size: 14px;
+                    font-weight: bold;
+                    display: none;
+                }
+            }
+
+            .mz-accountsettings-mobile{
+                margin-top: 25px;
+                font-size: 16px;
+                font-weight: 600;
+                .mz-account-settings-label-name{
+                    position: relative;
+                        &:after{
+                            display: none;
+                            background: url('@{iconsPath}/help.svg') no-repeat;
+                            width: 20px;
+                            height: 20px;
+                            background-size: contain;
+                            position: absolute;
+                           // display: inline-block;
+                            content: '';
+                            margin-top:5px;
+                            margin-left:5px;
+                            left:101%;
+                            top:0px;
+                        }
+                }
+                .input-holder{
+                    display: flex;
+                    flex-direction: row;
+                }
+                .mz-accountsettings-mobileinput{
+                    margin-right: 5px;
+                    height: 32px;
+                    width: 43%;
+                    box-sizing: border-box;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    box-shadow: 0 0 5px 0 #DDDDDD;
+                    @media(max-width:768px){
+                        width:75%;
+                        float:right;
+                    }
+                }
+                #code{
+                    box-sizing: border-box;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    box-shadow: 0 0 5px 0 #DDDDDD;
+                    margin-left: 90px;
+                    height: 32px;
+                    width: 22%;
+                    appearance: none;
+                    direction: rtl;
+                    @media(max-width:768px){
+                        margin-left:0px;
+                        text-align: right;
+                    }
+                }
+            }
+            .mz-accountsettings-email{
+                margin-top: 25px;
+                font-size: 16px;
+                font-weight: 600;
+                .mz-accountsettings-email-address{
+                    margin-left: 50px;
+                    height: 32px;
+                    box-sizing: border-box;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    box-shadow: 0 0 5px 0 #DDDDDD;
+                    width: 86%;
+                    font-size: 12px;
+                    font-weight: 600;
+                    
+                    @media(max-width:768px){
+                        margin-left:0px;
+                    }
+                }
+                .mz-accountsettings-displayemail{
+                    margin-left: 12px;
+                    font-size: 13px;
+                    @media(max-width:768px){
+                        margin-left: 0px;
+                        max-width: 100%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        //float: left;
+                    }
+                }
+                .mz-accountsettings-editbutton{
+                    background: url('@{iconsPath}/edit.svg') no-repeat;
+                    background-size: 50% 50%;
+                    display: inline-block;
+                    box-sizing: border-box;
+                    height: 25px;
+                    border: 1px solid #ccc;
+                    background-color: #eee;
+                    text-align: right;
+                    width: 55px;
+                    background-position: -2px 5px;
+                    color: @grey;
+                    font-weight: bold;
+                    font-size: 14px;
+                    padding: 0 6px;
+                    @media(max-width:768px){
+                        
+                        margin-left:0px;
+                    }
+                }
+            }
+            .mz-accountsettings-password{
+                margin-top: 25px;
+                font-size: 16px;
+                font-weight: 600;
+                display: flex;
+                @media(max-width:768px){
+                    display: block;
+                }
+                p{
+                    margin-top: -10px;
+                    margin-left: 75px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    display: inline-block;
+                    @media(max-width:768px){
+                        margin-left: 0px;
+                       
+                    }
+                }
+                .mz-accountsettings-editbutton{
+                    background: url('@{iconsPath}/edit.svg') no-repeat;
+                    background-size: 50% 50%;
+                    display: inline-block;
+                    box-sizing: border-box;
+                    height: 25px;
+                    border: 1px solid #ccc;
+                    background-color: #eee;
+                    text-align: right;
+                    width: 55px;
+                    background-position: -2px 5px;
+                    color: @grey;
+                    font-weight: bold;
+                    font-size: 14px;
+                    padding: 0 6px;
+                }
+            }
+            .mz-accountsettings-editdone{
+               
+                height: 40px;
+                width: 100%;
+                margin-left: 5px;
+                border: 1px solid #CCCCCC;
+                background-color: #F2F2F2;
+                border-radius: 0px;
+                @media(max-width:768px){
+                    margin-left: 0px;
+                }
+            }
+
+        }
+    }
+.input-holder {
+        display: inline-block;
+        line-height: 32px;
+        height:32px;
+        width:auto !important;
+        @media(max-width:768px){
+            width: 60% !important;
+            float: right !important;
+            height: 32px;
+        }
+      }
+hr{ 
+    @media(max-width:768px){
+        width:100%;
+        display: inline-block;
+        margin:20px 0;
+    }
+}
+.mz-accountsettings-aboutyou > div {
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px !important;
+    @media(max-width:768px){
+        float:left;
+    }
+}
+
+.mz-accountsettings-aboutyou > div >label:first-child {
+    line-height: 32px !important;
+    display: inline-block;
+    float: left;
+}
+.input-holder{
+    input,select,textarea{
+        margin-bottom: 0px;
+        color:#000;
+    border-radius:0px  !important;
+    }
+    input:focus,select:focus, textarea:focus{
+        outline:1px solid @blackColor;
+    }
+    
+} 
+
+.bdr{ border:1px solid @blackColor !important}
+.mz-accountsettings-aboutyou>div > label:hover:after {
+    opacity: 0.6;
+}
+.mz-accountsettings-title{
+    .fancy-dropdown {
+        width: 131px;
+        margin-left: 110px;
+        @media(max-width:768px){
+            margin-left:0px;
+        }
+    }
+}
+.fancy-dropdown{
+        display: inline-block;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        box-shadow: 0 0 5px 0 #ddd;
+        height:32px;
+        &:focus{outline: 1px solid #4e4e4e;}
+        &:active{outline: 1px solid #4e4e4e;}
+        &:after{
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 7px 7px 0 7px;
+        border-color: #000000 transparent transparent transparent;
+        top: 12px;
+        right: 8px;
+    }
+}
+.mz-accountsettings {
+    display: inline-block;
+    max-width: 825px;
+    .acc-settings-hr {
+        border-top: 1px dotted @grey;
+        @media @mobileScreens {
+            margin: 0;
+        }
+    }
+    .mz-accountsettings-editdone, #saveabout {
+        color: @black;
+        font-weight: @fontBold;
+    }
+    .mz-accountsettings-editdone[disabled] {
+        color: #c2c2c2;
+    }
+}
+button#saveabout {
+    width: 210px;
+    float: right;
+    @media(max-width:768px){
+        width: 100%;
+    float: none;
+    }
+}
+select{
+	background:none;
+	-moz-appearance: none; 
+	-webkit-appearance: none; 
+	appearance: none;
+   	 /* below you can add your style */
+	
+}
+.mz-accountsettings-password input{ border-radius: 0px;}
+span.help-info {
+    background: url(../resources/images/icons//help.svg) no-repeat;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 8px;
+    height: 25px  !important;
+    background-size: contain;
+    position: absolute;
+    display: inline-block;
+    content: '';
+    left: 101%;
+    top: 0px;
+    background-size: 23px;
+}
+span.info-clicked {
+    background: url(../resources/images/icons/svg/help-grey.svg) no-repeat !important;
+    background-size: 100% !important;
+    width: 22px;
+}
+span.info-box {       
+        display: none;
+        position: absolute;
+        top: ~"calc(100% + 12px)";
+        padding: 14px 15px 12px 15px;
+        background: #fff;
+        z-index: 99;
+        box-shadow: 0 0 9px rgba(0,0,0,0.2);
+        width: 126px;
+        border: 1px solid #CCCCCC;
+        border-radius: 5px;
+        background-color: #F5F5F5;
+        left: 104%;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 18px;
+        box-sizing: border-box;
+        height:auto !important;
+        color:#333;
+        transform: translateX(-37%);
+        &:after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 6px 7.4px 5px;
+            border-color: transparent transparent #f5f5f5 transparent;
+            position: absolute;
+            bottom: 100%;
+            left: 45%;
+        }
+        
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 8px 8.4px 8px;
+            border-color: transparent transparent #d7d4d4 transparent;
+            position: absolute;
+            bottom: 100%;
+            left: 43%;
+        }
+        .show{
+            display: inline-block !important;
+        }
+    }
+
+.account-setting-body {
+    .mz-accountsettings {
+        .mz-accountsettings-gender {
+            .input-holder {
+                @media @mobileScreens {
+                    display: flex;
+                    align-items: center;
+                    color: #666;
+                }
+            }
+            .male-radio,
+            .female-radio {
+                @media @mobileScreens {
+                    width: 18px;
+                    height: 18px;
+                    outline: none;
+                    margin-left: 8px;
+                    margin-top: 0;
+                }
+            }
+            .female-radio {
+                @media @mobileScreens {
+                    margin-right: 16px;
+                }
+            }
+        }
+        .mz-accountsettings-aboutyou {
+            hr {
+                @media @mobileScreens {
+                    border-top: 1px dotted #666;
+                }
+            }
+        }
+    } 
+} 
+
+// Adding for email edit functionality
+.update-email-action-view { display:none; }
+.cancel-edit-email-address{
+    background: url(../resources/images/icons/svg/close.svg) no-repeat;
+    background-size: 20px;
+    width: 26px;
+    height: 31px;
+    /* background-color: #009996; */
+    background-position: center;
+    display: inline-block;
+    /* backdrop-filter: opacity(0.1); */
+    padding-left: 17px;
+    border: 0px solid #009996;
+    border-radius: 0px;
+    /* filter: invert(1); */
+    fill: #fff;
+    margin-top: 2px;
+    display: inline-block;
+    float: right;
+}
+body .update-email-action-view {
+    display: none;
+}
+
+.accountsettings-alert-message {
+    .is-showing.mz-success {
+        box-sizing: border-box;
+        height: 64px;
+        border: 1px solid #E1ECD1;
+        border-radius: 3px;
+        background-color: #F5F9E6;
+        width: 100%;
+    }
+    .icon-check-arrow {
+        border: 1px solid #BDC6A3;
+        border-radius: 50%;
+        padding: 5px;
+        font-weight: 600;
+        font-size: 18px;
+        margin-left: 16px;
+    }
+    .icon-check-arrow::before{
+        content: "\2713";
+        color: #BDD755;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .mz-message-item {
+        color: @black;
+        font-family: 'MSLondon';
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 24px;
+        padding: 20px 20px;
+    }
+}
+body.mz-myaccount.account-setting-body{
+    #page-content{
+        @media @tabletAndMobileScreens {
+            overflow: unset;
+        }
+        .myacc{
+            @media @tabletAndMobileScreens {
+                padding:0 20px;
+            }
+            .mz-l-stack-sectiontitle{
+                .afg-h2();
+                font-size: 30px !important;
+                @media @tabletAndMobileScreens {
+                   .afg-h3();
+                   margin-top: 0px !important;
+                   font-size: 22px !important;
+                } 
+            }
+            .mz-l-paragraph{
+                .afg-h4();
+                @media @tabletAndMobileScreens {
+                   .afg-b1();
+                   font-weight: 600;
+                   margin-top: 0px;
+                } 
+            }
+            .mz-accountsettings-aboutyou>div{
+               @media(min-width:1001px){
+                display: flex  ;
+                align-items: center;
+                max-width: 100%;
+                column-gap: 20px;
+                justify-content: flex-start;
+               }
+            }
+            .mz-accountsettings-aboutyou>div>label:first-child{
+               
+                .afg-b1();
+                font-weight: 600;
+               
+                @media @tabletAndMobileScreens {
+                    width:100%;
+                    margin-bottom: 10px;
+                }
+                span.help-info{
+                    margin-top:-3px;
+                    left:auto;
+                }
+            }  
+            .input-holder {
+                height: 40px;
+                @media @tabletAndMobileScreens {
+                width: 100% !important;
+                float: none;
+              
+                }
+                input,textarea,select{
+                    height:40px;
+                }
+                input[type="radio"]{
+                    height:25px;
+                }
+                .fancy-dropdown{height:40px;}
+                .mz-accountsettings-email-address{max-width:260px}
+                .email-readonly-view{
+                    margin-right: 12px;
+                    @media(max-width:768px){
+                        margin-right: 0px;
+                    }
+                }
+            }
+        }
+        .mz-accountsettings .mz-l-paragraph{ 
+            width:100%;
+            font-weight: 600;
+        }
+        
+    }
+}
+.mz-myaccount.pass-section-body{
+    #page-content{
+        overflow: unset;
+        .myacc{
+            @media @tabletAndMobileScreens {
+                padding:0 20px;
+            }
+            .mz-l-stack-sectiontitle{
+                .afg-h2();
+                font-size: 30px !important;
+                @media @tabletAndMobileScreens {
+                   .afg-h3();
+                   font-size: 22px !important;
+                   margin-top: 0px !important;
+                } 
+                @media @mobileScreens {
+                    color: @black!important;
+                }
+            }
+            .mz-l-paragraph,.mz-change-password-below{
+                .afg-h4();
+                font-weight: 600;
+                @media @tabletAndMobileScreens {
+                   .afg-b1();
+                   font-weight: 600;
+                   margin-top: 0px;
+                } 
+            }
+        }
+    .mz-accountsettings-password > div{
+        @media @tabletAndMobileScreens {
+            flex-direction: column;
+        }
+        p {
+        @media @tabletAndMobileScreens {
+            width:100%;
+        }
+       
+       }
+    }
+    .change-password-section input {
+        height: 40px !important;
+        
+        max-width:350px;
+      
+        @media @tabletAndMobileScreens { 
+            box-sizing: border-box;
+            width: 100% !important;
+        }
+    }
+    .change-password-section label{
+        margin-bottom: 10px;
+        .afg-b1();
+         font-weight: 600;
+         @media @tabletAndMobileScreens { 
+            width: 100%;
+            margin-top: 0px;
+        }
+    }
+    label.mz-accountsettings-newpasswordlabel.notxt {
+       // line-height: 0px !important;
+        margin-bottom: 0;
+    }
+    .mz-accountsettings-passworddone{
+        margin-left: 0px;
+    }
+    .mz-password-actions{
+        @media @tabletAndMobileScreens { 
+            margin-top: 20px;
+        }
+    }
+}
+}
+// body.mz-myaccount.account-setting-body #page-content .myacc .input-holder input, 
+// body.mz-myaccount.account-setting-body #page-content .myacc .input-holder select, 
+// body.mz-myaccount.account-setting-body #page-content .myacc .input-holder .fancy-dropdown {
+//     margin: 0 !important;
+// }
+body.mz-myaccount.account-setting-body #page-content .myacc .input-holder{
+    input,select,.fancy-dropdown,.mz-accountsettings-displayemail,a, >p{
+        @media(min-width:1001px){
+            margin-left: 10px !important;
+        }
+    }
+}
+body.mz-myaccount.account-setting-body #page-content .myacc .mz-accountsettings-aboutyou>div>label:first-child{
+    @media(min-width:1001px){
+        min-width:130px;
+    }
+}
+button.mz-accountsettings-editbutton.pass-edit.edit-email-address.email-readonly-view {
+    display: none;
+}

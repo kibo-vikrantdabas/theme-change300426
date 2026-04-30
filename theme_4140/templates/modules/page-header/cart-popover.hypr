@@ -1,0 +1,11 @@
+<div class="minicart-popup-container">
+<div class="mz-minicart-popover"> 
+    <div class="arrow"></div>
+      {% comment %} <div id="cart-popover" class="mz-popover"> {% endcomment %}
+       <div id="cart-popover" class="cart-popover-view">
+       </div>
+
+</div>
+</div>
+
+   

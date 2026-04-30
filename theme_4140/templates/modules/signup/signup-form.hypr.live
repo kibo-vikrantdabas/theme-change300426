@@ -1,0 +1,112 @@
+<form class="register-form" id="register-form-new" method="post"  autocomplete="off">
+    <div class="signup-popover-form" data-mz-role="popover-message"></div>
+    <div class="mz-name-input-fields form-div">
+       <div class="first-name-field">
+          <label class="text-label first" >{{ labels.signupFirstname }}<span >*</span></label>
+          <input data-mz-value="first-name" name="first-name"  type="text"  class="mz-signup-first text-input" placeholder="{{ labels.signUpFormFirstName }}" data-mz-signup-firstname/>
+       </div>
+    </div>
+    <div class="signup-consent-msg1"><span class="data-mz-signup-firstname1"></span></div>
+    <div class="lastname-input-fields form-div">
+        <label class="text-label first" >{{ labels.signupLastname }}<span >*</span></label>
+          <input type="text" name="last-name" class="mz-signup-last text-input" placeholder="{{ labels.signUpFormLastName }}" data-mz-value="last-name" data-mz-signup-lastname />
+
+    </div>
+    <div class="signup-consent-msg1 "><span class="data-mz-signup-lastname1"></span></div>     
+	<div class="mobile-input-field">
+            <div class="mz-l-formfieldgroup-cell">
+                <label class="text-label" for="mobileNumber">{{ labels.mobileNumber }}<span >*</span></label>
+            </div>
+            <div class="mobile-code-div">
+                <div id="mobile-contry-code" class="mz-mobile-country-code select-style ">
+                    <select data-display="{{labels.country}}" {% if themeSettings.isArabicLanguageSite %}dir="ltr" style="text-align:right"{% endif %} class="dropdown-toggle mobile-dialed-code" data-mz-value="countryCode" name="countryCode" data-mz-signup-countrycode disabled>
+                        {% for code in themeSettings.dialingCodes  %}
+                              {% if code == themeSettings.countrySpecificDialingCode %}
+                                    <option value="{{code}}" {% if code == themeSettings.countrySpecificDialingCode %} selected {% endif %}>{{code}}</option>
+                              {% endif %}
+                              {% if code != themeSettings.countrySpecificDialingCode %}
+                                    <option value="{{code}}" >{{code}}</option>
+                              {% endif %}
+                        {% endfor %}  
+                    </select>
+                </div>
+                <div class="mz-l-formfieldgroup-cell mobile-input-div">
+                    <input class="mz-signup-mobile text-input " type="number" name="mobile-number" data-mz-value="mobile-number"  placeholder="{% if themeSettings.countrySpecificCode|lower == "ae" or themeSettings.countrySpecificCode|lower == "sa"%}5xxxxxxxx {% else %}{{ labels.signUpFormMobile }}{%endif%}"  data-mz-signup-mobilenumber onkeydown="javascript: return event.keyCode == 69 ? false : true"/>
+                    <a id="blue-help" class="help">
+                        <img class="help-blue" alt="help" src="{{siteContext.cdnPrefix}}/resources/images/icons/Help.svg" loading="lazy"> 
+                      </a> 
+                </div>
+                <div class="blue-popover-main-container">
+                    <div class="blue-popover-div">
+                        <div class="div-img">
+                            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/BluePayment.svg" loading="lazy">
+                        </div>
+                        <div class="div-content">
+                            {{labels.blueSignupMessage}}
+                        </div>
+                        <div class="arrow"></div>
+                    </div>
+                </div>
+           </div>
+        <div class="mz-noBlueAccount deactive">{{labels.blueAccount}}</div>
+    </div>
+        
+    <div class="email-input-field form-div">
+        <label class="text-label"   tabindex="-1">{{ labels.email }}<span >*</span></label>
+        <input aria-label="register email" data-mz-value="email-address" type="email" name="email-address" class="mz-signup-email text-input" placeholder="{{ labels.signUpFormemail }}" data-mz-signup-emailaddress />
+        <div class="email-validation-msg hidden"></div>
+   </div>
+    <div class="password-field form-div">
+       <label class="text-label"   tabindex="-1">{{ labels.password }}<span>*</span></label>
+      </a>
+       <div class="password-field-input">
+          <input aria-label="register password" type="password" name="password-first" id="password-first"  data-mz-value="password-first" class="mz-signup-password text-input" placeholder="{{ labels.signUpFormPassword }}" data-mz-signup-password />
+          
+            <a id="eye-password-register" class="eye">
+              <span class="eye-open eye-text"><img class="eye-image" alt="eyeopen" src="{{siteContext.cdnPrefix}}/resources/images/icons/Eye.svg" loading="lazy"> {{ labels.show }}</span>
+              <span class="eye-close eye-text hidden"><img class="eye-image" alt="eyehidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/EyeHidden.svg" loading="lazy"> {{ labels.hide }}</span>
+            </a> 
+        
+       </div>
+    </div>
+    <div class="password-strength-meter">
+        <div class="password-strength-indication"><div class="password_s1 strength"></div><div class="password_s2 strength"></div><div class="password_s3 strength"></div></div>
+        <div class="password-validation-msg hidden"></div>
+    </div>
+    <div class="mz-signup-updates signup-consent-container">
+        <label class="container-updates">
+         <input class="agreeForUpdates signupConsent" type="checkbox" name="signup-consent" data-mz-value="signup-consent" data-mz-signup-consent />
+         <span class="checkmark"></span>
+       </label>
+          <div class="mz-l-formfieldgroup-cell signup-consent-text">
+            <label  for="agree-for-updates">
+                {{labels.signUpConsent|string_format(siteContext.siteSubdirectory, siteContext.siteSubdirectory)|safe}}
+        </div>
+     </div>
+     <div class="signup-consent-msg"><span class="signup-consent-validation-msg"></span></div>
+     <div class="mz-signup-updates">
+           <label class="container-updates">
+            <input class="agreeForUpdates" type="checkbox" name="agree-for-updates" data-mz-value="agree-for-updates" data-mz-signup-acceptsmarketing />
+            <span class="checkmark"></span>
+          </label>
+             <div class="mz-l-formfieldgroup-cell agree-for-updates-text">
+               <label  for="agree-for-updates">
+                    {{ labels.signUpAgreeForUpdates|string_format(siteContext.siteSubdirectory, siteContext.siteSubdirectory) }}</label>
+           </div>
+    </div>
+    {% if themeSettings.enableRecaptchaSignUp %}
+        <div id="agree" class="g-recaptcha" data-sitekey="{{themeSettings.recaptchaSiteKey}}" data-callback="enableBtn"></div>
+        
+        <div class="signup-captch-msg"><span class="signup-consent-validation-msg1"></span></div>
+    {% endif %}
+    <div class="mz-signup-button-div">
+             <div class="mz-signup-div">
+                 <button type="submit" class="mz-sign-up-page-button signup-submit"  data-mz-action="signup-submit">{{ labels.signUpButton }}</button>
+                 
+                </div>
+         </div>
+ </form>
+  {% if themeSettings.enableRecaptchaSignUp %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endif %}
+ 

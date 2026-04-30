@@ -1,0 +1,224 @@
+.mz-guest-orderTracking {
+    .orderstatus-wrapper {
+        color: @lightBlack;
+        float: none !important;
+        max-width: @maxContentWidth;
+        margin: 0 100.5px;
+        @media (max-width: 992px) {
+            margin: 0 auto;
+            width: 100%;
+        }
+        .mz-l-formfieldgroup-row {
+            margin-bottom: 10px;
+            .mz-l-formfieldgroup-cell {
+                .mz-popover-message {
+                    margin-top: 13px;
+                    .mz-validationmessage {
+                        font-size: @fontSizeLarger;
+                        color: @saleColor;
+                    }
+                }
+            }
+        }
+        .mz-help-icon {
+            width: 20px;
+        }
+        .is-required {
+            color: @black;
+        }
+        .mz-loginform-page {
+            @media @desktopScreens {
+                width: 510px;
+            }
+        }
+        .mz-login-form-main-container {
+            width: auto;
+            max-width: 100%;
+            margin: 0;
+            .text-input {
+                box-sizing: border-box;
+                max-width: 100%;
+                width: 100%;
+                outline: none;
+                -webkit-appearance: none;
+                border-radius: 0;
+            }
+            .mb-30 {
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 35px;
+                @media @mobileScreens {
+                    margin-bottom: 30px;
+                }
+            }
+            .mz-order-number-field {
+                position: relative;
+                .mz-help-icon-popup {
+                    position: absolute;
+                    top: auto;
+                    bottom: 38px;
+                    left: 86px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    letter-spacing: 0;
+                    line-height: 28px;
+                    color: #333;
+                    text-align: center;
+                    background-color: #E0E4E6;
+                    box-shadow: 0 0 9px 0 rgba(0,0,0,0.2);
+                    border: 1px solid #627786;
+                    padding: 8px 0;
+                    width: 345px;
+                    @media @mobileScreens {
+                        left: 0;
+                        width: auto;
+                    }
+                    &::after {
+                        content: '';
+                        z-index: 99;
+                        position: absolute;
+                        top: 93%;
+                        left: 8%;
+                        background: #E0E4E7;
+                        border: 1px solid #627786;
+                        width: 11px;
+                        height: 11px;
+                        border-top: 0;
+                        transform: rotate(45deg); 
+                        border-left: 0;
+                        @media @mobileScreens {
+                            left: 114px;
+                        }
+                    }
+                }
+            }
+        }
+        .mb-30 {
+            margin-bottom: 30px;
+            @media @mobileScreens {
+                margin-bottom: 57px;
+            }
+        }
+        .mz-requiredFields {
+            text-transform: lowercase;
+        }
+        h1 {
+            font-size: 31px;
+            font-weight: @fontBold;
+            @media @mobileScreens {
+                font-size: 26px;
+                letter-spacing: 0;
+                line-height: 40px;
+                margin-top: 0px;
+            }
+        }
+        p {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 35px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .mz-guest-ordernum-err,
+        .mz-guest-email-verification-err {
+            margin: 0;
+            span{
+                color: #A6192E;
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 21px;
+            }
+        }
+    } 
+    // .mz-pageheader {
+    //     @media @mobileScreens {
+    //         height: auto!important;
+    //     }
+    //     .mz-location-nav-container {
+    //         @media @mobileScreens {
+    //             display: none; 
+    //         }
+    //     }
+    // }
+    .mz-breadcrumbs {
+        @media @mobileScreens {
+            display: none;
+        }
+    }
+    .mz-l-pagecontent {
+        padding: 25px 0;
+        @media @mobileScreens {
+            padding: 0px 0 25px; 
+        }
+    }
+    .mz-l-2column.mz-l-2column-right {
+        @media (min-width: 501px) {
+            padding: 0 37.5px;
+        }
+        @media @mobileScreens {
+            padding: 0 8px;
+        }
+    }
+    
+    .mz-popover-message {
+        max-width: 1440px;
+        margin: 0 100.5px;
+        @media (max-width: 768px) {
+            margin: 0 auto;
+            padding-top: 15px;
+            margin-bottom: 15px;
+        }
+        .mz-validationmessage {
+            background: #FFF3F4;
+            padding: 14px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 21px;
+            color: #333;
+            border-left: 6px solid #EA122A;
+            @media @mobileScreens {
+                line-height: 28px;
+                padding: 11px 16px;
+            }
+        }
+    }
+    .mz-login-page-button {
+        border-radius: 0;
+    }
+    .mz-signup-email-main {
+        display:none;
+        .mz-sinup-email-footer-clp {
+            margin: 30px 0;            
+        }
+    }
+}
+.hide-section{display: none !important;}
+/* Order listing */
+.anonymous-trackorder {
+
+}
+
+// header search bar changes
+@media screen and (orientation: portrait) and (max-width: 1023px) {
+    .mz-guest-orderTracking {
+        .mz-searchbox-container.desktop {
+            display: block !important;
+        }
+
+        .mz-searchbox-icon {
+            visibility: hidden;
+        }
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 1023px) {
+    .mz-guest-orderTracking {
+        .mz-searchbox-icon {
+            visibility: visible !important;
+        }
+    }
+}

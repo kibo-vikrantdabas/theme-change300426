@@ -1,0 +1,927 @@
+{% comment %}
+    Global Popup Component
+    This popup appears on all pages with static text
+{% endcomment %}
+
+<div id="global-popup" class="global-popup" style="display: none;">
+    <div class="global-popup-overlay"></div>
+    <div class="global-popup-content">
+        <div class="global-popup-body">
+            <div class="popup-header">
+                <h2 class="global-popup-title">Switch to your local website?</h2>
+                <button id="close-icon" class="close-icon" aria-label="Close popup">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="location-content" class="global-popup-text">
+                <p id="location-message"></p>
+                <div id="redirect-button-container" class="redirect-button-container">
+                    <button id="continue-button" class="continue-button">Continue</button>
+                    <button id="redirect-button" class="redirect-button"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Global Popup Styles */
+.global-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.global-popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.global-popup-content {
+    position: relative;
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    max-width: 611px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 10000;
+    animation: popupSlideIn 0.3s ease-out;
+}
+
+.global-popup-body {
+    padding: 30px;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.global-popup-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;
+    padding-right: 40px; /* Space for close icon on right */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+}
+
+.close-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: #666;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.close-icon:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.close-icon:active {
+    background-color: #e0e0e0;
+}
+
+.close-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.global-popup-text {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+    text-align: left;
+}
+
+.global-popup-text:last-child {
+    margin-bottom: 0;
+}
+
+.location-subtitle {
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+}
+
+.location-error {
+    color: #666;
+}
+
+#location-message {
+    color: #000000;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    font-family: 'MSLondon'
+}
+
+.location-loading {
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Redirect button styles */
+.redirect-button-container {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.redirect-button {
+    background: #BED855;
+    color: #000000;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 160px;
+    width: 268px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.redirect-button:hover {
+    background: #BED855;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 90, 160, 0.4);
+}
+
+.redirect-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(44, 90, 160, 0.3);
+}
+
+.continue-button {
+    background: transparent;
+    color: #000000;
+    border: 1px solid #000000;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 160px;
+    width: 272px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.continue-button:hover {
+    background: #FFFFFF;
+    border-color: #000000;
+    color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 90, 160, 0.4);
+}
+
+.continue-button:active {
+    background: #eee;
+}
+
+.flag-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.country-flag-img {
+    width: 20px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+/* Animation for popup appearance */
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.7) translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .global-popup-content {
+        margin: 20px;
+        width: calc(100% - 40px);
+    }
+    
+    .global-popup-body {
+        padding: 20px;
+    }
+    
+    .global-popup-title {
+        font-size: 18px;
+        padding-right: 35px; /* Reduced space for smaller screens */
+        line-height: 1.4;
+    }
+    
+    .arabic .global-popup-title {
+        padding-left: 35px;
+        padding-right: 0;
+    }
+    
+    .global-popup-text {
+        font-size: 14px;
+    }
+    
+    .redirect-button-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .redirect-button,
+    .continue-button {
+        min-width: 180px;
+        font-size: 13px;
+        width: 330px;
+    }
+}
+
+/* Arabic language support - RTL */
+.arabic .global-popup-content {
+    direction: rtl;
+    text-align: right;
+}
+
+.arabic .global-popup-title {
+    direction: rtl;
+    padding-left: 40px; /* Space for close icon on left in RTL */
+    padding-right: 0;
+}
+
+.arabic .global-popup-text {
+    text-align: right;
+    direction: rtl;
+}
+
+.arabic .global-popup-buttons {
+    direction: rtl;
+}
+
+.arabic .global-popup-button {
+    direction: rtl;
+    text-align: center;
+}
+
+.arabic .flag-icon {
+    /* order: 2; Move flag to the right side for RTL */
+    /* margin-left: 8px; */
+    margin-right: 0;
+}
+
+.arabic .close-icon {
+    left: 0;
+    right: auto;
+}
+</style>
+
+<script>
+/**
+ * Global Location-Based Popup Component
+ * Detects user location and displays a personalized welcome message
+ */
+class LocationPopup {
+    constructor() {
+        this.popup = document.getElementById('global-popup');
+        this.locationMessage = document.getElementById('location-message');
+        this.redirectButton = document.getElementById('redirect-button');
+        this.continueButton = document.getElementById('continue-button');
+        this.closeIcon = document.getElementById('close-icon');
+        this.geolocationOptions = {
+            timeout: 10000,
+            enableHighAccuracy: false,
+            maximumAge: 300000 // 5 minutes cache
+        };
+        
+        this.countryData = this.initializeCountryData();
+        this.websiteTargetCountry = this.detectWebsiteTargetCountry();
+        this.countryPathMapping = this.initializeCountryPathMapping();
+        this.cookieName = 'locationPopupDismissed';
+        
+        // Set up button event listeners
+        this.continueButton.onclick = () => this.dismissPopup();
+        this.closeIcon.onclick = () => this.dismissPopup();
+        
+        // Set up click outside to close popup
+        this.popup.onclick = (event) => this.handlePopupClick(event);
+    }
+
+    /**
+     * Handle clicks on the popup - close if clicking outside content
+     */
+    handlePopupClick(event) {
+        // Check if click target is the popup overlay or the main popup container
+        if (event.target === this.popup || event.target.classList.contains('global-popup-overlay')) {
+            console.log('Clicked outside popup content, dismissing popup');
+            this.dismissPopup();
+        }
+    }
+
+    /**
+     * Initialize country to URL path mapping
+     */
+    initializeCountryPathMapping() {
+        return {
+            'Kuwait': {
+                'en': '',  // root path for English Kuwait
+                'ar': '/ar-kw'  // Arabic Kuwait
+            },
+            'UAE': {
+                'en': '/en-ae',
+                'ar': '/ar-ae'
+            },
+            'Saudi Arabia': {
+                'en': '/en-sa',
+                'ar': '/ar-sa'
+            },
+            'Oman': {
+                'en': '/en-om',
+                'ar': '/ar-om'
+            },
+            'Bahrain': {
+                'en': '/en-bh',
+                'ar': '/ar-bh'
+            },
+            'Qatar': {
+                'en': '/en-qa',
+                'ar': '/ar-qa'
+            }
+        };
+    }
+
+    /**
+     * Get country flag - uses images for better cross-browser compatibility
+     */
+    getCountryFlag(countryName) {
+        const flagMapping = {
+            'Kuwait': 'KW',
+            'UAE': 'AE',
+            'Saudi Arabia': 'SA',
+            'Oman': 'OM',
+            'Bahrain': 'BH',
+            'Qatar': 'QA',
+            'United States': 'US',
+            'United Kingdom': 'GB',
+            'France': 'FR',
+            'Germany': 'DE',
+            'Spain': 'ES',
+            'Italy': 'IT',
+            'India': 'IN',
+            'China': 'CN',
+            'Japan': 'JP',
+            'South Korea': 'KR',
+            'Canada': 'CA',
+            'Mexico': 'MX',
+            'Iran': 'IR',
+            'Iraq': 'IQ',
+            'Syria': 'SY',
+            'Lebanon': 'LB',
+            'Jordan': 'JO'
+        };
+        
+        const countryCode = flagMapping[countryName];
+        if (countryCode) {
+            return `<img src="/resources/images/borderfree/flags/${countryCode}.gif" alt="${countryName} flag" class="country-flag-img" />`;
+        }
+        
+        // Fallback to emoji for countries without flag images
+        const emojiMapping = {
+            'Kuwait': '🇰🇼',
+            'UAE': '🇦🇪',
+            'Saudi Arabia': '🇸🇦',
+            'Oman': '🇴🇲',
+            'Bahrain': '🇧🇭',
+            'Qatar': '🇶🇦'
+        };
+        
+        return emojiMapping[countryName] || '🌍';
+    }
+
+    /**
+     * Detect if the current site is in Arabic
+     */
+    isArabicSite() {
+        const pathname = window.location.pathname.toLowerCase();
+        return pathname.includes('/ar-');
+    }
+
+    /**
+     * Get country names in Arabic
+     */
+    getArabicCountryName(countryName) {
+        const arabicNames = {
+            'Kuwait': 'الكويت',
+            'UAE': 'الإمارات العربية المتحدة',
+            'Saudi Arabia': 'المملكة العربية السعودية',
+            'Oman': 'عُمان',
+            'Bahrain': 'البحرين',
+            'Qatar': 'قطر'
+        };
+        return arabicNames[countryName] || countryName;
+    }
+
+    /**
+     * Detect which country this website is targeted for based on URL path
+     */
+    detectWebsiteTargetCountry() {
+        const pathname = window.location.pathname.toLowerCase();
+        
+        // Check for country-specific paths
+        if (pathname.includes('/en-ae') || pathname.includes('/ar-ae')) {
+            return 'UAE';
+        } else if (pathname.includes('/en-sa') || pathname.includes('/ar-sa')) {
+            return 'Saudi Arabia';
+        } else if (pathname.includes('/en-qa') || pathname.includes('/ar-qa')) {
+            return 'Qatar';
+        } else if (pathname.includes('/en-bh') || pathname.includes('/ar-bh')) {
+            return 'Bahrain';
+        } else if (pathname.includes('/en-om') || pathname.includes('/ar-om')) {
+            return 'Oman';
+        } else if (pathname.includes('/en-kw') || pathname.includes('/ar-kw')) {
+            return 'Kuwait';
+        }
+        
+        // If it's root domain (no country-specific path), assume Kuwait as default
+        if (pathname === '/' || pathname === '' || !pathname.includes('/en-') && !pathname.includes('/ar-')) {
+            return 'Kuwait';
+        }
+        
+        // Default to unknown if no mapping found
+        return null;
+    }
+
+    /**
+     * Check if a country is part of the GCC
+     */
+    isGCCCountry(countryName) {
+        const gccCountries = ['UAE', 'Qatar', 'Kuwait', 'Bahrain', 'Oman', 'Saudi Arabia'];
+        return gccCountries.includes(countryName);
+    }
+
+    /**
+     * Check if popup should be shown based on user location vs website target
+     */
+    shouldShowPopup(userCountry, websiteCountry) {
+        // If we can't determine website target country, don't show popup
+        if (!websiteCountry) {
+            return false;
+        }
+        
+        // Only show popup if user is in a GCC country
+        if (!this.isGCCCountry(userCountry)) {
+            console.log(`User is in ${userCountry}, which is not a GCC country. No popup shown.`);
+            return false;
+        }
+        
+        // If user is in the same country as website target, don't show popup
+        if (userCountry === websiteCountry) {
+            console.log(`User is in ${userCountry}, which matches website target. No popup needed.`);
+            return false;
+        }
+        
+        // User is in different GCC country than website target, show popup
+        console.log(`User is in ${userCountry} (GCC), but website is for ${websiteCountry}. Showing popup.`);
+        return true;
+    }
+
+    /**
+     * Initialize coordinate boundaries for countries
+     * Organized by regions for better maintainability
+     */
+    initializeCountryData() {
+        return {
+            gulfCountries: [
+                { name: "UAE", bounds: { lat: [22.5, 26.1], lon: [51.5, 56.4] } },
+                { name: "Qatar", bounds: { lat: [24.4, 26.2], lon: [50.7, 51.7] } },
+                { name: "Kuwait", bounds: { lat: [28.5, 30.1], lon: [46.5, 48.5] } },
+                { name: "Bahrain", bounds: { lat: [25.8, 26.3], lon: [50.3, 50.8] } },
+                { name: "Oman", bounds: { lat: [16.6, 26.4], lon: [51.9, 59.8] } }
+            ],
+            middleEast: [
+                { name: "Saudi Arabia", bounds: { lat: [16, 32.2], lon: [34.5, 55.7] } },
+                { name: "Iran", bounds: { lat: [25, 40], lon: [44, 63.3] } },
+                { name: "Iraq", bounds: { lat: [29.1, 37.4], lon: [38.8, 48.6] } },
+                { name: "Syria", bounds: { lat: [32.3, 37.3], lon: [35.7, 42.4] } },
+                { name: "Lebanon", bounds: { lat: [33.1, 34.7], lon: [35.1, 36.6] } },
+                { name: "Jordan", bounds: { lat: [29.2, 33.4], lon: [34.9, 39.3] } }
+            ],
+            europe: [
+                { name: "United Kingdom", bounds: { lat: [49, 62], lon: [-8, 2] } },
+                { name: "France", bounds: { lat: [41, 51.5], lon: [-5.5, 10] } },
+                { name: "Germany", bounds: { lat: [47, 55], lon: [5.5, 15.5] } },
+                { name: "Spain", bounds: { lat: [35, 47], lon: [-10, 5] } },
+                { name: "Italy", bounds: { lat: [35, 47], lon: [6, 19] } }
+            ],
+            asia: [
+                { name: "India", bounds: { lat: [8, 38], lon: [68, 98] } },
+                { name: "China", bounds: { lat: [18, 54], lon: [73, 135] } },
+                { name: "Japan", bounds: { lat: [24, 46], lon: [123, 146] } },
+                { name: "South Korea", bounds: { lat: [33, 43], lon: [124, 132] } }
+            ],
+            northAmerica: [
+                { name: "United States", bounds: { lat: [24, 50], lon: [-125, -66] } },
+                { name: "Canada", bounds: { lat: [41, 84], lon: [-141, -52] } },
+                { name: "Mexico", bounds: { lat: [14, 33], lon: [-118, -86] } }
+            ],
+            regions: [
+                { name: "Africa", bounds: { lat: [-35, 38], lon: [-20, 52] } },
+                { name: "South America", bounds: { lat: [-56, 14], lon: [-82, -30] } },
+                { name: "Australia", bounds: { lat: [-47, -9], lon: [112, 180] } }
+            ]
+        };
+    }
+
+    /**
+     * Check if coordinates fall within country bounds
+     */
+    isWithinBounds(lat, lon, bounds) {
+        return lat >= bounds.lat[0] && lat <= bounds.lat[1] && 
+               lon >= bounds.lon[0] && lon <= bounds.lon[1];
+    }
+
+    /**
+     * Find country by coordinates with priority order
+     */
+    getCountryFromCoordinates(lat, lon) {
+        // Priority 1: Gulf Countries (most precise)
+        for (const country of this.countryData.gulfCountries) {
+            if (this.isWithinBounds(lat, lon, country.bounds)) {
+                return country.name;
+            }
+        }
+
+        // Priority 2: Other Middle East countries (excluding overlaps with Gulf)
+        for (const country of this.countryData.middleEast) {
+            if (this.isWithinBounds(lat, lon, country.bounds)) {
+                // Special handling for Saudi Arabia to exclude UAE area
+                if (country.name === "Saudi Arabia") {
+                    const uaeBounds = this.countryData.gulfCountries.find(c => c.name === "UAE").bounds;
+                    if (!this.isWithinBounds(lat, lon, uaeBounds)) {
+                        return country.name;
+                    }
+                } else {
+                    return country.name;
+                }
+            }
+        }
+
+        // Priority 3: Europe
+        if (lat >= 35 && lat <= 72 && lon >= -25 && lon <= 45) {
+            for (const country of this.countryData.europe) {
+                if (this.isWithinBounds(lat, lon, country.bounds)) {
+                    return country.name;
+                }
+            }
+            return "Europe";
+        }
+
+        // Priority 4: Asia
+        if (lat >= -15 && lat <= 55 && lon >= 60 && lon <= 180) {
+            for (const country of this.countryData.asia) {
+                if (this.isWithinBounds(lat, lon, country.bounds)) {
+                    return country.name;
+                }
+            }
+            return "Asia";
+        }
+
+        // Priority 5: North America
+        if (lat >= 14 && lat <= 72 && lon >= -180 && lon <= -52) {
+            for (const country of this.countryData.northAmerica) {
+                if (this.isWithinBounds(lat, lon, country.bounds)) {
+                    return country.name;
+                }
+            }
+            return "North America";
+        }
+
+        // Priority 6: Other regions
+        for (const region of this.countryData.regions) {
+            if (this.isWithinBounds(lat, lon, region.bounds)) {
+                return region.name;
+            }
+        }
+
+        return "Unknown Region";
+    }
+
+    /**
+     * Display popup with smooth animation and redirect button
+     */
+    showPopup(userCountry) {
+        const isArabic = this.isArabicSite();
+        
+        // Apply RTL styling for Arabic
+        const popupContent = document.querySelector('.global-popup-content');
+        if (isArabic) {
+            popupContent.classList.add('arabic');
+        } else {
+            popupContent.classList.remove('arabic');
+        }
+        
+        // Update title based on language
+        const titleElement = document.querySelector('.global-popup-title');
+        if (isArabic) {
+            titleElement.textContent = 'هل تريد الانتقال إلى موقعك المحلي؟';
+        } else {
+            titleElement.textContent = 'Switch to your local website?';
+        }
+        
+        // Create dynamic message based on language
+        let message;
+        if (isArabic) {
+            const userCountryAr = this.getArabicCountryName(userCountry);
+            const siteCountryAr = this.getArabicCountryName(this.websiteTargetCountry);
+            message = `لاحظنا أنك تزور موقعنا الإلكتروني في ${siteCountryAr} من ${userCountryAr}. هل ترغب بالانتقال إلى موقعنا الإلكتروني في ${userCountryAr} لتجربة أكثر ملائمة، أم تفضل مواصلة تصفح موقع ${siteCountryAr}؟`;
+        } else {
+            message = `We noticed you're visiting our ${this.websiteTargetCountry} website from the ${userCountry}. Would you like to switch to our ${userCountry} website for a more tailored experience, or continue browsing the ${this.websiteTargetCountry} website?`;
+        }
+        this.locationMessage.textContent = message;
+        
+        // Get flags for both countries
+        const userFlag = this.getCountryFlag(userCountry);
+        const siteFlag = this.getCountryFlag(this.websiteTargetCountry);
+        
+        // Set up redirect button if user's country has a corresponding site in current language
+        const countryPaths = this.countryPathMapping[userCountry];
+        const currentLanguage = isArabic ? 'ar' : 'en';
+        
+        if (countryPaths && countryPaths[currentLanguage] !== undefined) {
+            if (isArabic) {
+                const userCountryAr = this.getArabicCountryName(userCountry);
+                this.redirectButton.innerHTML = `<span class="flag-icon">${userFlag}</span> الإنتقال إلى موقع ${userCountryAr}`;
+            } else {
+                this.redirectButton.innerHTML = `<span class="flag-icon">${userFlag}</span> Go to the ${userCountry} website`;
+            }
+            this.redirectButton.onclick = () => this.redirectToCountrySite(userCountry);
+            this.redirectButton.style.display = 'flex';
+        } else {
+            // Hide button if no corresponding site exists in current language
+            this.redirectButton.style.display = 'none';
+        }
+        
+        // Set up continue button with current site country
+        if (isArabic) {
+            const siteCountryAr = this.getArabicCountryName(this.websiteTargetCountry);
+            this.continueButton.innerHTML = `<span class="flag-icon">${siteFlag}</span> مواصلة تصفح موقع ${siteCountryAr}`;
+        } else {
+            this.continueButton.innerHTML = `<span class="flag-icon">${siteFlag}</span> Continue with ${this.websiteTargetCountry}`;
+        }
+        
+        this.popup.style.display = 'flex';
+        
+        // Trigger animation after display is set
+        requestAnimationFrame(() => {
+            this.popup.style.opacity = '1';
+            this.popup.style.visibility = 'visible';
+        });
+    }
+
+    /**
+     * Redirect user to their country-specific site (preserving language)
+     */
+    redirectToCountrySite(userCountry) {
+        const countryPaths = this.countryPathMapping[userCountry];
+        if (countryPaths) {
+            // Detect current language from the site
+            const isArabic = this.isArabicSite();
+            const language = isArabic ? 'ar' : 'en';
+            
+            // Get the appropriate path for the user's country and current language
+            const countryPath = countryPaths[language];
+            
+            if (countryPath !== undefined) {
+                const currentOrigin = window.location.origin;
+                const newUrl = currentOrigin + countryPath;
+                
+                console.log(`Redirecting user to ${userCountry} ${language.toUpperCase()} site: ${newUrl}`);
+                window.location.href = newUrl;
+            } else {
+                console.log(`No ${language} site available for ${userCountry}`);
+            }
+        }
+    }
+
+    /**
+     * Cookie management utilities
+     */
+    setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = `expires=${date.toUTCString()}`;
+        document.cookie = `${name}=${value};${expires};path=/`;
+    }
+
+    getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    /**
+     * Check if popup was previously dismissed
+     */
+    isPopupDismissed() {
+        return this.getCookie(this.cookieName) === 'true';
+    }
+
+    /**
+     * Dismiss popup and set cookie for 30 days
+     */
+    dismissPopup() {
+        // Hide popup with animation
+        this.popup.style.opacity = '0';
+        this.popup.style.visibility = 'hidden';
+        
+        setTimeout(() => {
+            this.popup.style.display = 'none';
+        }, 300);
+        
+        // Set cookie for 30 days
+        this.setCookie(this.cookieName, 'true', 30);
+        console.log('Location popup dismissed for 30 days');
+    }
+
+    /**
+     * Handle successful geolocation
+     */
+    onLocationSuccess(position) {
+        // Check if popup was previously dismissed
+        if (this.isPopupDismissed()) {
+            console.log('Location popup was previously dismissed, not showing');
+            return;
+        }
+        
+        const { latitude, longitude } = position.coords;
+        const userCountry = this.getCountryFromCoordinates(latitude, longitude);
+        
+        // Check if popup should be shown based on location mismatch
+        if (this.shouldShowPopup(userCountry, this.websiteTargetCountry)) {
+            this.showPopup(userCountry);
+        }
+    }
+
+    /**
+     * Handle geolocation errors (silent failure)
+     */
+    onLocationError(error) {
+        const errorMessages = {
+            1: 'Location access denied by user',
+            2: 'Location information unavailable',
+            3: 'Location request timeout'
+        };
+        
+        console.log(`Geolocation failed: ${errorMessages[error.code] || 'Unknown error'}`);
+        
+        // If user denied location access, remember this to avoid asking again
+        if (error.code === 1) {
+            this.setCookie('location_denied', 'true', 7); // Remember for 7 days
+            console.log('Location access denied, will not ask again for 7 days');
+        }
+        
+        // Silent failure - no popup shown
+    }
+
+    /**
+     * Check geolocation permissions before requesting location
+     */
+    async checkGeolocationPermission() {
+        // Check if popup was previously dismissed first
+        if (this.isPopupDismissed()) {
+            console.log('Location popup was previously dismissed, not checking location');
+            return false;
+        }
+
+        // Check if Permissions API is supported
+        if ('permissions' in navigator) {
+            try {
+                const permission = await navigator.permissions.query({ name: 'geolocation' });
+                
+                if (permission.state === 'granted') {
+                    console.log('Geolocation permission already granted');
+                    return true;
+                } else if (permission.state === 'denied') {
+                    console.log('Geolocation permission denied, not requesting again');
+                    return false;
+                } else {
+                    // Permission is 'prompt' - we can request it
+                    console.log('Geolocation permission prompt state');
+                    return true;
+                }
+            } catch (error) {
+                console.log('Permissions API error:', error);
+                // Fallback to checking localStorage for previous denials
+                return this.checkPreviousLocationState();
+            }
+        } else {
+            // Fallback for browsers without Permissions API
+            return this.checkPreviousLocationState();
+        }
+    }
+
+    /**
+     * Check if user previously denied location access
+     */
+    checkPreviousLocationState() {
+        // Check if user previously denied location
+        const locationDenied = this.getCookie('location_denied');
+        if (locationDenied) {
+            console.log('User previously denied location access');
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Start location detection process
+     */
+    detectLocation() {
+        if (!navigator.geolocation) {
+            console.log('Geolocation is not supported by this browser');
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            this.onLocationSuccess.bind(this),
+            this.onLocationError.bind(this),
+            this.geolocationOptions
+        );
+    }
+
+    /**
+     * Initialize the location popup system with permission checking
+     */
+    async init() {
+        const canRequestLocation = await this.checkGeolocationPermission();
+        if (canRequestLocation) {
+            this.detectLocation();
+        }
+    }
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    const locationPopup = new LocationPopup();
+    locationPopup.init();
+});
+</script>

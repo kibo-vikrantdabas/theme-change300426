@@ -1,0 +1,260 @@
+{% autoescape on %}
+{% block cacheheaders %}
+{# Blank by default, assume all pages are not cached. Invididual pages that want to be cached can override this block and include templates/cache-headers.hypr #}
+{% endblock cacheheaders %}
+{% block doctype %}
+<!doctype html>
+{% endblock doctype %}
+
+{% comment %}
+    The comment tag lets you write comments that will be visible when editing the template file, but don't appear in the rendered HTML. It's essentially just an "ignore this" tag.
+{% endcomment %}
+
+{% comment %}
+    The conditional statements below detect if visitor is on a particular
+    version of IE and adds the appropriate classes to the HTML element. You can then target
+    these browsers in your CSS without hacks, like:
+
+        .thing {
+        padding: 10px;
+        }
+        .ie6 .thing {
+        padding: 12px;
+        }
+
+    no-js:
+    The Modernizr library we're using will replace the class "no-js" with "js" if javascript
+    available. Again you can use this as a way to make sensible fallbacks if javascript
+    is not available.
+{% endcomment %}
+
+{% block open-html-tag %}
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|(!IE) ]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+{%endblock open-html-tag %}
+
+    {% block head-tag %}
+    <head>
+        {% if themeSettings.isEnableforSEO %}
+            <script>
+            (function () {                
+                const currentUrl = window.location.href;
+                const pathname = window.location.pathname.replace(/^\/+/, '');
+                const search = window.location.search;
+                const origin = window.location.origin;
+                // Locale from theme settings (make sure it's quoted correctly)
+                const locale = '/'+pathname+'/';
+                // Only redirect if query string contains srsltid
+                if (search.includes("srsltid")) {
+                    const cleanUrl = origin + locale;
+                    window.location.replace(cleanUrl); // redirect without query string
+                }
+            })();
+            </script>
+        {% endif %}
+        {% include "modules/analytics/google-analytics-starter" %}
+
+        {% include "modules/seo/seo-meta-data" %}
+
+        {% include "modules/seo/seo-need-help/seo-need-help" %}
+
+        {% include "modules/seo/seo-personal-details/seo-personal-detail" %}
+
+        {% include "modules/seo/seo-delivery-collection/seo-delivery-collection" %}
+
+        {% include "modules/seo/seo-contact/seo-contact" %}
+
+        {% include "modules/seo/seo-return-refund/seo-return-refund" %}
+
+        {% include "modules/seo/seo-about-ms/seo-about" %}
+      
+        {% include "modules/json-required-for-hyprlive" %}
+
+        {% block meta-tags %}
+            {% comment %} {% partial_cache %} {% endcomment %}
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+                {% comment %} <meta name="description" content="{% if pageContext.cmsContext.template.path == 'parent-category'  or pageContext.cmsContext.template.path == 'category' %} {{labels.metaDescriptionTwo|string_format(pageContext.title)}} {% else %} {% if pageContext.cmsContext.template.path == 'product' %} {{labels.metaDescriptionTwo|string_format(pageContext.metaTitle)}}{% else %} {{ pageContext.metaDescription|safe }}{% endif %}{% endif %}"> {% endcomment %}
+                {% if pageContext.cmsContext.template.path == 'parent-category'  or pageContext.cmsContext.template.path == 'category' %}
+                    
+                    <meta name="description" content="{{ model.content.metaTagDescription|safe }}">
+                    <meta name="keywords" content="{{ model.content.metaTagKeywords }}">
+                {% else %}
+                    {% include "modules/seo/seo-meta-rule/seo-meta-description" %}
+                    <meta name="keywords" content="{{ PageContext.MetaKeywords }}">
+                {% endif %}
+                <meta name="correlationId" content="{{ pageContext.correlationId }}">
+                <meta name="robots" content="index, follow">
+                {% include "modules/seo/seo-meta-rule/seo-meta-og-rule" %}
+            {% comment %} {% endpartial_cache %} {% endcomment %}
+        {% endblock meta-tags %}
+        
+        <link rel="icon" type="image/x-icon" href="/resources/images/favicon.ico">
+        <title>
+            {% block title-tag-content %}
+                {% partial_cache %}
+                    {{ siteContext.generalSettings.websiteName }}
+                {% endpartial_cache %} 
+            {% endblock title-tag-content %}
+        </title>
+        
+
+		{% include "modules/seo/seo-hreflang" %}
+
+        <link rel="dns-prefetch" href="//udc-neb.kampyle.com">
+        <link rel="dns-prefetch" href="{{siteContext.cdnPrefix}}">
+        <link rel="dns-prefetch" href="//www.googletagmanager.com">
+        <link rel="dns-prefetch" href="//www.google-analytics.com">
+        <link rel="dns-prefetch" href="//api.cartstack.com">
+
+    {% if not pageContext.isDebugMode %}
+            <link rel="prefetch" as="script" href="{{siteContext.cdnPrefix}}/scripts/vendor/jquery/jquery.min.js?theme={{siteContext.themeId}}&cacheKey={{ siteContext.hashString }}" />
+            <link rel="prefetch" as="script" href="{{siteContext.cdnPrefix}}/js/require-min.js?theme={{siteContext.themeId}}&cacheKey={{ siteContext.hashString }}" />
+            <link rel="prefetch" as="script" href="{{siteContext.cdnPrefix}}/js/hyprlive-min.js?&cacheKey={{ siteContext.hashString }}" />
+            <link rel="preload" as="script" href="{{siteContext.cdnPrefix}}/compiled/scripts/modules/common.js?theme={{siteContext.themeId}}&cacheKey={{ siteContext.hashString }}" />
+        {% endif %}
+
+        {% partial_cache %}
+            {% if PageContext.CrawlerInfo.PreviousUrl  %}
+                <link rel="prev" href="{{PageContext.CrawlerInfo.PreviousUrl}}" hreflang="{{themeSettings.siteLanguage}}">
+            {% endif %}
+
+            {% if PageContext.CrawlerInfo.NextUrl  %}
+                <link rel="next" href="{{PageContext.CrawlerInfo.NextUrl}}" hreflang="{{themeSettings.siteLanguage}}">
+            {% endif %}
+        {% endpartial_cache %}
+
+        {% if themeSettings.enableRecaptcha %}
+            <script src="https://www.google.com/recaptcha/api.js" defer></script>
+        {% endif %}
+
+        {% block stylesheets %}
+            {% partial_cache %}
+                {% if themeSettings.isArabicLanguageSite %}
+                    <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/arabic-storefront.less" %}" title="default-arabic" />
+                {% else %}
+                    <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/storefront.less" %}" title="default" />
+                {% endif %}
+            {% endpartial_cache %}
+        {% endblock stylesheets %}
+
+        {% block head-tag-scripts %}
+            <script src="{% make_url "cdn" "/scripts/vendor/modernizr.min.js" %}" defer></script>
+            {% include "modules/web-fonts-loader" %}
+        {% endblock head-tag-scripts %}
+        {% cms_resources %}
+
+
+        {%header_content%}
+
+        <style>
+            .kampyle_vertical_button .kampyle_button {
+                height: 30px !important;
+                min-height: 30px !important;
+                max-height: 30px !important;
+                width: 95px !important;
+                min-width: 95px !important;
+                max-width: 95px !important;
+
+            }
+            .kampyle_vertical_button {
+                height: 30px !important;
+                min-height: 30px !important;
+                max-height: 30px !important;
+                width: 95px !important;
+                max-width: 95px !important;
+                min-width: 95px !important;
+            }
+            .kampyle_vertical_button.kampyle_right{
+                right: -36px !important;
+            }
+        </style>
+    </head>
+    {% endblock head-tag %}
+
+    {% block body-tag %}
+
+    	{% block aramexcountries %}
+            {% partial_cache %}
+                {% include_entities "modules/countries" with listFQN="countryselector@afg" filter="id eq 3" as_parameter %}
+            {% endpartial_cache %}
+	    {% endblock aramexcountries %}
+    {% block open-body-tag %}
+    <body class="{% block body-tag-classes %}{% endblock body-tag-classes %} {% if themeSettings.isArabicLanguageSite %}arabic{% endif %}" {% if themeSettings.isArabicLanguageSite %}dir="rtl"{% endif %}>
+        {% if themeSettings.enableGoogleTagManager  %}
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-{{themeSettings.gtmContainerId}}"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        {% endif %}
+        
+        {% comment %} Global Popup - appears on all pages {% endcomment %}
+        {% include "modules/global-popup" %}
+    {% endblock open-body-tag %}
+        <div id="page-wrapper" class="mz-l-pagewrapper agf-ms-pagewrapper {% if pageContext.pageType == "" or pageContext.pageType !== "checkout" %}sticky{% endif %}">
+            <div class="overlay-checkout-page" style="display: none;"></div>
+            {% if themeSettings.enableRecaptcha %}
+            <div id="recaptcha-container-global"></div>
+            {% endif %}
+
+            {% block utility-bar %}
+                {% include "modules/utility-bar/header" %}
+            {% endblock utility-bar %}
+
+            {% block page-header %}
+            {% comment %} {% include "modules/page-header" %} {% endcomment %}
+                {% include_entities "modules/page-header" listFQN="siteurls@afg" pageSize=200 %}
+            {% endblock page-header %}
+
+            {% block site-nav %}
+            {% include "modules/site-nav" %}
+            {% endblock site-nav %}
+            
+            {% comment %} {% if pageContext.cmsContext.template.path|lower == "home" or pageContext.cmsContext.template.path|lower == "category" or pageContext.cmsContext.template.path|lower == "search-results" or pageContext.cmsContext.template.path|lower == "product" %} {% endcomment %}
+                {% block quick-links %}
+                    {% include "modules/quick-links-bar" %}
+                {% comment %} {% dropzone "quickLinksCheck" scope="site" %} {% endcomment %}
+                {% endblock quick-links %}
+            {% comment %} {% endif %} {% endcomment %}
+            
+            <div role="main" id="page-content" class="mz-l-pagecontent">
+
+                {% block breadcrumbs %}
+                {% if themeSettings.showBreadcrumbs %}
+                {% include "modules/breadcrumbs" %}
+                {% endif %}
+                {% endblock breadcrumbs %}
+
+                {% block body-content %}
+                {% dropzone "body" scope="page" %}
+                {% endblock body-content %}
+
+                {% block body-below-content %}
+                {% dropzone "body-bottom" scope="template" %}
+                {% endblock body-below-content %}
+
+            </div>
+
+            {% block page-footer %}
+            {% include "modules/page-footer" %}
+            {% endblock page-footer %}
+
+            {% comment %} {% include "modules/common/message-bar" %} {% endcomment %}
+        </div>
+
+        {% block trailing-scripts %}
+        {% include "modules/trailing-scripts" %}
+        {% endblock trailing-scripts %}
+
+        {% visitor_tracking_pixel %}
+
+    </body>
+    {% endblock body-tag %}
+
+</html>
+{% endautoescape %}

@@ -1,0 +1,14 @@
+<div class="mz-price-container mz-product-code-container">
+    <dl class="mz-productcodes mz-propertylist mz-pagetitle-note mz-l-stack-section">
+        <dt class="mz-productcodes-productcode-label">{{ labels.productCode }}</dt>
+        <dd class="mz-productcodes-productcode" itemprop="sku">{{ model.productCode }}</dd>
+        {% comment %} {% if themeSettings.showProductDetailMfgPartNumber and model.mfgPartNumber.length == 1 %}
+        <dt class="mz-productcodes-mfgpartnumber-label">{{ labels.mfgPartNumber }}</dt>
+        <dd class="mz-productcodes-mfgpartnumber" itemprop="mpn">{{ model.mfgPartNumber|first }}</dd>
+        {% endif %}
+        {% if themeSettings.showProductDetailUPC and model.upc.length == 1 %}
+        <dt class="mz-productcodes-upc-label">{{ labels.upc }}</dt>
+        <dd class="mz-productcodes-upc" itemprop="mpn">{{ model.upc|first }}</dd>
+        {% endif %} {% endcomment %}
+    </dl>
+</div>

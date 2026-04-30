@@ -1,0 +1,216 @@
+{% if model.hasCurbsideData==false %}     
+<div class="mz-curbside-header">  
+  <img src="/resources/images/kibo-logo-sidebar.png" alt="logo">
+  <div class="mz-curbside-header-body">
+    <p><strong>{{ siteContext.generalSettings.websiteName }}</strong></p>
+    <h3>{{ labels.customerAtCurbsideLetUsKnow }}</h3>
+  </div>
+</div>   
+{% endif %}
+{% if model.hasCurbsideData==true %}
+    <div class="mz-curbside-header">  
+        <img src="/resources/images/kibo-logo-sidebar.png" alt="logo">
+        <div class="mz-curbside-header-body">
+            <p><strong>{{ siteContext.generalSettings.websiteName }}</strong></p>
+            <h3>{{ labels.customerAtCurbsideWithYouShortly }}</h3>
+        </div>
+    </div>  
+{% endif %}
+<div class="pageContent">
+    {% if model.hasCurbsideData==false %}        
+        <div class="curbside-description">
+            <p>{{ labels.deliverYourItem }}</p>
+        </div>
+        <div class="mz-l-column">
+            <form method="post" class="mz-curbsidedeliveryform mz-curbsidedelivery-page" name="mz-curbsidedelivery">
+            <input type="hidden" name="isBackofficePreview" value="{{ isBackofficePreview }}"  data-mz-isBackofficePreview />
+                <div class="mz-l-formfieldgroup">
+                    <div class="mz-l-formfieldgroup-row">
+                        <div class="mz-l-formfieldgroup-cell">
+                            <label for="vehiclemodel" name="vehiclemodellabel" id="vehiclemodelLabel" >{{ labels.vehicleModel }}</label>
+                            <input name="vehiclemodeltext" value="" type="text" data-mz-vehiclemodel />
+                        </div>
+                    </div>
+                    <div class="mz-l-formfieldgroup-row">
+                        <div class="mz-l-formfieldgroup-cell">
+                            <label for="licenseplatelabel" name="licenseplatelabel" id="licenseplatelabel">{{ labels.licensePlateLabel }}</label>
+                            <input name="licenseplateText" value="" type="text" data-mz-licenseplate />
+                        </div>
+                    </div>
+                    <div class="mz-l-formfieldgroup-row">
+                        <div class="mz-l-formfieldgroup-cell">
+                            <label for="parkingspotlabel" name="parkingspotlabel" id="parkingspotlabel">{{ labels.parkingSpotNumber }}</label>
+                            <input name="parkingspotText" value="" type="text" data-mz-parkingspotText />
+                        </div>
+                    </div>
+                    <div class="mz-l-formfieldgroup-row">
+                        <div class="mz-l-formfieldgroup-cell">
+                            <label for="deliverymethod" name="deliverymethodlabel" id="deliverymethodlabel">{{ labels.methodDelivery }}</label>
+                                <select data-mz-deliverymethod" id="selectdeliverymethod">
+                                    <option value="Place Items In Trunk">Place Items In Trunk</option>
+                                    <option value="Place Items In Backseat">Place Items In Backseat</option>
+                                    <option value="Place Items In Front Passenger Seat">Place Items In Front Passenger Seat</option>
+                                    <option value="Deliver To Drivers Window">Deliver To Drivers Window</option>
+                                    <option value="Leave Item Outside Car">Leave Item Outside Car</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="mz-l-formfieldgroup-row">
+                        <div class="mz-l-formfieldgroup-cell">
+                            <button id="btnSubmitCurbsideInfo" class="mz-button mz-button-large mz-delevery-button" data-mz-action="onDeliveryMethodSubmit">{{ labels.submit }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+    {% if model.hasCurbsideData==true %}
+        <div class="with-you-shortly">
+            <div class="curbside-description"> <p>{{ labels.qrDetails }}</p>
+                <img class="sidebar-kibo-logo" src="{{model.qrCode}}" loading="lazy">
+             </div>
+        </div>
+    {% endif %}
+    <div class="order-details-header">
+        <div class="curbside-order-details-left">
+            <h2 style="color:white"> <b>{{ labels.orderDetails }}</b></h2>
+        </div>
+        <div class="curbside-order-details-right" align="left">
+            <p> <b>{{ labels.orderNumber }} <br> {{ model.orderNumber }} </b></p>
+        </div>
+    </div>
+    <div class = "store-detail-info">
+        <span><b> {{ labels.storeDetails }} </b><span> <br>
+		<div> {{ labels.storeLocation }} : {{ model.location.name }}</div>
+		<div> {{ model.location.address.address1 }} </div>
+		<div> {{ model.location.address.cityOrTown }}, {{ model.location.address.stateOrProvince }} {{ model.location.address.postalOrZipCode }} </div>
+		<div> {{ model.location.phone }}</div>
+    </div>
+
+    <div class="location-hours-info">{{labels.locationHoursText }} </div>
+    <table class="location-hours-format">
+        <thead>
+            <tr>
+                <td bgcolor="#666666"><font color="#FFFFFF">{{labels.locationWeekDays}}</td>
+                <td bgcolor="#666666"><font color="#FFFFFF">{{labels.locationOpenTime}}</font></td>
+                <td bgcolor="#666666"><font color="#FFFFFF">{{labels.locationCloseTime}}</font></td>
+            </tr>
+        </thead>
+		<tbody>
+            <tr>
+                <td> {{ labels.sunday }}:</td>
+                <td>{% if model.location.regularHours.sunday.isClosed==false %} 
+                {{ model.location.regularHours.sunday.openTime }} 
+                {% endif %}
+                {% if model.location.regularHours.sunday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}     
+                </td>
+                <td>{% if model.location.regularHours.sunday.isClosed==false %} 
+                {{ model.location.regularHours.sunday.closeTime }} 
+                {% endif %}
+                {% if model.location.regularHours.sunday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}     
+                </td>
+            </tr>
+            <tr>
+                <td> {{ labels.monday }}:</td>
+                <td>{% if model.location.regularHours.monday.isClosed==false %} 
+                {{ model.location.regularHours.monday.openTime }} 
+                {% endif %}
+                {% if model.location.regularHours.monday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}     
+                </td>
+                <td>{% if model.location.regularHours.monday.isClosed==false %} 
+                {{ model.location.regularHours.monday.closeTime }} 
+                {% endif %}
+                {% if model.location.regularHours.monday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}     
+                </td>
+            </tr>
+            <tr>
+                <td> {{ labels.tuesday }}:</td>
+                <td>{% if model.location.regularHours.tuesday.isClosed==false %} 
+                {{ model.location.regularHours.tuesday.openTime }} 
+                {% endif %}
+                {% if model.location.regularHours.tuesday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}     
+                </td>
+                <td>{% if model.location.regularHours.tuesday.isClosed==false %} 
+                {{ model.location.regularHours.tuesday.closeTime }} 
+                {% endif %}
+                {% if model.location.regularHours.tuesday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}  
+            </tr>
+            <tr>
+                <td> {{ labels.wednesday }}:</td>
+                <td>{% if model.location.regularHours.wednesday.isClosed==false %} 
+                {{ model.location.regularHours.wednesday.openTime }} 
+                {% endif %}
+                {% if model.location.regularHours.wednesday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}     
+                </td>
+                <td>{% if model.location.regularHours.wednesday.isClosed==false %} 
+                {{ model.location.regularHours.wednesday.closeTime }} 
+                {% endif %}
+                {% if model.location.regularHours.wednesday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}  
+            </tr>
+            <tr>
+                <td> {{ labels.thursday }}:</td>
+                <td>{% if model.location.regularHours.thursday.isClosed==false %} 
+                {{ model.location.regularHours.thursday.openTime }} 
+                {% endif %}
+                {% if model.location.regularHours.thursday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}     
+                </td>
+                <td>{% if model.location.regularHours.thursday.isClosed==false %} 
+                {{ model.location.regularHours.thursday.closeTime }} 
+                {% endif %}
+                {% if model.location.regularHours.thursday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}  
+            </tr>
+            <tr>
+                <td> {{ labels.friday }}:</td>
+                <td>{% if model.location.regularHours.friday.isClosed==false %} 
+                {{ model.location.regularHours.friday.openTime }} 
+                {% endif %}
+                {% if model.location.regularHours.friday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}     
+                </td>
+                <td>{% if model.location.regularHours.friday.isClosed==false %} 
+                {{ model.location.regularHours.friday.closeTime }} 
+                {% endif %}
+                {% if model.location.regularHours.friday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}  
+            </tr>
+            <tr>
+                <td> {{ labels.saturday }}:</td>
+                <td>{% if model.location.regularHours.saturday.isClosed==false %} 
+                {{ model.location.regularHours.saturday.openTime }} 
+                {% endif %}
+                {% if model.location.regularHours.saturday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}     
+                </td>
+                <td>{% if model.location.regularHours.saturday.isClosed==false %} 
+                {{ model.location.regularHours.saturday.closeTime }} 
+                {% endif %}
+                {% if model.location.regularHours.saturday.isClosed==true %} 
+                {{ labels.locationHoursClosed }} 
+                {% endif %}  
+            </tr>    
+		</tbody>
+    </table>
+</div>

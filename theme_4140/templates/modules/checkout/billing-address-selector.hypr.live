@@ -1,0 +1,38 @@
+{% if model.requiresFulfillmentInfo  %}
+
+<div class="mz-l-formfieldgroup mz-l-formfieldgroup-norows mz-billing-address-div test11122">
+    <label class="container">
+        <input type="checkbox" class="mz-billingShippingAddressCheck"data-mz-value="isSameBillingShippingAddress" value="true" {% if model.isSameBillingShippingAddress %}checked="checked"{% endif %}>
+        <span class="checkmark"></span>
+    </label>
+    <span class="useshippinglabel"> {{ labels.useShippingAsBilling }} </span>
+</div>
+{% endif %}
+
+{# Hide And Show Billing Address Form Based On The Check/Uncheck #}
+{% if not model.isSameBillingShippingAddress %}
+  <div class="billing-address-container">
+    <div class="mz-l-formfieldgroup mz-l-formfieldgroup-address">
+        {% include "modules/checkout/billing-address-form" with model=model.billingContact countries=pageContext.billingCountries states=pageContext.billingStates %}
+    </div>
+  </div>
+{% endif %} 
+
+
+{# as we will not have functionality to display billing address so commenting this code #}
+{% comment %} {% if model.isSameBillingShippingAddress %}
+    <div class="mz-addresssummary mz-same-as-shipping-summary" id="mz-same-as-shipping-summary">
+        {% include "modules/common/address-summary" with model=model.billingContact %}
+    </div>  }
+{% else %}
+{% if model.usingSavedCard and model.savedPaymentMethodId %}
+<div class="mz-addresssummary mz-same-as-shipping-summary" id="mz-same-as-shipping-summary">
+        {% include "modules/common/address-summary" with model=model.billingContact %}
+    </div> 
+{% else %}  
+<div class="billing-address-container">
+<div class="mz-l-formfieldgroup mz-l-formfieldgroup-address">
+  {% include "modules/checkout/billing-address-form" with model=model.billingContact countries=pageContext.billingCountries states=pageContext.billingStates %}
+</div>
+</div>
+{% endif %}  {% endcomment %}

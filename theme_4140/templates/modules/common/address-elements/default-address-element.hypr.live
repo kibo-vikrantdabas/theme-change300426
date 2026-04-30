@@ -1,0 +1,11 @@
+{% if user.isAnonymous == false %}
+    <div class="mz-l-formfieldgroup-row mz-addressform-comments">
+        <div class="mz-l-formfieldgroup-cell">
+            <label>
+            <input type="checkbox" class="makedefaultCheckbox" value="{{model.address.defaultAddress}}" name="defaultAddress" data-mz-value="{{ addresscontext }}address.defaultAddress" {% if model.address.defaultAddress %}checked{% endif %}>
+            <span class="checkmark"></span>
+            </label>
+            <span class="makedefaultText">{{ labels.defaultAddressText }}</span>
+        </div>
+    </div>
+{% endif %}

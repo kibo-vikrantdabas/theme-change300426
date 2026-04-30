@@ -1,0 +1,16 @@
+<table class="grid invoice-table-no-border order-overall-info">            
+    <tbody>
+        <tr>
+            <td>
+                <div class="order-invoice-section">
+                    {% if order.data.order_TotalVatAmount > '0.000'%}
+                        {% include "back-office/invoice/order-pay-summary-with-vat" %}
+                    {% else %}
+                        {% include "back-office/invoice/order-pay-summary-without-vat" %}
+                    {% endif %}
+                    {% include "back-office/invoice/static-summary" %}
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

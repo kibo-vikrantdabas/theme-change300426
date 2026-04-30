@@ -1,0 +1,11 @@
+<div class="mz-pickupLocationContainer">
+    <div class="mz-locationIconContainer">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}shippingLocationIcon.svg" alt="location-icon" class="mz-locationIcon">
+    </div>
+    <div class="mz-pickupAddressContainer">
+        <div class="mz-pickupLocationName"></div>
+        <div class="mz-addressContainer">
+            <div class="mz-pickupLocationAddress"></div>
+        </div>
+    </div>
+</div>

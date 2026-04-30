@@ -1,0 +1,12 @@
+{% for item in model.items %} 
+    <tr>
+            <td style="width:5%;"><div class="item-count">{{count}}.</div></td>
+            <td style="width:35%;"><div class="item-info"> {{item.name}}
+                <br> {{color.stringValue}} {%if size1 or size2 %} , {{labels.itemSize}} {{size1.stringValue}} {{size2.stringValue}} {%endif%}
+            </div></td>
+            <td style="width:10%;">{{item.actualPrice|floatformat(pageContext.currencyInfo.precision)}}</td>
+            <td style="width:10%;">{{item.quantity}}</td>
+            <td style="width:10%;">{{item.itemDiscount|floatformat(pageContext.currencyInfo.precision)}}</td>
+            <td style="width:15%;">{{item.taxableLineItemCost|floatformat(pageContext.currencyInfo.precision)}}</td>
+        </tr>
+{% endfor %}

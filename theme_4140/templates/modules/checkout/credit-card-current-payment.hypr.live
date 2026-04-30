@@ -1,0 +1,103 @@
+<div class=" mz-paymentselector">
+    <div class="payment-option-selector"> 
+        <div class="choose-payment-div">
+            <span class="forDesktopPay">{{labels.choosePaymentMethod}}</span>
+            <span class="forMobilePay">{{labels.choosePayment}}</span>
+        </div>
+        {% include "modules/checkout/blue-pay-selector"%}
+        {% include "modules/checkout/apple-pay-selector"%}
+        {% include "modules/checkout/checkout-knet-card-payment"%}
+        {% include "modules/checkout/checkout-benefitpay-card-payment"%}
+        {% include "modules/checkout/checkout-qpay-card-payment"%}
+        {% include "modules/checkout/checkout-omannet-card-payment"%}
+        <label for="paymentType-newcreditcard-paymentCreditCard">
+            <div class="credit-cart-payment rectangle  {% if model.isCreditCardPayment %}mz-payment-selected{% endif %}">
+            <div class="mz-l-formfieldgroup-row mz-paymentselector-option mz-paymentselector-newcreditcard test101 mz-checkoutform1 ">
+                <div class="credit-debit-card-div">
+                    <div class="credit-debit-card-div-radio">
+                        <label class="container-radio" for="paymentType-newcreditcard-paymentCreditCard">
+                        <input data-mz-value="paymentType" data-mz-new-credit-card data-mz-payment-type id="paymentType-newcreditcard-paymentCreditCard" name="paymentType" type="radio" class="mz-paymenttype-input mz-credit-card-payment-type" value="CreditCard"  {% if model.isCreditCardPayment and model.paymentType == 'CreditCard' %} checked {% endif %} {% if not model.isCreditCardPayment and model.disablePaymentOption %}disabled="disabled"{% endif %}/>
+                            <span class="checkmark-radio {% if model.isCreditCardPayment and model.paymentType == 'CreditCard' %} checkmark-radio-selected {% endif %}"></span>
+                       </label>
+                    </div>
+                        <div>
+                            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/CardPayment.svg" alt="cardPayment" class="card-payment">
+                                <div class="card-payment-detail-div">
+                                        <label for="paymentType-newcreditcard-paymentCreditCard" class="mz-paymentselector-label mz-paymentselector-label-newcreditcard  mz-checkoutform-radio credit-debit-card" for="paymentType-newcreditcard-{{ paymentId }}">{% if model.savedPaymentMethods %}{{ labels.creditDebitCard }}{% else %}{{ labels.creditDebitCard }}{% endif %}</label>
+                                        <label for="paymentType-newcreditcard-paymentCreditCard" class="use-card-info">{{labels.useCard}}</label>
+                                </div>
+                        
+                        </div>
+                      
+                        
+                     {% if model.paymentType == "CreditCard" and not model.isKNETPaymentType and not model.isApplePayPaymentType and not model.isBenefitPayApply and not model.isQpayApply and not model.isOmanNetApply %}
+                        {%if not model.usingSavedCard %}
+                        <div class="card-edit"><a class="edit-card-btn" >{{labels.edit}}</a></div>
+                         {%else%}
+                             {% if model.showNewAddress %}
+                               <div class="card-edit"><a class="edit-card-btn" >{{labels.edit}}</a></div>
+                                {%endif%}
+                        {%endif%}
+                     {%endif%}
+                </div>
+               <div class="card-payment-main-container">
+                {% comment %} {% dump model %} {% endcomment %}
+                   {% if cardPayment.paymentType == "CreditCard" and model.paymentType == "CreditCard" and not model.isBenefitPayApply and not model.isQpayApply and not model.isOmanNetApply %}
+                   
+                    <div class="change-payment-div">
+                    {%if not model.usingSavedCard %}
+                         {% if not model.isKNETPaymentType and not model.isApplePayPaymentType and not model.isApplePayPaymentType%}
+                                <div class="current-payment-data">
+                                <div class="current-payment-info">
+                                <p>{{ cardPayment.card.paymentOrCardType }} {{cardPayment.card.cardNumberPartOrMask }}
+                                    {% if cardPayment.card.expireMonth<10 %}
+                                <br/>{{ labels.expires }}  0{{cardPayment.card.expireMonth }}/{{cardPayment.card.expireYear| replace('20','')}}</p>
+                                {% else %}
+                                <br/>{{ labels.expires }} {{ cardPayment.card.expireMonth }}/{{cardPayment.card.expireYear| replace('20','')}}</p>
+                                {% endif %}
+                                </div>
+                            </div>
+                         {% endif %}
+                          
+                   <div class="mz-l-stack-section checkout-payment-saved-cards hidden">
+                        {% include "modules/checkout/payment-selector-saved-cards" %}
+                    </div> 
+                    
+                    {%else%}
+                    {% if model.showNewAddress %}
+                    <div class="current-payment-data">
+                        <div class="current-payment-info">
+                        <p>{{ cardPayment.card.paymentOrCardType }} {{cardPayment.card.cardNumberPartOrMask }}
+                            {% if cardPayment.card.expireMonth<10 %}
+                        <br/>{{ labels.expires }}  0{{cardPayment.card.expireMonth }}/{{cardPayment.card.expireYear| replace('20','')}}</p>
+                        {% else %}
+                        <br/>{{ labels.expires }} {{ cardPayment.card.expireMonth }}/{{cardPayment.card.expireYear| replace('20','')}}</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div class="mz-l-stack-section checkout-payment-saved-cards hidden">
+                        {% include "modules/checkout/payment-selector-saved-cards" %}
+                    </div> 
+              
+                    {%else%}
+                    <div class="mz-l-stack-section checkout-payment-saved-cards">
+                        {% include "modules/checkout/payment-selector-saved-cards" %}
+                    </div>
+                    {% endif %}
+                    {%endif%}
+                    </div>
+
+                   <div class="mz-payment-new-card-add  test1001223244 hidden">
+                        {% include "modules/checkout/add-new-card-payment" with model=model %}
+                    </div> 
+                    {% endif %}
+               
+                </div>
+             </div>
+        </div>
+          </label>
+        {% include "modules/checkout/cod-pay-selector"%}
+        
+    </div>
+
+</div>

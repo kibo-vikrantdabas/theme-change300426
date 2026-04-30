@@ -1,0 +1,58 @@
+﻿<div class="mz-contactselector {% block module-classes %}{% endblock module-classes %}">
+  {% block contact-selector %}
+  <!-- Enter new billing address -->
+  {% if model.contactId == "new" %}
+  <div class="mz-contactselector-new block1">
+        <span class="mz-contactselector-inputwrapper">
+            <input type="radio" data-mz-value="{{ contactcontext }}contactId" name="contactId" value="new" data-mz-action="showHideBlock" data-mz-enternewcontact checked="checked">
+            <span class="newaddress"> {{ labels.usebillingadd }} </span>
+        </span>
+        <span class="mz-contactselector-inputwrapper">
+            <input type="radio" data-mz-value="{{ contactcontext }}contactId" name="contactId" value="old" data-mz-action="selectSavedAddress"  data-mz-enternewcontact id="old2">
+            <span class="newaddress"> {{ labels.useSavedAddress }} </span>
+        </span>
+        <span class="mz-contactselector-summarywrapper">
+            {% block enter-new-form %}
+            {% include "modules/common/myaccount-address-form" with model=editingContact %}
+            {% endblock enter-new-form %}
+        </span>
+    </div>
+    {% else %}
+    <div class="mz-contactselector-new block2">
+        <div class="block-two d-flex">
+            <label for="new2" class="pointer">
+                <span class="mz-contactselector-inputwrapper pr-20">
+                    <input type="radio" data-mz-value="{{ contactcontext }}contactId" name="contactId" checked="checked" value="new" data-mz-action="newAddressFormShow"  data-mz-enternewcontact  id="new2">
+                    <span class="newaddress"> {{ labels.usebillingadd }} </span>
+                </span>
+            </label>
+            <label for="old2" class="pointer">
+                <span class="mz-contactselector-inputwrapper">
+                    <input type="radio" data-mz-value="{{ contactcontext }}contactId" name="contactId" value="old" data-mz-action="selectSavedAddress"  data-mz-enternewcontact id="old2">
+                    <span class="newaddress"> {{ labels.useSavedAddress }} </span>
+                </span>
+            </label>
+        </div>
+         <div class=" newAddressFormShow  myacc-address-top">
+            {% block enter-new-form %}
+            {% include "modules/common/myaccount-address-form" with model=editingContact %}
+            {% endblock enter-new-form %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Select billing address -->
+    <div class="myacc-address-list myacc-address-top hidden">
+    {% for contact in model.contacts %}
+        <label class="savedaddress-wrapper d-flex">
+            <span class="mz-contactselector-inputwrapper pr-10">
+                <input type="radio" data-mz-value="{{ contactcontext }}contactId" data-mz-action="showHideBlock" name="contactId" value="{{ contact.id }}" {% if model.contactId == contact.id %} checked="checked" {% endif %}>
+            </span>
+            <div class="mz-addresssummary">
+                {% include "modules/common/address-summary" with model=contact %}
+            </div>
+        </label>
+    {% endfor %}
+    </div>
+  {% endblock contact-selector %}
+</div>

@@ -1,0 +1,1 @@
+var printLabelHandler=function(){window.print()},cancelHandler=function(){window.close()},beforePrint=function(){},afterPrint=function(){window.close()};!function(){window.matchMedia&&window.matchMedia("print").addListener(function(n){n.matches?beforePrint():afterPrint()});window.onbeforeprint=beforePrint,window.onafterprint=afterPrint}();

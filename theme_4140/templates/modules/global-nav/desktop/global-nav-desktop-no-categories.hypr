@@ -1,0 +1,17 @@
+<div class="global-nav-d-no-categories">
+	<img class="no-categories-img" alt="maintenance-icon" src="{{siteContext.cdnPrefix}}/resources/images/icons/maintenance-icon.svg"/>
+	<div class="no-categories-whoops">{{labels.noCategoriesFound}}</div>
+	<div class="check-other-categories">{{labels.checkOtherCategories}}</div>
+	<div class="categoryListing no-categories">
+		<div class="mainCategories">
+			{% for cat in categories.top %}
+				{% if cat.isDisplayed %}
+					<div class="categoriesBlock">
+					<a href="{{siteContext.siteSubdirectory}}{{themeSettings.categoryPrefixUrl}}/{{cat.content.slug}}"> <img src="{{cat.content.categoryImages|first|prop('imageUrl')}}?quality=75&maxWidth=80" loading="lazy" alt="{{cat.content.name}}"></a>
+					<p><a href="{{siteContext.siteSubdirectory}}{{themeSettings.categoryPrefixUrl}}/{{cat.content.slug}}"> {{cat.content.name}} </a></p> 
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</div>

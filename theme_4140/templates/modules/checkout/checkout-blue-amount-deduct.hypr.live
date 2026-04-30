@@ -1,0 +1,19 @@
+<div class="mz-amount-deduct-container">
+    <div class="mz-amount-redeem-message {% if themeSettings.disableSplitPayment %} blue-prepaid-split-payment-message{% endif %}">{{labels.indicateAmountToRedeem}}</div>
+    <div class="mz-order-total-container">
+        <div class="mz-order-total-label">{{labels.orderTotal}}</div>
+        <div class="mz-order-amount">{% include "modules/common/currency-code" %}  &thinsp;{{ model.nonStoreCreditOrGiftCardTotal|floatformat(pageContext.currencyInfo.precision)}}</div>
+    </div>
+    <div class="mz-amount-input-container">
+        <div class="mz-amount-deduct-lable">{{labels.amountToRedeem}}</div>
+         <div class="mz-amountInputContiner">
+            <div class="mz-bluePrepaidCurrencyCode">{% include "modules/common/currency-code" %} </div>
+            <input type="number" class="mz-amount-deduct-input customValue mz-preventArrowKey" value="{{model.amountToPaid}}" min="0" name="amountToPaid"  data-mz-value="amountToPaid">
+            <button id="bluePaymentAmountToPaid"class="mz-amount-deduct-submmit">{{labels.apply}}</button>
+         </div>
+         {% if themeSettings.disableSplitPayment %}
+         <div class="mz-amountDeductLabelError" style="display:none;">{{labels.amountDeductLabelError}}</div>
+        {% endif %}
+        <div class="mz-amountDeductLabel">{{labels.weWillRedeemValueText}}</div>
+    </div>
+</div>

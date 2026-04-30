@@ -1,0 +1,12 @@
+<td class="header-info-left">
+    <div class="delivery-address-info">
+        <div class="order-row">{{ order.billingInfo.billingContact.firstName }} {{ order.billingInfo.billingContact.lastNameOrSurname }}</div>
+        {% if order.billingInfo.billingContact.companyOrOrganization %}<div class="order-row">{{ order.billingInfo.billingContact.companyOrOrganization }}</div>{% endif %}
+        <div class="order-row">{{ order.billingInfo.billingContact.address.address1 }}</div>
+        {% if order.billingInfo.billingContact.address.address2 %}<div class="order-row">{{ order.billingInfo.billingContact.address.address2 }}</div>{% endif %}
+        {% if order.billingInfo.billingContact.address.address3 %}<div class="order-row">{{ order.billingInfo.billingContact.address.address3 }}</div>{% endif %}
+        {% if order.billingInfo.billingContact.address.address4 %}<div class="order-row">{{ order.billingInfo.billingContact.address.address4 }}</div>{% endif %}
+        <div class="order-row">{{ order.billingInfo.billingContact.address.cityOrTown }}</div>
+        {% if order.billingInfo.billingContact.phoneNumbers.mobile %}<div class="order-row">{{ order.billingInfo.billingContact.phoneNumbers.mobile }}</div>{% endif %}
+    </div>
+</td>

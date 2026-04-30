@@ -1,0 +1,14 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is your ethical trading policy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We have around 2,000 product suppliers in over 70 countries. We’re a fair partner to our suppliers by ensuring good working conditions for everyone in our supply chains.In 1999, we developed a set of principles in partnership with our suppliers. These principles set down our requirements for suppliers to comply with all relevant local and national laws, particularly on: working hours and conditions, health and safety, rates of pay, terms of employment and minimum age of employment.As our relationship with a supplier develops, we expect them to improve working conditions in line with the more demanding standards promoted by the Ethical Trading Initiative (ETI), a collaborative group of companies, trade unions and human rights groups set up by the UK Government in 1998. M&S joined the ETI in 1999.We use a combination of M&S, third- party and self audits to assess supplier performance which are logged on a shared database known as SEDEX. Results are reported in detail to the ETI and summarised in our annual How We Do Business Report."
+        }
+      }]
+    }
+</script>

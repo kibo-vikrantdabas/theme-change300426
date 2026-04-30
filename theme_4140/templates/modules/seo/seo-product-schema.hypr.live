@@ -1,0 +1,24 @@
+
+{% if pageContext.cmsContext.template.path == 'product' %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "{{model.seoSchema.name}}",
+        "image": "{{model.seoSchema.image}}",
+        "description":"{{model.seoSchema.description}}",
+        "sku": "{{model.seoSchema.productCode}}",
+        "brand" :{
+            "@type":"Brand",
+            "name":"{{model.seoSchema.brand.name}}"
+        },
+        "offers" :{
+            "@type":"Offer",
+            "priceCurrency" : "{{themeSettings.currencyCode}}",
+            "price":"{{model.seoSchema.price|replace(themeSettings.currencyCode,'')}}",
+            "availability": "https://schema.org/InStock"
+        }
+    }   
+    </script>
+{% endif %}
+

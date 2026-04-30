@@ -1,0 +1,108 @@
+.mz-email-notify-popup-container {
+    height: 242.44px;
+    width: 592px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-right: -174px;
+    margin-top: 13px;
+    @media @mobileScreens {
+        height: 263px;
+        width: 342px;
+        margin-right: -10px;
+        margin-top: 20px;
+    }
+
+    .email-notify-text-label {
+        padding: 33px 24px 15px 60px;
+        color: #333333;
+        font-family: "MSLondon";
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 28px;
+        @media @mobileScreens {
+            padding: 33px 16px 10px 15px;
+        }
+    }
+     .arrow {
+        border: 14px solid;
+        border-color: transparent transparent @white;
+        position: absolute;
+        top: -28px;
+        right: 270px;
+        z-index: 5;
+        @media @mobileScreens{
+            right: 148px;
+        }
+        @media @tabletScreens{
+            right: 276px;
+        }
+      }
+
+    .email-text-input-container {
+        padding: 0 24px;
+        @media @mobileScreens {
+            padding: 0 16px 0 15px;
+        }
+
+        .mz-email-input {
+            box-sizing: border-box;
+            height: 48px;
+            width: 544px;
+            border: 1px solid #CCCCCC;
+            background-color: #FFFFFF;
+            color: #757575;
+            font-family: "MSLondon";
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 21px;
+            padding: 13px 11px 14px 0px;
+            @media @mobileScreens {
+                width: 311px;
+            }
+        }
+    }
+
+    .product-notifyBtn {
+        margin-left: 24px;
+        margin-right: 24px;
+        margin-top: 7px;
+        height: 48px;
+        width: 544px;
+        background-color: #BED855;
+        color: #333333;
+        font-family: "MSLondon";
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 0;
+        line-height: 21px;
+        text-align: center;
+        @media @mobileScreens {
+            width: 311px;
+            margin-left: 16px;
+            margin-right: 15px;
+        }
+    }
+}
+.mz-email-notify-popup-container.deactive {
+    display: none;
+}
+.mz-email-notify-popup-container.active {
+    display: block;
+}
+.mz-email-notify-popup-container:after {
+        content:"";
+        border:15px solid;
+        border-color: transparent transparent @lightWhite;
+        position:absolute;
+        top: -31px;
+        left: 293px;
+        @media @mobileScreens{
+            left:165px;
+        }
+        @media @tabletScreens{
+            left:287px;
+        }
+    }

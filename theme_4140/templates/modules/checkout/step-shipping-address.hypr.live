@@ -1,0 +1,52 @@
+
+{% include "modules/checkout/address/shipping/shipping-type" %}
+  
+<div class="mz-formstep-body  {% if model.contacts.length == 0 %} no-contact{% endif %}">
+    {% if model.requiresFulfillmentInfo or model.requiresDigitalFulfillmentContact %}
+    {% endif %}
+
+    {% if not model.address.candidateValidatedAddresses %}
+          <div class="mz-formstep-summary mz-addresssummary mz-checkoutform">
+              {% if model.requiresFulfillmentInfo %}
+
+                {% include "modules/checkout/checkout-delivery-address-summary" %}
+
+                {% if model.isAwsCheckout %}
+                    <div style="margin-top:5px;margin-bottom:20px;">
+                      <a data-mz-action="amazonShippingAndBilling" href="javascript:;">{{labels.awsChangeAddress}}</a>
+                    </div>
+                {%endif%} 
+
+              {% else %}
+
+                  {% include "modules/checkout/step-pickup-location" %}
+
+              {% endif %}
+          </div>
+
+          {% if model.requiresFulfillmentInfo  %}
+              {% if model.isAwsCheckout and model.stepStatus == "incomplete" %}
+                  <div class="mz-l-security-box">{{ labels.awsAddressWarning }}</div>
+              {%endif%}
+          
+              {# If User is Either Guest Or Does Not Have Exisitng Address #}
+              <div class="mz-formstep-fields mz-l-formfieldgroup mz-checkoutform  mz-checkoutform-shipping mz-checkoutform-section mz-checkoutform-active" style="position:relative;">
+                {% if model.contacts %}
+                  {% include "modules/checkout/checkout-shipping-contact-selector" with editingContact=model hasRequiredBehavior=model.hasRequiredBehavior %}
+                {% else %}
+                  {% include "modules/common/address-form" with countries=pageContext.shippingCountries states=pageContext.shippingStates %}
+                  <span class="address-space-button" data-mz-action="cancel">&nbsp;</span>
+                {% endif %}
+              </div>
+          {% endif %}
+
+          {% include "modules/checkout/address/shipping/digital-fulfillment" %}
+    {% else %}
+            {% include "modules/checkout/address/shipping/shipping-address-validation" %}
+    {% endif %}
+
+    <div class="mz-formstep-next {% if model.displayAddressForm %} mz-addressSaveButtonContainer {% else %} mz-chooseAddressButtonContainer {% endif %} {% if not user or user.isAnonymous %}mz-guestUserBtnContainer{% endif %}">
+      <button type="button" class="mz-button address-button {% if model.displayAddressForm %} mz-addressSaveButton {% else %} mz-chooseAddressButton {% endif %} {% if not user or user.isAnonymous %} address-guest-button {% endif %} {% if user and not model.contacts %} address-new-signup-guest-button {% endif %}" data-mz-action="next">
+        {% if model.displayAddressEditForm %} {{labels.save}} {% else %} {{ labels.addressButton }} {% endif %}</button>
+    </div>
+</div>

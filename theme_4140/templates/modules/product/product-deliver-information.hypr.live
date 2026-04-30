@@ -1,0 +1,45 @@
+<div class="mz-collection-information-container">
+   <div class="mz-information-text deactive">{{labels.deliveryCollectionandReturns|upper}}</div>
+    <div class="mz-container deactive">
+      <div class="mz-delivery-info-container">
+         <div class="mz-delivery-info-headline">{{labels.delivery}}</div>
+            <div class="mz-tracked-delivery-container">
+               <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}DeliveryTrack.svg" alt="track-delivery-icon" class="mz-track-delivery-icon">
+               <div class="mz-tracked-delivery-text">{{themeSettings.trackeddeliverytitle}}</div>
+               <div class="mz-tracked-delivery-info">{{themeSettings.trackeddeliverydesc}}</div>
+            </div>
+            {% if themeSettings.isCODDisable === false %}
+            {% with model.properties|findwhere('attributeFQN', "tenant~mns_isgifthamper") as prop %}
+               {% if prop %}
+                  {% for fqn in prop.values %}
+                     {% if fqn.value != "TRUE" %}
+                        <div class="mz-cashed-delivery-container">
+                           <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}CashOnDelivery.svg" alt="cash-delivery-icon" class="mz-cash-delivery-icon">
+                           <div class="mz-cashed-delivery-text">{{themeSettings.codtitle}}</div>
+                           <div class="mz-cashed-delivery-info">{{themeSettings.codcharges}}</div>
+                        </div>
+                     {% endif %}
+                  {% endfor %}
+               {% else %}
+                  <div class="mz-cashed-delivery-container">
+                     <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}CashOnDelivery.svg" alt="cash-delivery-icon" class="mz-cash-delivery-icon">
+                     <div class="mz-cashed-delivery-text">{{themeSettings.codtitle}}</div>
+                     <div class="mz-cashed-delivery-info">{{themeSettings.codcharges}}</div>
+                  </div>
+               {% endif %}
+            {% endwith %}
+               
+            {% endif %}
+      </div>
+      <div class="mz-collection-info-container">
+         <div class="mz-collection-info-headline">{{labels.collection}}</div>
+            <div class="mz-collect-store-container">
+               <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Collect.svg" alt="collect-icon" class="mz-collect-icon">
+               <div class="mz-collect-store-text">{{labels.collectFromStore}}</div>
+               <div class="mz-collect-store-info">{{themeSettings.clickcollectdesc}}</div>
+            </div>
+      </div>
+      <div class="mz-delivery-informaion-link"><a href="{{siteContext.siteSubdirectory}}/" onclick="window.globalEventBus.emit('dataLayerEvent', {'eventCategory':'pdp page','eventAction': '{{labels.fullInventoryCollectionInfo}}','eventLabel': '{{model.content.productName}}|{{model.productCode}}'})">{{labels.fullInventoryCollectionInfo}}</a></div>
+      <div class="mz-return-refund-link"><a href="{{siteContext.siteSubdirectory}}/return-refund" onclick="window.globalEventBus.emit('dataLayerEvent', {'eventCategory':'pdp page','eventAction': '{{labels.returnsAndRefunds}}','eventLabel': '{{model.content.productName}}|{{model.productCode}}'})">{{labels.returnsAndRefunds}}</a></div>
+    </div>
+</div>

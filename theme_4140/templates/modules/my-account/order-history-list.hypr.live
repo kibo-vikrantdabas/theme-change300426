@@ -1,0 +1,11 @@
+﻿  <ul class="mz-orderlist mz-oderDetailsSections" >
+  {% comment %} {% dump model %} {% endcomment %}
+    {% for order in model.items %}
+    <li data-orderNumber="{{order.orderNumber}}" data-mz-order-id="{{order.id}}" data-mz-order-history-listing>
+    	<div data-order-message-bar class="order-message-bar"></div>
+    	<div class="listing">
+    	{% include "modules/my-account/order-history-listing" with model=order %}
+    	</div>
+    </li>
+    {% endfor %}
+  </ul>

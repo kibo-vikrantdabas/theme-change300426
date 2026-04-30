@@ -1,0 +1,14 @@
+<nav class="mz-mobile-site-nav hide-on-desktop">
+    <ul class="mz-mobile-sitenav-list" 
+        data-mz-contextify='.mz-sitenav-link[href="{{ navigation.currentNode.url }}"]'
+        data-mz-contextify-attr='class'
+        data-mz-contextify-val='is-current'>
+        {% partial_cache %}
+        {% with navigation.tree as navNode %}
+                {% include "modules/global-nav/mobile/global-nav-parent" with navNodes=navNode %}
+                {% comment %} {% include "modules/global-nav/mobile/global-nav-more" with navNodes=navNode desktop=true %} {% endcomment %}
+        {% endwith %}
+        {% endpartial_cache %}
+        {% require_script "modules/contextify" %}
+    </ul>
+</nav>

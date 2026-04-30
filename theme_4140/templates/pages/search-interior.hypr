@@ -1,0 +1,11 @@
+﻿<div class="page-container">
+    <h1 class="mz-pagetitle-search-result">{{ labels.searchResults }}
+        {% with pageContext.search.query|split:"?" as searchText %}
+        <span class="mz-searchresults-query"> {{ searchText.0 }}</span>
+        {% endwith %}
+    </h1>
+</div>
+{% partial_cache model.categoryId pageContext.Sorting pageContext.Pagination pageContext.query.sortBy pageContext.search.query %}
+{% include "modules/product/faceted-products" %}
+{% endpartial_cache %}
+{% dropzone "search-results" scope="template" %}

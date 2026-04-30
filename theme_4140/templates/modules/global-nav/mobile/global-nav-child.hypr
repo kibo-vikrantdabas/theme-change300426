@@ -1,0 +1,61 @@
+{% if items %}
+    {% set_var totalCategories=items.length %}
+    {% set_var totalHiddenCategories=0 %}
+    <div class="mz-sitenav-sub-container-mobile deactive">
+        {% for sublink in items %}
+            {% if sublink.isHidden==true %}
+                {% with totalHiddenCategories|add(1) as increment%}
+                    {% set_var totalHiddenCategories=increment %}
+                {% endwith %}
+            {% endif %}
+        {% endfor %}
+        {% if totalCategories == totalHiddenCategories %}
+            {% include "modules/global-nav/mobile/global-nav-mobile-no-categories" %}
+        {% else %}
+            <div class="mz-sitenav-child-container">
+                  {% comment %} For All Category URL {% endcomment %}
+                
+                <div class="mz-sitenav-item no-child-item all-menu">
+                                    <a class="mz-sub-sitenav-link" href="{{parentCategory.url}}"> {{labels.all}} {{parentCategory.name|truncatechars(themeSettings.maxTopLevelNavLabelLength)|safe|title}}</a>
+                </div>
+                
+                  {% comment %} For All Category URL {% endcomment %}
+                {% for sublink in items %}
+                    {% if not sublink.isHidden %}
+                        <div data-mz-role="sitemenu-item" class="mz-sitenav-item {% if not sublink.items %}no-child-item{% endif %}">
+                            <!-- uncoment out  this block to get 3rd laver of nav -->
+                            {% if sublink.items %}
+                                <div class="second-level-item-mobile">
+                                    <a class="mz-sub-sitenav-link mz-placeholder-sitenav-link-mobile">{{ sublink.name|safe }}</a>
+                                    <span class="mz-l-two-arrow-expand active">  <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="parent-category-icon" class=""></span>
+                                    <span class="mz-l-two-arrow-collapse deactive"> <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="parent-category-icon" class=""></span>
+                                    <div class="mz-sitenav-sub-sub deactive">
+                                        {% for subsublink in sublink.items %}
+                                                {% if not subsublink.isHidden  %}
+                                                    <div class="mz-sitenav-sub-sub-item">
+                                                        {% if subsublink.name|split(" ")|first|lower == "view"  %}
+                                                            <a class="mz-sitenav-sub-sub-item-link mz-view-category" {% if sublink.openInNewWindow %}target='_self'{% endif %} href="{{sublink.url}}">{{ subsublink.name|safe }}
+                                                                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}green-right-arrow.svg" alt="parent-category-icon" class="mz-view-category-right-arrow">
+                                                            </a>
+                                                        {% else %}
+                                                            <a class="mz-sitenav-sub-sub-item-link" {% if sublink.openInNewWindow %}target='_self'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|safe }}</a>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <a class="mz-sub-sitenav-link" {% if sublink.openInNewWindow %}target='_self'{% endif %} href="{{sublink.url}}">{{ sublink.name|safe }}</a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% else %}
+    <div class="mz-sitenav-sub-container-mobile deactive">
+        {% include "modules/global-nav/mobile/global-nav-mobile-no-categories" %}
+    </div>
+{% endif %}

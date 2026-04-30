@@ -1,0 +1,33 @@
+{% comment %}
+Similar to address-summary.hypr, but expects the 'destination' format of address
+in multi-ship-to groupings as its model
+{% endcomment %}
+{% comment %} <span>{{ model.destinationContact.firstName }} {{ model.destinationContact.lastNameOrSurname }}</span> {% endcomment %}
+<div class="mz-confirmation-address-summary">
+    <div class="mz-address-details">
+        {% if model.address.address1 %}
+            {{ model.address.address1 }},
+        {% endif %}
+        {% if model.address.address2 %}
+            {{ model.address.address2 }},
+        {% endif %}
+        {% if model.address.address3 %}
+            {{ model.address.address3 }},
+        {% endif %}
+        {% if model.address.cityOrTown != "n/a" %}
+            {{ model.address.cityOrTown }},
+        {% endif %}
+        {% comment %} {% if model.address.stateOrProvince != "n/a" %}
+            {{ model.address.stateOrProvince }}, 
+        {% endif %}
+        {% if model.address.postalOrZipCode %}
+            {{ model.address.postalOrZipCode }},
+        {% endif %} {% endcomment %}
+        {% if model.address.countryCode != "n/a" %}
+            <span class="mz-address-country-code" id="address_{{type}}" style="display:inline;"> {{ model.address.countryCode }} </span>
+        {% endif %}
+    </div>
+    {% if model.phoneNumbers %}
+        <div class="mz-address-phone">{{ model.phoneNumbers.dialingCode }} {{ model.phoneNumbers.home }}</div>
+    {% endif %}
+</div>

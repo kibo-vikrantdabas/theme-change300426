@@ -1,0 +1,127 @@
+
+{% if model %}
+{{cu}}
+{% endif %}
+<div class="mz-product-price">
+  {% include "modules/product/product-price" %}
+ 
+</div> 
+<div class="mz-product-price-discount">
+  {% include "modules/product/price-discount" %}
+</div>
+
+<div class="mz-free-delivery-message-container">
+ {% include "modules/product/product-delivery-icon-svg" %}
+ <div class="mz-deilvery-message">
+    {% dropzone "product-deliver-message" scope="template"%}
+ </div>
+ {% include "modules/product/product-help-icon-svg" %}
+</div>  
+
+{% if model.options and model.options.length > 0 %}
+<div class="mz-productdetail-options mz-l-stack-section">
+  {% include "modules/product/product-options" %}
+</div>
+{% else %}
+  <div class="mz-productdetail-options mz-l-stack-section">
+    {% if model.notDoneConfiguring or not model.isPurchasable or not model.supportsInStorePickup %} <div class= "error-msg-popup hidden find-store-popup-error">{{labels.selectSize}} </div> {% endif %}
+  </div>
+{% endif %}
+
+
+{% comment %}{% if user.isAuthenticated %}
+<div class="mz-productdetail-notify-email-instock {% if subscribed %} disabled-button {%endif%}">
+  <button class="pdp-notify-email {% if (not model.initialPageLoad and model.availableInventory == 0) or (model.isPurchasable and model.availableInventory == 0) or (model.isOneSize and model.availableInventory == 0) %} enable {% else %} disabled-button {% endif %}"{% if (not model.initialPageLoad and model.availableInventory == 0) or (model.isPurchasable and model.availableInventory == 0) or (model.isOneSize and model.availableInventory == 0) %}  {% else %} disabled="disabled" {% endif %}><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Email.svg" alt="Email" class="mz-email-icon">{{labels.pdpNotifyText}}</button>
+  <div id="product-instock">
+  {% include "modules/product/product-email-notify" %}
+  </div>
+</div> 
+</div>
+{% else %}
+<div class="mz-productdetail-notify-email-instock {% if subscribedGuest %} disabled-button {%endif%}">
+  <button class="pdp-notify-email {% if (not model.initialPageLoad and model.availableInventory == 0) or (model.isPurchasable and model.availableInventory == 0) or (model.isOneSize and model.availableInventory == 0) %} enable {% else %} disabled-button {% endif %}" {% if (not model.initialPageLoad and model.availableInventory == 0) or (model.isPurchasable and model.availableInventory == 0) or (model.isOneSize and model.availableInventory == 0) %}  {% else %} disabled="disabled" {% endif %}><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Email.svg" alt="Email" class="mz-email-icon">{{labels.pdpNotifyText}}</button>
+  <div id="product-instock">
+  {% include "modules/product/product-email-notify" %}
+  </div>
+</div> 
+</div>
+{% endif %}{% endcomment %}
+<div class="option-seperator-full" ></div>
+ {% if model.quantityWarning %}
+    <div class="mz-quantity-warning-notification">{{labels.quantityWarning}}</div>
+  {% endif %}
+<div class="mz-productdetail-conversion" id="sticky-add-to-cart">
+   {% include "modules/product/product-quantity-cart"%}
+</div>
+
+{% with model.properties|findwhere('attributeFQN', "tenant~mns_isgifthamper") as prop %}
+  {% if prop %}
+    {% for fqn in prop.values %}
+        {% if fqn.value != "TRUE" %}
+          <div class="mz-productdetail-store-notify-container">
+            <div class="mz-productdetail-find-store">
+              <button class="find-in-store"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Location.svg" alt="Location" class="mz-location-icon">{{labels.findInStoreText}}</button>
+              {% include "modules/product/product-find-store" %}
+              
+            </div>
+          </div>
+
+          {% if model.productUsage|lower !== 'standard' %}
+            <div class="mz-product-size-info">
+                {% include "modules/product/product-size-info" %}
+            </div>
+          {% endif %}
+        {% endif %}
+    {% endfor %}
+  {% else %}
+    <div class="mz-productdetail-store-notify-container">
+      <div class="mz-productdetail-find-store">
+        <button class="find-in-store"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Location.svg" alt="Location" class="mz-location-icon">{{labels.findInStoreText}}</button>
+        {% include "modules/product/product-find-store" %}
+        
+      </div>
+    </div>
+
+    {% if model.productUsage|lower !== 'standard' %}
+      <div class="mz-product-size-info">
+          {% include "modules/product/product-size-info" %}
+      </div>
+    {% endif %}
+  {% endif %}
+{% endwith %}
+
+<div class="mz-product-description">
+    {% include "modules/product/product-description" %}
+</div>
+
+<div class="mz-delivery-information-container">
+    {% include "modules/product/product-care-information" %}
+</div> 
+
+<div class="mz-delivery-information-container mz-deliveryCollectionReturn">
+    {% include "modules/product/product-deliver-information" %}
+</div> 
+
+
+{# Wishlist #}
+
+{% comment %} <div class="mz-product-wishlist-section">
+    {% include "modules/product/product-details/product-wishlist" %}
+</div> {% endcomment %}
+
+
+{#----------------------------------------------------- Product Properties -------------------------------------------------------------------- #}
+{% comment %} {% include "modules/product/product-detail/product-properties" %} {% endcomment %}
+{#------------------------------------------------------------------------------------------------------------------------------------------ #}
+
+
+{# Product Measurments #}
+
+  {% comment %} {% include "modules/product/product-detail/product-measurments" %} {% endcomment %}
+
+{# Bundle Product #}
+
+  {% comment %} {% include "modules/product/bundle-product/bundle-product" %} {% endcomment %}
+
+ {# Product Local Store #}
+   {% comment %} {% include "modules/product/product-detail/product-local-store" %} {% endcomment %}

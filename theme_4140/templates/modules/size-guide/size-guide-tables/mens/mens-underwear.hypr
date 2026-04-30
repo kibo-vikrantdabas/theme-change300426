@@ -1,0 +1,40 @@
+<div class="chart">
+	<h5>All Sizes</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Size </span>
+			<span>Waist</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">X Small</td>
+						<td class="active">Small</td>
+						<td class="active">Medium</td>
+						<td class="active">Large</td>
+						<td class="active">X Large</td>
+						<td class="active">XX Large</td>
+						<td class="active">XXX Large</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">&lt;71</td>
+						<td class="unit-cm active">76-81</td>
+						<td class="unit-cm active">84-89</td>
+						<td class="unit-cm active">91-97</td>
+						<td class="unit-cm active">99-104</td>
+						<td class="unit-cm active">107-112</td>
+						<td class="unit-cm active">114-119</td>
+						<td class="unit-in">&lt;28</td>
+						<td class="unit-in">30-32</td>
+						<td class="unit-in">33-35</td>
+						<td class="unit-in">36-38</td>
+						<td class="unit-in">39-41</td>
+						<td class="unit-in">42-44</td>
+						<td class="unit-in">45-47</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

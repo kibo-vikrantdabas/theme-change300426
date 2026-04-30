@@ -1,0 +1,29 @@
+﻿
+{% include "back-office/invoice/slip-header" %}
+
+<table class="mz-printable-order mz-printable-order-packingslip mz-printable-order-invoice invoice-table-no-border" style="display:none;">
+    {% include "back-office/invoice/invoice-header" %}
+    <tbody>
+        <tr>
+            <td colspan="4">
+                <table class="grid invoice-table-no-border">            
+                    <tbody>
+                        <tr>
+                            {% include "back-office/invoice/billing-address" %}
+                            {% include "back-office/invoice/payment" %}
+                        </tr> 
+                    </tbody>
+                </table>  
+                
+              
+               {% if order.data.order_TotalVatAmount > '0.000' %}
+                    {% include "back-office/invoice/with-vat" %}
+                {% else %}
+                    {% include "back-office/invoice/without-vat" %}
+                {% endif %} 
+                
+                {% include "back-office/invoice/summary" %}
+            </td>
+        </tr>
+    </tbody>
+</table>

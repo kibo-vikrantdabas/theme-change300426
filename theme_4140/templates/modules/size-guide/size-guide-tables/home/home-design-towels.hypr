@@ -1,0 +1,27 @@
+<div class="chart">
+	<h5 style="text-align:center;">DESIGN TOWELS</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span style="color:#f5f5f5;">TOWELS</span>
+			<span>Design Towels</span>
+		</div>
+		<div class="table">
+			<table>
+				<tr>
+					<td class="active">Face towel</td>
+					<td class="active">Guest towel</td>
+					<td class="active">Hand towel</td>
+					<td class="active">Bath towel</td>
+					<td class="active">Bath sheet</td>
+				</tr>
+				<tr>
+					<td class="active">W 30 x L 30 cm</td>
+					<td class="active">W 40 x L 60 cm</td>
+					<td class="active">W 50 x L 90 cm</td>
+					<td class="active">W 70 x L 137 cm</td>
+					<td class="active">W 100 X 150 cm</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

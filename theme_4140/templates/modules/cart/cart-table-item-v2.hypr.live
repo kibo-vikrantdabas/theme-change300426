@@ -1,0 +1,218 @@
+<tr class="mz-carttable-item mz-carttable-item-v2">
+    <td class="mz-carttable-item-product  carttable-item-product-info {% if item.data.availableInventory < 1 and item.data.availableInventory %} mz-oos-product-disable{% endif %} {% if item.discountedTotal == 0 %} mz-carttable-item-product-discount {% endif %} {% if item.data.availableInventory > 0 and item.data.availableInventory < themeSettings.quantityPurchaseAlert %} mz-limited-stock-product {% endif %}">
+        <div class="mz-item-image">
+            {% if item.data %}
+                {% if item.data && item.data.availableInventory > 0 and item.data.availableInventory < themeSettings.quantityPurchaseAlert %}
+                <div class="mz-oos-error-msg">
+                    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}error.svg" width="19.32" height="15.12" alt="error-cart-icon" class="mz-error-cart-icon">
+                    <span class="mz-oos-error-msg-text">{{labels.limitedStockAvailabel}}</span> 
+                </div>
+                {% endif %}
+                {% if item.data.availableInventory < 1 and item.data %}
+                <div class="mz-oos-error-msg">
+                    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}error.svg" width="19.32" height="15.12" alt="error-cart-icon" class="mz-error-cart-icon">
+                    <span class="mz-oos-error-msg-text mz-oos-stock-avail">{{labels.outOfStockMsg}}</span> 
+                </div>
+                {% endif %}
+            {% endif %}
+            {% with item.productDiscount as productDiscount %}
+                {% if item.discountedTotal == 0 and productDiscount %}
+                <div class="mz-oos-error-msg">
+                    <span class="help-icon-bogo">
+                        <svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>icon/help</title>
+                            <g id="icon/help" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <path d="M25,3.32 C36.9735334,3.32 46.68,13.0264666 46.68,25 C46.68,36.9735334 36.9735334,46.68 25,46.68 C13.0264666,46.68 3.32,36.9735334 3.32,25 C3.32,13.0264666 13.0264666,3.32 25,3.32 Z M25,4.68 C13.7775739,4.68 4.68,13.7775739 4.68,25 C4.68,36.2224261 13.7775739,45.32 25,45.32 C36.2224261,45.32 45.32,36.2224261 45.32,25 C45.32,13.7775739 36.2224261,4.68 25,4.68 Z M26.7942273,20.5715087 C26.7942273,20.5715087 25.7330622,24.858846 25.1597313,26.9925442 C24.980715,27.659764 24.7103128,28.4972056 24.4708161,29.3392959 L24.362919,29.7276802 C23.8912648,31.4714687 23.6340819,33.1254306 24.6869847,33.2061921 C26.3097459,33.3118799 27.5569921,32.8532346 27.5569921,32.8532346 L27.2652974,34.6579045 C27.2652974,34.6579045 25.3458123,35.5692129 23.6224668,35.3418844 C21.8991212,35.1105676 20.1774521,33.7665372 21.0458305,30.494202 C21.7827634,27.6698166 23.0285999,23.5752405 23.3546702,22.5110575 L23.3983032,22.3688389 C23.4220185,22.2916514 23.4347093,22.2505496 23.4347093,22.2505496 L21.1330036,21.4608819 L21.3224375,20.5715087 L26.7942273,20.5715087 Z M25.7277598,13.8853739 C26.8777744,13.8853739 27.8350023,15.0060639 27.8350023,16.3720295 C27.8350023,17.7399892 26.8777744,18.8566911 25.7277598,18.8566911 C24.5609811,18.8566911 23.62387,17.7399892 23.62387,16.3720295 C23.62387,15.0060639 24.5609811,13.8853739 25.7277598,13.8853739 Z" id="Combined-Shape" fill="#ea122a" fill-rule="nonzero" stroke-width="1" stroke="#ea122a"></path>
+                            </g>
+                        </svg>
+                    </span>
+                    <span class="mz-oos-error-msg-text">{{ productDiscount.discount.name }}</span>
+                </div>
+                {% endif %}
+            {% endwith %}
+            <a href="{{ item.product.url}}" class="mz-item-link">
+                {% if item.product.imageUrl and themeSettings.showCartItemImage %}
+                <img class="mz-carttable-item-image" src="{{ item.product.imageUrl}}" height="167" width="130" {% if item.product.imageAlternateText %}alt="{{ item.product.imageAlternateText }}"{% else %}alt="cart-item-image"{% endif %} />
+                {% else %}
+                <span class="mz-carttable-item-image mz-noImg-section"><span class="mz-noImgText">{{ labels.productImagePlaceholder }}</span></span>
+                {% endif %}
+            </a>
+        </div>
+        <div class="mz-item-item-details">
+            {%if item.data%}
+                {% if item.data.availableInventory < 1 or item.data.availableInventory < themeSettings.quantityPurchaseAlert %}
+                    <div class="mz-oos-error-msg"></div>
+                {% endif %}
+            {% endif %}
+            {% if item.discountedTotal == 0 %}<div class="mz-oos-error-msg"></div>{% endif %}
+            <div class="mz-item-details-row pr-details-first">
+                <div class="mz-carttable-item-heading">
+                    {% if item.product.properties %}
+                      <div class="mz-item-brand">
+                        {% for property in item.product.properties %}
+                          {% if property.values and not property.isHidden %}
+                              {%if property.name == 'Brand' %}
+                                  {% for v in property.values %}
+                                      {% if v.stringValue %}{{v.stringValue}}{% else %}{{v.value}}{% endif %}
+                                  {% endfor %}
+                              {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                    <a class="mz-carttable-item-title" href="{{item.product.url}}">{{ item.product.name }}</a>
+                    {% if item.product.options and themeSettings.showCartItemOptions %}
+                        <dl class="mz-propertylist mz-cartItemOptions-mob">
+                            {% for option in item.product.options %} 
+                                <dd class="mz-property-value">
+                                    {% if option.value %}
+                                        {% if option.name|lower == 'size' %} {{labels.size}}: {% endif %}
+                                        {% if option.name|lower == 'color' %} {{labels.itemColor}}: {% endif %}
+
+                                        {% if option.name|lower == 'color' %}
+                                            {{option.stringValue|default(value.value)|title}},
+                                        {% else %}
+                                            {{option.stringValue|default(value.value)}}
+                                        {% endif %}
+
+                                        {% if option.name|lower == 'size' and item.product.options.length >2 %} / {% endif %}
+                                    {% else %}
+                                        {{ option.shopperEnteredValue }}
+                                    {% endif %}
+                                </dd>
+                            {% endfor %}
+                        </dl>
+                    {% endif %}
+                </div>
+                <div class="mz-item-details-row mz-item-details-second mz-item-mobile">
+                    {% if item.product.options and themeSettings.showCartItemOptions %}
+                        <dl class="mz-propertylist">
+                            {% for option in item.product.options %} 
+                                <dd class="mz-property-value">
+                                    {% if option.value %}
+                                        {% if option.name|lower == 'size' %} {{labels.size}}: {% endif %}
+                                        {% if option.name|lower == 'color' %} {{labels.itemColor}}: {% endif %}
+
+                                        {% if option.name|lower == 'color' %}
+                                            {{option.stringValue|default(value.value)|title}},
+                                        {% else %}
+                                            {% if option.stringValue %}
+                                                {{option.stringValue|default(value.value)}}
+                                            {% else %}
+                                                {{option.value|default(value.value)}}
+                                            {% endif %}
+                                        {% endif %}
+
+                                       
+                                        {% if option.name|lower == 'size' and item.product.options.length >2 %} / {% endif %}
+                                       
+                                    {% else %}
+                                        {{ option.shopperEnteredValue }}
+                                    {% endif %}
+                                </dd>
+                            {% endfor %}
+                        </dl>
+                    {% endif %}
+                    {% if item.product.productUsage == 'Bundle' %}
+                        <dl class="mz-propertylist mz-bundledProduct-content">
+                            {% for bundledProduct in item.product.bundledProducts %}
+                                <dt>{{ bundledProduct.productCode }}</dt>&nbsp;
+                                <dd class="mz-bundleProduct-name">{{ bundledProduct.name }}({{ bundledProduct.quantity }})</dd>
+                            {% endfor %}
+                        </dl>
+                    {% endif %}
+                </div>
+                <div class="mz-carttable-item-price">
+                    {% include "modules/common/item-price" %}
+                </div> 
+                
+                <div class="mz-carttable-item-qty {% if item.data.availableInventory > 0 and item.data.availableInventory < themeSettings.quantityPurchaseAlert %} {% if item.discountedTotal == 0 %}mz-limited-stock-qty_discount{%else%}mz-limited-stock-qty {% endif%}{% endif %}">
+                    {% if item.discountedTotal !== 0 %}
+                    <img src="{{siteContext.cdnPrefix}}/resources/images/icons/arrow-down.png" width="21.31" height="18.86" alt="down-cart-icon" class="mz-down-cart-icon">
+                    {% comment %} <input class="mz-carttable-qty-field" type="number" min="1" {% if model.isLoading %}disabled="disabled"{% endif %} data-mz-cart-item="{{ item.id }}" data-mz-value="quantity" value="{{ item.quantity }}" /> {% endcomment %}
+                    <select class="mz-carttable-qty-field" data-mz-cart-item="{{ item.id }}" data-mz-value="quantity" data-dropup-auto="false">
+                        {% if themeSettings.maxPurchaseQuantity != "" %}
+                            {% for value in themeSettings.maxPurchaseQuantity|split(",") %}
+                                <option value="{{value}}" {% if item.quantity == value %}selected="selected" {% endif %}>{{value}}</option>
+                            {% endfor %}
+                        {% else %}
+                            {% for value in item.inventoryArray %}
+                                <option value="{{value}}" {% if item.quantity == value %}selected="selected" {% endif %}>{{value}}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                    {% endif %}
+                </div> 
+                <div class="mz-carttable-item-total mz-carttable-item-total-price">
+                    {% comment %} {% include "modules/common/item-total" %} {% endcomment %}
+                    {% if item.discountedTotal == 0 %}
+                    <span class="mz-item-rowtotal">FREE</span>
+                    {% else %}
+                    <span class="mz-item-rowtotal {% if item.unitPrice.saleAmount %}is-saleprice{% endif %}"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.total|floatformat(pageContext.currencyInfo.precision) }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="mz-item-details-row mz-item-details-second">
+                {% if item.product.options and themeSettings.showCartItemOptions %}
+                    <dl class="mz-propertylist">
+                        {% for option in item.product.options %} 
+                            <dd class="mz-property-value">
+                                {% if option.value %}
+                                    {% if option.name|lower == 'size' %} {{labels.size}}: {% endif %}
+                                    {% if option.name|lower == 'color' %} {{labels.itemColor}}: {% endif %}
+
+                                    {% if option.name|lower == 'color' %}
+                                            {{option.stringValue|default(value.value)|title}},
+                                    {% else %}
+                                        {% if option.stringValue %}
+                                            {{option.stringValue|default(value.value)}}
+                                        {% else %}
+                                            {{option.value|default(value.value)}}
+                                        {% endif %}
+                                    {% endif %}
+
+                                   
+                                    {% if option.name|lower == 'size' and item.product.options.length >2 %} / {% endif %}
+                                {% else %}
+                                    {{ option.shopperEnteredValue }}
+                                {% endif %}
+                            </dd>
+                        {% endfor %}
+                    </dl>
+                {% endif %}
+                {% if item.product.productUsage == 'Bundle' %}
+                    <dl class="mz-propertylist mz-bundledProduct-content">
+                        {% for bundledProduct in item.product.bundledProducts %}
+                            <dt>{{ bundledProduct.productCode }}</dt>&nbsp;
+                            <dd>{{ bundledProduct.name }} ({{ bundledProduct.quantity }})</dd>
+                        {% endfor %}
+                    </dl>
+                {% endif %}
+            </div>
+            <div class="mz-item-details-row mz-item-details-third">
+                {% comment %} {% if model.displayPickupLinks%}
+                    <div class="mz-collect-pickupAt">
+                        <span class="mz-carttable-item-pickuplocation">
+                            <span class="mz-desktop-collectAt">{{ labels.storeCollectAt }}<strong data-mz-action="changeFulfillmentMethod" data-mz-cart-item="{{item.id}}" data-value="Pickup">{% if model.cookieLocation %}{{model.cookieLocation}} {% else %}{{model.defaultLocation}}{% endif %}</strong></span>
+                            <span class="mz-mobile-click-collectAt">{{ labels.storeClickCollectAt }}<strong data-mz-action="changeFulfillmentMethod" data-mz-cart-item="{{item.id}}" data-value="Pickup">{% if model.cookieLocation %}{{model.cookieLocation}} {% else %}{{model.defaultLocation}}{% endif %}</strong></span>
+                        </span>
+                    </div>
+                {% endif %} {% endcomment %}
+  
+                
+                <div class="mz-carttable-savelater-remove cart-savelater-icon {% if item.data %}{% if item.data.availableInventory < 1 or item.data.availableInventory < themeSettings.quantityPurchaseAlert %} mz-saveRemove-set {% endif %} {% endif %} {% if item.discountedTotal == 0 %} mz-bogo-saveRemove-set {% endif %}">
+                    
+                    <span class="mz-carttable-save-later">
+                        <a href="javascript:;" class="mz-save-wishlist-item add-to-wishlist add-{{item.product.productCode}}" data-mz-action="addToWishlistCart" data-mz-cart-item="{{ item.id }}" data-upc-code="{{item.product.productCode}}"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart.svg" width="21" height="18" alt="addto-wishlist-icon" class="mz-heart-cart-icon"><span class="mz-save-later">{{ labels.saveforlater }}</span></a>
+                        <a href="javascript:;" class="mz-save-wishlist-item remove-from-wishlist remove-{{item.product.productCode}}" data-mz-action="removeFromWishlist" data-mz-cart-item="{{ item.id }}" data-upc-code="{{item.product.productCode}}" style="display:none;"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart.svg" width="21" height="18" alt="removefrom-wishlist-icon" class="mz-heart-cart-icon"><span class="mz-save-later">{{ labels.saveforlater2 }}</span></a>
+                    </span>
+                                     
+                    <span class="mz-carttable-removeItem">
+                        <a href="javascript:;" data-mz-action="removeItem" data-mz-cart-item="{{ item.id }}" data-mz-cart-item-name="{{ item.product.name }}" data-mz-cart-item-url="{{ item.product.url }}" data-mz-cart-item-upc="{{ item.product.upc }}" class="mz-icon mz-close-icon"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" width="21" height="18" alt="remove-cart-icon" class="mz-remove-cart-icon"><span class="mz-cart-remove">{{ labels.remove }}</span></a>
+                    </span>
+                </div>
+                
+            </div>
+        </div>
+    </td>
+  </tr>

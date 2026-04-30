@@ -1,0 +1,104 @@
+﻿{% extends "email/email" %}
+
+{% block body-content %}
+<div style="text-align:center;margin:30px 0;">
+	<img src="https://cdn-tp1.euw1.kibocommerce.com/100067-m1/cms/files/cd619a01-49ed-49eb-9bf6-714a3688ee07" alt="MS-Logo" style="width: 103px;height: 39px;" width="103" height="39">
+</div>
+<div class="emailPadding" style="font-family: Arial, Helvetica, sans-serif!important;">
+<p style="text-align:center;margin:30px 0;font-size:21px;background-color: #163E35;height: 40px;padding-top: 30px;color:#FFFFFF;
+  width:100%;font-family: Arial, Helvetica, sans-serif!important;">{{ labels.returnRefundHead }}</p>
+
+	<div style="padding-bottom:20px;margin:0;">
+		{% comment %} <dt>{{ labels.orderNo }}</dt>
+		<dd><a href="https://{{themeSettings.localeDomain}}/checkout/{{model.id}}/confirmation">{{ model.orderNumber }}</a></dd>
+	 	{% endcomment %}
+	    <p style="margin:0 0 10px 0;font-family: Arial, Helvetica, sans-serif!important;"><strong>{{ labels.orderNumber }}:</strong> {{ model.order.orderNumber }}</p>
+		<p style ="margin:0 0 10px 0;font-family: Arial, Helvetica, sans-serif!important;"><strong>{{ labels.orderDate }}:</strong> {{ model.order.submittedDate }}</p>
+		{% comment %} <dt>{{ labels.returnRequestDate }}</dt>
+		<dd>{{ model.rmaDeadline }}</dd> {% endcomment %}
+	</div>
+	<p style= "margin:0; font-family: Arial, Helvetica, sans-serif!important;">
+	{% if user and user.firstName %}
+		{{ labels.emailOpening|string_format(user.firstName)|safe }}
+	{% else %}
+		{{ labels.emailOpeningAlternative|safe }}
+	{% endif %}
+	</p>
+
+	<p style="margin-bottom:24px;line-height:20px; font-size:14px; width: 100%; margin-top:5%; font-family: Arial, Helvetica, sans-serif!important;">
+		{{ labels.returnRefundHeading|string_format(themeSettings.refundDays, domainName, model.UserEmailAddress)|safe }}
+	</p>	
+
+	{% comment %} <p style="margin-bottom:24px;line-height:20px; font-size:14px;">{{labels.returnRefundAmount|safe }}</p> {% endcomment %}
+
+	{% comment %} {{ labels.returnReceivedBlob1|string_format(siteContext.generalSettings.websiteName, domainName)|safe }} {% endcomment %}
+
+	{% comment %} <table class="mz-ordersummary">
+        <thead>
+            <tr>
+                <th class="mz-ordersummary-header-qty">{{ labels.qty }}</th>
+                <th class="mz-ordersummary-header-product">{{ labels.product }}</th>
+            </tr>
+		</thead>
+		<tbody class="mz-ordersummary-lineitems">
+		{% for item in model.items %}
+			{% for reason in item.reasons %}
+			<tr class="mz-ordersummary-line mz-ordersummary-line-item">
+				<td>{{ reason.quantity }}</td>
+				<td class="mz-ordersummary-item-product">{{ item.product.name }}</td>
+			</tr>
+			{% endfor %}
+		{% endfor %}
+		</tbody>
+    </table> {% endcomment %}
+
+	<!--{{ labels.returnReceivedBlob2|safe }} removed per bug #51526 -->
+<div style="background-color: #163E35;padding:20px 50px;">
+	<p style="margin:0 0 8px 0;color:#FFFFFF; text-align:center;font-size:16px; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.needHelp }}</p>
+	{% if themeSettings.countrySpecificCode|lower == "sa"%}
+	<p style="margin:0;color:#FFFFFF;font-size: 12px;line-height: 18px;text-align: center; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.returnRefundTimingKSA|safe}}</p>
+	{% else %}
+	<p style="margin:0;color:#FFFFFF;font-size: 12px;line-height: 18px;text-align: center; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.returnRefundTiming|safe}}</p>
+	{%endif%}
+</div>
+<div style="margin:30px 0 30px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px 0;width:100%;">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+    <tr> 
+		<td width="32%" style="padding:0;text-align:center;">
+		<a href="https://{{themeSettings.localeDomain}}/contact" target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{labels.contactUs|safe }}</a>
+		</td>
+		<td width="32%" style="padding:0;border-right:1px solid #ccc; border-left:1px solid #ccc;text-align:center;">
+		<a href="https://{{themeSettings.localeDomain}}/return-refund"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{ labels.returnsAndRefunds|safe}}</a>
+		</td>
+		<td width="32%" style="padding:0;text-align:center;">
+		<a href="https://{{themeSettings.localeDomain}}/terms-conditions"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{ labels.termsAndConditions|safe}}</a>
+		</td>
+	</tr>
+  </table>
+  </div>
+</div>
+<div style="margin: 0 auto;width:50%;">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" >
+		<tr>
+			<td style="padding-right:10px;text-align:end;">
+				<a href="https://www.facebook.com/MarksandSpencerME">
+				<img  src="https://{{themeSettings.localeDomain}}/resources/images/icons/svg/facebook.png"></a>
+			</td>
+			<td  style="text-align: center;">
+				<a href="https://www.youtube.com/user/MandSArabia">
+				<img  src="https://{{themeSettings.localeDomain}}/resources/images/icons/svg/youtube.png"></a>
+			</td>
+			<td  style="padding-right:0px;padding-left:10px">	
+				<a  href="https://www.instagram.com/marksandspencerme">
+				<img  src="https://{{themeSettings.localeDomain}}/resources/images/icons/svg/instagram.png"></a>
+			</td>
+		</tr>
+	</table>
+</div>
+<div style="text-align:center;font-size:10px; line-height:16px; font-family: Arial, Helvetica, sans-serif!important;">
+	<p style="color:#000">
+		{{themeSettings.emailFooterAddress}}<br />{{themeSettings.emailFooterAddress1}}<br />{{themeSettings.emailFooterAddress2}}
+	</p>
+</div>
+
+{% endblock body-content %}

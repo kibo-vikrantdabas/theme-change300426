@@ -1,0 +1,7 @@
+<div class="mz-blue-popup-header">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="open-arrow" class="mz-open-arrow-icon">
+    <div class="mz-blue-lable">Cancel Order</div>
+    <div class="mz-blue-popup-close-container active">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Close.svg" alt="close-icon" class="mz-close-icon">
+    </div>
+</div>

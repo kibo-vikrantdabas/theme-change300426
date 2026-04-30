@@ -1,0 +1,45 @@
+{% extends "page" %}
+
+{% block title-tag-content %} {% firstof pageContext.metaTitle model.name %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-needhelp mz-homepage {% endblock body-tag-classes %}
+
+{% block body-content %}
+{% require_script "pages/home" %}
+
+<div class="main-wrapper">
+    <div class="left-sidebar">
+      {% include "modules/common/sidebar-nav"%}
+    </div>
+    <div class="right-sidebar">
+        <div class="cancel-order-txt">
+            {% dropzone "cancel-order-text" scope="template" %}
+        </div>
+      
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="top-picks-wrapper-heading">
+    {% dropzone "top-picks-wrapper-heading" scope="template" %}
+</div>
+
+<div class="top-picks-wrapper widget-spacer">
+    {% dropzone "home-wrapper" scope="template" %}
+</div>
+
+{% dropzone "home2" scope="page" %}
+
+{% dropzone "home3" scope="template" %}
+<div class="autumn-container widget-spacer">
+    {% dropzone "home4" scope="template" %}
+</div>
+    {% require_script "pages/need-help" %}
+{% endblock body-content %}
+
+{% block body-below-content %}
+{% endblock body-below-content %}

@@ -1,0 +1,47 @@
+<div class="mz-menu-footer">
+    <div class="mz-account-section active">
+        {% if user.isAnonymous %}
+            {% include "modules/page-header/hamburg-menu/menu-footer-account" %}
+        {% else %}
+        <div class="mz-anonymous-signin-container mz-wishlist-container">
+            {% comment %} <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart.svg" alt="wishlist-icon" class="mz-wishlist-icon"> {% endcomment %}
+              <div class="wishlist-popup-mob">
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart.svg" alt="wishlist-icon" class="mz-wishlist-icon"   loading="lazy">
+                <div class="mz-signin-link">
+                    <a href="javascript:;" class="wishlist-label">{{labels.wishlist}}</a>
+                    <span class="wishlist-loader"></span>
+                    
+                </div>
+                 </div>
+                 {% comment %} <div id="wishlist-popover-mobile">
+                {% include "modules/page-header/wishlist-popover" %}
+                 </div> {% endcomment %}
+                {% comment %} </div> {% endcomment %}
+                {% comment %} {% require_script "modules/wishlist" %} {% endcomment %}
+        </div>
+            {% comment %} <div class="mz-anonymous-signin-container">
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Profile.svg" alt="signin-icon" class="mz-sinin-icon">
+                <div class="mz-signin-link">
+                    <a href="{{siteContext.siteSubdirectory}}/myaccount">Account</a>
+                </div>
+            </div> {% endcomment %}
+            <div class="mz-nona-signout-link-container">
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}LogOut.svg" alt="logout-icon" class="mz-sigout-icon"   loading="lazy">
+                <div class="mz-signout">
+                    <a href="{{siteContext.siteSubdirectory}}/logout" data-mz-action="logout" class="mz-utilitynav-link">{{ labels.logOut }}</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    {% comment %} {% include "modules/page-header/hamburg-menu/hamburg-menu-country-selector" %} {% endcomment %}
+    {% comment %} {% if pageContext.isMobile %} {% endcomment %}
+    {% include_entities "modules/page-header/hamburg-menu/hamburg-menu-country-selector" listFQN="siteurls@afg" pageSize=200 %}
+    {% comment %} {% endif %} {% endcomment %}
+</div>
+
+<div class="mz-seprator"></div>
+
+<div class="mz-hamburgmenu-fixed-container deactive">
+    {% include "modules/page-header/hamburg-menu/hamburg-locator-loyalty" %}
+    {% include "modules/page-header/hamburg-menu/hamburg-help-contact-register" %}
+</div>

@@ -1,0 +1,163 @@
+
+<div class="mz-wishlist-popover-container">
+{% if model.wishlist.items.length > 0 %}
+        {% if user.isAuthenticated %}
+            <div class="wishlist-data-container "> 
+                <div class="wishlist-header">
+                    <div class="mz-offeres-text">{{labels.savedItemsWishlistText1|safe}}<span class="item-count">{{model.wishlist.items.length}}</span> {{labels.savedItemsWishlistText2|safe}}</div>
+                    {% comment %} <div class="mz-offeres-text">{{labels.savedItemsWishlist|string_format(model.wishlist.items.length)|safe}}</div> {% endcomment %}
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-wish-close-icon"  loading="lazy">
+            
+                </div>
+                
+                <div class="mz-seprator"></div>
+                <div class="mz-wishlist-items-main-container">
+           
+                    {% for item in model.wishlist.items %}
+                    <div class="item-container item_{{item.id}}">
+                        <div class="item-image-container">
+                                      {% if item.product.imageUrl and themeSettings.showCartItemImage %}
+                                            <a href="{{item.product.url}}"> <img class="mz-carttable-item-image" src="{% make_url "image" item.product with max=128  %}" {% if item.product.imageAlternateText %}alt="{{ item.product.imageAlternateText }}"{% else %}alt="cart-item-image"{% endif %}   loading="lazy"/></a>
+                                        {% else %}
+                                        <span class="mz-wishlist-noimage">[{{ labels.noImages}}]</span>
+                                        {%endif%}
+                            <div class="remove-item-div for-mobile">
+                                <a  href="javascript:;" data-mz-action="removeWishlistItem" data-mz-wishlist-item="{{item.id}}" data-mz-item-div="item_{{item.id}}" data-mz-wishlist-item-vpc="{{item.product.variationProductCode}}">
+                                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-remove-icon">
+                                <span class="remove-label">{{labels.remove}}</span></a>
+                            </div>
+                        </div>
+                        {% with item.product.options|findwhere('attributeFQN', 'tenant~size1') as size1 %}
+                        <div class="item-details-container">
+                            <span class="item-name"><a href="{{item.product.url}}" title="{{ item.product.name }}">{{ item.product.name }}</a></span>
+                            <span class="item-wishlist-size">{{ labels.itemSize }}: {{ size1.value }}</span>
+                        <div class="remove-item-div for-desktop">
+                            <a  href="javascript:;" data-mz-action="removeWishlistItem" data-mz-wishlist-item="{{item.id}}" data-mz-item-div="item_{{item.id}}"  data-mz-wishlist-item-vpc="{% if item.product.productUsage == "Standard" %}{{item.product.productCode}}{%else%}{{item.product.variationProductCode}}{%endif%}"  loading="lazy">
+                            <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-remove-icon">
+                            <span class="remove-label">{{labels.remove}}</span></a>
+                        </div>
+                        </div>
+                        {% endwith %}
+                        <div class="item-price-container">
+                            <span class="item-wishlist-price">{% include "modules/common/currency-code" %} {{item.product.price.price|floatformat(pageContext.currencyInfo.precision)}}</span>
+                            {% if item.purchasableStatusType == 'purchasable'%}
+                            <div class="add-to-bag-div">
+                                <a href="javascript:;" data-mz-action="addItemToCart" data-mz-wishlist-item="{{item.id}}" data-mz-wishlist-item-vpc="{{item.product.variationProductCode}}">
+                                        <button class="add-to-bag-btn">{{labels.addToBag}}</button>
+                                    </a> 
+                                </div>
+                               {% else %}
+                                <div class="out-of-stock-div">
+                                    <span class="out_of_stock_label">{{labels.outOfStockButton}}</span>
+                                </div>
+                                
+                                {%endif%}
+                            
+                        </div>
+                    </div>
+                    <div class="mz-seprator item_{{item.id}}"></div>
+                    {%endfor%}
+                </div>
+                
+            </div>
+            <div class="mz-add-to-bag-div">
+                <button class="addtobagall-btn" data-mz-action="addAllItemToCart">{{labels.addToBagAll}}</button>
+            </div>
+        {%else%}
+        <div class="wishlist-data-container "> 
+            <div class="wishlist-header">
+                <div class="mz-offeres-text">{{labels.savedItemsWishlistText1|safe}}<span class="item-count">{{model.wishlist.items.length}}</span> {{labels.savedItemsWishlistText2|safe}}</div>
+            <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-wish-close-icon"  loading="lazy">
+        
+            </div>
+            
+            <div class="mz-seprator"></div>
+            <div class="mz-wishlist-items-main-container">
+
+                {% for item in model.wishlist.items %}
+                <div class="item-container item_{{item.variationProductCode}}">
+                    <div class="item-image-container">
+                                    {% with item.content.productImages|first as productImage %}
+                                         {% if productImage %}
+                                        <a href="{% make_url "product" item.productCode %}"> <img class="mz-carttable-item-image" src="{{productImage.imageUrl}}" {% if item.product.imageAlternateText %}alt="{{ item.product.imageAlternateText }}"{% else %}alt="cart-item-image"{% endif %} /></a>
+                                        {% else %}
+                                        <span class="mz-wishlist-noimage">[{{ labels.noImages}}]</span>
+                                        {%endif%}
+                                        {%endwith%}
+                                       
+                        <div class="remove-item-div for-mobile">
+                            <a  href="javascript:;" data-mz-action="removeWishlistItem" data-mz-wishlist-productType="{{item.productUsage}}" data-mz-wishlist-item="{% if item.productUsage == "Standard" %}{{item.productCode}}{%else%}{{item.variationProductCode}}{%endif%}" data-mz-item-div="item_{% if item.productUsage == "Standard" %}{{item.productCode}}{%else%}{{item.variationProductCode}}{%endif%}">
+                            <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-remove-icon"  loading="lazy">
+                            <span class="remove-label">{{labels.remove}}</span></a>
+                        </div>
+                    </div>
+                    {% with item.options|findwhere('attributeFQN', 'tenant~size1') as size1 %}
+                    {% with size1.values|findwhere('isSelected',true) as selectedSize %}
+                    <div class="item-details-container">
+                        <span class="item-name"><a href="{% make_url "product" item.productCode %}" title="{{ item.content.productName }}">{{ item.content.productName }}</a></span>
+                        <span class="item-wishlist-size">{{ labels.itemSize }}: {{ selectedSize.stringValue }}</span>
+                      <div class="remove-item-div for-desktop">
+                        <a  href="javascript:;" data-mz-action="removeWishlistItem" data-mz-wishlist-productType="{{item.productUsage}}" data-mz-wishlist-item="{% if item.productUsage == "Standard" %}{{item.productCode}}{%else%}{{item.variationProductCode}}{%endif%}" data-mz-item-div="item_{% if item.productUsage == "Standard" %}{{item.productCode}}{%else%}{{item.variationProductCode}}{%endif%}">
+                        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-remove-icon"  loading="lazy">
+                        <span class="remove-label">{{labels.remove}}</span></a>
+                    </div>
+                    </div>
+                    {% endwith %}
+                    {% endwith %}
+                    <div class="item-price-container">
+                        <span class="item-wishlist-price">{% include "modules/common/currency-code" %} {{item.price.price|floatformat(pageContext.currencyInfo.precision)}}</span>
+                        {% if item.inventoryInfo.onlineStockAvailable > 0 %}
+                        <div class="add-to-bag-div">
+                            <a href="javascript:;" data-mz-action="addItemToCart" data-mz-wishlist-item="{% if item.productUsage == "Standard" %}{{item.productCode}}{%else%}{{item.variationProductCode}}{%endif%}" data-mz-item-div="item_{% if item.productUsage == "Standard" %}{{item.productCode}}{%else%}{{item.variationProductCode}}{%endif%}">
+                                    <button class="add-to-bag-btn">{{labels.addToBag}}</button>
+                                </a> 
+                            </div>
+                           {% else %}
+                            <div class="out-of-stock-div">
+                                <span class="out_of_stock_label">{{labels.outOfStockButton}}</span>
+                            </div>
+                            
+                            {%endif%}
+                        
+                    </div>
+                </div>
+                <div class="mz-seprator item_{{item.variationProductCode}}"></div>
+                {%endfor%}
+            </div>
+            
+        </div>
+        <div class="mz-add-to-bag-div">
+            <button class="addtobagall-btn" data-mz-action="addAllItemToCart">{{labels.addToBagAll}}</button>
+        </div>
+        {%endif%}
+     
+    
+    {% else %}
+    <div class="wishlist-no-item-container">
+        <div class="wishlist-header">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-wish-close-icon"  loading="lazy">
+        </div>
+
+        <div class="wishlist-empty-message-div">
+           <div class="no-saved-items"> {{labels.wishlistMessage}}</div>
+           <div class="saved-text-div">{{labels.wishlistEmptyMessage|string_format(siteContext.cdnPrefix,'/resources/images/icons/svg/heart.svg')|safe}}</div>
+        </div>
+        <div class="viev-my-bag-div">
+            <a href="{{siteContext.siteSubdirectory}}" class="view-bag-button">{{labels.wishlistViewBag}}</a>
+        </div>
+    </div>
+    {%endif%}
+    <div class="wishlist-no-item-container wishlist-no-item-remove hidden">
+        <div class="wishlist-header">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-wish-close-icon"  loading="lazy">
+        </div>
+
+        <div class="wishlist-empty-message-div">
+           <div class="no-saved-items"> {{labels.wishlistMessage}}</div>
+           <div class="saved-text-div">{{labels.wishlistEmptyMessage|string_format(siteContext.cdnPrefix,'/resources/images/icons/svg/heart.svg')|safe}}</div>
+        </div>
+        <div class="viev-my-bag-div">
+            <a href="{{siteContext.siteSubdirectory}}" class="view-bag-button">{{labels.wishlistViewBag}}</a>
+        </div>
+    </div>
+</div>

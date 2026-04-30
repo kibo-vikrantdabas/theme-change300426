@@ -1,0 +1,7 @@
+<div id="entitycode" class="mz-mobile-country-code select-style" style="display:none;">
+    <select {% if themeSettings.isArabicLanguageSite %}dir="ltr" style="text-align:right"{% endif %} data-display="{{labels.country}}" id="countryCode" class="dropdown-toggle" data-mz-value="countryCode" name="countryCode" data-mz-signup-countrycode>
+            {% for d in model %}
+            <option value="+{{d.dialingcode}}">+{{d.dialingcode}}</option>
+             {% endfor %}
+        </select>
+</div>

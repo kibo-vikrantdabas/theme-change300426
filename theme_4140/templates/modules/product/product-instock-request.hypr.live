@@ -1,0 +1,18 @@
+<div class="mz-instock-request">
+
+    <div class="email-notify-text-label">
+        <label for="product-in-stock">{{labels.emailNotifyText}}</label>
+    </div>
+
+    <div>
+
+        <div class="email-text-input-container">
+            <input type="text" data-mz-role="email"  placeholder="{{labels.emailAddress}}" value="{{ user.email }}" class="mz-email-input mz-instock-request-email">
+            <span class="mz-validationmessage-email" data-mz-validationmessage-for="email"></span>
+        </div>
+
+        <button class="product-notifyBtn" data-mz-action="widgetNotifyUserAction" >{{labels.notifyWidgetButton}}</button>
+        
+    </div>
+
+</div>

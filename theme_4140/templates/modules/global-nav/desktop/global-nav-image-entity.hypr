@@ -1,0 +1,36 @@
+<div class="global-flyout-image">
+    <div class="flyout-image-container">
+        {% if model %}
+            {% for entity in model %}
+                {% if entity.categoryCode == categoryCode %}
+                        <div class="flyout-image-box global-image-pane-one">
+                            {% for promoEntity in entity.firstMenuPromo %}
+                                <a href="{{promoEntity.ctaLink}}">
+                                    <img loading="lazy" src="{{promoEntity.imageCDN}}?maxWidth=195&quality=75" width="195" height="195" alt="promo-image" class="mz-menuImage">
+                                </a>
+                                <div class="mz-promoTitle">{{promoEntity.title}}</div>
+                                {% if promoEntity.cta and promoEntity.ctaLink %}
+                                    <div class="mz-promoCTA">
+                                        <a href="{{promoEntity.ctaLink}}">{{promoEntity.cta}}</a>
+                                    </div>
+                                {% endif %} 
+                            {% endfor %}
+                        </div>
+                        <div class="flyout-image-box global-image-pane-two">
+                            {% for promoEntity in entity.secondMenuPromo %}
+                                <a href="{{promoEntity.ctaLink}}">
+                                    <img loading="lazy" src="{{promoEntity.imageCDN}}?maxWidth=195&quality=75" width="195" height="195" alt="promo-image" class="mz-menuImage">
+                                </a>
+                                <div class="mz-promoTitle">{{promoEntity.title}}</div>
+                                {% if promoEntity.cta and promoEntity.ctaLink %}
+                                    <div class="mz-promoCTA"> 
+                                        <a  href="{{promoEntity.ctaLink}}">{{promoEntity.cta}}</a>
+                                    </div>
+                                {% endif %} 
+                            {% endfor %}
+                        </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div> 

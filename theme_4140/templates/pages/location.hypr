@@ -1,0 +1,22 @@
+{% extends "page" %}
+
+{% block head-tag-scripts %}
+    {% parent %}
+    <script src="https://maps.googleapis.com/maps/api/js?key={{themeSettings.googleMapsAPIKey}}" defer></script>
+{% endblock head-tag-scripts %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.localStores %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-locations {% endblock body-tag-classes %}
+
+{% block body-content %}
+
+    {% require_script "pages/location" %}
+    
+    {% preload_json model "product" %} 
+
+    <div class="container" id="store-finder">
+        {% include "modules/location/store-finder" %}
+    </div>
+    {% include "modules/common/signup-email" %}
+{% endblock body-content %}

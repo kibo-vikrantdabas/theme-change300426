@@ -1,0 +1,25 @@
+<form method="post" id="checkoutform" class="mz-checkout-form" name="mz-checkoutform">
+    <div class="login-validation-error-msg"></div>
+     <div class="mz-login-form-field">
+          <div class="mz-login-email-div element-div">
+              <div class="mz-l-formfieldgroup-cell">
+                  <label for="email" class="text-label">{{ labels.email }}</label>
+              </div>
+              <div class="mz-l-formfieldgroup-cell">
+                  <input name="email" class="text-input" data-mz-value="email" type="email" placeholder="{{ labels.signInFormemail }}" data-mz-checkout-email />
+              </div>
+          </div>
+          <div class="mz-login-email-valid-div hidden">
+             
+         </div>
+          <div class="mz-login-div">
+              <div class="mz-l-formfieldgroup-cell"></div>
+              <div class="mz-l-formfieldgroup-cell">
+                  <button class="mz-login-button mz-login-page-button mz-checkout-continue" data-mz-action="checkout-submit" >{{ labels.continue }}</button>
+                  <div class="mz-l-formfieldgroup-cell">
+                      <section data-mz-role="popover-message" class="mz-popover-message"></section>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>

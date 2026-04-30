@@ -1,0 +1,8 @@
+{% if not model.isPurchasable %}
+  <p class="mz-productdetail-notpurchasable">
+    {{ labels.notPurchasable }}:
+    {% for message in model.purchasableState.messages %}
+    <span>{{ message.message }}</span>
+    {% endfor %}
+  </p>
+{% endif %}

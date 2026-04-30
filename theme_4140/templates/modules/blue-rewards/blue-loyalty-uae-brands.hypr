@@ -1,0 +1,168 @@
+<div class="blue-rewards-brand-tab">
+    <div class="blue-rewards-brand-names">
+        <div class="blue-rewards-brand-name active" id="blue-rewards-brand-name-uae">UAE</div>
+        <div class="blue-rewards-brand-name" id="blue-rewards-brand-name-ksa">KSA</div>
+        <div class="blue-rewards-brand-name" id="blue-rewards-brand-name-egypt">EGYPT</div>
+        <div class="blue-rewards-brand-name" id="blue-rewards-brand-name-kuwait">KUWAIT</div>
+        <div class="blue-rewards-brand-name" id="blue-rewards-brand-name-bahrain">BAHRAIN</div>
+        <div class="blue-rewards-brand-name" id="blue-rewards-brand-name-oman">OMAN</div>
+        <div class="blue-rewards-brand-name" id="blue-rewards-brand-name-qatar">QATAR</div>
+    </div>
+    <div class="blue-rewards-brand-icons-section">
+        <div class="blue-rewards-brand-icons blue-rewards-brand-name-uae active" id="blue-rewards-brand-icons-uae">
+            {% comment %} <div class="icon-layer" id="layer1"> {% endcomment %}
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/aape-sdr-2159.png" alt="aape-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ace-sdr-2159.png" alt="ace-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/bcbg-sdr-2159.png" alt="bcbg-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/claudiepierlot-sdr-2159.png" alt="claudiepierlot-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/guess-sdr-2159.png" alt="guess-icon" />
+            {% comment %} </div> {% endcomment %}
+            {% comment %} <div class="icon-layer" id="layer2"> {% endcomment %}
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ikea-icon-blue.png" alt="ikea-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kate-spade-sdr-2159.png" alt="kate-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kiabi-sdr-2159.png" alt="kiabi-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/m-s-sdr-2159.png" alt="m-s-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/maje-sdr-2159.png" alt="maje-icon" />
+            {% comment %} </div> {% endcomment %}
+            {% comment %} <div class="icon-layer" id="layer3"> {% endcomment %}
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/sandro-sdr-2159.png" alt="sandro-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ted-baker-sdr-2159.png" alt="ted-baker-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/al-futtaim-watches---jewellery-sdr-2159.png" alt="al-watches-icon" />
+                <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/toysrus-sdr-2159.png" alt="toysrus-icon" />
+            {% comment %} </div>        {% endcomment %}
+        </div>
+        <div class="blue-rewards-brand-icons blue-rewards-brand-name-ksa" id="blue-rewards-brand-icons-ksa">
+                {% comment %} <div class="icon-layer" id="layer1"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/aape-sdr-2159.png" alt="aape-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ace-sdr-2159.png" alt="ace-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/bcbg-sdr-2159.png" alt="bcbg-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/claudiepierlot-sdr-2159.png" alt="claudiepierlot-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/guess-sdr-2159.png" alt="guess-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer2"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ikea-icon-blue.png" alt="ikea-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kate-spade-sdr-2159.png" alt="kate-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kiabi-sdr-2159.png" alt="kiabi-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/m-s-sdr-2159.png" alt="m-s-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/maje-sdr-2159.png" alt="maje-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer3"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/sandro-sdr-2159.png" alt="sandro-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ted-baker-sdr-2159.png" alt="ted-baker-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/al-futtaim-watches---jewellery-sdr-2159.png" alt="al-watches-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/toysrus-sdr-2159.png" alt="toysrus-icon" />
+                {% comment %} </div>        {% endcomment %}
+           
+        </div>
+        <div class="blue-rewards-brand-icons blue-rewards-brand-name-egypt" id="blue-rewards-brand-icons-egypt">
+                {% comment %} <div class="icon-layer" id="layer1"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/aape-sdr-2159.png" alt="aape-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ace-sdr-2159.png" alt="ace-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/bcbg-sdr-2159.png" alt="bcbg-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/claudiepierlot-sdr-2159.png" alt="claudiepierlot-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/guess-sdr-2159.png" alt="guess-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer2"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ikea-icon-blue.png" alt="ikea-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kate-spade-sdr-2159.png" alt="kate-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kiabi-sdr-2159.png" alt="kiabi-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/m-s-sdr-2159.png" alt="m-s-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/maje-sdr-2159.png" alt="maje-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer3"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/sandro-sdr-2159.png" alt="sandro-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ted-baker-sdr-2159.png" alt="ted-baker-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/al-futtaim-watches---jewellery-sdr-2159.png" alt="al-watches-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/toysrus-sdr-2159.png" alt="toysrus-icon" />
+                {% comment %} </div>                  {% endcomment %}
+        </div>
+        <div class="blue-rewards-brand-icons blue-rewards-brand-name-kuwait" id="blue-rewards-brand-icons-kuwait">
+                {% comment %} <div class="icon-layer" id="layer1"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/aape-sdr-2159.png" alt="aape-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ace-sdr-2159.png" alt="ace-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/bcbg-sdr-2159.png" alt="bcbg-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/claudiepierlot-sdr-2159.png" alt="claudiepierlot-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/guess-sdr-2159.png" alt="guess-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer2"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ikea-icon-blue.png" alt="ikea-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kate-spade-sdr-2159.png" alt="kate-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kiabi-sdr-2159.png" alt="kiabi-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/m-s-sdr-2159.png" alt="m-s-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/maje-sdr-2159.png" alt="maje-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer3"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/sandro-sdr-2159.png" alt="sandro-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ted-baker-sdr-2159.png" alt="ted-baker-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/al-futtaim-watches---jewellery-sdr-2159.png" alt="al-watches-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/toysrus-sdr-2159.png" alt="toysrus-icon" />
+                {% comment %} </div>        {% endcomment %}
+        </div>
+        <div class="blue-rewards-brand-icons blue-rewards-brand-name-bahrain" id="blue-rewards-brand-icons-bahrain">
+                {% comment %} <div class="icon-layer" id="layer1"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/aape-sdr-2159.png" alt="aape-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ace-sdr-2159.png" alt="ace-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/bcbg-sdr-2159.png" alt="bcbg-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/claudiepierlot-sdr-2159.png" alt="claudiepierlot-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/guess-sdr-2159.png" alt="guess-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer2"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ikea-icon-blue.png" alt="ikea-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kate-spade-sdr-2159.png" alt="kate-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kiabi-sdr-2159.png" alt="kiabi-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/m-s-sdr-2159.png" alt="m-s-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/maje-sdr-2159.png" alt="maje-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer3"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/sandro-sdr-2159.png" alt="sandro-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ted-baker-sdr-2159.png" alt="ted-baker-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/al-futtaim-watches---jewellery-sdr-2159.png" alt="al-watches-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/toysrus-sdr-2159.png" alt="toysrus-icon" />
+                {% comment %} </div>        {% endcomment %}
+        </div>
+        <div class="blue-rewards-brand-icons blue-rewards-brand-name-oman" id="blue-rewards-brand-icons-oman">
+                {% comment %} <div class="icon-layer" id="layer1"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/aape-sdr-2159.png" alt="aape-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ace-sdr-2159.png" alt="ace-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/bcbg-sdr-2159.png" alt="bcbg-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/claudiepierlot-sdr-2159.png" alt="claudiepierlot-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/guess-sdr-2159.png" alt="guess-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer2"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ikea-icon-blue.png" alt="ikea-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kate-spade-sdr-2159.png" alt="kate-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kiabi-sdr-2159.png" alt="kiabi-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/m-s-sdr-2159.png" alt="m-s-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/maje-sdr-2159.png" alt="maje-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer3"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/sandro-sdr-2159.png" alt="sandro-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ted-baker-sdr-2159.png" alt="ted-baker-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/al-futtaim-watches---jewellery-sdr-2159.png" alt="al-watches-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/toysrus-sdr-2159.png" alt="toysrus-icon" />
+                {% comment %} </div>        {% endcomment %}
+        </div>
+        <div class="blue-rewards-brand-icons blue-rewards-brand-name-qatar" id="blue-rewards-brand-icons-qatar">
+                {% comment %} <div class="icon-layer" id="layer1"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/aape-sdr-2159.png" alt="aape-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ace-sdr-2159.png" alt="ace-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/bcbg-sdr-2159.png" alt="bcbg-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/claudiepierlot-sdr-2159.png" alt="claudiepierlot-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/guess-sdr-2159.png" alt="guess-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer2"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ikea-icon-blue.png" alt="ikea-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kate-spade-sdr-2159.png" alt="kate-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/kiabi-sdr-2159.png" alt="kiabi-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/m-s-sdr-2159.png" alt="m-s-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/maje-sdr-2159.png" alt="maje-icon" />
+                {% comment %} </div> {% endcomment %}
+                {% comment %} <div class="icon-layer" id="layer3"> {% endcomment %}
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/sandro-sdr-2159.png" alt="sandro-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/ted-baker-sdr-2159.png" alt="ted-baker-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/al-futtaim-watches---jewellery-sdr-2159.png" alt="al-watches-icon" />
+                    <img src="{{labels.imagePathUrl}}/icons/blue-brand-icons/toysrus-sdr-2159.png" alt="toysrus-icon" />
+                {% comment %} </div>        {% endcomment %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,295 @@
+﻿<div class="mz-productoptions">
+    {% comment %} {% for colorVariant in model.salesGroup %}
+    <h1>{{ colorVariant.salePrice }}</h1>
+    {% endfor %} {% endcomment %}
+    <div class="mz-colorDivider"></div>
+    {% with model.options|findwhere("attributeFQN", "tenant~size1") as size1 %}
+        {% with model.options|findwhere("attributeFQN", "tenant~size2") as size2 %}
+            {% with model.availableInventory as stockVal%}
+                {% for option in model.options %}
+                <div class="mz-productoptions-optioncontainer {% if option.attributeFQN|lower == 'tenant~colour' or option.attributeFQN|lower == 'tenant~color' %}option-color-div{% endif %} {% if size2 and option.attributeFQN|lower == 'tenant~size1' %}hidden{% endif %} {% if option.attributeFQN|lower == 'tenant~size1' or option.attributeFQN|lower == 'tenant~size2' %}option-size-div{% endif %}">
+                    {% with option.values|findwhere("isSelected", true) as selectedAttr %} 
+                        <div class="product-details-block">
+                            {% if option.attributeFQN|lower == 'tenant~size1' or option.attributeFQN|lower == 'tenant~size2' %}
+                                {% if model.sizeGuideLink and model.sizeGuideLink != 'size-guide'%}
+                                    {% comment %} <span class="afg-size-chart-link">
+                                        <a href="{{siteContext.siteSubdirectory}}/{{model.sizeGuideLink}}" class='mz-size-guide-link' onclick="window.globalEventBus.emit('dataLayerEvent', {'event':'eventTracker','custom_event':'pdp page','event_params': {'event_act':'see size chart','event_lbl': '{{model.content.productFullDescription}}|{{model.productCode}}'}})"><span class="chart-label">{{labels.sizeChart}}</span></a>
+                                    </span> {% endcomment %}
+                                {% endif %}
+                            {% endif %}
+                            <div class="product-attribute-details">
+                                <div class="afg-selected-size-field">
+                                
+                                {% if option.attributeFQN|lower == 'tenant~colour' or option.attributeFQN|lower == 'tenant~color' %}
+                                <div class="mz-select-size-notification mz-select-color-notification-for-wishlist hidden">{{labels.selectColor}}</div>
+                                    <label class="mz-productoptions-optionlabel label-font-style">{{ labels.colorOptionLabel|title }} </label> 
+                                     {% if selectedAttr and not model.colorOutStock%}
+                                        <span class="selectedProductAttribute"> {% if selectedAttr.stringValue %}{{ selectedAttr.stringValue|title }} {% else %} {{ selectedAttr.value|title }}{% endif %} {% if (model.inventoryInfo.onlineStockAvailable == 0 and not size1 and model.showOOSDisplay) or (model.hasNoSizes and model.inventoryInfo.onlineStockAvailable == 0 and model.showOOSDisplay)  %}<span class="out-of-stock-message">{{labels.outOfStock|title}} </span> {% endif %}</span>
+                                        {% if stockVal > 0 and stockVal <= themeSettings.quantityPurchaseAlert and not size1 and not size2%}
+                                            <span class="quantity-purchase-alert">{{labels.quantityPurchaseAlert|string_format(stockVal)}}</span>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if model.colorOutStock %}
+                                            <span data-mz-role="out-of-stock-color-validation">{{model.colorOutStock}} - <span class="stock-error">{{labels.outOfStock}}</span></span>
+                                        {% else %}
+                                            <span class="selectedProductAttribute" data-mz-role="color-validation"> {{labels.select_a}} </span>
+                                        {% endif %}
+                                    {% endif %}
+                                {% else%}
+                                   {% comment %} <div class="option-seperator"></div> {% endcomment %}
+                                    {% if size1 and not size2 %}
+                                    
+                                        {% if model.notDoneConfiguring or not model.isPurchasable or not model.supportsInStorePickup %} <div class= "error-msg-popup hidden find-store-popup-error">{{labels.selectSize}} </div> {% endif %}
+                                        {% if option.attributeFQN|lower == 'tenant~size1' %}
+                                        <div class="mz-select-size-notification mz-select-size-notification-for-wishlist hidden">{{labels.selectSize}}</div>
+                                             
+                                            {% if not model.isPurchasable and model.hasClickedCartBtn and not model.isSizeSelected%}
+                                                <div class="mz-select-size-notification" id="checkSizeError">{{labels.selectSize}}</div>
+                                                <label class="mz-productoptions-optionlabel label-font-style">{{ labels.size|title }} </label>
+                                            {% else %}
+                                                    <label class="mz-productoptions-optionlabel label-font-style">{{ labels.size|title }} </label>
+                                                    {% if not pageContext.isMobile %}
+                                                        {% if selectedAttr.stringValue or selectedAttr.value %}
+                                                            <span class="selectedProductAttribute"> {% if selectedAttr.stringValue %} {{selectedAttr.stringValue}} {% else %}  {{selectedAttr.value}}{% endif %} {% if model.inventoryInfo.onlineStockAvailable == 0 and not model.hasNoSizes and model.showOOSDisplay %}<span class="out-of-stock-message">{{labels.outOfStock}}</span>{% endif %}</span>
+                                                            {% if stockVal > 0 and stockVal <= themeSettings.quantityPurchaseAlert %}<span class="quantity-purchase-alert">{{labels.quantityPurchaseAlert|string_format(stockVal)}}</span>{% endif %}
+                                                        {% else %}
+                                                            {% if model.sizeOutStock %}
+                                                                <span data-mz-role="out-of-stock-size-validation">{{model.sizeOutStock}} - <span class="stock-error">{{labels.outOfStock}}</span></span>
+                                                            {% else %}
+                                                                <span class="selectedProductAttribute" data-mz-role="size-validation"> {{labels.select_a}} </span>
+                                                            {% endif %}
+                                                        {% endif %}
+
+                                                        {% else %}
+                                                        {% if stockVal > 0 and stockVal <= themeSettings.quantityPurchaseAlert %}<span class="quantity-purchase-alert">{{labels.quantityPurchaseAlert|string_format(stockVal)}}</span>{% endif %}
+
+                                                    {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% else %}
+                                        {% if model.notDoneConfiguring or not model.isPurchasable or not model.supportsInStorePickup %} <div class= "error-msg-popup hidden find-store-popup-error">{{labels.selectSize}} </div> {% endif %}
+                                        {% if option.attributeFQN|lower == 'tenant~size2' %}
+                                        <div class="mz-select-size-notification mz-select-size-notification-for-wishlist hidden">{{labels.selectSize}}</div>
+                                            {% if not model.isPurchasable and model.hasClickedCartBtn and not model.isSizeSelected%}
+                                                    <div class="mz-select-size-notification" id="checkSizeError">{{labels.selectSize}}</div>
+                                                    <label class="mz-productoptions-optionlabel label-font-style size-label">{{ labels.size|title }} </label> 
+                                            {% else %}
+                                                <label class="mz-productoptions-optionlabel label-font-style size-label">{{ labels.size|title }} </label> 
+                                                    {% if not pageContext.isMobile %}
+                                                        {% if selectedAttr.stringValue or selectedAttr.value %}
+                                                            {% with model.options|findwhere("attributeFQN", "tenant~size1") as size1 %}
+                                                                {% with size1.values|findwhere("isSelected", true) as selectedSize1 %}
+                                                                    <span class="selectedProductAttribute-size"> 
+                                                                        {% if selectedSize1.stringValue %}
+                                                                            {{selectedSize1.stringValue}} / {{ selectedAttr.stringValue }} 
+                                                                            {% else %}
+                                                                                {{selectedSize1.value}} / {{ selectedAttr.value }} 
+                                                                        {% endif %}
+                                                                        {% if model.inventoryInfo.onlineStockAvailable == 0 and model.showOOSDisplay %}<span class="out-of-stock-message">{{labels.outOfStock}}</span>{% endif %}</span>
+                                                                    {% if stockVal > 0 and stockVal <= themeSettings.quantityPurchaseAlert %}<span class="quantity-purchase-alert">{{labels.quantityPurchaseAlert|string_format(stockVal)}}</span>{% endif %}
+                                                                {% endwith %}
+                                                            {% endwith %}
+                                                        {% else %}
+                                                            {% if model.sizeOutStock %}
+                                                                <span data-mz-role="out-of-stock-size-validation">{{model.sizeOutStock}} - <span class="stock-error">{{labels.outOfStock}}</span></span>
+                                                            {% else %}
+                                                                <span class="selectedProductAttribute-size" data-mz-role="size-validation"> {{labels.select_a}} </span>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                        {% else %}
+                                                        {% if stockVal > 0 and stockVal <= themeSettings.quantityPurchaseAlert %}<span class="quantity-purchase-alert">{{labels.quantityPurchaseAlert|string_format(stockVal)}}</span>{% endif %}
+                                                    {% endif %}
+                                            {% endif %}
+                                        {% endif %}                              
+                                    {% endif %}
+                                {% endif%}
+                                </div>
+                                {% if pageContext.isDesktop %}
+                                    {% if option.attributeFQN|lower == 'tenant~size1' %}
+                                        <ul class="option-select-size-dropdown">
+                                            {% if selectedAttr.stringValue or selectedAttr.value %}
+                                                <li class='productSizeOption'><span class="selectedProductAttribute"> {% if selectedAttr.stringValue %} {{selectedAttr.stringValue}} {% else %} {{selectedAttr.value}} {% endif %}{% if model.inventoryInfo.onlineStockAvailable == 0 and not model.hasNoSizes and model.showOOSDisplay %}<span class="out-of-stock-message">{{labels.outOfStock}}</span>{% endif %}</span><img src="{{siteContext.cdnPrefix}}/resources/images/icons/arrow-down.png" alt="down-cart-icon" class="mz-down-cart-icon"></li>
+                                            {% else %}
+                                                <li class='productSizeOption'>{{labels.selectSize|title}}<img src="{{siteContext.cdnPrefix}}/resources/images/icons/arrow-down.png" alt="down-cart-icon" class="mz-down-cart-icon"></li>
+                                            {%endif%}
+                                        </ul>
+                                    {% endif %}
+                                    {% if option.attributeFQN|lower == 'tenant~size2' %}
+                                        <ul class="option-select-size-dropdown">
+                    
+                                            {% if selectedAttr.stringValue or selectedAttr.value %}
+                                                {% with model.options|findwhere("attributeFQN", "tenant~size1") as size1 %}
+                                                    {% with size1.values|findwhere("isSelected", true) as selectedSize1 %}
+                                                        {% if model.isSizeSelected %}
+                                                            <li><span class="selectedProductAttribute-size"> {% if selectedSize1.stringValue %} {{selectedSize1.stringValue}} / {{ selectedAttr.stringValue }} {% else %} {{selectedSize1.value}} / {{ selectedAttr.value }} {% endif %} {% if model.inventoryInfo.onlineStockAvailable == 0 and model.showOOSDisplay %}<span class="out-of-stock-message">{{labels.outOfStock}}</span>{% endif %}</span><img src="{{siteContext.cdnPrefix}}/resources/images/icons/arrow-down.png" alt="down-cart-icon" class="mz-down-cart-icon"></li>
+                                                        {% else %}
+                                                             <li>{{labels.selectSize|title}} <img src="{{siteContext.cdnPrefix}}/resources/images/icons/arrow-down.png" alt="down-cart-icon" class="mz-down-cart-icon"></li>
+                                                        {% endif %}
+                                                    {% endwith %}
+                                                {% endwith %}
+                                            {% else %}
+                                                <li>{{labels.selectSize|title}} <img src="{{siteContext.cdnPrefix}}/resources/images/icons/arrow-down.png" alt="down-cart-icon" class="mz-down-cart-icon"></li>
+                                            {%endif%}
+                                        </ul>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                            
+                            {% if option.attributeFQN|lower == 'tenant~size' %}
+                            <div class="size-guide-block">
+                                <a class="select-size-link" data-mz-action="openProductSizeGuide">{{labels.sizeGuide}}</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% endwith %}
+                
+                    <div class="mz-productoptions-valuecontainer">
+                        {% if option.attributeDetail.inputType == "List" %}
+                            {% if option.attributeFQN|lower == 'tenant~colour' or option.attributeFQN|lower == 'tenant~color' %}
+                                {% if pageContext.pageType == "product" %}
+                                    <div class="mz-colour-swatches-container">
+                                        {% for value in option.values %}
+                                            {% with value.value|split("_")|first as swatchCode%}  
+                                            <div class="mz-swatch-img-sale-container">
+                                                <div class="mz-swatch-img-container {% if value.isSelected %} selected-swatch {% endif %}">
+                                                    {% with labels.swatchFile|string_format(model.productCode, swatchCode) as swatchFile %}
+                                                        <div data-mz-product-option="{{ option.attributeFQN }}" data-value="{{value.value}}">
+                                                            <img class="mz-colour-swatch-img preserve-{{value.attributeValueId}}" src="{% make_url "cdn" swatchFile %}" onerror="this.onerror=null;this.src='{{siteContext.cdnPrefix}}{{labels.svgIconPath}}NoSwatch.svg'" alt="{{value.value|split("_"|last)}}"   loading="lazy"/>
+                                                        </div>
+                                                    {% endwith %}                               
+                                                </div>
+                                                {% if model.isSizeSelected and model.currentColor == value.value %}
+                                                    {% if model.priceRange.lower.onSale and model.priceRange.upper.onSale %}
+                                                        <div class="mz-color-swatch-sale">{{themeSettings.saleLabel}}</div>
+                                                    {% else %}
+                                                        {% if model.price.onSale and model.currentColor == value.value %}
+                                                            <div class="mz-color-swatch-sale">{{themeSettings.saleLabel}}</div>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% else %}
+                                                        {% with model.optionColorBadge|findwhere('color',value.value) as colorBadge %}
+                                                            {% if colorBadge.isSale %}
+                                                                <div class="mz-color-swatch-sale">{{themeSettings.saleLabel}} </div>
+                                                            {% endif %}
+                                                        {% endwith %}
+                                                        
+                                                {% endif %}
+                                            </div>
+                                            {% endwith %}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {% if pageContext.pageType == "category" or pageContext.pageType == "search" %} 
+                                        <ul class="product-color-swatches product-color-swatches-category size-range color-range-ul category-color-range-ul">
+                                            {% for value in option.values %}
+                                                {% with model.colorSwatches|findwhere('color',value.value) as swatchColor %}
+                                                    <li data-mz-product-option="{{ option.attributeFQN }}"  class="color-swatch category-color-{{value.value}} color-{{value.value}}{% if value.isSelected and not model.colorOutStock %} active{% endif %} {% if value.isSelected and swatchColor.isDefault  %} active {% endif %} {% if not value.isEnabled %} disabled{% endif %}{% if model.colorOutStock == value.stringValue or not value.isEnabled %} stockerror{% endif %} {% if model.colorOutStock == value.stringValue %} active{% endif %}" data-value="{{value.value}}" data-mz-stringvalue="{{value.stringValue}}" data-mz-productcode="{{model.productCode}}" data-mz-colorvalue="{{value.value}}" id="category-color-{{value.value}}-{{model.productCode}}" title="{{value.stringValue}}" style="background-image:url({{swatchColor.swatchImageUrl}});background-color:unset;">
+                                                        <a href="javascript:void(0);" class="size-swatches-container">
+                                                        </a>
+                                                    </li>
+                                                {% endwith %}
+                                            {% endfor %}
+                                        </ul> 
+                                    {% else %}
+                                            {% if model.salesGroup.isOneVariant %}
+                                                <ul class="product-color-swatches size-range color-range-ul">
+                                                    {% for value in option.values %}
+                                                        {% with model.colorSwatches|findwhere('color',value.value) as swatchColor %}
+                                                            <li data-mz-product-option="{{ option.attributeFQN }}"  class="color-swatch  color-{{value.value}}{% if value.isSelected and not model.colorOutStock %} active {% endif %} {% if value.isSelected and swatchColor.isDefault  %} active {% endif %} {% if not value.isEnabled %} disabled{% endif %}{% if model.colorOutStock == value.stringValue or not value.isEnabled %} stockerror{% endif %} {% if model.colorOutStock == value.stringValue %} active{% endif %}" data-value="{{value.value}}" data-mz-stringvalue="{{value.stringValue}}" data-mz-productcode="{{model.productCode}}" data-mz-colorvalue="{{value.value}}" id="color-{{value.value}}-{{model.productCode}}" title="{{value.stringValue}}" style="background-image:url({{swatchColor.swatchImageUrl}});background-color:unset;">
+                                                                <a href="javascript:void(0);" class="size-swatches-container">
+                                                                </a>
+                                                            </li>
+                                                        {% endwith %}
+                                                    {% endfor %}
+                                                </ul> 
+                                            {% else %}
+                                                {% for colorVariant in model.salesGroup.body %}
+                                                    <ul class="product-color-swatches size-range color-range-ul">
+                                                    
+                                                    {% if model.hasPriceRange %}
+                                                        {% if model.priceRange.upper.price == colorVariant.salePrice %}
+                                                        <li class="mz-li-no-color">
+                                                            <p class="mz-price-upper-color">{{colorVariant.salePrice | currency}}</p>
+                                                        </li>
+                                                        {% else %}
+                                                        <li class="mz-li-no-color">
+                                                            <p class="mz-price-lower-color">{{colorVariant.salePrice | currency}}</p>
+                                                        </li>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if  model.price.onSale %}
+                                                            <li class="mz-li-no-color">
+                                                                <p class="mz-price-lower-color">{{colorVariant.salePrice | currency}}</p>
+                                                            </li>
+                                                        {% else %}
+                                                            {% if model.priceRange.upper.price == colorVariant.salePrice %}
+                                                                <li class="mz-li-no-color">
+                                                                    <p class="mz-price-upper-color">{{colorVariant.salePrice | currency}}</p>
+                                                                </li>
+                                                            {% else %}
+                                                                <li class="mz-li-no-color">
+                                                                    <p class="mz-price-lower-color">{{colorVariant.salePrice | currency}}</p>
+                                                                </li>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                        {% for value in colorVariant.colorVariation %}
+                                                            {% for optValue in option.values %}
+                                                                {% if optValue.value == value.value %} 
+                                                                    {% with model.colorSwatches|findwhere('color',value.value) as swatchColor %} 
+                                                                        <li data-mz-product-option="{{ option.attributeFQN }}"  class="color-swatch  color-{{optValue.value}}{% if optValue.isSelected and not model.colorOutStock %} active{% endif %} {% if value.isSelected and swatchColor.isDefault  %} active {% endif %} {% if not optValue.isEnabled %} disabled{% endif %}{% if model.colorOutStock == optValue.stringValue or not optValue.isEnabled %} stockerror{% endif %} {% if model.colorOutStock == optValue.stringValue %} active{% endif %}" data-value="{{optValue.value}}" data-mz-stringvalue="{{optValue.stringValue}}" data-mz-productcode="{{model.productCode}}" data-mz-colorvalue="{{value.value}}" id="color-{{value.value}}-{{model.productCode}}" title="{{optValue.stringValue}}" style="background-image:url({{swatchColor.swatchImageUrl}});background-color:unset;">
+                                                                            <a href="javascript:void(0);" class="size-swatches-container">    
+                                                                            </a>
+                                                                        </li> 
+                                                                    {% endwith %}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endfor %}
+                                            {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                {% if pageContext.isMobile %} 
+                                    <label class="mz-signleSizeLable label-font-style">{{ labels.size|title }} </label> 
+                                    {% include "modules/product/product-option-sizes-mobile" with size1=size1 size2=size2 %}       
+                                 {% else %}
+                                    {% include "modules/product/product-option-sizes-desktop" with size1=size1 size2=size2%}
+                                {% endif %} 
+                            {% endif %}       
+                        {% else %}
+                            {% if option.attributeDetail.inputType == "YesNo" %}
+                                <input class="mz-productoptions-option" type="checkbox" {% if option.shopperEnteredValue %}checked="checked"{% endif %} data-mz-product-option="{{ option.attributeFQN }}" />
+                            {% endif %}
+                            {% if option.attributeDetail.inputType == "TextBox" %}
+                                {% if option.attributeDetail.dataType == "Number" %}
+                                    <input class="mz-productoptions-option" type="number" min="{{ option.attributeDetail.validation.minNumericValue }}" max="{{ option.attributeDetail.validation.maxNumericValue }}" value="{{ option.shopperEnteredValue }}" data-mz-product-option="{{ option.attributeFQN }}" data-mz-focus-bookmark="{{ option.attributeFQN }}">
+                                {% else %}
+                                    <input class="mz-productoptions-option" type="text" value="{{ option.shopperEnteredValue }}" data-mz-product-option="{{ option.attributeFQN }}" data-mz-focus-bookmark="{{ option.attributeFQN }}">
+                                {% endif %}
+                            {% endif %}
+                            {% if option.attributeDetail.inputType == "TextArea" %}
+                                <textarea class="mz-productoptions-option" data-mz-product-option="{{ option.attributeFQN }}" data-mz-focus-bookmark="{{ option.attributeFQN }}">{{ option.shopperEnteredValue }}</textarea>
+                            {% endif %}
+                            {% if option.attributeDetail.inputType == "Date" %}
+                                <input type="text" data-mz-is-datepicker data-mz-focus-bookmark="{{ option.attributeFQN }}" data-mz-product-option="{{ option.attributeFQN }}" class="mz-productoptions-option" style="color:transparent" value="{{ option.shopperEnteredValue }}" data-format="mm/dd/yy" data-max="{{option.maxValue}}" data-min="{{ option.minValue }}">
+                            {% endif %}
+                            {% if option.values %}
+                            {% for value in option.values %}
+                                {% if forloop.counter0 == 0 and value.deltaPrice > 0 %}
+                                ({{ value.deltaPrice|currency }} {{ labels.more }})
+                                {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% if option.attributeFQN|lower == 'tenant~colour' or option.attributeFQN|lower == 'tenant~color' %} 
+                <div class="option-seperator-full" ></div>
+                {% endif %}
+                {% endfor %}
+            {% endwith %}
+        {% endwith %}
+    {% endwith %}
+</div>

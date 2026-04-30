@@ -1,0 +1,23 @@
+﻿<div class="filter-dropdown filter-sort-by">
+<label class="mz-pagingcontrols-pagesort-label">
+  <span class="mz-paging-sorttitle">{{ labels.sortBy }}</span>
+  <!-- {{ model.currentSort }}-->
+</label>
+  <select data-mz-value="sortBy" class="mz-pagingcontrols-pagesort-dropdown custom-select" autocomplete="off">
+      {% block sort-types %}
+      {% comment %} Default act as Newarrival {% endcomment %}
+     
+      {% comment %} <option data-mz-url="{% make_url "sorting" model with sortBy='tenant~newarrival desc' %}" value="{{ 'tenant~newarrival desc' }}"{% if model.currentSort == 'tenant~newarrival desc' %} selected="selected"{% endif %}>{{ labels.sortByNewArrival }}</option> {% endcomment %}
+      {% comment %} <option data-mz-url="{% make_url "sorting" model with sortBy='tenant~recommend desc' %}" value="{{ 'tenant~recommend desc' }}"{% if model.currentSort == 'tenant~recommend desc' or model.currentSort == '' %} selected="selected"{% endif %}>{{ labels.sortByRecommended }}</option> {% endcomment %}
+      <option data-mz-url="{% make_url "sorting" model with sortBy='' %}" value="{{ '' }}"{% if model.currentSort == '' %} selected="selected"{% endif %}>{{ labels.sortByRecommended }}</option>
+       <option data-mz-url="{% make_url "sorting" model with sortBy='createDate desc' %}" value="{{ 'createDate desc' }}"{% if model.currentSort == 'createDate desc'  %} selected="selected"{% endif %}>{{ labels.sortByNewArrival }}</option>
+      <option data-mz-url="{% make_url "sorting" model with sortBy='price desc' %}" value="{{ 'price desc' }}"{% if model.currentSort == 'price desc' %} selected="selected"{% endif %}>{{ labels.sortByPriceDesc }}</option>
+      <option data-mz-url="{% make_url "sorting" model with sortBy='price asc' %}" value="{{ 'price asc' }}"{% if model.currentSort == 'price asc' %} selected="selected"{% endif %}>{{ labels.sortByPriceAsc }}</option>
+      {% comment %} {% for sort in model.sorts %}
+      {% with sort.value as sortValue %}
+      <option data-mz-url="{% make_url "sorting" model with sortBy=sortValue %}" value="{{ sortValue }}"{% if model.currentSort == sortValue %} selected="selected"{% endif %}>{{ sort.text }}</option>
+      {% endwith %}
+      {% endfor %} {% endcomment %}
+      {% endblock sort-types %}
+  </select>
+</div>

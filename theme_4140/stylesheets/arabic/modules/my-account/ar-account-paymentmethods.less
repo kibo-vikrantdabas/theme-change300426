@@ -1,0 +1,1288 @@
+.mz-accountpaymentmethods {
+    .mz-contactselector .mz-contactselector-contact {
+        display: block;
+        font-size: 16px;
+        color: @blackColor;
+        min-height: auto;
+        width: 100%;
+        float: none;
+        &.mz-contactselector-new {
+            & > span {
+                display: inline-block;
+               &.mz-contactselector-summarywrapper {
+                   margin-top: 15px;
+               }
+            }
+        }
+    }
+
+    .mz-paymentmethod {
+        position: relative;
+        width: 100%;
+        .clearfix();
+    }
+
+    .mz-accountpaymentmethods-form {
+        width: auto;
+        background: @white;
+        @media @tabletAndMobileScreens {
+            padding: 15px;
+        }
+        
+        margin: 0;
+        .mz-payment-credit-card-defaultflag-row label {
+            display: inline;
+        }
+    }
+
+    .mz-creditcard-billingaddresses {
+        .mz-l-formfieldgroup-cell {
+            label span {
+                vertical-align: top;
+            }
+        }
+    }
+
+    .mz-l-formfieldgroup-cell {
+        vertical-align: top;
+        padding-bottom: 0;
+        @media @mobileScreens {
+            padding: 0;
+        }
+        label {
+            text-align: right;
+            @media @mobileScreens {
+                font-size: @fontSize;
+            }
+            @media @tabletAndDesktopScreens {
+                font-size: @fontSizeLarger;
+            }
+            font-weight: 600;
+            color: @lightBlack;
+            float: none;
+        }
+    }
+    .mz-l-formfieldgroup {
+        display: block;
+    }
+    /* address summary */
+    .credit-step-two {
+        .mz-creditcard-billingaddresses {
+            display: block;
+            .mz-l-formfieldgroup-cell {
+                display: block;
+                padding: 0;
+            }
+        }
+        .mz-l-formfieldgroup-cell.cell-label {
+            white-space: nowrap;
+            width: 40%;
+            line-height: 21px;
+        }
+        .mz-l-formfieldgroup-cell.cell-data {
+            width: 50%;
+            @media(min-width:992px){
+                width:60%;
+            }
+            input{
+                @media(min-width:992px){
+                    min-width:225px;
+                }
+            }
+        }
+        .delivery-address-type-field input, .delivery-address-type-field label {
+            min-width: auto !important;
+        }
+        .delivery-address-type-field {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+        .delivery-address-type-section {
+            margin-left: 0px;
+            @media(min-width:992px){
+                width: 30% !important;
+            }
+            .address-type-input {
+                margin-left: 0px !important;
+            }
+            
+        }
+        .mz-contactselector{
+            margin: 0;            
+        }
+    }
+    .savedcards-wrapper {
+        .title {
+            display: flex;
+            align-items: center;
+            img {
+                position: static;
+                width: 60px;
+                margin-left: -9px;
+            }
+        }
+    }
+}
+/* Firefox */
+.mz-accountpaymentmethods-list, .mz-accountaddressbook-list {
+   @media @tabletAndDesktopScreens {
+       display: flex;
+       flex-wrap: wrap;
+   }
+   @media @mobileScreens {
+    margin-top: 20px;
+    }
+    @media @tabletAndDesktopScreens {
+        margin: 30px -10px 20px -10px;
+    }
+   .cards-list{
+       display: flex;
+       margin-bottom: 20px;
+       
+       @media @mobileScreens {
+           width: 100%;
+           
+       }
+       @media @tabletAndDesktopScreens {
+           padding: 0 10px;
+       }
+       @media @tabletScreens {
+           width: 50%;
+       }    
+   }
+}
+
+.credit-step-two, .myacc-address-list {
+    display: none;
+}
+.show-card-error-msg.mz-messagebar{
+    ul{
+        margin: 0;
+        background-position: 10px 5px;
+        li{
+            font-size: @fontSize;
+            font-weight: 700;
+        }
+    }
+}
+.exp-err-msg{
+    display: none;
+}
+.mz-creditcard-back{
+    display: none;
+}
+.myacc-address-list {    
+    font-size: @fontSizeLarger;
+}
+.newAddressFormShow {    
+    visibility: visible;
+    border-top: none!important;
+    padding: 0!important;
+    margin: 0!important;
+    justify-content: space-between;
+    .addressformWrapper {
+        @media (min-width: 768px) {
+            display: flex;
+            justify-content: space-between;
+            column-gap: 49px;
+        }
+    }    
+    .address-formLeft,
+    .address-formRight {
+        flex: 1;
+        @media (min-width: 768px) {
+            width: auto;
+        } 
+        .mz-l-formfieldgroup-row {
+            display: flex;
+            column-gap: 32px;
+            align-items: center;
+        }
+    }
+}
+.myacc-address-top{
+    border-top: 1px solid @grey;
+    padding: 15px 0;
+    max-height: 100%;
+    overflow-y: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    .savedaddress-wrapper{
+        @media @mobileScreens {
+            width: 50%;
+            font-size: @fontSize;
+        }
+        @media @tabletAndDesktopScreens {
+            width: 33%;
+        }
+        margin-bottom: 20px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        display: flex !important;
+    }
+}
+.credit-continue-buttons {
+    border-top: 1px solid @lightWhite;
+    margin-top: 10px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    p {
+        margin: 8px 0;
+        text-transform: capitalize;
+    }
+    @media @tabletAndMobileScreens {
+    button{
+        &.mz-contact-cancel{
+            width: 83px;
+        }
+        &.mz-contact-save{
+            width: 96px;
+        }
+    }
+}  
+}
+
+/* The Modal (background) */
+.custom-modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 150px; /* Location of the box */
+    @media @tabletAndMobileScreens {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.1); /* Black w/ opacity */
+
+    .mz-close-icon {
+        float: right;
+        width: 15px;
+        position: relative;
+        top: -50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+  }
+
+  .credit-continue-buttons {
+      align-items: center;
+      padding-top: 15px;
+      p {
+          margin: 0;
+      }
+  }
+
+  /* Modal Content */
+  .custom-modal-content {
+    margin: auto;
+    border: 1px solid @grey;
+    @media @tabletAndMobileScreens {
+        width: 100%;
+    }
+    @media @desktopScreens {
+        width: 50%;
+    }
+
+    &.address-modal {
+        width: 50%;
+        @media @tabletAndMobileScreens {
+            width: 80%;
+        }
+    }
+  }
+  .custom-modal-header {
+    background: @grey;
+    padding: 20px 15px;
+  }
+  .credit-heading {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted @grey;
+      h2, p {
+          font-weight: 600;
+      }
+      h2 {
+          margin-top: 0;
+          margin-bottom: 10px;
+          font-size: 25px;
+          @media only screen and (min-width: 768px) {
+            font-size: 30px;
+          }
+            color: @grey;
+      }
+      p {
+          margin: 0;
+          color: @lightBlack;
+          font-size: 16px;
+        }
+      border-bottom: 1px solid @grey;
+  }
+
+
+  /* The Close Button */
+  .close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: @black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .pr-20{
+      padding-right: 20px;
+  }
+  .pr-10{
+      padding-right: 10px;
+  }
+  .pointer{
+      cursor: pointer;
+  }
+
+  .mz-accountpaymentmethods-list{
+      .custom-modal{
+          .no-savedcards-wrapper{
+              display: none;
+          }
+      }
+  }
+
+  .account-paymentmethods-body {
+      #account-messages {
+        position: fixed;
+        z-index: 99;
+        width: 29.8%;
+        top: 98px;
+        left: 35.1%;
+        margin: 0 auto;
+        @media (max-width:1024px) {
+            width: 32.8%;
+            left: 33.6%;
+        }
+        @media (max-width:1000px) {
+            width: 29.8%;
+            left: 35.1%;
+        }
+        @media (max-width:768px) {
+            width: 60%;
+            left: 20%;
+        }
+        @media (max-width:500px) {
+            width: 94.2%;
+            left: 3%;
+        }
+        .is-showing.mz-errors {
+            @media @mobileScreens {
+                background-position: 10px 13px;
+                padding: 8.333333333px 8.333333333px 12.5px 40px;
+                background-size: 22px;
+            }
+            .mz-message-item {
+                @media @mobileScreens {
+                    font-size: @fontSize;
+                }
+            }
+        }
+      }
+      #myModal {
+        .custom-modal-content {            
+            @media @mobileScreens {
+                width: 100%;
+            }
+            .next-line{
+                @media (max-width:768px) {
+                    display: block;
+                }
+            }
+            .credit-step-two {
+                .credit-heading {
+                    margin-bottom: 18px;
+                    padding-bottom: 11px;
+                    > h2 {
+                        padding-bottom: 26px;
+                    }
+                }
+                .mz-addressform-address1 {
+                    .mz-l-formfieldgroup-cell.cell-label {
+                        label {
+                            width: 80%;
+                            white-space: break-spaces;
+                            @media(min-width:992px){
+                                width:100%;
+                            }
+                        }
+                    }
+                }
+                .mz-l-formfieldgroup-cell {
+                    input,select {
+                        width: 100%;
+                        height: 30px;
+                        margin-bottom: 20px;
+                        color: @black;
+                    }
+                }
+                .address-formRight,
+                .address-formLeft {
+                    .mz-validationmessage {
+                        margin-bottom: 3px;
+                    }
+                } 
+                select, 
+                input {
+                    border-color: @lightWhite;
+                    outline: none;                    
+                    background-position-y: 2px;
+                } 
+                .credit-continue-buttons {
+                    .is-required {
+                        color: @black;
+                    }
+                    .buttons-wrapper {
+                        flex-direction: row-reverse;
+                        .mz-button.mz-creditcard-save {                            
+                            border-color: #ccc;
+                            color: #000;
+                        }                        
+                        .mz-creditcard-cancel {
+                            height: 30px;
+                            width: 83px;
+                            background-color: #d7d7d7;
+                            border-color: #ccc;
+                            padding-top:5px;
+                            font-weight: bold;
+                            border-radius: 0px !important;
+                            color: @black;
+                        }
+                    }
+                }
+            }
+            &.credit-step-one-width {                
+                @media @mobileScreens {
+                    width: 100%;
+                }
+                .credit-step-one {
+                    .mz-l-formfieldgroup-row {
+                        display: flex!important;                        
+                        .mz-l-formfieldgroup-cell {
+                            .is-required { 
+                                color: @black;
+                            }
+                        }
+                    }
+                    select,
+                    input {
+                        border-color: @lightWhite;
+                        outline: none;                        
+                        margin-bottom: 20px; 
+                        border-radius:0px !important;                        
+                    }
+                    select {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        background: transparent;
+                        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");                        
+                        background-repeat: no-repeat;
+                        background-position-x: 100%;
+                        background-position-y: 3px;
+                        border-radius: 2px;
+                        color: @black;
+                    }
+                }                  
+                .credit-continue-buttons {
+                    .is-required {
+                        color: @black;
+                    }
+                    .buttons-wrapper {
+                        flex-direction: row-reverse;
+                        .mz-button.credit-continue {                            
+                            color: @black;
+                        }                        
+                    }
+                }        
+            }
+        }        
+    }
+    .mz-accountpaymentmethods {
+        margin-bottom: 0!important;
+        @media @mobileScreens {
+            margin-bottom: 10px!important;
+        }        
+        .mz-paymentmethod {
+            .mz-paymentmethod-methoddetails {
+                justify-content: space-between;
+                @media (max-width: 767px) {
+                    justify-content: space-between;
+                }                
+            }            
+            .mz-paymentmethod-cardnumber {
+                margin-top: 0;                
+            }
+        } 
+    }
+}
+
+.account-paymentmethods-body {    
+    .payment-methods-container {
+        .cards-info {
+            display: none;
+            width: 100%;
+            border-bottom: none;
+            padding-bottom: 25px;
+            position: relative;
+            line-height: 24px;
+            font-weight: 600;
+            &::before {
+                content: '';
+                position: absolute;
+                border-bottom: 1px dotted #666666;
+                width: 100%;
+                bottom: 0;
+            }
+        }
+    } 
+    .mz-creditcardform {
+        .mz-payment-credit-card-expiration-row {
+            .cc-expiry {
+                width: 232px;                
+                align-items: center;
+                @media @mobileScreens {
+                    width: 183px;
+                }
+                input {
+                    width: 67px!important;
+                    height: 30px;
+                }
+            }
+        }
+        .credit-heading {
+            border-bottom:1px dotted #666666;
+        }
+    }
+    .mz-accountpaymentmethods {
+        @media (min-width: 501px) {
+            margin-bottom: 0;
+        }
+        .mz-accountpaymentmethods-list {            
+            .no-savedcards-wrapper {
+                p {
+                    color: #333;
+                }
+            }
+        }
+    }
+    .mz-accountpaymentmethods-list,
+    .mz-accountaddressbook-list {
+        @media (min-width: 501px) {
+            margin: 24px -10px 10px -10px; 
+        }        
+    }
+}
+body.pass-section-body{
+    .myacc__breadcrumbs{
+        display: none;
+    }
+}
+#account-messages {
+    position: relative;
+    display: inline-block;
+    height: auto;
+    width: 100%;
+}
+
+@media(max-width:768px){
+    div#page-content{
+     margin-top: 0px !important;
+}
+}
+
+// New Design UI
+.account-paymentmethods-body {
+    input[type="radio"] {
+        width: 18px;
+        height: 18px!important;                                
+        margin: 0 10px 0 0;
+        accent-color: #838772;
+    }
+    .myacc {
+        @media (min-width: 1300px) {
+            width: 1300px;   
+        }  
+        @media (max-width: 1299px) {
+            width: auto;
+        }       
+        @media @mobileScreens {
+            padding: 0 20px;
+        }
+    }
+    #account-paymentmethods {
+        .mz-l-stack-sectiontitle {
+            font-size: 30px!important;
+            font-weight: @fontBold!important;
+            letter-spacing: 0;
+            line-height: 34px;
+            color: @black!important;
+            padding: 0;
+            text-align: center;
+            text-transform: capitalize;
+            @media (min-width: 992px) and (max-width: 1200px) {
+                margin-top: 20px!important;
+            }
+            @media @mobileScreens {
+                font-size: 22px!important;                                
+                line-height: 24px!important;
+                margin-top: 29px!important;
+            }
+        }
+        .mz-accountpaymentmethods-list {
+            justify-content: center;
+            margin: 30px 0 0;
+            column-gap: 20px;
+            @media (min-width: 501px) and (max-width: 992px) {
+                column-gap: 18px;
+            }
+            @media @mobileScreens {
+                margin: 20px 0 0; 
+            }
+            .cards-list {
+                width: 32.3%;
+                padding: 0;
+                @media (min-width: 992px) and (max-width: 1200px) {
+                    width: 37%;
+                }
+                @media (min-width: 501px) and (max-width: 992px) {
+                    width: 48%;
+                }
+                @media @mobileScreens {
+                    width: 100%;
+                }
+            }
+            .no-savedcards-wrapper {
+                padding: 0 61px;
+                background: rgba(223, 236, 226, 0.5);
+                @media @mobileScreens {
+                    padding: 0 28px;
+                }
+                img {
+                    width: 104.71px;
+                }
+            }
+            .savedcards-wrapper {
+                min-height: 296px;
+                border: none;
+                box-shadow: none;
+                .title {
+                    font-size: 22px;
+                    font-weight: @fontBold;
+                    letter-spacing: 0;
+                    line-height: 29px;
+                    margin: 0;
+                    @media @mobileScreens {
+                        font-size: 18px;                                                
+                        line-height: 24px;
+                    }
+                }
+                p {
+                    margin: 10px 0 16px;
+                    font-size: @fontSize;
+                    font-weight: 600;
+                    letter-spacing: 0;
+                    line-height: 20px;
+                    color: @black;
+                }
+                .btn-add-new-card {
+                    background: #BED855;
+                    padding: 9px 0;
+                    width: 223px;
+                    border: none;
+                    font-size: 14px;
+                    font-weight: @fontBold;
+                    letter-spacing: 0;
+                    line-height: 21px;
+                    color: @black;
+                }
+            }
+            .mz-paymentmethod-methoddetails {
+                border: 1px solid rgba(204,204,204,0.5);
+                background-color: @white;
+                @media @mobileScreens {
+                    min-height: auto;
+                }
+                .afg-ms-savedcards-container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    width: 100%;
+                    @media @mobileScreens {
+                        position: relative;
+                    }
+                    .savedcards-container {
+                        padding: 0 30px 0 0px;
+                        flex: 1;
+                        max-width: 70%;
+                        font-size: @fontSize;
+                        font-weight: 600;
+                        letter-spacing: 0;
+                        line-height: 20px;
+                        padding-top: 6px;
+                        @media @mobileScreens {
+                            flex: 1 1 100%;
+                            max-width: 100%;
+                            padding-top: 6px;
+                            padding-bottom: 26px;
+                        }
+                        dd {
+                            color: @black;
+                        }
+                    }
+                    .title {
+                        @media (min-width: 501px) {
+                            font-size: 18px;                        
+                            line-height: 24px;   
+                        }                        
+                    }
+                    .mz-paymentmethod-actions {
+                        flex: 1;
+                        max-width: 30%;
+                        padding: 0;
+                        margin: 0;
+                        display: flex;
+                        column-gap: 13px;
+                        margin-top: 26px;
+                        @media @mobileScreens {
+                            position: absolute;
+                            left: 20px;
+                            margin-top: 26px;
+                        }
+                        a {
+                            font-size: @fontSize;
+                            font-weight: @fontBold;
+                            letter-spacing: 0;
+                            line-height: 21px;
+                            color: @black;
+                            padding: 0; 
+                            background: transparent;
+                            border: none;
+                            margin: 0;
+                        }
+                        .delete-action-link {
+                            &:before {
+                                content: none;
+                            }
+                        }
+                    }
+                    .mz-paymentmethod-cardnumber {
+                        color: @black;
+                    }
+                }
+                .is-primary {
+                    background: #EEF5F0;
+                    padding: 10px 29px 10px 0;
+                    min-height: auto;
+                    img {
+                        width: 20px;
+                        margin-right: auto;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+    .custom-modal {
+        overflow-x: hidden;
+        background: rgba(0,0,0,0.7);
+        padding-top: 0;
+        z-index: 11;
+        @media @mobileScreens {
+            padding: 0!important;
+        }
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .mz-close-icon {
+            float: none;
+            position: absolute;
+            top: 31px;
+            left: 30px;
+            transform: none;
+            filter: invert(1);
+            width: 20px;
+            height: 20px;            
+            @media (min-width: 501px) and (max-width: 992px) {
+                top: 45px;
+            }
+            @media @mobileScreens {
+                width: 16px;
+                height: 16px;
+                top: 19px;
+                left: 20px;
+            }
+        }
+    }
+    #myModal {
+        &::-webkit-scrollbar {
+            @media @mobileScreens {
+                display: none;
+            }
+        }
+        .custom-modal-content {
+            max-width: 858px;
+            width: auto;
+            height: 100%;
+            border: none;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;  
+            align-items: center;    
+            @media (min-width: 992px) and (max-width: 1540px) {
+                padding-top: 80px;
+            } 
+            @media @mobileScreens {
+                align-items: unset; 
+            }          
+            &.credit-step-one-width {
+                flex-flow: wrap column;
+                @media (min-width: 992px) and (max-width: 1540px) {
+                    padding-top: 0;
+                }
+                @media @mobileScreens {
+                    flex-flow: nowrap;
+                    height: auto;
+                }                
+                .mz-payment-credit-card-type-row,
+                .mz-payment-credit-card-number-row {
+                    select,
+                    input {
+                        width: 100%!important;
+                        &::placeholder {
+                            font-weight: 600;
+                        }
+                    }
+                }
+                .mz-payment-credit-card-type-row {
+                    select {
+                        font-weight: 600!important;
+                        color: @black;
+                        &:invalid {
+                            color: #999;
+                        }
+                    }
+                }
+                .mz-l-formfieldgroup-cell {                    
+                    &.cc-expiry {
+                        input {
+                            margin-left: 0;
+                            margin-right: 0;
+                            width: 90px!important;
+                            text-align: left;
+                            margin-right: 8px;                            
+                            @media @mobileScreens {
+                                margin-right: 10px;
+                                margin-bottom: 30px;
+                            }
+                            &::placeholder {
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }                
+            }
+            .mz-accountpaymentmethods-form {
+                position: relative;
+                border: 1px solid #979797;
+                width: 100%;
+                @media @mobileScreens {
+                    border: none;
+                    width: 100%;
+                    border-top: 1px solid #ccc;
+                }
+                .mz-creditcardform {
+                    .credit-heading {
+                        text-align: center;
+                        border-bottom: 1px solid #ccc;
+                        margin-bottom: 26px;
+                        padding-top: 30px;
+                        @media (max-width: 1000px) {
+                            margin-left: -15px;
+                            margin-right: -15px;
+                        }
+                        @media @mobileScreens {
+                            padding-top: 2px;
+                            margin-bottom: 20px;
+                            margin-left: -15px;
+                            margin-right: -15px;
+                        }
+                    }
+                    h2 {
+                        font-size: 22px;
+                        font-weight: @fontBold;
+                        letter-spacing: 0;
+                        line-height: 23px;
+                        color: @black;
+                        padding-bottom: 20px;
+                        @media @mobileScreens {
+                            font-size: 18px;                            
+                            line-height: 24px;
+                            padding-bottom: 11px;
+                        }
+                    }
+                    p {
+                        font-size: @fontSize;
+                        font-weight: 600;
+                        letter-spacing: 0;
+                        line-height: 18px;
+                        color: @black;
+                    }
+                    .afg-credit-forms {
+                        max-width: 758px;
+                        margin: 0 auto;
+                        padding-bottom: 50px;
+                        @media @mobileScreens {
+                            padding-left: 5px;
+                            padding-right: 5px;
+                            padding-bottom: 25px;
+                        }
+                        .afg-ms-fields {
+                            display: flex;
+                            justify-content: space-between;
+                            column-gap: 20px;
+                            @media @mobileScreens {
+                                flex-flow: wrap column;
+                            }
+                            .mz-addressform-address2 {
+                                .mz-l-formfieldgroup-cell {
+                                    @media @mobileScreens {
+                                        flex-flow: wrap column;
+                                    }
+                                }
+                            }
+                            .mz-l-formfieldgroup-cell {
+                                .is-required {
+                                    color: @black;
+                                }
+                            }
+                        }
+                        select {
+                            background-image: url('../resources/images/icons/arrow-down.png');
+                            background-size: 17px;
+                            background-position-x: 5%;
+                            background-position-y: 15px;
+                            background-repeat: no-repeat;
+                        }
+                        input,
+                        select {
+                            height: 40px;
+                            text-align: right;
+                            padding: 10px 15px;
+                            font-weight: @fontBold;
+                            border-radius: 0!important;
+                        }
+                        .mz-l-formfieldgroup-row {
+                            flex-flow: wrap column;
+                            width: 100%;
+                        }
+                        .mz-l-formfieldgroup-cell {
+                            padding: 0;
+                            @media @mobileScreens {
+                                display: flex;
+                                width: 100%;
+                            }
+                            select {
+                                width: 100%;
+                            }
+                            label {
+                                font-size: @fontSize;
+                                font-weight: 600;
+                                letter-spacing: 0;
+                                line-height: 20px;
+                                color: @black;
+                                padding-bottom: 10px;
+                                cursor: default;
+                            }
+                        }
+                        .mz-addressform-phone {
+                            .mobile-phone-with-country-code {
+                                display: flex;
+                                flex-flow: wrap column;
+                                select {
+                                    width: 90px!important;
+                                    background-size: 16px;
+                                    background-position-x: 22%;
+                                    color: @black;
+                                    direction: rtl;
+                                    @media @mobileScreens {
+                                        width: 37%!important;
+                                    }
+                                }
+                            }
+                            .afg-phone-no {
+                                display: flex;
+                                column-gap: 10px;
+                            }
+                        }
+                        .mz-addressform-city {
+                            select {
+                                color: @black;
+                                border-color: #ccc!important;
+                                &:invalid {
+                                    color: #999;
+                                    font-weight: 600;
+                                }
+                            }
+                        }                        
+                    }
+                    .credit-continue-buttons {
+                        padding-top: 0;
+                        border: none;
+                        margin-top: 0;
+                        p {
+                            display: none;
+                        }
+                        .mz-creditcard-cancel {
+                            display: none;
+                        }
+                        .mz-button {
+                            width: 180px;
+                            padding: 10px 0!important;
+                            border: none;
+                            font-size: @fontSize;
+                            font-weight: @fontBold;
+                            letter-spacing: 0;
+                            line-height: 21px;
+                            background-color: #BED855;
+                            margin: 0;
+                            @media @mobileScreens {
+                                width: 100%;
+                            }
+                        }
+                        .buttons-wrapper {
+                            @media @mobileScreens {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+                .credit-step-two {
+                    .myacc-address-top {
+                        flex-direction: column;
+                        .mz-l-formfieldgroup-cell {
+                            label {
+                                text-transform: capitalize;
+                            }
+                        }
+                        .savedaddress-wrapper {                            
+                            input {
+                                height: auto;
+                                margin: 0;
+                            }
+                            .mz-addresssummary {  
+                                font-size: @fontSize;
+                                font-weight: 600;
+                                letter-spacing: 0;
+                                line-height: 20px;  
+                                color: @black;                            
+                            }
+                        }
+                        .mz-addressform-address1 {
+                            label {
+                                text-transform: none;
+                            }
+                            input {
+                                @media (min-width: 501px) {
+                                    margin: 0;
+                                }
+                            }
+                        }
+                        .mz-addressform-address2 {
+                            input {
+                                @media (min-width: 501px) {
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
+                    .myacc-address-list {
+                        flex-direction: unset;
+                        border-color: #ccc;
+                        .savedaddress-wrapper {
+                            .mz-contactselector-inputwrapper {
+                                padding-top: 2px;
+                            }
+                        }
+                    }
+                    .addressformWrapper {
+                        flex-flow: wrap column;
+                        .mz-addressform-addresstype {
+                            .delivery-address-type-field {
+                                column-gap: 8px;
+                                align-items: center;
+                                input {
+                                    margin: 0!important;
+                                }
+                                label {
+                                    padding: 0;
+                                    @media @mobileScreens {
+                                        margin: 0!important; 
+                                    }
+                                }
+                            }
+                            .delivery-address-type-section {
+                                padding-bottom: 20px;
+                                width: 100%!important;
+                                @media @mobileScreens {
+                                    padding-bottom: 17px;
+                                }
+                            }
+                        }
+                    }
+                    .mz-addressform-country {
+                        select {
+                            background-color: #f5f5f5;
+                            background-image: none;
+                        }
+                    }
+                    .mz-addressform-othersInfo,
+                    .mz-addressform-postaltown {
+                        input {
+                            width: 48.7%;
+                            @media @mobileScreens {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .mz-l-formfieldgroup-cell {
+                        &.cell-label,
+                        &.cell-data {
+                            width: 100%;
+                        }
+                    }
+                    .mz-addressform-phone {
+                        .cell-data {
+                            input {
+                                width: 35.3%!important;                            
+                                @media @mobileScreens {
+                                    width: 100%!important;
+                                }
+                                &::placeholder {
+                                    font-weight: 600;
+                                }
+                            }
+                        } 
+                    }
+                    .mz-payment-credit-card-defaultflag-row {
+                        display: flex;       
+                        margin-bottom: 20px;                 
+                        .mz-l-formfieldgroup-cell {
+                            display: flex;
+                            column-gap: 12px;
+                            position: relative;
+                            input {
+                                width: 20px;
+                                height: 20px;
+                                margin: 0;
+                                opacity: 0;
+                                cursor: pointer;
+                                &:checked {
+                                    ~ .chkmark {
+                                        background-color: #005640;
+                                        border-color: #005640;
+                                        &::after {
+                                            display: block;
+                                        }
+                                    }
+                                }
+                            }
+                            .chkmark {
+                                width: 18px;
+                                height: 18px;
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                border: 1px solid #ccc;
+                                background-color: transparent;
+                                &::after {
+                                    content: '';
+                                    position: absolute;
+                                    display: none;
+                                    left: 6.3px;
+                                    top: 3px;
+                                    width: 2.5px;
+                                    height: 6.2px;
+                                    border: solid @white;
+                                    border-width: 0 3px 3px 0;
+                                    -webkit-transform: rotate(45deg);
+                                    -ms-transform: rotate(45deg);
+                                    transform: rotate(45deg);
+                                }
+                            }
+                            label {
+                                padding-bottom: 0; 
+                                display: flex;
+                                column-gap: 12px;
+                                align-items: center;
+                            }
+                        }
+                    }
+                    .credit-continue-buttons {
+                        .mz-creditcard-save {
+                            width: 180px;
+                            @media @mobileScreens {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .mz-addressform-addresstype {
+                        select {
+                            @media (min-width: 501px) {
+                                background-position-x: 97%;
+                            }
+                        }
+                    }
+                    .delivery-address-type-section {
+                        display: flex;
+                        column-gap: 20px;
+                        .delivery-address-type-field {
+                            display: flex;
+                        }
+                        .others-address {
+                            width: 18px;
+                        }
+                    }
+                    .block-two {
+                        margin-bottom: 20px;
+                        display: none;
+                        .mz-contactselector-inputwrapper {
+                            display: flex;
+                            align-items: center;                            
+                            .newaddress {
+                                font-size: @fontSize; 
+                                font-weight: 600;
+                                letter-spacing: 0;
+                                line-height: 20px;
+                            }
+                        }
+                    }
+                    .mz-contactselector-new.block1 {
+                        .mz-contactselector-inputwrapper {
+                            display: none;
+                        }   
+                    }
+                }
+            }
+        }
+        .custom-modal-header {
+            background: none;
+            padding: 0;
+        }
+    }
+}

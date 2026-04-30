@@ -1,0 +1,32 @@
+<div class="grid-layout-selection-container">
+                <a class="grid-layout-selection-icon mz-three-column" tabindex="0">
+                    <svg aria-hidden="true" focusable="false" class="grid-layout-selection-single icon  " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" version="1.1" style="width: 27px; height: 27px;">
+                        <g id="Desktop" stroke="#999999" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+                        <g id="SINGLE_COLUMN" transform="translate(-1197.000000, -601.000000)" class="single-column">
+                            <g id="M_1_Grey" transform="translate(1197.000000, 601.000000)">
+                                <line x1="21.4761905" y1="0.523809524" x2="21.4761905" y2="21.4761905" id="Line-6"></line>
+                                <line x1="0.523809524" y1="0.523809524" x2="0.523809524" y2="21.4761905" id="Line-6"></line>
+                                <line x1="21.4761905" y1="0.523809524" x2="0.523809524" y2="0.523809524" id="Line-6"></line>
+                                <line x1="21.4761905" y1="21.4761905" x2="0.523809524" y2="21.4761905" id="Line-6"></line>
+                            </g>
+                        </g>
+                        </g>
+                    </svg>
+                </a>
+                <a class="grid-layout-selection-icon mz-four-column active" tabindex="0">
+                    <svg aria-hidden="true" focusable="false" class="grid-layout-selection-two icon  " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" version="1.1" style="width: 27px; height: 27px;">
+                        <g id="Desktop" stroke="#999999" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+                        <g id="TWO_COLUMN" transform="translate(-1196.000000, -691.000000)" class="two-column">
+                            <g id="D_2_Grey" transform="translate(1196.000000, 691.000000)">
+                                <line x1="23.4285714" y1="0.571428571" x2="23.4285714" y2="23.4285714" id="Line-6"></line>
+                                <line x1="12" y1="0.571428571" x2="12" y2="23.4285714" id="Line-6"></line>
+                                <line x1="0.571428571" y1="0.571428571" x2="0.571428571" y2="23.4285714" id="Line-6"></line>
+                                <line x1="23.4285714" y1="0.571428571" x2="0.571428571" y2="0.571428571" id="Line-6"></line>
+                                <line x1="23.4285714" y1="12" x2="0.571428571" y2="12" id="Line-6"></line>
+                                <line x1="22.5714286" y1="23.4285714" x2="0.571428571" y2="23.4285714" id="Line-6"></line>
+                            </g>
+                        </g>
+                        </g>
+                    </svg>
+                </a>
+            </div>

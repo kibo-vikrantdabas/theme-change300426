@@ -1,0 +1,299 @@
+﻿<div class="mz-order-detail">
+<div class="mz-orderlisting" data-mz-id="{{ model.id }}">
+    <div class="mz-orderlisting-detail">
+    {% block order-details %}
+        <hr class="down-hr">
+        <ul class="mz-orderlisting-details-list">
+             <li class="mz-orderlisting-details-item">
+                <dl class="mz-propertylist mz-propertylist-order">
+                    <dd data-label = {{labels.orderNumber}}>#{{ model.orderNumber }}</dd>
+                </dl>
+            </li>
+            <li class="mz-orderlisting-details-item">
+                <dl class="mz-propertylist mz-propertylist-order">
+                    <dd data-label= {{labels.orderDate}}>{{ model.submittedDate|date("j/m/y") }}</dd>
+                </dl>
+            </li>
+            {% for payment in model.payments %}
+                {% if payment.billingInfo.paymentType == "PurchaseOrder" and payment.status != "Voided" %}
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dd>{{ payment.billingInfo.purchaseOrder.purchaseOrderNumber }}</dd>
+                    </dl>
+                </li>
+                {% endif %}
+            {% endfor %}
+            <li class="mz-orderlisting-details-item">
+                <dl class="mz-propertylist mz-propertylist-order">
+                {% for pname in model.items %}
+                    <dd data-label= {{labels.items}}>{{ pname.product.name }}</dd>
+                {% endfor %}
+                </dl>
+            </li> 
+            <li class="mz-orderlisting-details-item">
+                <dl class="mz-propertylist mz-propertylist-order">
+                    <dd data-label= {{labels.orderStatus}}>
+                        {% if model.status == 'Accepted' %} {{ labels.beingProcessed}} {% endif %}
+                        {% if model.status == 'Completed' %} {{ labels.completed}} {% endif %}
+                        {% if model.status == 'Cancelled' %} {{ labels.cancelled}} {% endif %}
+                        {% if model.status == 'Processing' %} {{ labels.processing}} {% endif %}
+
+                    </dd>
+                </dl>
+            </li>
+            <li class="mz-orderlisting-details-item">
+                <dl class="mz-propertylist mz-propertylist-order">
+                    <dd data-label= {{labels.totalValue}} ><span>{{model.currencyCode}}</span> {{ model.total|floatformat(pageContext.currencyInfo.precision) }}</dd>
+                </dl>
+            </li>
+            {% comment %} {% if model.amountRefunded > 0 %}
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.refund }}</dt>
+                        <dd>{{ model.amountRefunded|currency }}</dd>
+                    </dl>
+                </li>
+            {% endif %} {% endcomment %}
+            {% comment %} {% if model.fulfillmentInfo.fulfillmentContact %} {% endcomment %}
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order 2">
+                        {% block order-shipped-to %}
+                            <dd data-label= {{labels.action}}><button class="mz-vieworder-button" data-mz-action="viewOrder" data-mz-item-id="{{ model.orderNumber }}" >{{ labels.viewOrder }}</button></dd>
+                        {% endblock order-shipped-to %}
+                    </dl>
+                </li>
+            {% comment %} {% endif %} {% endcomment %}
+        </ul>
+    {% block attributes %}
+        {% for attribute in model.attributes %}
+        {% with model.orderAttributeDefinitions|findwhere('attributeFQN', attribute.fullyQualifiedName) as attDef %}
+            {% if attDef %}
+                {% with attribute.values|first as attributeVal %}
+                    <div class="mz-orderlisting-attribute">
+                        <span>{{ attDef.content.value }}</span>
+                        <div>
+                            {% if attDef.dataType === "DateTime" %}
+                                {{ attributeVal|date("F j, Y") }}
+                            {% else %}
+                                {% if attDef.dataType === "Bool" %}
+                                    {% if attributeVal == "true" or attributeVal == "True" %}
+                                    Yes
+                                    {% else %}
+                                    No
+                                    {% endif %}
+                                {% else %}
+                                    {{ attributeVal }}
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endwith %}
+            {% endif %}
+        {% endwith %}
+        {% endfor %}
+        {% endblock attributes %}
+    {% endblock order-details %}
+    </div>
+    {% comment %} <div class="mz-orderlisting-items mz-l-formfieldgroup">
+        {% block order-items %}
+            {% for item in model.items %}
+                {% include "modules/common/item-listing" with model=item %}
+            {% endfor %}
+        {% endblock order-items %}
+    </div> {% endcomment %}
+</div>
+</div>
+<div class="mz-order-detail-second">
+<div class="mz-orderlisting" data-mz-id="{{ model.id }}">
+    <div class="mz-orderlisting-detail mz-order-listing-detail-v2">
+    {% block order-details %}
+        {% with model.shipments|first as shipmentInfo %}
+                {% with shipmentInfo|first as shipmentDetailInfo %}
+                    {% with shipmentDetailInfo|first as lineItemInfoDetail %}
+                        <div class="mz-order-view-head">
+                            <h3 class="order-heading">{{ labels.order }} #{{ model.orderNumber }}</h3>
+                            <p class="order-heading-dates">
+                                <span><strong>{{ labels.orderCancelledDate }}:</strong> {{model.submittedDate|date("j/m/y")}}</span> &nbsp;
+                                <span><strong>{{ labels.orderStatus }}:</strong> 
+                                    {% if (lineItemInfoDetail.items.length > 0) %} 
+                                    {% if model.status == 'Accepted' %} {{labels.beingProcessed}}
+
+                                    {% endif %}
+                                    {% if model.status == 'Completed' %} {{ labels.completed}} {% endif %}
+                                    {% if model.status == 'Cancelled' %} {{ labels.cancelled}} {% endif %}
+                                    {% if model.status == 'Processing' %} {{ labels.processing}} {% endif %}
+                                    {% else %} {{labels.cancelled}} {% endif %}
+                                </span>
+                                {% if model.isSTHShipment %}
+                                <span><img class="order-type-icon" src="{{labels.svgIconPath}}DeliveryTrack.svg" height="23" width="23" alt="delivery-track-icon" />
+                                    {{labels.delivery}}</span>
+                                {% else %}
+                                <span><img class="order-type-icon" src="{{labels.svgIconPath}}Collect.svg" height="23" width="23" alt="click-collect-icon" /> {{labels.clickCollect}}</span>
+                                {% endif %}
+                                    {% if model.status == 'Completed' and themeSettings.countrySpecificCode|lower == 'kw' %}
+                                        <span class="download-invoice-section">
+                                            <button class="download-invoice-button"><span class="">{{ labels.printInvoice}}</span></button>                    
+                                        </span>
+                                    {% endif %}
+                                
+                            </p>
+                        </div>
+                        <hr class="down-hr">
+                        <ul class="mz-orderlisting-details-list mz-order-view-head">
+                            <li class="mz-orderlisting-details-item">{{ model.totalOrderItems }} {{ labels.orderItem }}</li>
+                            <li class="mz-orderlisting-details-item quantity-heading">{{ labels.quantity }}</li>
+                            <li class="mz-orderlisting-details-item item-price-heading">{{ labels.itemPrice}}</li>
+                            <li class="mz-orderlisting-details-item subtotal-heading">{{ labels.subtotal }}</li>
+                            <li class="mz-orderlisting-details-item itemStatus-heading">{{ labels.itemStatus }}</li>
+                        </ul>
+                        <hr class="down-hr item-hr">
+                        
+                                    <ul class="mz-orderlisting-details-list">
+                                        <li class="mz-orderlisting-details-item">
+                                            <dl class="mz-propertylist mz-propertylist-order">
+                                                {% block order-items %}
+                                                    {% for item in model.items %}
+                                                        {% include "modules/common/item-listing" with model=item %}
+                                                    {% endfor %}
+                                                {% endblock order-items %}
+                                            
+                                            
+                                                <ul class="totalAmount totalAmount-new-structure"> 
+                                                    <li class="totalAmount_li_common">
+                                                        <div class="totalAmount_left_div"><span class="currency-headings">{{ labels.subtotal}}:</span>
+                                                    </div>
+                                                    <div class="totalAmount_right_div"><span>{{model.currencyCode}} {{model.subtotal|floatformat(pageContext.currencyInfo.precision)}}</span></div>
+                                                    </li>
+    
+                                                {% if model.discountTotal > 0 %}
+                                                    {% with model.shippingSubTotal|subtract(model.shippingTotal) as shippingDiscount %}
+                                                    <li class="totalAmount_li_common">
+                                                        <div class="totalAmount_left_div"> <span class="currency-headings">{{ labels.totalDiscount}}:</span></div>
+                                                        <div class="totalAmount_right_div">
+                                                            <span>{{model.currencyCode}} {{model.discountTotal|subtract(shippingDiscount)|floatformat(pageContext.currencyInfo.precision)}}</span>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    {% endwith %}
+                                                {% endif %}
+                                                <li class="totalAmount_li_common">
+                                                    <div class="totalAmount_left_div">
+                                                        <span class="currency-headings">{{ labels.shipping}}:</span>
+                                                    </div>
+                                                    <div class="totalAmount_right_div">
+                                                        <span>{{model.currencyCode}} {{model.shippingTotal|floatformat(pageContext.currencyInfo.precision)}}</span>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="totalAmount_li_common">
+                                                    <div class="totalAmount_left_div"><span class="currency-headings grand-total">{{labels.total}}:</span></div>
+                                                    <div class="totalAmount_right_div"><span>{{model.currencyCode}} {{model.total|floatformat(pageContext.currencyInfo.precision)}}</span></div>
+                                                </li>
+                                                
+                                                </ul>
+
+
+                                            <hr class="bottom-line-delivery">
+                                            <div class="address">
+                                                <div class="delivery">
+                                                {% if model.isSTHShipment %}
+                                                    {% include "modules/b2c-account/order/shipping-address" %}
+                                                {% else %}
+                                                    {% include "modules/b2c-account/order/store-address" %}
+                                                {% endif %}
+                                                 </div>
+                                                <div class="address-hr"></div>
+                                                <hr class="mobile-hr">
+                                                   {% include "modules/b2c-account/order/billing-address" %}
+                                            </div>
+                                        </dl>
+                                        </li>
+                                        {% comment %} {% for payment in model.payments %}
+                                            {% if payment.billingInfo.paymentType == "PurchaseOrder" and payment.status != "Voided" %}
+                                            <li class="mz-orderlisting-details-item">
+                                                <dl class="mz-propertylist mz-propertylist-order">
+                                                    <dd>{{ payment.billingInfo.purchaseOrder.purchaseOrderNumber }}</dd>
+                                                </dl>
+                                            </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <li class="mz-orderlisting-details-item">
+                                            <dl class="mz-propertylist mz-propertylist-order">
+                                                <dd data-label= "Order status">{{ model.status }}</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="mz-orderlisting-details-item">
+                                            <dl class="mz-propertylist mz-propertylist-order">
+                                                <dd data-label= "Total value" ><span>AED</span> {{ model.total }}</dd>
+                                            </dl>
+                                        </li>
+                                        {% if model.amountRefunded > 0 %}
+                                            <li class="mz-orderlisting-details-item">
+                                                <dl class="mz-propertylist mz-propertylist-order">
+                                                    <dt>{{ labels.refund }}</dt>
+                                                    <dd>{{ model.amountRefunded|currency }}</dd>
+                                                </dl>
+                                            </li>
+                                        {% endif %} {% endcomment %}
+                                    </ul>
+                                    <p class="order-button">
+                                    <button class="back-button">{{ labels.backToOrderHistory }}</button>
+                                    {% comment %}
+ <button class="cancel-button" disabled="disabled">{{ labels.cancelOrder }}</button> 
+{% endcomment %}
+                                    {% comment %}
+ {% if lineItemInfoDetail.workflowState.activeTaskName == 'Accept Shipment' or lineItemInfoDetail.shipmentStatus == 'CUSTOMER_CARE' or lineItemInfoDetail.workflowState.activeTaskName|lower == 'validate stock' or lineItemInfoDetail.workflowState.activeTaskName|lower == 'validate items in stock' or lineItemInfoDetail.workflowState.activeTaskName|lower == 'wait for transfer' or lineItemInfoDetail.workflowState.activeTaskName|lower == 'print pick list'  %}
+                                        <button class="cancel-button" disabled="disabled">{{ labels.cancelOrder }}</button>
+                                    {% else %}
+                                        <button class="cancel-button" disabled="disabled">{{ labels.cancelOrder }}</button>
+                                    {% endif %} 
+{% endcomment %}
+                                        
+                                    </p>
+                    
+                <div class="mz-ordercancel-popup-container">
+                        {% include "modules/order-cancel/order-cancel-popup" with model %}
+                </div>
+            {% block attributes %}
+                {% for attribute in model.attributes %}
+                {% with model.orderAttributeDefinitions|findwhere('attributeFQN', attribute.fullyQualifiedName) as attDef %}
+                    {% if attDef %}
+                        {% with attribute.values|first as attributeVal %}
+                            <div class="mz-orderlisting-attribute">
+                                <span>{{ attDef.content.value }}</span>
+                                <div>
+                                    {% if attDef.dataType === "DateTime" %}
+                                        {{ attributeVal|date("F j, Y") }}
+                                    {% else %}
+                                        {% if attDef.dataType === "Bool" %}
+                                            {% if attributeVal == "true" or attributeVal == "True" %}
+                                            {{labels.yesText}}
+                                            {% else %}
+                                            {{labels.noText}}
+                                            {% endif %}
+                                        {% else %}
+                                            {{ attributeVal }}
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endwith %}
+                    {% endif %}
+                {% endwith %}
+                {% endfor %}
+                {% endblock attributes %}
+            {% endwith %}   
+        {% endwith %}
+    {% endwith %}
+{% endblock order-details %}
+    </div>
+    {% comment %} <div class="mz-orderlisting-items mz-l-formfieldgroup">
+        {% block order-items %}
+            {% for item in model.items %}
+                {% include "modules/common/item-listing" with model=item %}
+            {% endfor %}
+        {% endblock order-items %}
+    </div> {% endcomment %}
+</div>
+</div>
+<div class="printInvoice" style="display:none;"></div>

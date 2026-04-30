@@ -1,0 +1,175 @@
+<div class="chart">
+	<h5>All Sizes</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>S/M/L/XL</span>
+			<span>UK/AU/NZ</span>
+			<span>US/CA</span>
+			<span>EU</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">S</td>
+						<td class="active">S</td>
+						<td class="active">S</td>
+						<td class="active">M</td>
+						<td class="active">M</td>
+						<td class="active">M</td>
+						<td class="active">M</td>
+						<td class="active">M</td>
+						<td class="active">L</td>
+						<td class="active">L</td>
+						<td class="active">L</td>
+						<td class="active">L</td>
+						<td class="active">XL</td>
+						<td class="active">XL</td>
+						<td class="active">XL</td>
+					</tr>
+					<tr>
+						<td class="active">6</td>
+						<td class="active">6.5</td>
+						<td class="active">7</td>
+						<td class="active">7.5</td>
+						<td class="active">8</td>
+						<td class="active">8.5</td>
+						<td class="active">9</td>
+						<td class="active">9.5</td>
+						<td class="active">10</td>
+						<td class="active">10.5</td>
+						<td class="active">11</td>
+						<td class="active">11.5</td>
+						<td class="active">12</td>
+						<td class="active">13</td>
+						<td class="active">14</td>
+					</tr>
+					<tr>
+						<td class="active">7</td>
+						<td class="active">7.5</td>
+						<td class="active">8</td>
+						<td class="active">8.5</td>
+						<td class="active">9</td>
+						<td class="active">9.5</td>
+						<td class="active">10</td>
+						<td class="active">10.5</td>
+						<td class="active">11</td>
+						<td class="active">11.5</td>
+						<td class="active">12</td>
+						<td class="active">12.5</td>
+						<td class="active">13</td>
+						<td class="active">14</td>
+						<td class="active">15</td>
+					</tr>
+					<tr>
+						<td class="active">39.5</td>
+						<td class="active">40</td>
+						<td class="active">40.5</td>
+						<td class="active">41</td>
+						<td class="active">42</td>
+						<td class="active">42.5</td>
+						<td class="active">43</td>
+						<td class="active">43.5</td>
+						<td class="active">44.5 </td>
+						<td class="active">45</td>
+						<td class="active">46</td>
+						<td class="active">46.5</td>
+						<td class="active">47</td>
+						<td class="active">48</td>
+						<td class="active">48.5</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Shoe Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>S/M/L/XL</span>
+			<span>UK/AU/NZ</span>
+			<span>US/CA</span>
+			<span>EU</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">S</td>
+						<td class="active">M</td>
+						<td class="active">M</td>
+						<td class="active">L</td>
+						<td class="active">L</td>
+						<td class="active">XL</td>
+					</tr>
+					<tr>
+						<td class="active">6-7</td>
+						<td class="active">8-9</td>
+						<td class="active">9-10</td>
+						<td class="active">10-11</td>
+						<td class="active">11-12</td>
+						<td class="active">12-13</td>
+					</tr>
+					<tr>
+						<td class="active">6.5-7.5</td>
+						<td class="active">8.5-9.5</td>
+						<td class="active">9.5-10.5</td>
+						<td class="active">10.5-11.5</td>
+						<td class="active">11.5-12.5</td>
+						<td class="active">12.5-13.5</td>
+					</tr>
+					<tr>
+						<td class="active">39.5-40.5</td>
+						<td class="active">42-43</td>
+						<td class="active">43-44.5</td>
+						<td class="active">44.5-46</td>
+						<td class="active">46-47</td>
+						<td class="active">47-48</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Socks</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>S/M/L/XL</span>
+			<span>UK/AU/NZ</span>
+			<span>US/CA</span>
+			<span>EU</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">S</td>
+						<td class="active">M</td>
+						<td class="active">L</td>
+						<td class="active">XL</td>
+					</tr>
+					<tr>
+						<td class="active">6-7.5</td>
+						<td class="active">8-9.5</td>
+						<td class="active">10-12</td>
+						<td class="active">12-14</td>
+					</tr>
+					<tr>
+						<td class="active">6.5-8</td>
+						<td class="active">8.5-10</td>
+						<td class="active">10.5-12.5</td>
+						<td class="active">12.5-14.5</td>
+					</tr>
+					<tr>
+						<td class="active">39.5-41</td>
+						<td class="active">42-43.5</td>
+						<td class="active">44.5-47</td>
+						<td class="active">47-49</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

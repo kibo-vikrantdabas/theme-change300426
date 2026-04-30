@@ -1,0 +1,41 @@
+<div class="mz-product-primary-detail-container">
+    <div class="mz-product-badge-price-container">
+        <div class="product-top-badges">
+            {% if model.price.onSale %}
+                <div class="mz-color-swatch-sale mz-product-detail-badge">{{themeSettings.saleLabel}}</div>
+            {% endif %}
+            {% if model.hasPriceRange %}  
+                {% if model.priceRange.lower.onSale and model.priceRange.upper.onSale %}
+                <span class="mz-product-detail-badge sale-badge"><span>{{themeSettings.saleLabel}}</span></span>
+                {% endif %}
+            {% endif %}
+            {% with model.properties|findwhere("attributeFQN", "tenant~badges1") as badge %}
+                {% if badge %}
+                    {% with badge.values|first as value%}
+                        <div class="mz-product-detail-badge"><span>{{value.stringValue}}</span></div>
+                    {% endwith %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    <div class="mz-product-price mz-product-price-mobile">
+        {% include "modules/product/product-price" %}
+    </div>
+    </div>
+    {% with model.properties|findwhere("attributeFQN","tenant~brand") as brandObject %}
+        {% if brandObject and brandObject.values %}
+             <div class="mz-brand-name">{{brandObject.values|first|prop('stringValue')|upper}}</div>
+        {% endif %}
+    {% endwith %}
+    <h1 class="mz-pagetitle  mz-product-name" itemprop="name">{{ model.content.productName }}</h1>
+    <div class="mz-product-various-code">
+        {% include "modules/product/product-codes" %}
+        <div class="mz-product-wishlist-icon">
+            <a class="mz-product-wishlist-link wishlist-add">
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart.svg" class="mz-product-wishlist-icon-img save-to-favorites" alt="wishlist-add-icon"   loading="lazy"/>
+            </a>
+            <a class="mz-product-wishlist-link wishlist-added hidden">
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart-green-filled.svg" class="mz-product-wishlist-icon-img remove-from-favorite" alt="wishlist-added-icon"   loading="lazy"/>
+            </a>
+        </div>
+    </div> 
+</div>

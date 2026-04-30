@@ -1,0 +1,26 @@
+{% if model.displayBluePaymentModal %}
+<div class="mz-blue-popup">
+    {% include "modules/checkout/checkout-blue-popup-header" %}
+    <div class="mz-blue-popup-body-container">
+        {% if model.displayBluePaymentMethods %}
+            {% include "modules/checkout/checkout-blue-payment-selector" with model %}
+        {% endif %}
+
+           {% include "modules/checkout/checkout-blue-otp-form" with model %}
+        
+            {% include "modules/checkout/checkout-blue-prepaid-form" with model %}
+        
+        
+        {% if model.isAnotherBlueAccount %}
+            {% include "modules/checkout/checkout-another-blue-account" with model %}   
+        {% endif %}
+    </div>
+    {% if model.displayLoader %}
+        <div class="mz-blue-loader">
+            <div class="mz-loader-icon">
+            Loading
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endif %}

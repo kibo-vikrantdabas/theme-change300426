@@ -1,0 +1,429 @@
+body {
+  font-family: tahoma;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin: 0;
+}
+table {
+  border-collapse: collapse;
+  font-size: inherit;
+  line-height: inherit;
+}
+.section {
+  border-bottom: 1px solid #b3b3b3;
+  padding-bottom: 10px;
+}
+.section > h2 {
+  border-bottom: 1px solid #bfbfbf;
+  font-size: 17px;
+  line-height: 1;
+  margin: 0 2%;
+  padding: 17px 1% 16px;
+}
+.subsection-wrapper {
+  margin: 10px 2%;
+}
+.subsection-wrapper > h3 {
+  padding: 7px 2%;
+}
+.subsection-wrapper .grid {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+.subsection {
+  margin: 0 2%;
+  width: 96%;
+}
+.subsection .label {
+  font-weight: 600;
+  margin: 14px 0 7px;
+}
+.subsection .label:nth-of-type(1) {
+  margin-top: 0;
+}
+.subsection td {
+  padding: 7px 7px 0 0;
+  vertical-align: top;
+}
+.grid {
+  border: 1px solid #bfbfbf;
+  margin: 10px 2%;
+  width: 96%;
+}
+.grid.payment-details {
+  display: none;
+}
+.grid.payment-details.show {
+  display: table;
+}
+.grid th {
+  background-color: #e5e5e5;
+  font-weight: 600;
+  padding: 8px 14px;
+  text-align: left;
+  white-space: nowrap;
+}
+.grid td {
+  border-top: 1px solid #bfbfbf;
+  padding: 8px 14px;
+  text-align: left;
+}
+.grid tr:nth-of-type(1) td {
+  border-top-width: 0;
+}
+.panes {
+  margin: 10px 2%;
+  width: 96%;
+}
+.panes td {
+  border-left: 1px solid #bfbfbf;
+  padding: 2px 14px 8px;
+  vertical-align: top;
+  width: 33%;
+}
+.panes td:nth-of-type(1) {
+  border-left-width: 0;
+}
+.panes .label {
+  color: #b3b3b3;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+.panes .price-total {
+  font-size: 24px;
+  margin-bottom: 7px;
+}
+.panes .item-total {
+  font-size: 16px;
+}
+.mz-printable-order {
+  width: 100%;
+}
+.mz-discount-row {
+  border: 0px;
+  font-size: 14px;
+  font-style: italic;
+  color: #333;
+}
+.mz-discount-row td {
+  border: 0px;
+}
+.mz-discount-row .mz-discount-name {
+  text-align: right;
+}
+.header th {
+  border-bottom: 1px solid #b3b3b3;
+  font-weight: 400;
+  padding: 14px 2%;
+  text-align: left;
+  vertical-align: top;
+  width: 25%;
+}
+.header .company-info h1 {
+  font-size: 24px;
+}
+.header .company-name {
+  font-weight: bold;
+}
+.header .company-contacts {
+  white-space: pre-wrap;
+}
+.header .order-essentials {
+  text-align: right;
+}
+.header .order-essentials .order-number {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.header .order-essentials .order-number .label {
+  color: #b3b3b3;
+  font-weight: 400;
+}
+.header .order-essentials .order-date .label {
+  font-weight: 600;
+}
+.footer td {
+  padding: 14px 3%;
+}
+.section-attributes .attribute {
+  margin: 10px 4%;
+}
+.section-attributes .attribute span {
+  font-style: italic;
+  margin-right: 10px;
+}
+.section-attributes .attribute .label {
+  font-style: normal;
+  font-weight: 600;
+}
+.section-orderitems .product-name {
+  margin-bottom: 4px;
+}
+.section-orderitems .bundled-product,
+.section-orderitems .product-option {
+  border-left: 2px solid #ddd;
+  line-height: 1.2;
+  margin-left: 4px;
+  padding-left: 6px;
+}
+.section-orderitems .product-option-label {
+  color: #b3b3b3;
+  font-size: 12px;
+  font-style: normal;
+  margin-right: 8px;
+  text-transform: uppercase;
+}
+.section-orderitems .product-option-raw {
+  color: #b3b3b3;
+  font-style: italic;
+}
+.section-orderitems .order-totals-breakdown td {
+  border-top-width: 0;
+}
+.section-orderitems .order-totals-breakdown tr:nth-of-type(1) td {
+  border-top-width: 1px;
+}
+.section-orderitems .order-totals-breakdown td:nth-of-type(1) {
+  text-align: right;
+}
+
+
+.mz-printable-order-packingslip, .mz-printable-order-packingslip .grid {
+	width: 100%;
+}
+
+.mz-printable-order-invoice .invoice-header th {
+  font-weight: bold;
+  padding: 14px 0px 14px 22px;
+  text-align: left;
+  vertical-align: top;
+  width: 25%;
+}
+
+
+.mz-printable-order-invoice .invoice-header .company-arabic-logo img {
+  float: right;
+}
+
+
+.mz-printable-order-invoice .label-heading {
+  font-weight: bold;
+  color: #333333;
+  font-size: 12px;
+}
+.mz-printable-order-invoice .items-table th {
+  color: #000000 !important;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 13px;
+}
+.mz-printable-order-invoice .grid td {
+  font-size: 10px;
+}
+.mz-printable-order-invoice .invoice-title {
+  background: #163E35;
+  width: 98%;
+  float: left;
+  color: #ffffff;
+  padding: 10px;
+}
+.mz-printable-order-invoice .heading {
+  width: 50%;
+  float: left;
+  text-align: left;
+  color: #FFFFFF;
+  font-family: MSLondon;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+.mz-printable-order-invoice .invoice-date{
+    width: 50%;
+    float: left;
+    text-align: right;
+	color: #FFFFFF;
+	font-family: MSLondon;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0;
+	line-height: 26px;
+}
+.mz-printable-order-invoice {
+    page-break-before: always;
+    font-family: MSLondon;
+}
+
+.mz-printable-order-invoice .header-info-left {
+  width: 65%;
+}
+
+.mz-printable-order-invoice .header-info-right {
+  width: 35%;
+}
+.mz-printable-order-invoice .invoice-table-no-border {
+  border: none;
+}
+.mz-printable-order-invoice .header-info-right span.label {
+  text-align: left;
+  float: left;
+  width: 40%;
+}
+.items-table th{
+  border-bottom: 1px solid #CCCCCC;
+  background-color: transparent
+}
+.mz-printable-order-invoice .header-info-right .order-text {
+  text-align: right;
+  float: right;
+  width: 38%;
+}
+.mz-printable-order-invoice .order-row {
+  width: 100%;
+  float: left;
+  line-height: 18px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.mz-printable-order-invoice .header-info-left .delivery-address-info .title {
+  font-weight: bold;
+  color: #333333;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.mz-printable-order-invoice .order-invoice-right-section {
+  width: 50%;
+  float: right;
+}
+
+.mz-printable-order-invoice .order-invoice-left-section {
+  width: 33%;
+  float: left;
+  margin-right: 30px;
+  color: #333333;
+  font-family: MSLondon;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 18px;
+}
+
+.mz-printable-order-invoice .order-invoice-right-section .label-heading {
+  width: 65%;
+  float: left;
+  text-align: left;  
+}
+
+
+
+
+.mz-printable-order-invoice .order-invoice-left-section .inline-heading {
+  font-weight: bold;
+  color: #333333;
+  font-size: 10px;
+  line-height: 18px;
+}
+
+.mz-printable-order-invoice .invoice-footer-section {
+    bottom: 20px;
+    color: #333333;
+    font-family: MSLondon;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 18px;
+    width: 100%;
+    float: left;
+}
+
+.mz-printable-order-invoice .order-invoice-right-section .label-text {
+    width: 35%;
+    float: right;
+    text-align: right;
+    color: #333333;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 18px;
+}
+
+.mz-printable-order-invoice .order-invoice-right-section .last-row {
+  padding: 10px 0px;
+}
+.mz-printable-order-invoice .item-info .item-count {
+  float: left;
+  width: 5%;
+  margin-right: 2px;
+}
+.mz-printable-order-invoice .item-info .item-name {
+  width: 93%;
+  float: left;
+  line-height: 20px;
+}
+.mz-printable-order-invoice .order-overall-info {
+  border-bottom: 1px solid #CCCCCC;
+  font-family: 'MSLondon';
+}
+.mz-printable-order-invoice .order-overall-info td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 15px;
+}
+.mz-printable-order-invoice .bottom-row {
+    box-sizing: border-box;
+    height: 1px;
+    border-bottom: 1.5px solid #CCCCCC;
+}
+
+.mz-printable-order-invoice .item-info {
+  width: 100%;
+  float: left;
+}
+.mz-printable-order-invoice .total-amount {
+  margin-bottom: 10px;
+}
+
+.mz-printable-order-invoice .footer-section-right {
+  width: 50%;
+  float: left;
+  text-align: right;
+  margin-left: -15px;
+}
+.mz-printable-order-invoice .footer-section-left {
+  width: 48%;
+  float: left;
+}
+@page:first {
+  @bottom-left {
+  content: normal;
+  }
+}
+@media print {
+  div.invoice-footer-section {
+    position: fixed;
+    bottom: 100;
+  }
+  img {
+    -webkit-print-color-adjust: exact;
+  }
+}
+@page { size: auto;  margin: 0mm auto; font-family: 'MSLondon'; }
+
+.mz-printable-order-invoice .customerServiceStatement {
+    position: absolute;
+    bottom: 38%;
+}
+.mz-printable-order-invoice .customerServiceArStatement {
+  position: absolute;
+  bottom: 35%;
+}

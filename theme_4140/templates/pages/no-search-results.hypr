@@ -1,0 +1,27 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{{ labels.noResultsTitle|string_format(pageContext.search.query) }}  - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-searchresults mz-noresults {% endblock body-tag-classes %}
+
+{% block body-content %}
+
+<div class="mz-l-container-nosearch">
+    <div class="result-text">
+       <h1 class="mz-pagetitle">{{ labels.noResult }} <span class="mz-searchresults-query">'{{ pageContext.search.query }}'</span></h1>
+       <form id="searchbox" class="mz-searchbox" action="{% make_url "search" %}">
+      <div class="mz-nosearchbox-result">
+        <input placeholder="{{ labels.search }}" type="search" class="mz-l-container-nosearch-no-result" autocomplete="off" name="query"/>
+        <button class="mz-searchbox-button-no-search" type="submit">{{ labels.search }}</button>    
+      </div>
+      </form>
+     <p class="mz-searchresults-noresultstext">{{ labels.noResultText }}</p>
+
+      {% dropzone "no-results" scope="template" %}
+    </div>
+</div>
+
+{% endblock body-content %}
+
+{% block body-below-content %}
+{% endblock body-below-content %}

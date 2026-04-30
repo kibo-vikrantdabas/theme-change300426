@@ -1,0 +1,84 @@
+.mz-signup-email-main {
+    .mz-sinup-email-footer-clp {
+        background-color: #E8EBE7;
+        height: 158px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        column-gap: 120px;
+        @media (max-width: 992px) {
+            flex-flow: wrap;
+            padding: 30px 20px;
+            height: auto;
+        }
+        .mz-sinup-email-footer-clp-text {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 29px;
+            color: #000;
+            width:420px;
+            @media (max-width: 992px) {
+                .afg-h4();
+                margin-bottom: 19px;
+                text-align: left;
+                padding: 0 5px; 
+                flex: 0 0 100%;
+            }
+        }
+        .mz-sinup-email-footer-clp-field {
+            width:530px;
+            @media (max-width: 992px) {
+                flex: 0 0 100%;
+            }
+            form {
+                display: flex;
+                align-items: center;
+                @media (max-width: 992px) {
+                    justify-content: center;
+                }
+            }
+            .sinup-email-field {
+                width: 100%;
+                padding: 13px 14px;
+                margin: 0;
+                border-color: #ccc;
+                background: #fff;
+                .afg-b1();
+                letter-spacing: 0;
+                max-width: 526px;
+               // min-width: 526px;
+                color: #333;
+                @media (max-width: 1199px) {
+                    max-width: unset;
+                    min-width: unset;
+                }
+                @media @mobileScreens {
+                    font-weight: normal;
+                }
+            }
+            .sinup-email-submit {
+                background: #627786;
+                color: #fff;
+                height: 48px;
+                width: 61px;
+                border: none;
+                font-size: 16px;
+                font-weight: bold;
+                letter-spacing: 0;
+                line-height: 21px;
+                @media @mobileScreens {
+                    width: 82px;
+                }
+            }
+        }
+    }
+}
+
+.mz-homepage {
+    .mz-signup-email-main {
+        @media @mobileScreens {
+            padding: 0!important;
+        }
+    }
+}

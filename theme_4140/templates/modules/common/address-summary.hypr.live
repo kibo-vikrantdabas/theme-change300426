@@ -1,0 +1,24 @@
+﻿    <span>{{ model.firstName }} {{ model.lastNameOrSurname }}</span>
+    <span>{{ model.address.address1 }}</span>
+    {% if model.address.address2 %}
+        <span>{{ model.address.address2 }}</span>
+    {% endif %}
+    {% if model.address.address3 %}
+        <span>{{ model.address.address3 }}</span>
+    {% endif %}
+    {% if model.address.address4 %}
+        <span>{{ model.address.address4 }}</span>
+    {% endif %}
+    <span>{{ model.address.cityOrTown }}</span>
+    {% if model.address.stateOrProvince != "n/a" %} {{ model.address.stateOrProvince }} {%endif%}  
+    {% comment %} {% if model.address.postalOrZipCode != "n/a" %} {{ model.address.postalOrZipCode }} {%endif%} </span>  {% endcomment %}
+    <span>{{ model.address.countryCode }}</span>
+    {% if model.phoneNumbers.home %}
+        <span {% if themeSettings.isArabicLanguageSite %}dir="ltr" style="float:right"{% endif %}>{{ model.phoneNumbers.home }}</span>
+    {% endif %}
+     {% if model.address.comments %}
+        <span>{{ model.address.comments }}</span>
+    {% endif %}
+    {% if model.requiresFulfillmentInfo && model.hasRequiredBehavior %}
+        <a href="javascript:;" class="mz-formstep-edit-summary-address" data-mz-action="edit">{{ labels.change }}</a>
+    {% endif %}

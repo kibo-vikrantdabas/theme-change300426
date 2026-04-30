@@ -1,0 +1,146 @@
+{% if themeSettings.disableSplitPayment %}
+{% if themeSettings.isPaywithBlueOnCheckout %}
+<label for="paymentType-newcreditcard-{{ paymentId }}" >
+<div class="blue-payment-container rectangle {% if model.bluePrepaidCardDeductAmount or  model.blueWalletDeductAmount  %}mz-checkoutform-active1{% endif %}">
+    <div class="mz-l-formfieldgroup-row mz-paymentselector-option mz-checkoutform1 mz-bluepayment-radioSection">
+        <div class="credit-debit-card-div">
+           <div class="credit-debit-card-div-radio mz-blue-payment-container">
+                 <label class="container" for="paymentType-newcreditcard-{{ paymentId }}">
+                 <input 
+                    data-mz-value="paymentType" 
+                    data-mz-new-blue 
+                    data-mz-payment-type 
+                    id="paymentType-newcreditcard-{{ paymentId }}" 
+                    name="paymentType" 
+                    type="radio" 
+                    class="mz-paymenttype-input
+                     mz-payment-blue-selector 
+                     {% if model.displayBluePaymentModal or model.blueWalletDeductAmount or model.bluePrepaidCardDeductAmount  %} checked {% endif %} 
+                   value="Blue"/>
+
+                        <span class="checkmark-radio
+                        {% if model.displayBluePaymentModal or
+                            model.blueWalletDeductAmount  or 
+                            model.bluePrepaidCardDeductAmount
+                            or model.paymentType=='Blue'
+                            %} 
+                            checkmark-radio-selected {% endif %}"
+                            >
+                            </span>
+                </label>
+
+                 <div class="mz-blue-popup-container">
+                    {% include "modules/checkout/checkout-blue-popup" with model %}
+                 </div>
+            </div>
+            <div class="blueWallet-label-menu {% if model.inSufficientBlueBalance%} bluewallet-in-suffient-balance-display{% endif %}">
+                        <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/BluePayment.svg" alt="bluePayment" class="card-payment">
+                        <div class="card-payment-detail-div">
+                            <label class="mz-paymentselector-label mz-paymentselector-label-newcreditcard  mz-checkoutform-radio credit-debit-card" for="paymentType-newcreditcard-{{ paymentId }}">{% if model.savedPaymentMethods %}{{ labels.payWithBlue }}{% else %}{{ labels.payWithBlue }}{% endif %}</label>
+                            <label class="use-card-info mz-blueAmount" for="paymentType-newcreditcard-{{ paymentId }}" >
+
+                            {% if model.bluePrepaidCardDeductAmount and model.blueWalletDeductAmount %} 
+                                
+                                {{labels.use}} {% include "modules/common/currency-code" %} {{model.blueWalletDeductAmount|floatformat(pageContext.currencyInfo.precision)}} {{labels.useWalletAndCreditAmountMessage}} {% include "modules/common/currency-code" %} {{model.bluePrepaidCardDeductAmount|floatformat(pageContext.currencyInfo.precision)}} {{labels.useBlueCreditAmountMessage}}
+                            
+                            {% else %}
+
+                                {% if model.bluePrepaidCardDeductAmount %} 
+                                    {{labels.use}} {% include "modules/common/currency-code" %} {{model.bluePrepaidCardDeductAmount|floatformat(pageContext.currencyInfo.precision)}} {{labels.useBlueCreditAmountMessage}}
+                                {% endif %}
+
+                                {% if model.blueWalletDeductAmount %} 
+                                    {{labels.use}} {% include "modules/common/currency-code" %} {{model.blueWalletDeductAmount|floatformat(pageContext.currencyInfo.precision)}} {{labels.useBlueWalletAmountMessage}}
+                                {% endif %}
+
+                            {% endif %}
+
+                            {% if not model.bluePrepaidCardDeductAmount and not model.blueWalletDeductAmount %}
+                            
+                                {% if model.inSufficientBlueBalance%}
+
+                                <div class="insufficientBlueBalance"> 
+                                {{labels.blueWalletInsufficientBalance}} 
+                                </div>
+                                {% else %}
+                                {% comment %} {{labels.blueWallet}}  {% endcomment %}
+                                {{themeSettings.displayBlueWalletorBluePrepaid}}
+
+                                {% endif %}
+
+                            {% endif %}
+
+
+                            </label>
+                        </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+</label>
+{% endif %}
+
+    {% else %}
+{% if themeSettings.isPaywithBlueOnCheckout %}  
+<label for="paymentType-newcreditcard-{{ paymentId }}">
+
+
+
+ <div class="blue-payment-container rectangle {% if model.bluePrepaidCardDeductAmount or  model.blueWalletDeductAmount  %}mz-checkoutform-active1{% endif %}">
+        <div class="mz-l-formfieldgroup-row mz-paymentselector-option mz-checkoutform1">
+            <div class="credit-debit-card-div">
+               <div class="credit-debit-card-div-radio mz-blue-payment-container">
+                    <label class="container" for="paymentType-newcreditcard-{{ paymentId }}">
+                        <input 
+                        data-mz-value="paymentType" 
+                        data-mz-new-blue 
+                        data-mz-payment-type 
+                        id="paymentType-newcreditcard-{{ paymentId }}" 
+                        name="paymentType" 
+                        type="checkbox" 
+                        class="mz-paymenttype-input mz-payment-blue-selector {% if model.bluePrepaidCardDeductAmount or  model.blueWalletDeductAmount %}mz-bluePaymentRequested{% endif %}" value="Blue"
+                        {% if model.displayBluePaymentModal or model.blueWalletDeductAmount or model.bluePrepaidCardDeductAmount  %} checked {% endif %} 
+                   />
+                    <span class="checkmark"></span>
+                    </label>
+                     <div class="mz-blue-popup-container">
+                        {% include "modules/checkout/checkout-blue-popup" with model %}
+                     </div>
+                </div>
+                <div>
+                    <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/BluePayment.svg" alt="bluePayment" class="card-payment">
+                    <div class="card-payment-detail-div">
+                        <label class="mz-paymentselector-label mz-paymentselector-label-newcreditcard  mz-checkoutform-radio credit-debit-card" for="paymentType-newcreditcard-{{ paymentId }}">{% if model.savedPaymentMethods %}{{ labels.payWithBlue }}{% else %}{{ labels.payWithBlue }}{% endif %}</label>
+                        <label class="use-card-info mz-blueAmount"for="paymentType-newcreditcard-{{ paymentId }}">
+
+    
+                        {% if model.bluePrepaidCardDeductAmount and model.blueWalletDeductAmount %} 
+                            
+                            {{labels.use}} {% include "modules/common/currency-code" %} {{model.blueWalletDeductAmount|floatformat(pageContext.currencyInfo.precision)}} {{labels.useWalletAndCreditAmountMessage}} {% include "modules/common/currency-code" %} {{model.bluePrepaidCardDeductAmount|floatformat(pageContext.currencyInfo.precision)}} {{labels.useBlueCreditAmountMessage}}
+                            
+                        {% else %}
+    
+                            {% if model.bluePrepaidCardDeductAmount %} 
+                                {{labels.use}} {% include "modules/common/currency-code" %} {{model.bluePrepaidCardDeductAmount|floatformat(pageContext.currencyInfo.precision)}} {{labels.useBlueCreditAmountMessage}}
+                            {% endif %}
+    
+                            {% if model.blueWalletDeductAmount %} 
+                                {{labels.use}} {% include "modules/common/currency-code" %} {{model.blueWalletDeductAmount|floatformat(pageContext.currencyInfo.precision)}} {{labels.useBlueWalletAmountMessage}}
+                            {% endif %}
+    
+                        {% endif %}
+                        {% if not model.bluePrepaidCardDeductAmount and not model.blueWalletDeductAmount %}
+                             {% comment %} {{labels.blueWallet}}  {% endcomment %}
+                            {{themeSettings.displayBlueWalletorBluePrepaid}}
+                        {% endif %}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+</label>
+{% endif %}
+

@@ -1,0 +1,18 @@
+<div class="mz-hamburgmenu-container" style="display:flex">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}MenuMain.svg" alt="mainmenu-icon" class="mz-hamburgmenu-icon"   loading="lazy">
+            <div class="mz-searchbox-input mz-searchbox-icon mobile"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Search.svg" alt=""></div>
+            <div class="mz-searchbox-input mz-searchbox-icon safari-search-icon desktop"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Search.svg" alt="search-icon"></div>
+        
+</div>
+
+<div class="mz-hamburgmenu-option-container afg-ms-hamburgmenu-option-container">
+        {% block menu-header %}
+            {% include "modules/page-header/hamburg-menu/menu-header" %}
+        {% endblock menu-header %}
+        <div class="afg-humburgmenu-content">
+            {% include "modules/mobile-site-nav" %}
+        {% block menu-footer %}
+            {% include "modules/page-header/hamburg-menu/menu-footer" %}
+        {% endblock menu-footer %}
+        </div>
+</div>

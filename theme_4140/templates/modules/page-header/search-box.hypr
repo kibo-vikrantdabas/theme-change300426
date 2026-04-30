@@ -1,0 +1,41 @@
+﻿<div class="searchbox mz-searchbox-container desktop">
+    <form id="searchbox" class="mz-searchbox{% if themeSettings.useSearchAutocomplete %} mz-searchbox-expands{% endif %}{% if themeSettings.allowFilterByLocationInventory %} mz-searchbox-my-store{% endif %}" action="{% make_url "search" %}">
+        <span class="mz-searchbox-field">
+            <input placeholder="{{labels.searchResult}}" type="search" class="mz-searchbox-input" autocomplete="off" name="query" data-mz-role="searchquery" />
+            <span class="mz-search-button">
+            <button class="mz-searchbox-button" type="submit">{{ labels.search }}<img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}search-black bg.svg" alt="black-search-icon" class="black-searchIcon deactive"></button>
+            </span>
+            <button class="mz-searchbox-clear" type="reset" style="display: none"></button>
+        </span>
+        <div class="recentsearch-dropdown">
+            <button class="clear-recent" type="button" style="display: none">{{labels.clear}}</button>
+            <div class="recent-data-history"></div>
+        </div>
+        {% require_script "modules/contextify" %}
+        {% if themeSettings.useSearchAutocomplete %}
+            {% require_script "modules/search-autocomplete" %}
+        {% endif %}
+    </form>
+    </div>
+    <div class="searchbox mz-searchbox-container mobile deactive">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-close-icon">
+    <form id="searchbox" class="mz-searchbox{% if themeSettings.useSearchAutocomplete %} mz-searchbox-expands{% endif %}{% if themeSettings.allowFilterByLocationInventory %} mz-searchbox-my-store{% endif %}" action="{% make_url "search" %}">
+        <span class="mz-searchbox-field">
+            <input placeholder="{{labels.searchResult}}" type="search" class="mz-searchbox-input mobile-search-input" autocomplete="off" name="query" data-mz-role="searchquery" />
+            <button class="clear-recent suggestion disabled" type="button" style="display: none">{{labels.clear}}</button>
+            <span class="mz-search-button">
+            {% comment %} <button class="mz-searchbox-button" type="submit">{{ labels.search }}<img src="{{labels.svgIconPath}}search-black bg.svg" class="black-searchIcon deactive"></button> {% endcomment %}
+            </span>
+        </span>
+        <div class="recentsearch-dropdown">
+            <button class="clear-recent dropdown" type="button" style="display: none">{{labels.clear}}</button>
+            <div class="recent-data-history"></div>
+        </div>
+        {% require_script "modules/contextify" %}
+        {% if themeSettings.useSearchAutocomplete %}
+            {% require_script "modules/search-autocomplete" %}
+        {% endif %}
+    </form>
+    </div>
+    <div class="mz-searchbackdrop deactive"></div>
+    

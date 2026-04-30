@@ -1,0 +1,288 @@
+﻿{
+    "SHARED": {
+        "appName": "Kibo eCommerce",
+        "currencyCode": "USD",
+        "Navigation": {
+            "Top": {
+                "List": {
+                    "createReturn": "Create Return",
+                    "manageReturn": "Manage Returns"
+                },
+                "order": "Orders",
+                "return": "Returns"
+            }
+        },
+        "SEARCHBAR": {
+            "palceHolder": "search"
+        },
+        "FOOTER": {
+            "proweredBy": "Powered By:",
+            "copyRight": "© Xpanxion",
+            "customerSupport": "Customer Support at",
+            "supportEmail": "test"
+        },
+        "CONFIRMATIONDIALOG": {
+            "Confirmation": {
+                "DeleteReturnItem": {
+                    "title": " Delete Item",
+                    "message": " Are you certain you want to delete this item?",
+                    "primaryButtonText": "Yes",
+                    "secondaryButtonText": "No",
+                    "isShowSecondaryButton": "true"
+                }
+            },
+            "Information": {
+                "SaveItem": {
+                    "title": " Save Item",
+                    "message": " Item is saved successfully",
+                    "primaryButtonText": "Ok",
+                    "secondaryButtonText": "",
+                    "isShowSecondaryButton": "false"
+                }
+            }
+        },
+        "STORESELECTION": {
+            "label": "Select a Store",
+            "defaultOption": "All Stores",
+            "loading": "Loading.."
+        },
+        "TENANTSETTINGS": {
+            "isIncludeShippingAndHandlingCharges": 1,
+            "returnReason": ""
+        }
+    },
+    "MESSAGES": {
+        "Dialog": {
+            "AuthFailedInvalidAuthResponse": {
+                "title": "Authentication Failed",
+                "message": "Authentication Failed for specified user. Please enter valid credentials and try again. If you still see same problem , contact customer support team.",
+                "primaryButton": "OK",
+                "secondaryButton": "",
+                "isShowSecondaryButton": "false",
+                "isLogoutOnPrimaryButton": "false"
+            }
+        },
+        "Toastr": {
+            "Error": {
+                "Fatal": "Error occurred while processing your request. Please try again later or contact customer support team.",
+                "UserSessionExpired": "Your Session has expired, please try to login again",
+                "ReturnsListGetFailed" : "An error occurred while fetching returns",
+                "OrdersListGetFailed" : "An error occurred while fetching orders",
+                "GetShipmentFailed" : "An error occurred while fetching shipment items",
+                "GetReaonsFailed": "An error occurred while fetching reasons",
+                "CreateReturnsFailed": "An error occurred while creating returns",
+                "ProcessReturnsFailed": "An error occurred while processing returns",
+                "ExistingPaymentToRefundFailed": "An error occurred while fetching the payment details of return",
+                "PaymentRefundFailed": "An error occurred while processing the refund",
+                "CloseReturnsFailed": "An error occurred while closing/rejecting returns"               
+            },
+            "Warning": {
+                "DashboardTilesGetFailed": "Error occurred while fetching dasbhoard tiles",
+                "CreateReturnEmptyData": "Quantity and Reason should be selected",
+                "ProcessReturnEmptyData": "Quantity and Return Location should be selected",
+                "PaymentRefundWarning": "Unable to trigger refund"
+            },
+            "Information": {
+                "EmptyEmailAddress": "Please enter Email Address.",
+                "EmptyPassword": "Please enter Password."
+            },
+            "Success": {
+                "LoginSuccess": "Successfully Logged in",
+                "CreateReturnsSuccess": "Return created successfully",
+                "ProcessReturnsSuccess": "Return Processed successfully"
+            },
+            "Custom": {}
+        }
+    },
+    "RETURNS": {
+        "Edit": {
+            "AuditCard": {
+                "created": "Created",
+                "lastModified": "Last Modified",
+                "by": "by"
+            },
+            "CustomerCard": {
+                "customer": "Customer",
+                "order": "Order",
+                "hash": "#"
+            },
+            "ItemCard": {
+                "itemReplaced": "Item Replaced",
+                "itemRefunded": "Item Refunded",
+                "amountRefunded": "Amount Refunded",
+                "of": "of",
+                "dollar": "$"
+            },
+            "StickyMenu": {
+                "items": "Items",
+                "refunds": "Refunds",
+                "replacements": "Replacements",
+                "internalNotes": "Internal Notes",
+                "customerNotes": "Customer Notes"
+            },
+            "Items": "Items",
+            "Refunds": "Refunds",
+            "Replacements": "Replacements",
+            "InternalNotes": "Internal Notes",
+            "CustomerNotes": "Customer Notes"
+        },
+        "List": {
+            "GridHeader": {
+                "returnNumber": "Return #",
+                "createDate": "Created Date",
+                "updateDate": "Last Modified Date",
+                "originalOrderNumber": "Order #",
+                "channelName": "Channel",
+                "siteId": "Site",
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "customerEmail": "Email",
+                "returnStatus": "Return Status",
+                "receiveStatus": "Receive Status",
+                "refundStatus": "Refund Status",
+                "replaceStatus": "Replacement Status",
+                "productLossAmount": "Return Amount"
+            },
+            "GridContextMenu": {
+                "editReturn": "Edit Return"
+            }
+        },
+        "Fulfillment": {
+            "Create": {
+                "title": "Create Returns",
+                "GridHeader": {
+                    "selectItems": "Select Items",
+                    "product": "Product",
+                    "SKU": "SKU:",
+                    "UPC": "UPC:",
+                    "part": "Part #:",
+                    "shippedBy": "Shipped By",
+                    "quantityShipped": "Quantity Shipped",
+                    "quantityToReturn": "Quantity to Return",
+                    "reason": "Reason"
+                },
+                "GridEmptyMessages": {
+                    "noRecordFound": "No Items found for returns"
+                },
+                "Buttons": {
+                    "cancel": "Cancel",
+                    "createReturn": "Create Return for These Items"
+                }
+            },
+            "Process": {
+                "title": "Process Returns",
+                "returnIdLabel": "Return #",
+                "returnAddressLabel": "Return Address: ",
+                "returnReduction": "Return Reduction: ",
+                "returnLocation": "Return Location:",
+                "GridHeader": {
+                    "selectItems": "Select Items",
+                    "product": "Product",
+                    "SKU": "SKU:",
+                    "UPC": "UPC:",
+                    "part": "Part #:",
+                    "shippedBy": "Shipped By",
+                    "quantity": "Quantity",
+                    "reason": "Reason",
+                    "refundShippingAndHandling": "Refund S&H"
+                },
+                "GridEmptyMessages": {
+                    "noRecordFound": "No return items found",
+                    "maxValueError": "Return Reduction amount should not be greater than "
+                },
+                "Buttons": {
+                    "cancel": "Cancel",
+                    "processReturn": "Process These Items",
+                    "processNewGiftCard": "Process to New Gift Card"
+                }
+            }
+        }
+    },
+    "ORDER": {
+        "List": {
+            "GridHeader": {
+                "orderNumber": "Order #",
+                "orderReferenceNumber": "Order Reference Number",
+                "submittedDate": "Submitted Date",
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "orderTotal": "Order Total",
+                "orderStatus": "Order Status",
+                "returnStatus": "Return Status",
+                "customerEmail": "Customer Email"
+            },
+            "GridContextMenu": {
+                "createReturn": "Create Return"
+            }
+        },
+        "Details": {
+            "Return": {
+                "List": {
+                    "title": "Returns",
+                    "emptyMessage": "No returns for this order",
+                    "GridHeader": {
+                        "returnNumber": "Return #",
+                        "createDate": "Created Date",
+                        "updateDate": "Last Modified Date",
+                        "status": "Return Status",
+                        "receiveStatus": "Receive Status",
+                        "refundStatus": "Refund Status",
+                        "replaceStatus": "Replace Status",
+                        "productTotal": "Return Amount"
+                    }
+                },
+                "ReturnableItem": {
+                    "title": "Returnable Items",
+                    "create": "Create Return",
+                    "emptyMessage": "No items to return for this order",
+                    "GridHeader": {
+                        "orderLineId": "Line",
+                        "productName": "Product",
+                        "productCode": "Code",
+                        "quantityOrdered": "Ordered",
+                        "quantityFulfilled": "Fulfilled",
+                        "quantityDirectlyReturned": "Returned",
+                        "quantityReturnable": "Returnable",
+                        "reportedIssue": "Reported Issue",
+                        "type": "Type",
+                        "qtyToReturn": "Qty to Return"
+                    },
+                    "ReturnType": {
+                        "return": "Return",
+                        "replace": "Replace"
+                    }
+                },
+                "Information": {
+                    "AccountInfo": {
+                        "title": "Account",
+                        "Payment": {
+                            "title": "Payment",
+                            "orderTotal": "Order Total",
+                            "collected": "Collected",
+                            "balance": "Balance"
+                        },
+                        "Fulfillment": {
+                            "title": "Fulfillment",
+                            "items": "Items",
+                            "fulfilled": "Fulfilled",
+                            "remaining": "Remaining"
+                        }
+                    },
+                    "SiteInfo": {
+                        "title": "Site",
+                        "orderDate": "Order Date",
+                        "lastUpdated": "Last Updated",
+                        "channel": "Channel",
+                        "ipAddress": "IP Address"
+                    },
+                    "AddressInfo": {
+                        "title": "Addresses",
+                        "changeAddress": "Change Address",
+                        "billingAddress": "Billing Address",
+                        "shippingAddress": "Shipping Address"
+                    }
+                }
+            }
+        }
+    }
+}

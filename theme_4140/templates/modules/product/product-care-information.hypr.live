@@ -1,0 +1,15 @@
+<div class="mz-collection-information-container deactive">
+   <div class="mz-details-information-text deactive">{{labels.detailsAndCare|upper}}</div>
+   <div class="mz-container deactive">
+    {% for detail in model.detailsAndCare %}
+      {% include "modules/product/product-details/product-details-care" with detail=detail%}
+       {% comment %} {% if property.values and not property.isHidden %}
+         <div class="mz-product-care-info-container">
+            {% with property.values|first as careInfo%}
+               <div>{{careInfo.stringValue}}</div>
+            {% endwith %}
+         </div>
+       {% endif %} {% endcomment %}
+    {% endfor %}
+    </div>
+</div>

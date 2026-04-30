@@ -1,0 +1,111 @@
+<div class="chart">
+	<h5>Single Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>UK/AU/NZ</span>
+			<span>US/CA</span>
+			<span>EU</span>
+			<span>DE</span>
+			<span>Waist</span>
+			<span>Hips</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">6</td>
+						<td class="active">8</td>
+						<td class="active">10</td>
+						<td class="active">12</td>
+						<td class="active">14</td>
+						<td class="active">16</td>
+						<td class="active">18</td>
+						<td class="active">20</td>
+						<td class="active">22</td>
+						<td class="active">24</td>
+					</tr>
+					<tr>
+						<td class="active">2</td>
+						<td class="active">4</td>
+						<td class="active">6</td>
+						<td class="active">8</td>
+						<td class="active">10</td>
+						<td class="active">12</td>
+						<td class="active">14</td>
+						<td class="active">16</td>
+						<td class="active">18</td>
+						<td class="active">20</td>
+					</tr>
+					<tr>
+						<td class="active">34</td>
+						<td class="active">36</td>
+						<td class="active">38</td>
+						<td class="active">40</td>
+						<td class="active">42</td>
+						<td class="active">44</td>
+						<td class="active">46</td>
+						<td class="active">48</td>
+						<td class="active">50</td>
+						<td class="active">52</td>
+					</tr>
+					<tr>
+						<td class="active">32</td>
+						<td class="active">34</td>
+						<td class="active">36</td>
+						<td class="active">38</td>
+						<td class="active">40</td>
+						<td class="active">42</td>
+						<td class="active">44</td>
+						<td class="active">46</td>
+						<td class="active">48</td>
+						<td class="active">50</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">61</td>
+						<td class="unit-cm active">65</td>
+						<td class="unit-cm active">70</td>
+						<td class="unit-cm active">75</td>
+						<td class="unit-cm active">80.5</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">92</td>
+						<td class="unit-cm active">98</td>
+						<td class="unit-cm active">104</td>
+						<td class="unit-cm active">110</td>
+						<td class="unit-in">24</td>
+						<td class="unit-in">25½</td>
+						<td class="unit-in">27½</td>
+						<td class="unit-in">29½</td>
+						<td class="unit-in">31¾</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">36¼</td>
+						<td class="unit-in">38½</td>
+						<td class="unit-in">41</td>
+						<td class="unit-in">43¼</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">90</td>
+						<td class="unit-cm active">95</td>
+						<td class="unit-cm active">100</td>
+						<td class="unit-cm active">105</td>
+						<td class="unit-cm active">110</td>
+						<td class="unit-cm active">115</td>
+						<td class="unit-cm active">121</td>
+						<td class="unit-cm active">127</td>
+						<td class="unit-cm active">133</td>
+						<td class="unit-in">33¾</td>
+						<td class="unit-in">35½</td>
+						<td class="unit-in">37½¼</td>
+						<td class="unit-in">39½</td>
+						<td class="unit-in">41½</td>
+						<td class="unit-in">43¼</td>
+						<td class="unit-in">45¼</td>
+						<td class="unit-in">47½</td>
+						<td class="unit-in">50</td>
+						<td class="unit-in">52½</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

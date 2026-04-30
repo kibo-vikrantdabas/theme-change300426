@@ -1,0 +1,59 @@
+<div class="mz-blue-payment-selector-container 
+{% if themeSettings.disableSplitPayment %}
+       blue-container-split-payment
+{% endif %}
+
+">
+    <div class="mz-select-payment">
+    {% if not model.displayBluePrepaidAmountCapture and not model.displayBlueWalletAmountCapture  %}
+        {{labels.selectBluePaymentType}}
+    {% endif %}
+    </div>
+    <div class="mz-payment-selector-image-container 
+    {% if themeSettings.disableSplitPayment %}
+              blue-selector-image-container-split-payment
+        {% endif %}">
+    {% if themeSettings.isPaywithBlueOnCheckoutPaymentTypeBlueWalletOnPopup %}
+
+        <div class="mz-blue-wallet-image-container">
+            <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}blueWallet.png" class="mz-blue-wallet-image" alt="blue-wallet-image">
+            {% if not model.displayBlueWalletAmountCapture  %}
+                {% if model.inSufficientBlueBalance %}
+                        
+                    <div class="mz-wallet-ballance">{{labels.walletBalance}} {% include "modules/common/currency-code" %} 
+                    <span class="mz-ballance">{{model.currentBlueBalanceAmount}}<span></div>
+                    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Checkmark.svg" alt="tick-icon" class="mz-amountDeductTickIcon active">
+                {% else %}    
+                    <div class="pay-with-blue-wallet">{{labels.payWithBlueWallet}}</div>
+                {% endif %}
+            
+            {% endif %}
+            {% if model.displayBlueWalletAmountCapture %}
+                <div class="mz-wallet-ballance">{{labels.walletBalance}} {% include "modules/common/currency-code" %} 
+                    <span class="mz-ballance">{{model.blueWalletBalance}}<span></div>
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Checkmark.svg" alt="tick-icon" class="mz-amountDeductTickIcon active">
+            {% endif %}
+        </div>
+         {% endif %}
+        {% if themeSettings.isPaywithBlueOnCheckoutPaymentTypeBluePrepaidOnPopup %}
+        <div class="mz-blue-prepaid-image-container">
+            <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}bluePrepaid.png" class="mz-blue-prepaid-image" alt="blue-prepaid-image">
+            {% if not model.displayBluePrepaidAmountCapture %} <div class="pay-with-blue-prepaid">{{labels.payWithBluePrepaid}}</div> {% endif %}
+            {% if model.displayBluePrepaidAmountCapture %} 
+                <div class="card-ballance">{{labels.cardBalance}} {% include "modules/common/currency-code" %} <span class="mz-ballance"><span>{{model.bluePrepaidCardBalance}}</div>
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Tick.svg" alt="tick-icon" class="mz-amountDeductTickIcon active">
+            {% endif %}
+        </div>
+          {% endif %}
+
+    </div>
+    {% if themeSettings.disableSplitPayment %}
+    <div class="mz-payment-ksa-message-label">
+        <img src="/resources/images/icons/svg/help.svg" alt="help-icon" class="mz-help-icon mz-payment-ksa-message-icon"/>
+        <div class="payment-message">
+            {{labels.blueWalletPayementMessage}} 
+        </div>  
+    </div>
+     {% endif %}      
+</div>
+

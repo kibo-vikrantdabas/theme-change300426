@@ -1,0 +1,1374 @@
+{
+    "items": [
+        {
+            "xtype": "panel",
+            "title": "Akamai Caching",
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "Akamai Edge-Control Caching Enabled",
+                    "xtype": "mz-input-checkbox",
+                    "name": "akamaiEdgeControlEnabled"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "akamaiEdgeControlEnabledHome",
+                    "fieldLabel": "Send Caching header for Home Page"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "akamaiEdgeControlEnabledPDP",
+                    "fieldLabel": "Send Caching header for PDP Pages"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "akamaiEdgeControlEnabledPLP",
+                    "fieldLabel": "Send Caching header for PLP Pages"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "akamaiEdgeControlEnabledParentCategory",
+                    "fieldLabel": "Send Caching header for Parent Category Pages"
+                },
+                {
+                    "fieldLabel": "Edge-Control cache-maxage (minutes)",
+                    "xtype": "mz-input-number",
+                    "name": "akamaiEdgeControlMaxAge",
+                    "hideTrigger": false,
+                    "allowDecimal": false,
+                    "minValue": 1,
+                    "maxValue": 60
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "General",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-image",
+                    "name": "markAndSpencerLogo",
+                    "fieldLabel": "Logo"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "showAddressTypeDropdown",
+                    "fieldLabel": "Show Address Type dropdown in Address Forms (Residential/Commercial)"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "enablePartialCaching",
+                    "fieldLabel": "Enable partial caching using the Hypr {% partial_cache %} tag"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "googleMapsAPIKey",
+                    "fieldLabel": "Google Map API Key"
+                },
+                {
+                    "xtype": "mz-input-number",
+                    "name": "customerLoggedTime",
+                    "fieldLabel": "Customer Logged In Time (In hours)"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "localeDomain",
+                    "fieldLabel": "Locale Specific Domain and Prefix"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "categoryPrefixUrl",
+                    "fieldLabel": "Category Prefix Url"
+                },
+                 {
+                    "xtype": "mz-input-text",
+                    "name": "homePage",
+                    "fieldLabel": "Home Page"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "women",
+                    "fieldLabel": "WOMEN"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "men",
+                    "fieldLabel": "MEN"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingerie",
+                    "fieldLabel": "LINGERIE"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "kids",
+                    "fieldLabel": "KIDS"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "babyv2",
+                    "fieldLabel": "BABY-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenallfootwearv2",
+                    "fieldLabel": "WOMEN-ALL-FOOTWEAR-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenskirtsv2",
+                    "fieldLabel": "WOMEN-SKIRTS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womencoatsnjacketsv2",
+                    "fieldLabel": "WOMEN-COATS-N-JACKETS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenjumperscardigansv2",
+                    "fieldLabel": "WOMEN-JUMPERS-CARDIGANS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womendressesv2",
+                    "fieldLabel": "WOMEN-DRESSES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womentopsv2",
+                    "fieldLabel": "WOMEN-TOPS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menaccessoriesv2",
+                    "fieldLabel": "MEN-ACCESSORIES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriehosierysocksv2",
+                    "fieldLabel": "LINGERIE-HOSIERY-SOCKS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menfootwearv2",
+                    "fieldLabel": "MEN-FOOTWEAR-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menjumperscardigansv2",
+                    "fieldLabel": "MEN-JUMPERS-CARDIGANS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menunderwearv2",
+                    "fieldLabel": "MEN-UNDERWEAR-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "mentopstspolosv2",
+                    "fieldLabel": "MEN-TOPS-TS-POLOS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "mencoatsnjacketsv2",
+                    "fieldLabel": "MEN-COATS-N-JACKETS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "mencasualshirtsv2",
+                    "fieldLabel": "MEN-CASUAL-SHIRTS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menfwformalshirtsv2",
+                    "fieldLabel": "MEN-FW-FORMAL-SHIRTS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingerieshapewearbodiesv2",
+                    "fieldLabel": "LINGERIE-SHAPEWEAR-BODIES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingerieshapewearslipsv2",
+                    "fieldLabel": "LINGERIE-SHAPEWEAR-SLIPS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingerieshapewearv2",
+                    "fieldLabel": "LINGERIE-SHAPEWEAR-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "kidsthermalsv2",
+                    "fieldLabel": "KIDS-THERMALS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebrasmaternityv2",
+                    "fieldLabel": "LINGERIE-BRAS-MATERNITY-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebrasplungev2",
+                    "fieldLabel": "LINGERIE-BRAS-PLUNGE-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingerienightwearv2",
+                    "fieldLabel": "LINGERIE-NIGHTWEAR-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenhandbagsaccessoriesv2",
+                    "fieldLabel": "WOMEN-HANDBAGS-ACCESSORIES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriepantiesshapewearv2",
+                    "fieldLabel": "LINGERIE-PANTIES-SHAPEWEAR-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebraspostsurgeryv2",
+                    "fieldLabel": "LINGERIE-BRAS-POST-SURGERY-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menfwsuitsv2",
+                    "fieldLabel": "MEN-FW-SUITS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenshirtsblousesv2",
+                    "fieldLabel": "WOMEN-SHIRTS-BLOUSES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebrasstraplessv2",
+                    "fieldLabel": "LINGERIE-BRAS-STRAPLESS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebrastshirtv2",
+                    "fieldLabel": "LINGERIE-BRAS-TSHIRT-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebrasv2",
+                    "fieldLabel": "LINGERIE-BRAS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenjoggersnsweatv2",
+                    "fieldLabel": "WOMEN-JOGGERS-N-SWEAT-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "allbabyboysv2",
+                    "fieldLabel": "ALL-BABY-BOYS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "allbabygirlsv2",
+                    "fieldLabel": "ALL-BABY-GIRLS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "girlsv2",
+                    "fieldLabel": "GIRLS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "boysv2",
+                    "fieldLabel": "BOYS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenclothingv2",
+                    "fieldLabel": "WOMEN-CLOTHING-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menclothingv2",
+                    "fieldLabel": "MEN-CLOTHING-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebrasnonwiredv2",
+                    "fieldLabel": "LINGERIE-BRAS-NON-WIRED-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "girlsskirtsnshortsv2",
+                    "fieldLabel": "GIRLS-SKIRTS-N-SHORTS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womentrousersv2",
+                    "fieldLabel": "WOMEN-TROUSERS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriepantiesthongsv2",
+                    "fieldLabel": "LINGERIE-PANTIES-THONGS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenfootwearsandalsv2",
+                    "fieldLabel": "WOMEN-FOOTWEAR-SANDALS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "beautyfloralsv2",
+                    "fieldLabel": "BEAUTY-FLORALS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "babyaccessoriesv2",
+                    "fieldLabel": "BABY-ACCESSORIES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenshortsv2",
+                    "fieldLabel": "WOMEN-SHORTS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menbrandsautograph",
+                    "fieldLabel": "MEN-BRANDS-AUTOGRAPH"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebrasminimizerv2",
+                    "fieldLabel": "LINGERIE-BRAS-MINIMIZER-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "beautybathbodyv2",
+                    "fieldLabel": "BEAUTY-BATH-BODY-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "beautyhandcarev2",
+                    "fieldLabel": "BEAUTY-HANDCARE-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "beautyperfumev2",
+                    "fieldLabel": "BEAUTY-PERFUME-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebraspushupv2",
+                    "fieldLabel": "LINGERIE-BRAS-PUSH-UP-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menswimwearv2",
+                    "fieldLabel": "MEN-SWIMWEAR-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebrasfirstbrasv2",
+                    "fieldLabel": "LINGERIE-BRAS-FIRST-BRAS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menaccessoriesbeltsv2",
+                    "fieldLabel": "MEN-ACCESSORIES-BELTS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menaccessoriestiesv2",
+                    "fieldLabel": "MEN-ACCESSORIES-TIES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "kidsgirlspyjamasonsiesv2",
+                    "fieldLabel": "KIDS-GIRLS-PYJAMAS-ONSIES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "babydressesv2",
+                    "fieldLabel": "BABY-DRESSES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "babytopsv2",
+                    "fieldLabel": "BABY-TOPS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "babydressesv2",
+                    "fieldLabel": "BABY-DRESSES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menthermalsv2",
+                    "fieldLabel": "MEN-THERMALS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenfootweartrainersv2",
+                    "fieldLabel": "WOMEN-FOOTWEAR-TRAINERS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menaccessorieshatsv2",
+                    "fieldLabel": "MEN-ACCESSORIES-HATS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menaccessoriesbagswalletv2",
+                    "fieldLabel": "MEN-ACCESSORIES-BAGS-WALLET-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menclothingjeansv2",
+                    "fieldLabel": "MEN-CLOTHING-JEANS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menshortsv2",
+                    "fieldLabel": "MEN-SHORTS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menfwblazerv2",
+                    "fieldLabel": "MEN-FW-BLAZER-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriedressinggownsv2",
+                    "fieldLabel": "LINGERIE-DRESSING-GOWNS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingerienightdressesv2",
+                    "fieldLabel": "LINGERIE-NIGHT-DRESSES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenpyjamasv2",
+                    "fieldLabel": "WOMEN-PYJAMAS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingerievestsnthermalsv2",
+                    "fieldLabel": "LINGERIE-VESTS-N-THERMALS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menfwtrousersv2",
+                    "fieldLabel": "MEN-FW-TROUSERS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriebrassportsv2",
+                    "fieldLabel": "LINGERIE-BRAS-SPORTS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriepantiesbrazilianv2",
+                    "fieldLabel": "LINGERIE-PANTIES-BRAZILIAN-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "lingeriepantieshighlegv2",
+                    "fieldLabel": "LINGERIE-PANTIES-HIGH-LEG-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "babytopsv2",
+                    "fieldLabel": "BABY-TOPS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenfootwearloafersv2",
+                    "fieldLabel": "WOMEN-FOOTWEAR-LOAFERS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "kidsgirlsfootwearv2",
+                    "fieldLabel": "KIDS-GIRLS-FOOTWEAR-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenfootwearheelspumpsv2",
+                    "fieldLabel": "WOMEN-FOOTWEAR-HEELS-PUMPS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menbrandsgoodmove",
+                    "fieldLabel": "MEN-BRANDS-GOODMOVE"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "womenclothingjeansv2",
+                    "fieldLabel": "WOMEN-CLOTHING-JEANS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "boysbottomsv2",
+                    "fieldLabel": "BOYS-BOTTOMS-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "kidsboyspyjamasonsiesv2",
+                    "fieldLabel": "KIDS-BOYS-PYJAMAS-ONSIES-V2"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "menvestsv2",
+                    "fieldLabel": "MEN-VESTS-V2"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Site Breakpoints",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-number",
+                    "allowBlank": false,
+                    "minValue": 1,
+                    "name": "siteMobileBreakpoint",
+                    "fieldLabel": "Mobile Breakpoint in pixels (Default 500)"
+                },
+                {
+                    "xtype": "mz-input-number",
+                    "name": "siteTabletBreakpoint",
+                    "allowBlank": false,
+                    "minValue": 1,
+                    "fieldLabel": "Tablet Breakpoint in pixels (Default 1000)"
+                },
+                {
+                    "xtype": "mz-input-number",
+                    "name": "siteDesktopMediumBreakpoint",
+                    "allowBlank": false,
+                    "minValue": 1,
+                    "fieldLabel": "Desktop Medium Breakpoint in pixels (Default 1250)"
+                },
+                {
+                    "xtype": "mz-input-number",
+                    "name": "siteDesktopMaxBreakpoint",
+                    "allowBlank": false,
+                    "minValue": 1,
+                    "fieldLabel": "Desktop Max Breakpoint in pixels (Default 1440)"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Recaptcha",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "enableRecaptcha",
+                    "fieldLabel": "Enable Recaptcha"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "enableRecaptchaSignUp",
+                    "fieldLabel": "Enable Singup Recaptcha"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "recaptchaSiteKey",
+                    "fieldLabel": "Recaptcha Site Key"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "__recaptchaSecrete",
+                    "fieldLabel": "Recaptcha Secret",
+                    "inputType": "password"
+                },
+                {
+                    "xtype": "mz-input-dropdown",
+                    "name": "recaptchaType",
+                    "fieldLabel": "Recaptcha Type",
+                    "allowBlank": false,
+                    "forceSelection": true,
+                    "store": [
+                        "Invisible",
+                        "I'm not a robot"
+                    ]
+                },
+                {
+                    "xtype": "mz-input-dropdown",
+                    "name": "recaptchaSize",
+                    "fieldLabel": "Recaptcha Size",
+                    "allowBlank": false,
+                    "forceSelection": true,
+                    "store": [
+                        "normal",
+                        "compact"
+                    ]
+                },
+                {
+                    "xtype": "mz-input-dropdown",
+                    "name": "recaptchaTheme",
+                    "fieldLabel": "Recaptcha Theme",
+                    "allowBlank": false,
+                    "forceSelection": true,
+                    "store": [
+                        "light",
+                        "dark"
+                    ]
+                },
+                {
+                    "xtype": "mz-input-dropdown",
+                    "name": "recaptchaBadgePosition",
+                    "fieldLabel": "Recaptcha Badge Position",
+                    "allowBlank": false,
+                    "forceSelection": true,
+                    "store": [
+                        "bottomright",
+                        "bottomleft",
+                        "inline"
+                    ]
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Filters",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "allowFilterByLocationInventory",
+                    "fieldLabel": "Allow Filter by Location Inventory"
+                },
+                {
+                    "fieldLabel": "Max Number of Locations",
+                    "xtype": "mz-input-dropdown",
+                    "name": "maxFilterLocations",
+                    "allowBlank": false,
+                    "forceSelection": true,
+                    "store": [
+                        50,
+                        100,
+                        150,
+                        200
+                    ]
+                },
+                {
+                    "fieldLabel": "Filter Label Text (limit 30 characters)",
+                    "xtype": "mz-input-text",
+                    "name": "locationInventoryFilterText",
+                    "allowBlank": true,
+                    "allowOnlyWhitespace": true,
+                    "maxValue": 30
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Extended Properties",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "extendedPropertiesEnabled",
+                    "fieldLabel": "Enable Extended Properties (Tracking Strings)"
+                },
+                {
+                    "xtype": "mz-input-textarea",
+                    "name": "extendedPropertyParameters",
+                    "fieldLabel": "Query Parameters (comma separated)"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Product Lists",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "listProductCode",
+                    "fieldLabel": "Show product code in product lists"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "listProductShortDesc",
+                    "fieldLabel": "Show product short description in product lists"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "listVolumePricing",
+                    "fieldLabel": "Show volume pricing bands in product lists"
+                },
+                {
+                    "xtype": "mz-input-number",
+                    "name": "promotionalParentCategoryId",
+                    "fieldLabel": "Promotional Parent Category Id"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Search",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "showChildCategoriesInFaceting",
+                    "fieldLabel": "Show two levels of the category hierarchy in faceting"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "useSearchAutocomplete",
+                    "fieldLabel": "Show search suggestions"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "suggestPriorSearchTerms",
+                    "fieldLabel": "Show search terms others used on this site in search suggestions",
+                    "enableIf": "useSearchAutocomplete"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Layout",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-dropdown",
+                    "name": "gutterWidth",
+                    "fieldLabel": "Base Margin Width",
+                    "allowBlank": false,
+                    "forceSelection": true,
+                    "store": [
+                        "15px",
+                        "20px",
+                        "25px",
+                        "30px",
+                        "35px"
+                    ]
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isArabicLanguageSite",
+                    "fieldLabel": "Is this site in Arabic?"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isMarckupSchemaSite",
+                    "fieldLabel": "Is this in Markup schema?"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isEnableforSEO",
+                    "fieldLabel": "Is this Enable SEO?"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Suppress CVV During Express Checkout",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isCvvSuppressed",
+                    "fieldLabel": "CVV Suppressed"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Anonymous Account Verification Options",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "zipCodeEnabled",
+                    "fieldLabel": "Billing Zip Code"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "phoneNumberEnabled",
+                    "fieldLabel": "Billing Phone Number"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "billingEmailEnabled",
+                    "fieldLabel": "Billing Email"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Text",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-selectmulti",
+                    "name": "loadGoogleFonts",
+                    "fieldLabel": "Load Google Fonts",
+                    "allowBlank": false,
+                    "forceSelection": true,
+                    "store": [
+                        "Source Sans Pro",
+                        "Open Sans",
+                        "Raleway",
+                        "Lora",
+                        "Rokkitt"
+                    ]
+                },
+                {
+                    "xtype": "mz-input-dropdown",
+                    "name": "primaryFont",
+                    "fieldLabel": "Primary Font",
+                    "allowBlank": false,
+                    "storeFrom": "loadGoogleFonts",
+                    "forceSelection": true
+                },
+                {
+                    "xtype": "mz-input-dropdown",
+                    "name": "fontSize",
+                    "fieldLabel": "Font Size",
+                    "allowBlank": false,
+                    "editable": false,
+                    "forceSelection": true,
+                    "store": [
+                        "12px",
+                        "14px",
+                        "16px",
+                        "18px",
+                        "20px"
+                    ]
+                },
+                {
+                    "xtype": "mz-input-color",
+                    "name": "textColor",
+                    "fieldLabel": "Text Color"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Paging",
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "Show these page size options",
+                    "xtype": "mz-input-selectmulti",
+                    "name": "pageSizeOptions",
+                    "allowBlank": false,
+                    "forceSelection": true,
+                    "store": [
+                        12,
+                        24,
+                        36,
+                        48,
+                        60
+                    ]
+                },
+                {
+                    "fieldLabel": "Default items per page",
+                    "xtype": "mz-input-dropdown",
+                    "name": "defaultPageSize",
+                    "allowBlank": false,
+                    "forceSelection": true,
+                    "storeFrom": "pageSizeOptions"
+                },
+                {
+                    "fieldLabel": "Default Sort Order",
+                    "xtype": "mz-input-text",
+                    "name": "defaultSort",
+                    "allowBlank": true,
+                    "allowOnlyWhitespace": true
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Navigation",
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "Maximum Items In Main Nav",
+                    "xtype": "mz-input-number",
+                    "name": "maxTopLevelNavItems",
+                    "hideTrigger": false,
+                    "allowDecimal": false,
+                    "minValue": 1
+                },
+                {
+                    "fieldLabel": "Maximum Nav Item Label Length",
+                    "xtype": "mz-input-number",
+                    "name": "maxTopLevelNavLabelLength",
+                    "hideTrigger": false,
+                    "allowDecimal": false,
+                    "minValue": 4,
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "showCategoryName",
+                    "fieldLabel": "Hide Category title on Page",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-categorymulti",
+                    "name": "selectMultiCategory",
+                    "fieldLabel": "Select Categories which title should be hidden on page",
+                    "allowBlank": true
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Border Configuration",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "enableborderFree",
+                    "fieldLabel": "Enable Border Free"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "merchantId",
+                    "fieldLabel": "MerchantId"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "borderFreeUsername",
+                    "fieldLabel": "Username for BorderFree"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "borderFreePassword",
+                    "fieldLabel": "Password for BorderFree"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Product",
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "Max Purchasable Quantity, ex:(1,2,3,4)",
+                    "xtype": "mz-input-textarea",
+                    "name": "maxPurchaseQuantity",
+                    "allowBlank": true,
+                    "emptyText": "1,2,3,4"
+                },
+                {
+                    "fieldLabel": "Limited Quantity Purchase Alert, ex:(5)",
+                    "xtype": "mz-input-textarea",
+                    "name": "quantityPurchaseAlert",
+                    "allowBlank": false,
+                    "emptyText": "5"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Delivery Methods",
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "National Address Short Code Required?",
+                    "xtype": "mz-input-checkbox",
+                    "name": "nationalAddressShortCodeRequired"
+                },
+                {
+                    "fieldLabel": "STH - Title",
+                    "xtype": "mz-input-text",
+                    "name": "trackeddeliverytitle",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "STH - Delievry Days",
+                    "xtype": "mz-input-text",
+                    "name": "trackeddeliverydays",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "STH - Description",
+                    "xtype": "mz-input-text",
+                    "name": "trackeddeliverydesc",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "STH - Charge Amount",
+                    "xtype": "mz-input-text",
+                    "name": "trackeddeliverycharges",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": " STH - Delievry Duration",
+                    "xtype": "mz-input-number",
+                    "name": "shippingDeliveryDuration",
+                    "allowDecimals": false,
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "Click & Collect Title",
+                    "xtype": "mz-input-text",
+                    "name": "clickcollecttitle",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "Click & Collect Delievry Days",
+                    "xtype": "mz-input-text",
+                    "name": "clickcollectdays",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "Click & Collect Description",
+                    "xtype": "mz-input-text",
+                    "name": "clickcollectdesc",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "Click & Collect Additional Charges",
+                    "xtype": "mz-input-text",
+                    "name": "clickcollectcharges",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "Default CNC Location Code",
+                    "xtype": "mz-input-text",
+                    "name": "defaultCNCLocationCode",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "fieldLabel": "Store Phonenumber",
+                    "name": "storephonenumber",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "fieldLabel": "Store Open Time",
+                    "name": "storeopentime",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "fieldLabel": "Store Close Time",
+                    "name": "storeclosetime",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": " Cash on delivery - Title",
+                    "xtype": "mz-input-text",
+                    "name": "codtitle",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "Cash on delivery - Days",
+                    "xtype": "mz-input-text",
+                    "name": "coddays",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "Cash on delivery - Description",
+                    "xtype": "mz-input-text",
+                    "name": "coddesc",
+                    "allowBlank": true
+                },
+                {
+                    "fieldLabel": "Cash on delivery - Additional Charges",
+                    "xtype": "mz-input-text",
+                    "name": "codcharges",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "refundDays",
+                    "fieldLabel": "Refund Days Description",
+                    "allowBlank": false,
+                    "emptyText": "Within 35 days from purchase"
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Google Tag Manager",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "enableGoogleTagManager",
+                    "fieldLabel": "Enable Google Tag Manager?"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "gtmContainerId",
+                    "fieldLabel": "Google Tag Manager Container ID",
+                    "enableIf": "enableGoogleTagManager",
+                    "allowBlank": false
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Payment",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-text",
+                    "name": "epgRedirectURL",
+                    "fieldLabel": "Redirect URL From EPG",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isKNETPaymentApply",
+                    "fieldLabel": "Is KNET Payment Applicable ?"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isBenefitPayApply",
+                    "fieldLabel": "Pay using BenefitPay"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isOmanNetApply",
+                    "fieldLabel": "Pay using OmanNet"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isQpayApply",
+                    "fieldLabel": "Pay using Qpay"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isMADAPaymentApply",
+                    "fieldLabel": "Is MADA Payment Applicable ?"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "disableSplitPayment",
+                    "fieldLabel": "Is Disable Split Payment?"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isApplePayPaymentApply",
+                    "fieldLabel": "Is Apple Pay Payment Applicable ?"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isApplePayButtonOnCart",
+                    "fieldLabel": "Is Apple Pay Payment Show On Cart ?"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isPaywithBlueOnCheckout",
+                    "fieldLabel": "Enable Blue payment"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isPaywithBlueOnCheckoutPaymentTypeBlueWalletOnPopup",
+                    "fieldLabel": "Enable Blue Wallet"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isPaywithBlueOnCheckoutPaymentTypeBluePrepaidOnPopup",
+                    "fieldLabel": "Enable Blue Prepaid"
+                },
+                {
+                    "xtype": "mz-input-checkbox",
+                    "name": "isCODDisable",
+                    "fieldLabel": "Is COD Disable?"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "displayBlueWalletorBluePrepaid",
+                    "fieldLabel": "Use Blue Wallet or Blue Prepaid",
+                    "allowBlank": true
+                }
+            ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Country/Site/Organization Specific",
+            "collapsed": false,
+            "items": [
+                {
+                    "xtype": "mz-input-text",
+                    "name": "countryName",
+                    "fieldLabel": "Country Name",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "countryAbbreviation",
+                    "fieldLabel": "Country Abbreviation",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "countrySpecificCode",
+                    "fieldLabel": "Country Code",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "currencyCode",
+                    "fieldLabel": "Currency Code",
+                    "allowBlank": false
+                },
+                {
+                    "fieldLabel": "Country Dialing Code",
+                    "xtype": "mz-input-text",
+                    "name": "countrySpecificDialingCode",
+                    "emptyText": "+971",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "organizationlName",
+                    "fieldLabel": "Organization Name",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "emailFooterAddress",
+                    "fieldLabel": "Email Footer Address",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "emailFooterAddress1",
+                    "fieldLabel": "Email Footer Address Line 2",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "emailFooterAddress2",
+                    "fieldLabel": "Email Footer Address Line 3",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "organizationlURL",
+                    "fieldLabel": "Organization URL",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "instagramURLOne",
+                    "fieldLabel": "Instagram Account One",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "instagramURLTwo",
+                    "fieldLabel": "Instagram Account Second",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "facebokURLOne",
+                    "fieldLabel": "Facebok Account One",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "facebokURLTwo",
+                    "fieldLabel": "Facebok Account Second",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "youtubeURL",
+                    "fieldLabel": "Youtube Account",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "siteLanguage",
+                    "fieldLabel": "Default Site Locale",
+                    "emptyText": "en-US"
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "enSiteLocale",
+                    "fieldLabel": "English Site Locale",
+                    "emptyText": "en-kw",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "arSiteLocale",
+                    "fieldLabel": "Arabic Site Locale",
+                    "emptyText": "ar-kw",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "welcomePromotionCode",
+                    "fieldLabel": "Welcome Promotion Code",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "saleLabel",
+                    "fieldLabel": "Offers Label",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "customerServiceMail",
+                    "fieldLabel": "Customer Service Mail",
+                    "allowBlank": false
+                },
+                {
+                    "fieldLabel": "Dialing Codes",
+                    "xtype": "mz-input-selectmulti",
+                    "name": "dialingCodes",
+                    "typeAhead": true,
+                    "store": [
+                        "+971",
+                        "+965",
+                        "+91",
+                        "+966",
+                        "+973",
+                        "+974",
+                        "+968"
+                    ]
+                },
+                {
+                    "fieldLabel": "Is Split Shipment Applicable ?",
+                    "xtype": "mz-input-checkbox",
+                    "name": "isSplitShipmentApply",
+                    "allowBlank": false
+                },
+                {
+                    "fieldLabel": "Is VAT Applicable ?",
+                    "xtype": "mz-input-checkbox",
+                    "name": "isVATApply",
+                    "allowBlank": false
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "nextDayDeliveryEmailDesc",
+                    "fieldLabel": "Next Day Delivery Email Description",
+                    "allowBlank": true
+                },
+                {
+                    "xtype": "mz-input-text",
+                    "name": "collectionWithinEmail",
+                    "fieldLabel": "Delivery Schedule Collection With In",
+                    "allowBlank": true
+                }
+            ]
+        }
+    ]
+}

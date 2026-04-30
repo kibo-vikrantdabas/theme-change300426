@@ -1,0 +1,35 @@
+<input type='hidden' value="{{model.discountDate}}" class="discount-date" >
+<input type='hidden' value="{{model.discountTime}}" class="discount-time" >
+{% if model.price.onSale %}
+{% if model.price.discount.discounts.length %}
+        <div class="discount-main-div">
+            <div class="Offers-div">{% if labels.offers %}{{labels.offers}} {% else %} {{labels.offers}} {% endif %}</div> 
+            <div class="discountedPrice-div">
+                {% for discount in model.price.discount.discounts %}
+                    <div class="discount-offer-value" >{{discount.name}} 
+                        {% include "modules/product/offers-help-icon-svg" %}
+                    </div>
+                    <div class="discount-description-item" style="display:none">{{discount.friendlyDescription|safe}} </div>
+                {% endfor %}
+              
+            </div>
+            
+        </div>
+{% endif %}
+{% endif %}
+    {% for cat in model.categories %}
+    {% if themeSettings.promotionalParentCategoryId %}
+    {% if cat.parentCategoryId == themeSettings.promotionalParentCategoryId %}
+    <div class="discount-main-div">
+        <div class="Offers-div">{% if labels.offers %}{{labels.offers}} {% else %} {{labels.offers}} {% endif %}</div> 
+        <div class="discountedPrice-div">
+            {% with cat.content.description|split('|')|first as discountDiscription %}
+                <div class="discount-offer-value" >{{discountDiscription}} 
+                    {% include "modules/product/offers-help-icon-svg" %}
+                </div>
+            {% endwith %}
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endfor %}

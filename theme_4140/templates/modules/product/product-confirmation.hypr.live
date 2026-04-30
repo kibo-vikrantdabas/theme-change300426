@@ -1,0 +1,55 @@
+{% extends "modules/common/modal-dialog-centered" %}
+{% block modal-header %}
+<div class="product-confirmation-message">
+	<img class="confirmation-tick" src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Tick-Green.svg" alt="confirmation-tick" />
+	<span class="affirmation-message"><strong>{{labels.affirmation}}</strong><span class="add-to-bag">{{labels.addedToBag}}</span></span>
+	<img class="close-modal continue-shopping" data-mz-action="closeConfirmationModal" src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Close.svg" alt="close-icon">
+</div>
+{% endblock modal-header %}
+{% block modal-body %}
+
+<div class="product-confirmation-modal-container">
+	{% comment %} {% if model.mainImage.imageUrl %}
+		<img src={{model.mainImage.imageUrl}} alt={{model.content.productName}}>
+	{% else %}
+		<span class="item-noImg">{{labels.productImagePlaceholder}}</span>
+	{% endif %} {% endcomment %}
+	<div class="afg-confirmation-product-image"></div>
+	<div class="product-confirmation-product-info">
+		<h4>{{model.content.productName}}</h4>
+		<div class="product-details">
+			<div class="sale-price-show">
+				<span class="sale-price"> {{siteContext.currencyInfo.currencyCode}} <span class="selected-sale-price">{{model.price.salePrice|floatformat(pageContext.currencyInfo.precision)}}</span></span><span class="mz-strikethrough">{{siteContext.currencyInfo.currencyCode}} <span class="selected-reg-price">{{model.price.price|floatformat(pageContext.currencyInfo.precision)}}</span></span>
+			</div>
+			<div class="reg-price-show">
+				<span> {{siteContext.currencyInfo.currencyCode}} <span class="reg-price">{{model.price.price|floatformat(pageContext.currencyInfo.precision)}}</span></span>
+			</div>
+			<div class="confirmation-box-product-options">
+				<div class='size-info'>
+				{% with model.options|findwhere("attributeFQN", "tenant~color") as color %}
+				{% with model.options|findwhere("attributeFQN", "tenant~colour") as colour %}
+					{% if color or colour %}
+						<span class="afg-confirmation-color" style="text-transform: capitalize"></span><span>,</span>
+					{% endif %}
+				{% endwith %}
+				{% endwith %}
+
+				{% with model.options|findwhere("attributeFQN", "tenant~size1") as size1 %}
+					{% with model.options|findwhere("attributeFQN", "tenant~size2") as size2 %}
+						{% if size1 %}
+						<span class="confirmation-size"></span>
+						{% endif %}
+					{% endwith %}
+				{% endwith %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock modal-body %}
+{% block modal-footer %}
+<div class="product-confirmation-button-container">
+	<button class="continue-shopping" data-mz-test>{{labels.continueShopping}}</button>
+	<button class="go-to-checkout">{{labels.checkout}}</button>
+</div>
+{% endblock modal-footer %}

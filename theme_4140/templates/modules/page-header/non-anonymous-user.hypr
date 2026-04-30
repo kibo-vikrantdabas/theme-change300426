@@ -1,0 +1,51 @@
+<div id="mz-logged-in-notice">{{labels.orderWelcome}} {{user.firstName|default(user.emailAddress)}}</div>
+
+<div class="mz-nona-order-history-link-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Bag.svg" alt="bag-icon" class="mz-order-history-icon">
+    <div class="mz-order-history-link">
+        <a href="{{siteContext.siteSubdirectory}}/myaccount#account-orderhistory">{{labels.orderReturns}}</a>
+    </div>
+</div>
+
+<div class="mz-nona-loyalty-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Loyalty.svg" alt="loyalty-icon" class="mz-loyalty-icon">
+    <div class="mz-blueloyality-link">
+        <a onclick="window.globalEventBus.emit('dataLayerEvent',{'custom_event': 'account','event_params':{'event_act': 'blue loyalty','event_lbl': 'blue loyalty'}})" href="{{siteContext.siteSubdirectory}}/blue-rewards">{{ labels.blueLoyalty }}</a> 
+    </div>
+</div>
+
+
+<div class="mz-nona-payment-link-container">
+     <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}CreditCard.svg" alt="credit-card-icon" class="mz-creditcard-icon">
+    <div class="mz-payment-section-link">
+        <a href="{{siteContext.siteSubdirectory}}/myaccount#account-paymentmethods">{{labels.cards}}</a>
+    </div>
+</div>
+
+<div class="mz-nona-account-settings-link-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Profile.svg" alt="profile-icon" class="mz-sinin-icon">
+    <div class="mz-account-page-link">
+        <a href="{{siteContext.siteSubdirectory}}/myaccount">{{labels.goAccount}}</a>
+    </div>
+</div>
+
+<div class="mz-nona-return-information-link-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}return.svg" alt="return-icon" class="mz-return-icon">
+    <div class="mz-return-information-link">
+        <a href="{{siteContext.siteSubdirectory}}/return-refund">{{labels.returnInformation}}</a>
+    </div>
+</div>
+
+<div class="mz-nona-help-link-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}help.svg" alt="help-icon" class="mz-help-icon">
+    <div class="mz-help-section-link">
+        <a href="{{siteContext.siteSubdirectory}}/need-help">{{labels.needHelp}}</a>
+    </div>
+</div>
+
+<div class="mz-nona-signout-link-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}LogOut.svg" alt="logout-icon" class="mz-sigout-icon">
+    <div class="mz-signout">
+        <a href="{{siteContext.siteSubdirectory}}/logout" data-mz-action="logout" class="mz-utilitynav-link">{{ labels.signOut }}</a>
+    </div>
+</div>

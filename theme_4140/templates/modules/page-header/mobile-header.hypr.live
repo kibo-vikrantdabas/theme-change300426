@@ -1,0 +1,26 @@
+<div class="mz-mobile-header navbar-mobile afg-ms-mobile-header">
+	<div class="mz-subheader-container-mobile">
+		<div class="mz-mobile-hamburg">
+			{% block hamburg-menu %}
+				{% include "modules/page-header/hamburg-menu/hamburg-menu" %}
+			{% endblock hamburg-menu %}
+		</div>
+
+		<div class="mz-mobile-brand">
+			{% block store-branding %}
+				{% include "modules/page-header/store-branding" %}
+			{% endblock store-branding %}
+		</div>
+
+		<div class="mz-mobile-utility">
+				{% block utility-nav %}
+					{% include "modules/page-header/utility-nav" %}
+				{% endblock utility-nav %}
+		</div>
+	</div>
+	<div class="mz-mobile-searchbox">
+		{% block search-box %}
+			{% include "modules/page-header/search-box" %}
+		{% endblock search-box %}
+	</div>
+</div>

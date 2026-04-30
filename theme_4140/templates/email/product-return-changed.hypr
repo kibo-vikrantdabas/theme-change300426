@@ -1,0 +1,279 @@
+﻿{% extends "email/email" %}
+
+{% block body-content %}
+
+
+
+	<div class="mz-email-template-return_created" style="max-width:490px; font-family: Arial, Helvetica, sans-serif;">
+		<table width="100%">
+			<tr> 
+				<td style="text-align:center;margin:30px 0; padding-bottom:32px;">
+					<img src="https://cdn-tp1.euw1.kibocommerce.com/100067-m1/cms/files/cd619a01-49ed-49eb-9bf6-714a3688ee07" alt="MS-Logo" style="width: 103px;height: 39px;" width="103" height="39">
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 20px 77px; background-color: #163E35; color: #fff; text-align: center; font-size: 21px; font-family: Arial, Helvetica, sans-serif;">
+					{{labels.retuenConfirmedTitle}} 
+				</td>
+			</tr>
+		</table>
+		
+		<table style="font-size: 14px; line-height: 28px; margin-top: 32px;" width="100%">
+			<tr style="margin: 0;">
+				<td style="padding:0; font-family: Arial, Helvetica, sans-serif;"><strong>{{ labels.orderNumber }}:</strong> {{ model.order.orderNumber }}</td>
+				<td style="padding:0; font-family: Arial, Helvetica, sans-serif;"></td>
+			</tr>
+			<tr style="margin: 0;">
+				<td style="padding:0; font-family: Arial, Helvetica, sans-serif;"><strong>{{ labels.returnOrderNumber }}:</strong> {{ model.returnNumber }}</td>
+				<td style="padding:0; font-family: Arial, Helvetica, sans-serif;"></td>
+			</tr>
+			<tr style="margin: 0;"> 
+				<td style="padding:0; font-family: Arial, Helvetica, sans-serif;"><strong>{{ labels.orderDate }}:</strong> {% include "modules/common/date-time-format" with dateTimeFormatInput=model.order.submittedDate %}</td>
+				<td style=" padding:0; font-family: Arial, Helvetica, sans-serif;"></td>
+			</tr>
+			<tr style="font-size: 14px; letter-spacing: 0;	line-height: 18px; color: #000;	margin: 0;">
+				<td style="padding: 20px 0; font-family: Arial, Helvetica, sans-serif;">
+					{% if user and user.firstName %}
+						{{ labels.emailOpeningHi|string_format(user.firstName)|safe  }} 
+					{% else %}
+						{{ labels.emailOpeningAlternative|safe }}
+					{% endif %}
+				</td>
+			</tr>
+			<tr style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;">
+				<td style="padding: 0; font-family: Arial, Helvetica, sans-serif; padding-bottom: 0">
+					<p style="font-family: Arial, Helvetica, sans-serif; padding-bottom: 5px; color:#000">
+					
+					 	{% if model.siteId == 100300 or  model.siteId == 100299 %}
+							{{ labels.returnCreatedTextAE }}
+					  {% endif %}
+
+					   
+						{% if model.siteId == 100167 or model.siteId == 100166  %}
+							{{ labels.returnCreatedTextKW }}
+					   {% endif %}
+					   
+
+					    {% if model.siteId != 100299  and   model.siteId != 100300  and    model.siteId != 100166 and   model.siteId != 100167 %}
+							{{ labels.returnCreatedText }}
+						
+						{% endif %}
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td style="font-size: 12px; padding:0;	font-weight: bold; letter-spacing: 0; line-height: 21px; font-family: Arial, Helvetica, sans-serif;">
+					{{ labels.returnCreatedWhatHappendNext1|safe }}
+				</td>
+			</tr>
+			<tr>
+				<td style="padding:0">
+					<ul style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; padding-inline-start: 40px;">
+								
+						{% if model.siteId == 100300 or model.siteId == 100299 %}
+							{{ labels.returnCreatedWhatHappendNext2AE|safe }}
+					  	{% endif %}
+
+							{% if model.siteId == 100166 or  model.siteId == 100167 %}
+							{{ labels.returnCreatedWhatHappendNext2KW|safe }}
+					  	{% endif %}
+
+					   
+					    {% if model.siteId != 100299  and   model.siteId != 100300 and  model.siteId != 100166 and   model.siteId != 100167 %}
+							{{ labels.returnCreatedWhatHappendNext2|safe }}
+						{% endif %}
+					</ul>
+				</td>
+			</tr>
+		</table>
+		
+		<table width="100%">
+			<table style="width: 100%; border-top: 1px solid #ccc;">
+				<tr style="display:table; width: 100%;">
+					<td style="font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 16px; padding:20px 0 0 0; font-family: Arial, Helvetica, sans-serif;" colspan="3">
+						{{ labels.itemsForReason }}
+					</td>
+				</tr>
+			</table>
+			<table style="border-bottom: 1px solid #cccccc;" width="100%">			
+				{% for item in model.items %}
+				{% set_var isBrandAvailable=false %}
+					<tr>
+						<td {% if themeSettings.isArabicLanguageSite%} style="padding: 20px 0 20px 16px; width:83px"{% else %} style="padding: 20px 16px 20px 0; width:83px"{% endif %}>
+							{% if item.product.imageUrl %}
+							<img src="https:{{ item.product.imageUrl }}" width="83.87" height="108" />
+							{% else %}
+							<span style="height:108px; background:#eeeeee; color:#aaaaaa; display:block; text-align:center; font-family: Arial, Helvetica, sans-serif;">[no image]</span>
+							{% endif %}
+						</td>
+						<td {% if themeSettings.isArabicLanguageSite%} style="text-align:right;padding:20px 10px; vertical-align: baseline;"{% else %} style="text-align:left; padding: 20px 10px; vertical-align: baseline;"{% endif %}>
+							<p style="font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 18px; margin:0 0 2px; font-family: Arial, Helvetica, sans-serif;">
+								{% for property in item.product.properties %}
+									{% if property.values and not property.isHidden %}
+										{%if property.name == 'Brand' %}
+										{% set_var isBrandAvailable=true %}
+											{% for v in property.values %}
+												{% if v.stringValue %}{{v.stringValue}}{% else %}{{v.value}}{% endif %}
+											{% endfor %}
+										{% endif %}
+									{% endif %}
+								{% endfor %}
+							</p>
+							<p style="font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 18px; margin: 0; font-family: Arial, Helvetica, sans-serif;">{{ item.product.name }}</p>
+								{% if item.product.options %}
+									<dl class="mz-propertylist" style="display: flex;">
+										{% for option in item.product.options %}
+										<dd class="mz-propertylist-data" {% if themeSettings.isArabicLanguageSite%} style="font-size: 14px; letter-spacing: 0; line-height: 18px; margin-left:8px; margin-right: 0; font-family: Arial, Helvetica, sans-serif;" {% else %} style="font-size: 14px; letter-spacing: 0; line-height: 18px; margin-left:0; margin-right: 8px; font-family: Arial, Helvetica, sans-serif;"{% endif %}>
+										{% if option.value %}
+											{{ option.stringValue|default(value.value)}}
+											{% if forloop.last == false %},{% endif%}
+										{% else %}
+											{{ option.shopperEnteredValue }}
+											{% if forloop.last == false %},{% endif%}
+										{% endif %}
+										</dd>
+										{% endfor %}
+									</dl>
+								{% endif %}
+							{% for reason in item.reasons %}
+							<p style="font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif;">{{labels.qty}}: {{ reason.quantity }}</p>
+							{% endfor %}
+						</td>
+						<td {% if themeSettings.isArabicLanguageSite%} style="text-align: left; vertical-align:top; {% if isBrandAvailable %} padding: 43px 15px 0 0; {% else %} padding: 20px 15px 0 0;{% endif %} font-family: Arial, Helvetica, sans-serif; font-size:14px; line-height:18px; white-space: nowrap; width: 17%; font-family: Arial, Helvetica, sans-serif;"{% else %} style="text-align: right; vertical-align:top; {% if isBrandAvailable %} padding: 43px 0 0 15px; {% else %} padding: 20px 0 0 15px;{% endif %} font-family: Arial, Helvetica, sans-serif; font-size:14px; line-height:18px; white-space: nowrap; width: 17%; font-family: Arial, Helvetica, sans-serif;"{% endif %}><span class="currency-code"> {{model.currencyCode}} </span>{%if item.product.price.salePrice %} {{ item.product.price.salePrice|multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }} {% else %} {{ item.product.price.price|multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }} {%endif%}</td>
+					</tr>
+				{% endfor %}
+			</table>
+			<table style="width: 100%; padding-top: 24px;" width="100%">
+				<tr>
+					<td colspan="3" style="font-size: 14px;	letter-spacing: 0; line-height: 18px; padding:22px 0px; font-family: Arial, Helvetica, sans-serif;">{{ labels.orderSummary }}</td>
+				</tr>
+				<tr>
+					<td colspan="2" {% if themeSettings.isArabicLanguageSite%}style="text-align:right; font-size: 14px; letter-spacing: 0; font-family: Arial, Helvetica, sans-serif; padding-bottom:20px;padding-right:0px;"{% else %} style="text-align:left; font-size: 14px; letter-spacing: 0; font-family: Arial, Helvetica, sans-serif; padding-bottom:20px;padding-left:0px;"{% endif %}>{{ labels.subtotal }}</td>
+					<td {% if themeSettings.isArabicLanguageSite%}style="text-align:left; font-weight: 500; font-size: 14px; letter-spacing: 0; font-family: Arial, Helvetica, sans-serif; padding-bottom: 20px;padding-left:0px;"{% else %} style="text-align:right; font-weight: 500; font-size: 14px; letter-spacing: 0; font-family: Arial, Helvetica, sans-serif; padding-bottom: 20px;padding-right:0px;"{% endif %}><span class="currency-code"> {{model.currencyCode}} </span>{{model.productLossTotal|floatformat(pageContext.currencyInfo.precision)}}</td>
+				</tr>
+				{% comment %} <tr>
+					<td colspan="2" style="text-align:left; font-size: 14px; letter-spacing: 0; font-family: Arial, Helvetica, sans-serif; padding-bottom:20px;">{{ labels.deliveryCost }}</td>
+					<td style="text-align:right; font-weight: 500; font-size: 14px; letter-spacing: 0; font-family: Arial, Helvetica, sans-serif; padding-bottom: 20px;"><span class="currency-code"> {{model.currencyCode}} </span>{{ model.shippingLossTotal|floatformat(pageContext.currencyInfo.precision)}}</td>
+				</tr> {% endcomment %}
+			</table>
+			<table style="border-top: 0.1px solid #cccccc; border-bottom: 0.1px solid #cccccc;" width="100%"> 
+				<tr> 
+					<td colspan="2" {% if themeSettings.isArabicLanguageSite%}style="text-align:right; font-size: 14px; letter-spacing: 0;  padding: 17px 0; font-family: Arial, Helvetica, sans-serif;"{% else %} style="text-align:left; font-size: 14px; letter-spacing: 0;  padding: 17px 0; font-family: Arial, Helvetica, sans-serif;"{% endif %}>{{ labels.total }}</td>
+					<td {% if themeSettings.isArabicLanguageSite%}style="text-align:left; font-weight: 500; font-size: 14px; letter-spacing: 0; padding: 17px 0; font-family: Arial, Helvetica, sans-serif;"{% else %} style="text-align:right; font-weight: 500; font-size: 14px; letter-spacing: 0; padding: 17px 0; font-family: Arial, Helvetica, sans-serif;"{% endif %}><span class="currency-code"> {{model.currencyCode}} </span>{{model.lossTotal|floatformat(pageContext.currencyInfo.precision)}}</td>
+				</tr>
+			</table>
+		</table>
+		<table width="100%">
+			<tr><td style="padding-top:30px;"></td></tr> 
+		</table>
+
+		  	{% if model.siteId == 100300 or model.siteId == 100299 or model.siteId == 100166 or  model.siteId == 100167 %}
+			
+				<div>
+					<p style="font-size: 12px; font-weight: 600; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;">
+						{{ labels.returnPaymentMethod }}
+					</p>
+					<p style="font-size: 14px; letter-spacing: 0;   line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;color:#000">{{ model.order.billingInfo.billingContact.firstName }} {{ model.order.billingInfo.billingContact.lastNameOrSurname }}<br />
+                    {{labels.paymentThrough}} 
+                    {% for payment in model.order.payments %}
+                    {% if payment.status != "Voided" and payment.status != "Declined" %}
+                    {% if payment.status|lower == 'authorized' or  payment.status|lower == 'collected' %}  
+                    {% with paymentCount|add(1) as count %}
+                    {% set_var paymentCount=count %}.
+                    {% endwith %}
+                    {% endif %}
+                    {% if payment.billingInfo.paymentType == 'CreditCard' and payment.billingInfo.card.paymentOrCardType != 'BLUEPREPAIDCARD' %} 
+                    
+                        {% if payment.billingInfo.card.paymentOrCardType|lower == 'knetcard' %}
+                            {{labels.creditCardKNET}}
+                        {% endif %}
+                        {% if payment.billingInfo.card.paymentOrCardType|lower == 'applepay' %}
+                            {{labels.paidThroughCreditCardApplePay}}
+                        {% endif %}
+                        {% if payment.billingInfo.card.paymentOrCardType|lower != 'applepay' and payment.billingInfo.card.paymentOrCardType|lower != 'knetcard' %}
+                            {{labels.creditCard}}
+                        {% endif %}
+						
+                        {% else %} {% if payment.billingInfo.paymentType|lower == 'check'%} {% set_var isCashOnDelivery=true %} {{labels.cashOnDelivery}} {% endif %} {% endif %}
+                        {% if payment.billingInfo.paymentType == 'token' and payment.billingInfo.token.type|lower == "bluewallet" %} {% if paymentCount > 1 %} {{labels.and}} {% endif %} {{labels.blueWalletPayment}} {% endif %}
+                        {% if payment.billingInfo.paymentType == 'token' and payment.billingInfo.token.type|lower == "blueprepaidcard"  and not isCashOnDelivery %} {% if  paymentCount > 1 %} {{labels.and}} {% endif %} {{labels.bluePrepaidPayment}} {% endif %}
+                        {% endif %}
+
+
+
+                    {% endfor %}
+                </p>
+				</div>
+
+				<div>
+					<p style="font-size: 12px; font-weight: 600; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;">
+							{{ labels.contactDetails }}
+					</p>
+					<p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;">
+							{{labels.contactFullName}}: {{ model.order.billingInfo.billingContact.firstName }} {{ model.order.billingInfo.billingContact.lastNameOrSurname }}<br />
+							{{labels.mobile}}: {{model.order.billingInfo.billingContact.phoneNumbers.home}} 
+					</p>
+				</div>
+
+    			<br>
+		 	{% endif %}
+
+		<table style="background: #163E35; margin:0 15px; color: #fff; text-align: center; max-width:490px;" width="100%">
+			<tr>
+				<td style="font-size: 16px; letter-spacing: 0; line-height: 21px; margin: 0; padding: 26px 0 5px; font-family: Arial, Helvetica, sans-serif;">{{ labels.needHelp }}</td>
+			</tr>
+			<tr>
+				<td style="font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0; padding: 0 60px 30px; font-family: Arial, Helvetica, sans-serif;">
+				{% if model.siteId == 100300 or  model.siteId == 100299 %}
+						{{ labels.getInTouchAE|string_format(themeSettings.storephonenumber, themeSettings.customerServiceMail, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+					{% if model.siteId == 100167 or  model.siteId == 100166 %}
+							{{ labels.getInTouchKW|string_format(themeSettings.storephonenumber, themeSettings.customerServiceMail, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+					{% if model.siteId != 100299  and   model.siteId != 100300  and  model.siteId != 100166 and  model.siteId != 100167 %}
+						 {{ labels.getInTouch|string_format(themeSettings.storephonenumber, themeSettings.storeopentime,themeSettings.storeclosetime)|safe }}
+					{% endif %}
+				</td>
+			</tr>
+		</table>
+		
+		<div style="margin:30px 0 30px 15px;border-top:1px solid #ccc;border-bottom:1px solid #ccc;padding:10px 0;width:100%;max-width:490px;" >
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				<tr> 
+					<td width="32%" style="padding:0;text-align:center;">
+					<a href="https://{{themeSettings.localeDomain}}/contact" target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{labels.contactUs|safe }}</a>
+					</td>
+					<td width="32%" style="padding:0;border-right:1px solid #ccc;border-left:1px solid #ccc;text-align:center;">
+					<a href="https://{{themeSettings.localeDomain}}/return-refund"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{ labels.returnsAndRefunds|safe}}</a>
+					</td>
+					<td width="32%" style="padding:0;text-align:center;">
+					<a href="https://{{themeSettings.localeDomain}}/terms-conditions"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{ labels.termsAndConditions|safe}}</a>
+					</td>
+				</tr>
+			</table>			
+		</div>
+		<div style="margin:0px 80px auto;width:100%;max-width:360px;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td style="padding-right:10px;text-align:end;">
+						<a href="https://www.facebook.com/MarksandSpencerME">
+						<img  src="https://{{themeSettings.localeDomain}}/resources/images/icons/svg/facebook.png"></a>
+					</td>
+					<td  style="text-align: center;">
+						<a href="https://www.youtube.com/user/MandSArabia">
+						<img  src="https://{{themeSettings.localeDomain}}/resources/images/icons/svg/youtube.png"></a>
+					</td>
+					<td  style="padding-right:0px;padding-left:10px">	
+						<a  href="https://www.instagram.com/marksandspencerme">
+						<img  src="https://{{themeSettings.localeDomain}}/resources/images/icons/svg/instagram.png"></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style="width:100%;max-width:490px;text-align:center;font-size:10px; line-height:20px; margin-top: 25px; font-family: Arial, Helvetica, sans-serif;">
+			<p style="color:#000">
+				{{themeSettings.emailFooterAddress}}<br />{{themeSettings.emailFooterAddress1}}<br />{{themeSettings.emailFooterAddress2}}
+			</p>
+		</div>
+	</div>
+{% endblock body-content %}

@@ -1,0 +1,32 @@
+{% extends "page" %}
+
+{% block title-tag-content %} {% firstof pageContext.metaTitle model.name %} {% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-loginpage mz-guestcheckout-page{% endblock body-tag-classes %}
+
+{% block body-content %}
+<div class="mz-login-main-container guest-checkout-main-container ">
+    <div class="mz-login-form-main-container guest-checkout-email-container">
+        {% with labels.checkout as pageTitle%} 
+        {% include "modules/signup/signup-header" with header=labels.guestCheckout %}
+        {% endwith %}
+        <div id="guest-checkout" class="guest-checkout-container">
+            {% include "modules/checkout/guest-checkout" %}
+        </div>
+        {% with labels.returningCustomer as signUpQueryLink %}
+             {% with "/guestcheckoutsignin" as signUpURL %}
+                 {% include "modules/signup/signup-footer" %}
+              {%endwith%}
+        {%endwith%}
+        <div class="mz-bottom-gueatcheckout">
+            <span class="bottom-rights-reserved">&copy; {% now Y %} {{ siteContext.generalSettings.websiteName }} </span>
+        </div>
+   </div>
+</div>
+
+{% require_script "pages/guestcheckout" %}
+{% endblock body-content %}
+
+{% block page-footer %}
+
+{% endblock page-footer %}

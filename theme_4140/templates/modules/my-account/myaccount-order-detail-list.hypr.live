@@ -1,0 +1,138 @@
+<div class="mz-itemlisting ">
+    
+    <div class="mz-itemlisting-thumb">
+        {% if item.imageUrl %}
+        <img class="mz-itemlisting-thumb-img" src="{{item.imageUrl}}"  />
+        {% else %}
+        <span class="mz-noImg">{{labels.productImagePlaceholder}}</span>
+        {% endif %} 
+    </div>
+
+    <div class="mz-itemlisting-details">
+        <div class="mz-itemlisting-description">
+            <div class="">
+                <a class="mz-itemlisting-title" href="{{siteContext.siteSubdirectory}}/p/{{item.productCode}}" >
+                  {{ item.name }}
+                </a>
+              </div>
+            <div class="mz-product-variationCode">
+                {{ item.variationProductCode }}
+            </div>
+            <div class="mz-itemlisting-color-size">
+                {% for option in item.options %}
+                    <span class="option-name">{{ option.name | lower }}: 
+                    {% if option.value %} 
+                        {% if option.attributeFQN|lower == 'tenant~colour' or option.attributeFQN|lower == 'tenant~color' %}
+                            {% with option.value|split("_")|first as swatchCode%}
+                                {% with labels.swatchFile|string_format(item.productCode, swatchCode) as swatchFile %}
+                                <span data-mz-product-option="{{ option.attributeFQN }}" data-value="{{option.value}}" class="mz-colour-swatch">
+                                    <img class="mz-colour-swatch-img preserve-{{value.attributeValueId}}" src="{% make_url "cdn" swatchFile %}" onerror="this.onerror=null;this.src='{{siteContext.cdnPrefix}}{{labels.svgIconPath}}NoSwatch.svg'"alt={{option.value|split("_"|last)|lower}}/>
+                                </span>
+                                {% endwith %}
+                            {% endwith %}
+                        {% endif %}
+                    {{ option.stringValue|default(option.value)| lower }} <br>
+                    {% endif %}
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="mz-itemlisting-quantity">
+            {{ item.quantity }}
+        </div>
+        <div class="mz-itemlisting-price"> 
+            {% with item.data.productDiscounts|first as productDiscount %}
+                {% if productDiscount %}
+                {{shipment.currencyCode}} {{ item.actualPrice|subtract(productDiscount.impactPerUnit)|floatformat(pageContext.currencyInfo.precision) }}
+                <div class="is-crossedout">{{shipment.currencyCode}} {{ item.actualPrice|floatformat(pageContext.currencyInfo.precision) }} </div>
+                {% else %}
+                {{shipment.currencyCode}} {{ item.actualPrice|floatformat(pageContext.currencyInfo.precision) }}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="mz-itemlisting-subtotal">
+            {{shipment.currencyCode}} 
+            {% if canceledItems == 'yes' and orderLevelStatus|lower != "cancelled" %}
+                {{0.00}}
+            {% else %}
+                {% with item.data.productDiscounts|first as productDiscount %}
+                {% if productDiscount %}
+                {{ item.lineItemCost|subtract(productDiscount.impact)|floatformat(pageContext.currencyInfo.precision) }}
+                {% else %}
+                {{ item.lineItemCost|floatformat(pageContext.currencyInfo.precision) }}
+                {% endif %}
+            {% endwith %}
+            {% endif %}
+            
+        </div>
+        <div class="mz-itemlisting-itemStatus checkItemStatus {{shipment.shipmentNumber}}-{{ item.lineId }}">
+            {% if canceledItems == 'yes' %}
+                {{labels.cancelled}}
+            {% else %}
+                {% if shipment.workflowState.activeTaskName == 'Accept Shipment' or shipment.shipmentStatus == 'CUSTOMER_CARE' %}
+                {{labels.beingProcessed}}
+                {% endif %}
+                {% if shipment.workflowState.activeTaskName|lower == 'validate stock' or
+                    shipment.workflowState.activeTaskName|lower == 'validate items in stock' or
+                    shipment.workflowState.activeTaskName|lower == 'wait for payment confirmation' or
+                    shipment.workflowState.activeTaskName|lower == 'print packing slip' or
+                    shipment.workflowState.activeTaskName|lower == 'prepare for shipment' or
+                    shipment.workflowState.activeTaskName|lower == 'wait for transfer' or
+                    shipment.workflowState.activeTaskName|lower == 'customer pickup' or
+                    shipment.workflowState.activeTaskName|lower == 'out for delivery' or
+                    shipment.workflowState.activeTaskName|lower == 'print pick list'
+                %}
+                {{labels.processing}}
+                {% endif %}
+                {% if shipment.shipmentStatus == 'FULFILLED' %}
+                {{labels.completed}}
+                {% endif %}
+                {% if shipment.shipmentStatus == 'CANCELED' %}
+                {{labels.cancelled}}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="mz-myaccountorder-view-mobile" style="display: none;"> 
+    <div class="mz-itemlisting-quantity">
+      <span>{{labels.orderPackageQuantity}}</span>
+      {{ item.quantity }}
+     </div>
+    <div class="mz-itemlisting-price">
+      <span>{{labels.itemPrice}}</span>
+      {{shipment.currencyCode}} {{ item.unitPrice|floatformat(pageContext.currencyInfo.precision) }}
+    </div>  
+    <div class="mz-itemlisting-price">
+      <span>{{labels.subtotal}}</span>
+      {{shipment.currencyCode}} {{ item.lineItemCost|floatformat(pageContext.currencyInfo.precision) }}
+    </div>
+    <div class="mz-itemlisting-status {{shipment.shipmentNumber}}-{{ item.lineId }}">
+        <span>{{labels.itemStatus}}</span>
+        {% if canceledItems == 'yes' %}
+        {{ labels.cancelled }}
+        {% else %}
+            {% if shipment.workflowState.activeTaskName == 'Accept Shipment' or shipment.shipmentStatus == 'CUSTOMER_CARE' %}
+              {{ labels.beingProcessed }}
+            {% endif %}
+            {% if shipment.workflowState.activeTaskName|lower == 'validate stock' or
+                shipment.workflowState.activeTaskName|lower == 'validate items in stock' or
+                shipment.workflowState.activeTaskName|lower == 'wait for payment confirmation' or
+                shipment.workflowState.activeTaskName|lower == 'print packing slip' or
+                shipment.workflowState.activeTaskName|lower == 'prepare for shipment' or
+                shipment.workflowState.activeTaskName|lower == 'wait for transfer' or
+                shipment.workflowState.activeTaskName|lower == 'customer pickup' or
+                shipment.workflowState.activeTaskName|lower == 'out for delivery' or
+                shipment.workflowState.activeTaskName|lower == 'print pick list'
+            %}
+             {{ labels.processing }}
+            {% endif %}
+            {% if shipment.shipmentStatus == 'FULFILLED' %}
+             {{ labels.completed }}
+            {% endif %}
+            {% if shipment.shipmentStatus == 'CANCELED' %}
+                {{ labels.cancelled }}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

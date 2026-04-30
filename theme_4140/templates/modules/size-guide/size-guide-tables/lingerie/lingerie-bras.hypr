@@ -1,0 +1,392 @@
+<div class="chart">
+	<h5>Bra Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>UK</span>
+			<span>AU/NZ</span>
+			<span>US/CA</span>
+			<span>DE/NL</span>
+			<span>FR/ES</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">32A</td>
+						<td class="active">32B</td>
+						<td class="active">32C</td>
+						<td class="active">32D</td>
+						<td class="active">32DD</td>
+						<td class="active">32E</td>
+						<td class="active">32F</td>
+						<td class="active">32G</td>
+						<td class="active">32GG</td>
+						<td class="active">32H</td>
+						<td class="active">34A</td>
+						<td class="active">34B</td>
+						<td class="active">34C</td>
+						<td class="active">34D</td>
+					</tr>
+					<tr>
+						<td class="active">10A</td>
+						<td class="active">10B</td>
+						<td class="active">10C</td>
+						<td class="active">10D</td>
+						<td class="active">10DD</td>
+						<td class="active">10E</td>
+						<td class="active">10F</td>
+						<td class="active">10G</td>
+						<td class="active">10GG</td>
+						<td class="active">10H</td>
+						<td class="active">12A</td>
+						<td class="active">12B</td>
+						<td class="active">12C</td>
+						<td class="active">12D</td>
+					</tr>
+					<tr>
+						<td class="active">32AA</td>
+						<td class="active">32A</td>
+						<td class="active">32B</td>
+						<td class="active">32C</td>
+						<td class="active">32D</td>
+						<td class="active">32DD</td>
+						<td class="active">32E</td>
+						<td class="active">32F</td>
+						<td class="active">32G</td>
+						<td class="active">32GG</td>
+						<td class="active">34AA</td>
+						<td class="active">34A</td>
+						<td class="active">34B</td>
+						<td class="active">34C</td>
+					</tr>
+					<tr>
+						<td class="active">70A</td>
+						<td class="active">70B</td>
+						<td class="active">70C</td>
+						<td class="active">70D</td>
+						<td class="active">70E</td>
+						<td class="active">70F</td>
+						<td class="active">70G</td>
+						<td class="active">70H</td>
+						<td class="active">70J</td>
+						<td class="active">70K</td>
+						<td class="active">75A</td>
+						<td class="active">75B</td>
+						<td class="active">75C</td>
+						<td class="active">75D</td>
+					</tr>
+					<tr>
+						<td class="active">85A</td>
+						<td class="active">85B</td>
+						<td class="active">85C</td>
+						<td class="active">85D</td>
+						<td class="active">85E</td>
+						<td class="active">85F</td>
+						<td class="active">85G</td>
+						<td class="active">85H</td>
+						<td class="active">85J</td>
+						<td class="active">85K</td>
+						<td class="active">90A</td>
+						<td class="active">90B</td>
+						<td class="active">90C</td>
+						<td class="active">90	D</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Bra Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>UK</span>
+			<span>AU/NZ</span>
+			<span>US/CA</span>
+			<span>DE/NL</span>
+			<span>FR/ES</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">34DD</td>
+						<td class="active">34E</td>
+						<td class="active">34F</td>
+						<td class="active">34G</td>
+						<td class="active">34GG</td>
+						<td class="active">34H</td>
+						<td class="active">36A</td>
+						<td class="active">36B</td>
+						<td class="active">36C</td>
+						<td class="active">36D</td>
+						<td class="active">36DD</td>
+						<td class="active">36E</td>
+						<td class="active">36F</td>
+						<td class="active">36G</td>
+					</tr>
+					<tr>
+						<td class="active">12DD</td>
+						<td class="active">12E</td>
+						<td class="active">12F</td>
+						<td class="active">12G</td>
+						<td class="active">12GG</td>
+						<td class="active">12H</td>
+						<td class="active">14A</td>
+						<td class="active">14B</td>
+						<td class="active">14C</td>
+						<td class="active">14D</td>
+						<td class="active">14DD</td>
+						<td class="active">14E</td>
+						<td class="active">14F</td>
+						<td class="active">14G</td>
+					</tr>
+					<tr>
+						<td class="active">34D</td>
+						<td class="active">34DD</td>
+						<td class="active">34E</td>
+						<td class="active">34F</td>
+						<td class="active">34G</td>
+						<td class="active">34GG</td>
+						<td class="active">36AA</td>
+						<td class="active">36A</td>
+						<td class="active">36B</td>
+						<td class="active">36C</td>
+						<td class="active">36D</td>
+						<td class="active">36DD</td>
+						<td class="active">36E</td>
+						<td class="active">36F</td>
+					</tr>
+					<tr>
+						<td class="active">75E</td>
+						<td class="active">75F</td>
+						<td class="active">75G</td>
+						<td class="active">75H</td>
+						<td class="active">75J</td>
+						<td class="active">75K</td>
+						<td class="active">80A</td>
+						<td class="active">80B</td>
+						<td class="active">80C</td>
+						<td class="active">80D</td>
+						<td class="active">80E</td>
+						<td class="active">80F</td>
+						<td class="active">80G</td>
+						<td class="active">80H</td>
+					</tr>
+					<tr>
+						<td class="active">90E</td>
+						<td class="active">90F</td>
+						<td class="active">90G</td>
+						<td class="active">90H</td>
+						<td class="active">90J</td>
+						<td class="active">90K</td>
+						<td class="active">95A</td>
+						<td class="active">95B</td>
+						<td class="active">95C</td>
+						<td class="active">95D</td>
+						<td class="active">95E</td>
+						<td class="active">95F</td>
+						<td class="active">95G</td>
+						<td class="active">95H</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Bra Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>UK</span>
+			<span>AU/NZ</span>
+			<span>US/CA</span>
+			<span>DE/NL</span>
+			<span>FR/ES</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">36GG</td>
+						<td class="active">36H</td>
+						<td class="active">38A</td>
+						<td class="active">38B</td>
+						<td class="active">38C</td>
+						<td class="active">38D</td>
+						<td class="active">38DD</td>
+						<td class="active">38E</td>
+						<td class="active">38F</td>
+						<td class="active">38G</td>
+						<td class="active">38GG</td>
+						<td class="active">38H</td>
+						<td class="active">40A</td>
+						<td class="active">40B</td>
+					</tr>
+					<tr>
+						<td class="active">14GG</td>
+						<td class="active">14H</td>
+						<td class="active">16A</td>
+						<td class="active">16B</td>
+						<td class="active">16C</td>
+						<td class="active">16D</td>
+						<td class="active">16DD</td>
+						<td class="active">16E</td>
+						<td class="active">16F</td>
+						<td class="active">16G</td>
+						<td class="active">16GG</td>
+						<td class="active">16H</td>
+						<td class="active">18A</td>
+						<td class="active">18B</td>
+					</tr>
+					<tr>
+						<td class="active">36G</td>
+						<td class="active">36GG</td>
+						<td class="active">38AA</td>
+						<td class="active">38A</td>
+						<td class="active">38B</td>
+						<td class="active">38C</td>
+						<td class="active">38D</td>
+						<td class="active">38DD</td>
+						<td class="active">38E</td>
+						<td class="active">38F</td>
+						<td class="active">38G</td>
+						<td class="active">38GG</td>
+						<td class="active">40AA</td>
+						<td class="active">40A</td>
+					</tr>
+					<tr>
+						<td class="active">80J</td>
+						<td class="active">80K</td>
+						<td class="active">85A</td>
+						<td class="active">85B</td>
+						<td class="active">85C</td>
+						<td class="active">85D</td>
+						<td class="active">85E</td>
+						<td class="active">85F</td>
+						<td class="active">85G</td>
+						<td class="active">85H</td>
+						<td class="active">85J</td>
+						<td class="active">85K</td>
+						<td class="active">90A</td>
+						<td class="active">90B</td>
+					</tr>
+					<tr>
+						<td class="active">95J</td>
+						<td class="active">95K</td>
+						<td class="active">100A</td>
+						<td class="active">100B</td>
+						<td class="active">100C</td>
+						<td class="active">100D</td>
+						<td class="active">100E</td>
+						<td class="active">100F</td>
+						<td class="active">100G</td>
+						<td class="active">100H</td>
+						<td class="active">100J</td>
+						<td class="active">100K</td>
+						<td class="active">105A</td>
+						<td class="active">105B</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Bra Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>UK</span>
+			<span>AU/NZ</span>
+			<span>US/CA</span>
+			<span>DE/NL</span>
+			<span>FR/ES</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">40C</td>
+						<td class="active">40D</td>
+						<td class="active">40DD</td>
+						<td class="active">40E</td>
+						<td class="active">40F</td>
+						<td class="active">40G</td>
+						<td class="active">40GG</td>
+						<td class="active">40H</td>
+						<td class="active">42A</td>
+						<td class="active">42B</td>
+						<td class="active">42C</td>
+						<td class="active">42D</td>
+						<td class="active">42DD</td>
+						<td class="active">42E</td>
+					</tr>
+					<tr>
+						<td class="active">18C</td>
+						<td class="active">18D</td>
+						<td class="active">18DD</td>
+						<td class="active">18E</td>
+						<td class="active">18F</td>
+						<td class="active">18G</td>
+						<td class="active">18GG</td>
+						<td class="active">18H</td>
+						<td class="active">20A</td>
+						<td class="active">20B</td>
+						<td class="active">20C</td>
+						<td class="active">20D</td>
+						<td class="active">20DD</td>
+						<td class="active">20E</td>
+					</tr>
+					<tr>
+						<td class="active">40B</td>
+						<td class="active">40C</td>
+						<td class="active">40D</td>
+						<td class="active">40DD</td>
+						<td class="active">40E</td>
+						<td class="active">40F</td>
+						<td class="active">40G</td>
+						<td class="active">40GG</td>
+						<td class="active">42AA</td>
+						<td class="active">42A</td>
+						<td class="active">42B</td>
+						<td class="active">42C</td>
+						<td class="active">42D</td>
+						<td class="active">42DD</td>
+					</tr>
+					<tr>
+						<td class="active">90C</td>
+						<td class="active">90D</td>
+						<td class="active">90E</td>
+						<td class="active">90F</td>
+						<td class="active">90G</td>
+						<td class="active">90H</td>
+						<td class="active">90J</td>
+						<td class="active">90K</td>
+						<td class="active">95A</td>
+						<td class="active">95B</td>
+						<td class="active">95C</td>
+						<td class="active">95D</td>
+						<td class="active">95E</td>
+						<td class="active">95F</td>
+					</tr>
+					<tr>
+						<td class="active">105C</td>
+						<td class="active">105D</td>
+						<td class="active">105E</td>
+						<td class="active">105F</td>
+						<td class="active">105G</td>
+						<td class="active">105H</td>
+						<td class="active">105J</td>
+						<td class="active">105K</td>
+						<td class="active">110A</td>
+						<td class="active">110B</td>
+						<td class="active">110C</td>
+						<td class="active">110D</td>
+						<td class="active">110E</td>
+						<td class="active">110	F</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

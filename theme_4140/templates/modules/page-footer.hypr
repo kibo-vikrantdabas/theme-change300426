@@ -1,0 +1,79 @@
+﻿<footer class="mz-pagefooter afg-ms-pagefooter {% if user.isAuthenticated %}isAuthenticated-footer{% endif %}">
+{% require_script "pages/footer" %}
+<div class="payments-way">
+    {% dropzone "ways-to-pay" scope="site" %}
+</div>
+ {% if PageContext.cmsContext.template.path|lower == 'checkout' %}
+    <div class="paymentBrandLogos">
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/visa.png" class="paymentImageV">
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/americanexpress.png" class="paymentImageA">
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/mastercard.png" class="paymentImageM">
+    {% if themeSettings.isApplePayPaymentApply %}
+          <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/ApplePayIcon-2.svg" alt="ApplePay" class="footer-payment-icon">
+      {% endif %}
+      {% if themeSettings.isMADAPaymentApply %}
+          <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/MadaLogo-2.svg" alt="Mada" class="footer-payment-icon">
+      {% endif %}
+      {% if themeSettings.isPaywithBlueOnCheckout %}
+          <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/BluePayment.svg" alt="Blue" class="footer-payment-icon">
+      {% endif %}
+      {% if themeSettings.isKNETPaymentApply %}
+          <img src="{{siteContext.cdnPrefix}}/resources/images/icons/knet-icon.svg" alt="KNET" class="footer-payment-icon">
+      {% endif %}
+      {% if themeSettings.isBenefitPayApply %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/benefitpay_logo.svg" alt="BenefitPay" class="footer-payment-icon">
+      {% endif %}
+      {% if themeSettings.isQpayApply %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/qpay_logo.svg" alt="QPay" class="footer-payment-icon">
+      {% endif %}
+      {% if themeSettings.isOmanNetApply %}
+        <img src="{{siteContext.cdnPrefix}}/resources/images/icons/omannet_logo.svg" alt="Omannet" class="footer-payment-icon">
+        {% endif %}
+    </div>
+{% endif %}
+
+<div class="dropzone-footer">
+    {% dropzone "footer" scope="site" %}
+</div>
+<div class="dropzone-footer2">
+    {% dropzone "footer1" scope="site" %}
+</div>
+<div class="dropzone-footer3">
+    {% dropzone "footer2" scope="site" %}
+</div>
+
+    <div class="mz-pagefooter-copyright" id="copyright">
+        <div class="mz-pagefooter-copyrighttext">
+            <span class="website-name">
+                &copy; {% now Y %}
+                {{ siteContext.generalSettings.websiteName }} 
+                {% comment %} {{ labels.plc }} {% endcomment %}
+            </span>
+                <span class="separator">|</span>
+
+                <a href="{{siteContext.siteSubdirectory}}/terms-conditions"
+                class="terms-and-condition"> {{labels.termsAndConditions}}</a>
+                <span class="separator">|</span>
+                
+                <a href="{{siteContext.siteSubdirectory}}/accessibility"
+                 class="accessibility"> {{labels.accessibility}}</a>
+                <span class="separator">|</span>
+
+                <a href="{{siteContext.siteSubdirectory}}/privacy-policy"
+                class="privacy-and-cookies"> {{labels.privacyAndCookies}}</a>
+                 {% comment %} <span class="separator">|</span>
+
+                 <a href="{{siteContext.siteSubdirectory}}/maintenance"
+                 class="data-promise"> {{labels.customerDataPromise}} </a> {% endcomment %}
+
+                <p href="" class="rights-reserved">
+                    &copy; {% now Y %}
+                    {{ siteContext.generalSettings.websiteName }}
+                </p>
+        </div>
+    </div>
+</div>
+</footer>
+{% comment %} {% if pageContext.pageType == 'product' %}
+    {% include "modules/product/add-to-cart-sticky" %}
+{% endif %} {% endcomment %}

@@ -1,0 +1,16 @@
+{% set_var count=0 %}
+{% for link in navNodes %}
+    {% if not link.isHomePage %}
+        {% if not link.isHidden  and forloop.counter0 < themeSettings.maxTopLevelNavItems %}
+            {% with count|add(1) as currentIndex %}
+                {% set_var count=currentIndex %}
+                <li class="mz-sitenav-item" data-mz-parent-item="{{count}}">
+                    <div class="mz-sitenav-item-inner ">
+                        <a class="mz-sitenav-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">{{link.name|truncatechars(themeSettings.maxTopLevelNavLabelLength)|safe}}</a>
+                        {% include "modules/global-nav/desktop/global-nav-child" with items=link.items index=forloop.index categoryCode=link.categoryCode %}
+                    </div>
+                </li>
+            {% endwith %}
+        {% endif %}
+    {% endif %}
+{% endfor %}

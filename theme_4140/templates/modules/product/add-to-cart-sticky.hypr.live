@@ -1,0 +1,5 @@
+<div class="mz-sticky-addToCart-btn" style="display: none">  
+    <div class="mz-sticky-padding">    
+         <button id="add-to-cart-sticky" class="addToCart-sticky-btn {% if (not model.initialPageLoad and model.availableInventory == 0) or (model.isPurchasable and model.availableInventory == 0) or (model.isOneSize and model.availableInventory == 0) %}is-disabled{% endif %}"  data-mz-action="addToCart"><span>{{labels.addToBag}}</span></button>
+    </div>
+</div>

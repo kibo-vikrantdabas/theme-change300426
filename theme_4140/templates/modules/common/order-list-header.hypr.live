@@ -1,0 +1,47 @@
+<div class="mz-orderlisting">
+    <div class="mz-orderlisting-detail">
+        {% block order-details %}
+            <ul class="mz-orderlisting-details-list">
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.item }}</dt>
+                    </dl>
+                </li>
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.quantity }}</dt>
+                    </dl>
+                </li>
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.itemPrice }}</dt>
+                    </dl>
+                </li>
+                {% for payment in model.payments %}
+                    {% if payment.billingInfo.paymentType == "PurchaseOrder" and payment.status != "Voided" %}
+                    <li class="mz-orderlisting-details-item">
+                        <dl class="mz-propertylist mz-propertylist-order">
+                            <dt>{{ labels.purchaseOrderNumber }}</dt>
+                        </dl>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                <li class="mz-orderlisting-details-item">
+                    <dl class="mz-propertylist mz-propertylist-order">
+                        <dt>{{ labels.subTotal }}</dt>
+                    </dl>
+                </li>
+                {% if model.amountRefunded > 0 %}
+                    <li class="mz-orderlisting-details-item">
+                        <dl class="mz-propertylist mz-propertylist-order">
+                            <dt>{{ labels.refund }}</dt>
+                            <dd>{{ model.amountRefunded|currency }}</dd>
+                        </dl>
+                    </li>
+                {% endif %}
+            </ul>
+            {% comment %} <hr class="down-hr"> {% endcomment %}
+        {% endblock order-details %}
+    </div>
+</div>
+

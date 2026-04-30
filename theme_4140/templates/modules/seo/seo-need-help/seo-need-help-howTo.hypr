@@ -1,0 +1,13 @@
+{% comment %} <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How do I return an item in store or via post",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "text":"Please contact us and our customer service team will sort this for you. We will not charge shipping costs for the return of faulty or damaged items."
+        }
+      ],
+    }
+</script> {% endcomment %}

@@ -1,0 +1,12 @@
+<div class="mz-accountsettings-gender">
+    <label class="mz-account-settings-label-name">{{ labels.gender }} 
+      <span class="help-info"></span>
+      <span class="info-box gender-info-detail">{{labels.genderInfoDetail}}</span>
+    </label>
+    <div class="input-holder">
+      <input type="radio" class="male-radio" id="male" value="male" name="gender" data-mz-value="gender" {% if model.gender == "male" %} checked {% endif %} data-mz-action="onGenderChange"/>
+      <label class="male-label"  for="male">{{labels.genderMale}}</label>
+      <input type="radio" class="female-radio"  id="female" value="female" name="gender" data-mz-value="gender" {% if model.gender == "female" %} checked {% endif %} data-mz-action="onGenderChange" />
+      <label class="female-label"  for="female">{{labels.genderFemale}}</label>
+    </div>
+</div>

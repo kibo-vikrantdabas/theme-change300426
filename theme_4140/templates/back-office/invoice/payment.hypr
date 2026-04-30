@@ -1,0 +1,47 @@
+<td class="header-info-right">
+    <div class="order-info">
+        <div class="order-row order-number"><span class="label-heading">Order No. <span class="orderNumber">رقم الطلب</span> </span><span class="order-text">#{{ order.orderNumber }}</span></div>
+        <div class="order-row order-number"><span class="label-heading">Invoice No. <span class="invoiceNumber">رقم الفاتورة</span> </span><span class="order-text">#{{ order.orderNumber }}</span></div>
+        <div class="order-row order-date"><span class="label-heading">Payment Method <span class="paymentMethod">رقم الفاتورة</span></span><span class="order-text">
+            {% set_var isMultiPayment=0  %}
+            {% for payment in order.payments %}
+                {%if payment.status|lower == "collected"%}
+                {% with isMultiPayment|add(1) as count %}
+                {% set_var isMultiPayment=count  %}
+                {%endwith%}
+                {% endif %}
+                {% if payment.paymentType == "Check" and payment.status != "Voided" %}<span class="payment-method-name" data-name="cashOnDelivery">{{ labels.cashOnDelivery }}</span>{% endif %}
+                    {% if payment.paymentType == "CreditCard" and payment.status == "Collected" %}<span class="payment-method-name" data-name="creditCard">{{ labels.creditCard }}</span>{% endif %}
+                    {% if payment.paymentType == "GiftCard" and payment.status != "Voided" %}<span class="payment-method-name" data-name="giftCard">{{ labels.giftCard }}</span>{% endif %}
+                    {% if payment.paymentType == "StoreCredit" and payment.status != "Voided" %}<span class="payment-method-name" data-name="storeCredit">{{ labels.storeCredit }}</span>{% endif %}
+                    {% if payment.paymentType == "DigitalCredit" and payment.status != "Voided" %}<span class="payment-method-name" data-name="storeCredit">{{ labels.digitalCredit }}</span>{% endif %}
+                    {% if payment.paymentType == "Paypal" and payment.status != "Voided" %}<span class="payment-method-name" data-name="payPal">{{ labels.payPal }}</span>{% endif %}
+                    {% if payment.paymentType == "PayPalExpress" and payment.status != "Voided" %}<span class="payment-method-name" data-name="paypalExpress">{{ labels.paypalExpress }}</span>{% endif %}
+                    {% if payment.paymentType == "PayPalExpress2" and payment.status != "Voided" %}<span class="payment-method-name" data-name="paypalExpress2">{{ labels.paypalExpress2 }}</span>{% endif %}
+                    {% if payment.paymentType == "PurchaseOrder" and payment.status != "Voided" %}
+                        
+                            {% if payment.status != "Voided" and payment.paymentType == "PurchaseOrder" %}
+                                {{ labels.purchaseOrder }} {{ payment.billingInfo.purchaseOrder.purchaseOrderNumber }} ({{ payment.billingInfo.purchaseOrder.paymentTerm.description }})
+                            {% endif %}
+                    {% endif %}
+                    {% if payment.paymentType == "PayWithAmazon" and payment.status != "Voided" %}{{ labels.payWithAmazon }}{% endif %}
+                    {% if payment.paymentType|lower == "token" and payment.status != "Voided" %}
+                        
+                            {% if payment.status != "Voided" and payment.paymentType|lower == "token" %}
+                                {% if payment.billingInfo.token.type|lower == "paywithamazon" %} {{labels.payWithAmazon}}{%endif%}
+                                {% if payment.billingInfo.token.type|lower == "applepay" %} {{labels.applePay}}{%endif%}
+                                {% if payment.billingInfo.token.type|lower == "blueprepaidcard" %} {{labels.bluePrepaidPayment}}{%endif%}
+                                {% if payment.billingInfo.token.type|lower == "bluewallet" %} {{labels.blueWalletPayment}}{%endif%}
+                            {% endif %}
+                        
+                    {% endif %}
+                    {% if not forloop.last and payment.status != "Voided" %}
+                    {%if isMultiPayment>0 %}
+                    <br/>
+                    {% endif %}
+                    {% endif %}
+            {% endfor %}
+        </span></div>
+        
+    </div>
+</td>

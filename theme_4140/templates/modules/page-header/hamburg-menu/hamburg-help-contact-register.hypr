@@ -1,0 +1,15 @@
+<div class="mz-help-contact-register-container">
+    <div class="mz-help-link">
+        <a href="{{siteContext.siteSubdirectory}}/need-help">{{labels.help}}</a>
+    </div>
+    <span class="mz-seprator">|</span>
+    <div class="mz-contact-link">
+        <a href="{{siteContext.siteSubdirectory}}/contact">{{labels.contactUs}}</a>
+    </div>
+    {% if user.isAnonymous %}
+    <span class="mz-seprator">|</span>
+    <div class="mz-register-link">
+        <a href="{{siteContext.siteSubdirectory}}/user/signup">{{labels.register}}</a>
+    </div>
+    {% endif %}
+</div>

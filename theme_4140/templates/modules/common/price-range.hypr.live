@@ -1,0 +1,46 @@
+﻿{% if model.lower.onSale and model.upper.onSale %}
+      <span itemprop="minPrice" class="mz-pricestack-price-lower">
+            <span itemprop="price" class="mz-price is-saleprice"> 
+                  <span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.lower.salePrice|floatformat(pageContext.currencyInfo.precision)}}
+            </span>
+      </span>
+      <span itemprop="maxPrice" class="mz-pricestack-price-upper ">
+         <span class="mz-price is-saleprice">
+            <span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.upper.salePrice|floatformat(pageContext.currencyInfo.precision)}}
+         </span> 
+      </span>
+ {% endif %}
+
+ {% if model.lower.onSale and not model.upper.onSale %}
+      <span itemprop="minPrice" class="mz-pricestack-price-lower">
+         {% comment %} <s><span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.lower.price|floatformat(pageContext.currencyInfo.precision)}}</s> {% endcomment %}
+         <span itemprop="price" class="mz-price is-saleprice">
+               <span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.lower.salePrice|floatformat(pageContext.currencyInfo.precision)}}
+         </span>
+      </span>
+      <span itemprop="maxPrice" class="mz-pricestack-price-upper">
+         {% comment %} <s><span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.upper.price|floatformat(pageContext.currencyInfo.precision)}}</s> {% endcomment %}
+         <span class="mz-price">
+            <span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.upper.price|floatformat(pageContext.currencyInfo.precision)}}
+         </span> 
+      </span>
+{% endif %}
+
+{% if not model.lower.onSale and model.upper.onSale %}
+      <span itemprop="minPrice" class="mz-pricestack-price-lower">
+         {% comment %} <s><span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.lower.price|floatformat(pageContext.currencyInfo.precision)}}</s> {% endcomment %}
+         <span itemprop="price" class="mz-price ">
+               <span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.lower.price|floatformat(pageContext.currencyInfo.precision)}}
+         </span>
+      </span>
+      <span itemprop="maxPrice" class="mz-pricestack-price-upper">
+         {% comment %} <s><span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.upper.price|floatformat(pageContext.currencyInfo.precision)}}</s> {% endcomment %}
+         <span class="mz-price is-saleprice">
+            <span class="currency-code"> {% include "modules/common/currency-code" %} </span> {{model.upper.saleprice|floatformat(pageContext.currencyInfo.precision)}}
+         </span> 
+      </span>
+{% endif %}
+
+ {% if themeSettings.showMSRP and model.msrp %}
+ <span class="mz-price-msrp">{{ labels.msrp}}: <span class="mz-price">{{ model.msrp|currency }}</span></span>
+ {% endif %}

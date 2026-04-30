@@ -1,0 +1,14 @@
+﻿{% if pageContext.cmsContext.template.path|lower == "cart" %}
+    <div class="mz-storebranding" id="store-branding">
+        <a href="{{PageContext.secureHost}}{{siteContext.siteSubdirectory}}" class="mz-homepage-link">
+            <img src="{{themeSettings.markAndSpencerLogo.imageUrl}}" alt="site-logo" class="mz-site-logo"/>
+        </a>
+    </div>        
+{% else %}
+
+    <div class="mz-storebranding" id="store-branding" onclick="window.globalEventBus.emit('dataLayerEvent',{'custom_event':'navigation','event_params':{'event_act':'logo click', 'event_lbl': 'logo click'}})">
+        <a href="{{PageContext.secureHost}}{{siteContext.siteSubdirectory}}" class="mz-homepage-link">
+            <img src="{{themeSettings.markAndSpencerLogo.imageUrl}}" alt="site-logo" class="mz-site-logo"/>
+        </a>
+    </div>
+{% endif %}

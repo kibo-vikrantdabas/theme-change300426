@@ -1,0 +1,62 @@
+﻿{% extends "modules/common/item-listing" %}
+
+{% block item-details %}
+    <div class="mz-itemlisting-description">
+      <div class="">
+        <a class="mz-itemlisting-title" href="{{ model.product.url }}">
+          {{ model.product.name }}
+        </a>
+      </div>
+      <div class="mz-product-variationCode">
+        {{ model.product.variationProductCode|default(model.product.productCode) }}
+      </div>
+      <div class="mz-itemlisting-color-size">
+        {% for option in model.product.options %}
+        <span>{{ option.name }}: 
+        {% if option.shopperEnteredValue %} 
+          {{ option.shopperEnteredValue }}, 
+        {% endif %}
+        {% if option.value %} 
+          {% if option.attributeFQN|lower == 'tenant~colour' or option.attributeFQN|lower == 'tenant~color' %}
+            {% with option.value|split("_")|first as swatchCode%}
+              {% with labels.swatchFile|string_format(model.productCode, swatchCode) as swatchFile %}
+                <span data-mz-product-option="{{ option.attributeFQN }}" data-value="{{option.value}}" class="mz-colour-swatch">
+                  <img class="mz-colour-swatch-img preserve-{{value.attributeValueId}}" src="{% make_url "cdn" swatchFile %}" onerror="this.onerror=null;this.src='{{siteContext.cdnPrefix}}{{labels.svgIconPath}}NoSwatch.svg'"alt={{option.value|split("_"|last)}}/>
+                </soan>
+              {% endwith %}
+            {% endwith %}
+          {% endif %}
+          {{ option.stringValue|default(option.value) }} <br>
+        {% endif %}
+        </span>
+      {% endfor %}
+      </div>
+      {% if model.product.measurements.packageWeight.value %}, 
+        {{ model.product.measurements.packageWeight.value }}{{model.measurements.packageWeight.unit }}
+      {% endif %}
+    </div>
+    <div class="mz-itemlisting-quantity">
+      {%if packageItem %} {{ packageItem.quantity}} {% else %} {{ model.quantity}} {% endif %} 
+     </div>
+    <div class="mz-itemlisting-price">
+     {%if model.product.price.tenantOverridePrice %} {% include "modules/common/currency-code" %} {{ model.product.price.tenantOverridePrice|floatformat(pageContext.currencyInfo.precision) }} {% else %} {%if model.product.price.salePrice %} {% include "modules/common/currency-code" %} {{ model.product.price.salePrice|floatformat(pageContext.currencyInfo.precision) }} {% else %} {% include "modules/common/currency-code" %} {{ model.product.price.price|floatformat(pageContext.currencyInfo.precision) }} {%endif%}{%endif%}
+    </div>  
+    <div class="mz-itemlisting-subtotal">
+      {% include "modules/common/currency-code" %} {{ model.subtotal|floatformat(pageContext.currencyInfo.precision) }}
+    </div>
+    <div class="mz-itemlisting-itemStatus fulfillmentStatus {{orderLevelStatus}}">
+      {% if orderLevelStatus == "Cancelled" %} 
+        {{ labels.cancelled }}
+      {% else %}
+      {{model.product.fulfillmentStatus}}
+      {% endif %}
+    </div>
+{% endblock item-details %}
+{% block item-listing-actions %}
+   
+{% endblock item-listing-actions %}
+{% block item-listing-extras %}
+{% if returning == model.id %}
+<p class="mz-itemlisting-prompt is-warning">{{ labels.returnInfo|safe }}</p>
+{% endif %}
+{% endblock item-listing-extras %}

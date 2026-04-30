@@ -1,0 +1,288 @@
+﻿{
+    "SHARED": {
+        "appName": "Kibo eCommerce",
+        "currencyCode": "USD",
+        "Navigation": {
+            "Top": {
+                "List": {
+                    "createReturn": "Créer un retour",
+                    "manageReturn": "Gérer les retours"
+                },
+                "order": "Commandes",
+                "return": "Retours"
+            }
+        },
+        "SEARCHBAR": {
+            "palceHolder": "recherche"
+        },
+        "FOOTER": {
+            "proweredBy": "Propulsé par:",
+            "copyRight": "© Xpanxion",
+            "customerSupport": "Customer Support at",
+            "supportEmail": "test"
+        },
+        "CONFIRMATIONDIALOG": {
+            "Confirmation": {
+                "DeleteReturnItem": {
+                    "title": "Delete Item",
+                    "message": "Voulez-vous vraiment supprimer cet élément?",
+                    "primaryButtonText": "Oui",
+                    "secondaryButtonText": "Non",
+                    "isShowSecondaryButton": "true"
+                }
+            },
+            "Information": {
+                "SaveItem": {
+                    "title": "Save Item",
+                    "message": "L'élément a bien été enregistré",
+                    "primaryButtonText": "Ok",
+                    "secondaryButtonText": "",
+                    "isShowSecondaryButton": "false"
+                }
+            }
+        },
+        "STORESELECTION": {
+            "label": "Sélectionnez un magasin",
+            "defaultOption": "Tous les magasins",
+            "loading": "Chargement.."
+        },
+        "TENANTSETTINGS": {
+            "isIncludeShippingAndHandlingCharges": 1,
+            "returnReason": ""
+        }
+    },
+    "MESSAGES": {
+        "Dialog": {
+            "AuthFailedInvalidAuthResponse": {
+                "title": "Échec de l'authentification",
+                "message": "Échec de l'authentification pour l'utilisateur spécifié. Veuillez saisir des informations d'identification valides et réessayer. Si le problème persiste, contactez l'équipe de support client.",
+                "primaryButton": "OK",
+                "secondaryButton": "",
+                "isShowSecondaryButton": "false",
+                "isLogoutOnPrimaryButton": "false"
+            }
+        },
+        "Toastr": {
+            "Error": {
+                "Fatal": "Une erreur s'est produite lors du traitement de votre demande. Veuillez réessayer ultérieurement ou contacter le service client.",
+                "UserSessionExpired": "Votre session a expiré, veuillez vous reconnecter",
+                "ReturnsListGetFailed": "Une erreur s'est produite lors de la récupération des retours",
+                "OrdersListGetFailed": "Une erreur s'est produite lors de la récupération des commandes",
+                "GetShipmentFailed": "Une erreur s'est produite lors de la récupération des articles d'expédition",
+                "GetReaonsFailed": "Une erreur s'est produite lors de la récupération des raisons",
+                "CreateReturnsFailed": "Une erreur s'est produite lors de la création des retours",
+                "ProcessReturnsFailed": "Une erreur s'est produite lors du traitement du retour",
+                "ExistingPaymentToRefundFailed": "Une erreur s'est produite lors de la récupération des détails de paiement du retour",
+                "PaymentRefundFailed": "Une erreur s'est produite lors du traitement du remboursement",
+                "CloseReturnsFailed": "Une erreur s'est produite lors de la fermeture/rejet des retours"                
+            },
+            "Warning": {
+                "DashboardTilesGetFailed": "Une erreur s'est produite lors de la récupération des tuiles dasbhoard",
+                "CreateReturnEmptyData": "La quantité et la raison doivent être sélectionnées",
+                "ProcessReturnEmptyData": "La quantité et l'emplacement de retour doivent être sélectionnés",
+                "PaymentRefundWarning": "Impossible de déclencher le remboursement"
+            },
+            "Information": {
+                "EmptyEmailAddress": "Veuillez saisir une adresse e-mail.",
+                "EmptyPassword": "Veuillez saisir votre mot de passe."
+            },
+            "Success": {
+                "LoginSuccess": "Connexion réussie",
+                "CreateReturnsSuccess": "Retour créé avec succès",
+                "ProcessReturnsSuccess": "Retour traité avec succès"
+            },
+            "Custom": {}
+        }
+    },
+    "RETURNS": {
+        "Edit": {
+            "AuditCard": {
+                "created": "Créé",
+                "lastModified": "Last Modified",
+                "by": "by"
+            },
+            "CustomerCard": {
+                "customer": "Client",
+                "order": "Commande",
+                "hash": "#"
+            },
+            "ItemCard": {
+                "itemReplaced": "Item Replaced",
+                "itemRefunded": "Item Refunded",
+                "amountRefunded": "Montant remboursé",
+                "of": "de",
+                "dollar": "$"
+            },
+            "StickyMenu": {
+                "items": "Items",
+                "refunds": "remboursements",
+                "replacements": "remplacements",
+                "internalNotes": "Notes internes",
+                "customerNotes": "Notes client"
+            },
+            "Items": "Items",
+            "Refunds": "remboursements",
+            "Replacements": "remplacements",
+            "InternalNotes": "Notes internes",
+            "CustomerNotes": "Notes client"
+        },
+        "List": {
+            "GridHeader": {
+                "returnNumber": "Return #",
+                "createDate": "Date de création",
+                "updateDate": "Dernière date de modification",
+                "originalOrderNumber": "Order #",
+                "channelName": "Channel",
+                "siteId": "Site",
+                "firstName": "Prénom",
+                "lastName": "Nom de famille",
+                "customerEmail": "Email",
+                "returnStatus": "Return Status",
+                "receiveStatus": "Statut de réception",
+                "refundStatus": "Statut de remboursement",
+                "replaceStatus": "Statut de remplacement",
+                "productLossAmount": "Return Amount"
+            },
+            "GridContextMenu": {
+                "editReturn": "Modifier le retour"
+            }
+        },
+        "Fulfillment": {
+            "Create": {
+                "title": "Créer des retours",
+                "GridHeader": {
+                    "selectItems": "Sélectionner des éléments",
+                    "product": "Produit",
+                    "SKU": "SKU:",
+                    "UPC": "UPC:",
+                    "part": "Partie #:",
+                    "shippedBy": "Expédié par",
+                    "quantityShipped": "Quantité expédiée",
+                    "quantityToReturn": "Quantité à retourner",
+                    "reason": "Raison"
+                },
+                "GridEmptyMessages": {
+                    "noRecordFound": "Aucun élément trouvé pour les retours"
+                },
+                "Buttons": {
+                    "cancel": "Annuler",
+                    "createReturn": "Créer un retour pour ces articles"
+                }
+            },
+            "Process": {
+                "title": "Traiter les retours",
+                "returnIdLabel": "Revenir #",
+                "returnAddressLabel": "Adresse de retour: ",
+                "returnReduction": "Réduction de retour: ",
+                "returnLocation": "Lieu de retour:",
+                "GridHeader": {
+                    "selectItems": "Sélectionner des éléments",
+                    "product": "Produit",
+                    "SKU": "SKU:",
+                    "UPC": "UPC:",
+                    "part": "Partie #:",
+                    "shippedBy": "Expédié par",
+                    "quantity": "Quantité",
+                    "reason": "Raison",
+                    "refundShippingAndHandling": "Remboursement S&H"
+                },
+                "GridEmptyMessages": {
+                    "noRecordFound": "Aucun élément de retour trouvé",
+                    "maxValueError": "Le montant de la réduction de retour ne doit pas être supérieur à "
+                },
+                "Buttons": {
+                    "cancel": "Annuler",
+                    "processReturn": "Traiter ces éléments",
+                    "processNewGiftCard": "Processus vers une nouvelle carte-cadeau"
+                }
+            }
+        }
+    },
+    "ORDER": {
+        "List": {
+            "GridHeader": {
+                "orderNumber": "Order #",
+                "orderReferenceNumber": "Order Reference Number",
+                "submittedDate": "Date de soumission",
+                "firstName": "Prénom",
+                "lastName": "Nom de famille",
+                "orderTotal": "Order Total",
+                "orderStatus": "Statut de la commande",
+                "returnStatus": "Return Status",
+                "customerEmail": "Email du client"
+            },
+            "GridContextMenu": {
+                "createReturn": "Créer un retour"
+            }
+        },
+        "Details": {
+            "Return": {
+                "List": {
+                    "title": "Returns",
+                    "emptyMessage": "Aucun retour pour cette commande",
+                    "GridHeader": {
+                        "returnNumber": "Return #",
+                        "createDate": "Date de création",
+                        "updateDate": "Dernière date de modification",
+                        "status": "Return Status",
+                        "receiveStatus": "Statut de réception",
+                        "refundStatus": "Statut de remboursement",
+                        "replaceStatus": "Remplacer le statut",
+                        "productTotal": "Return Amount"
+                    }
+                },
+                "ReturnableItem": {
+                    "title": "Articles retournables",
+                    "create": "Créer un retour",
+                    "emptyMessage": "Aucun article à retourner pour cette commande",
+                    "GridHeader": {
+                        "orderLineId": "Ligne",
+                        "productName": "Product",
+                        "productCode": "Code",
+                        "quantityOrdered": "Ordered",
+                        "quantityFulfilled": "Fulfilled",
+                        "quantityDirectlyReturned": "Returned",
+                        "quantityReturnable": "Returnable",
+                        "reportedIssue": "Problème signalé",
+                        "type": "Type",
+                        "qtyToReturn": "Qty to Return"
+                    },
+                    "ReturnType": {
+                        "return": "Retour",
+                        "replace": "Remplacer"
+                    }
+                },
+                "Information": {
+                    "AccountInfo": {
+                        "title": "Account",
+                        "Payment": {
+                            "title": "Paiement",
+                            "orderTotal": "Order Total",
+                            "collected": "Collecté",
+                            "balance": "Balance"
+                        },
+                        "Fulfillment": {
+                            "title": "Fulfillment",
+                            "items": "Items",
+                            "fulfilled": "remplie",
+                            "remaining": "Restant"
+                        }
+                    },
+                    "SiteInfo": {
+                        "title": "Site",
+                        "orderDate": "Order Date",
+                        "lastUpdated": "Dernière mise à jour",
+                        "channel": "Channel",
+                        "ipAddress": "Adresse IP"
+                    },
+                    "AddressInfo": {
+                        "title": "Addresses",
+                        "changeAddress": "Changer d'adresse",
+                        "billingAddress": "Adresse de facturation",
+                        "shippingAddress": "Adresse de livraison"
+                    }
+                }
+            }
+        }
+    }
+}

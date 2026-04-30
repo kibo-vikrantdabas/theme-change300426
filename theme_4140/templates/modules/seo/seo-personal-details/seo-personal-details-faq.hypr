@@ -1,0 +1,62 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How can I add an address to my account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sign in to your account.Click on ‘My account’ at the top of your page and navigate to ‘Go to my account’.Click on Delivery Address’ under ‘Payment And Delivery’ on the ‘My Account’ page.Click on add new address. Or You can add your address in chekcout page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I change my email address?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sign in to your account.Click on ‘My account’ at the top of your page and navigate to ‘Go to my account’.Click on Personal Details’ under ‘Profile’ on the ‘My Account’ page.Click on edit email address."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I change my name?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sign in to your account.Click on ‘My account’ at the top of your page and navigate to ‘Go to my account’.Click on Personal Details’ under ‘Profile’ on the ‘My Account’ page.Update name and save."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I change my password?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sign in to your account.Click on ‘My account’ at the top of your page and navigate to ‘Go to my account’.Click on Personal Details’ under ‘Profile’ on the ‘My Account’ page.Click on edit password."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my credit or debit card details saved in my account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We don’t automatically save your card details. If you would like us to save them for your next order, click the ‘Save this card’ option after you’ve entered your card details for payment. Alternatively, add a card on the ‘View and add payment details’ section of the ‘My Account’ page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my personal data safe if I create an account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Marks and Spencer Group store and/or process your information in line with all applicable European law on data protection to ensure your personal data is kept safe."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I unsubscribe from email newsletters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All our newsletters offer the option to unsubscribe to future emails."
+        }
+      }]
+    }
+</script>

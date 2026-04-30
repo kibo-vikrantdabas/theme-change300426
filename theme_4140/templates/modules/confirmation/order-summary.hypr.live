@@ -1,0 +1,66 @@
+<div class="mz-confirmation-ordersummary">
+    <div class="mz-confirmation-items">
+        {% for item in model.items %}
+            <div class="mz-ordersummary-lineitems">
+                <div class="mz-ordersummary-line mz-ordersummary-line-item {% if item.discountTotal > 0 %}is-discounted{% endif %}">
+                    <div class="mz-item-row mz-ordersummary-line-item-img-container">
+                        {% if item.product.imageUrl %}
+                        <img src="{{item.product.imageUrl}}" height="131" width="102" alt="product-image" class="mz-ordersummary-line-item-img">
+                        {% else %}
+                        <span class="mz-noImg">{{ labels.productImagePlaceholder}}</span>
+                        {% endif %} 
+                    </div>
+                    <div class="mz-item-row mz-ordersummary-line-item-details">
+                        <div class="mz-item-title">
+                            <div class="mz-item-brand">
+                                {% for property in item.product.properties %}
+                                    {% if property.values and not property.isHidden %}
+                                        {%if property.name == 'Brand' %}
+                                            {% for v in property.values %}
+                                                {% if v.stringValue %}{{v.stringValue}}{% else %}{{v.value}}{% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div> 
+                            <h4 class="mz-iten-name">{{ item.product.name }}</h4>
+                            {% comment %} {% if item.product.bundledProducts.length %}
+                            <dl class="mz-propertylist">
+                                {% for bundledProduct in item.product.bundledProducts %}
+                                <dt>{{ bundledProduct.productCode }}</dt>&nbsp;
+                                <dd>{{ bundledProduct.name }} ({{ bundledProduct.quantity }})</dd>
+                                {% endfor %}
+                            </dl>
+                            {% endif %} {% endcomment %}
+                        </div>
+                        <div class="mz-item-options">
+                            {% if item.product.options %}
+                                <dl class="mz-propertylist">
+                                    {% for option in item.product.options %}
+                                    <dd class="mz-propertylist-data">
+                                    {% if option.value %}
+                                        {% comment %} {{ option.value }} {% endcomment %}
+                                        {{ option.stringValue|default(value.value)}}
+                                    {% else %}
+                                        {{ option.shopperEnteredValue }}
+                                    {% endif %}
+                                    </dd>
+                                    {% endfor %}
+                                </dl>
+                            {% endif %}
+                        </div>
+                        <div class="mz-item-qty-price-mobile">
+                            <div class="mz-item-qty">{{labels.qty}}: {{ item.quantity }}</div>
+                            <div class="mz-item-row mz-ordersummary-line-item-price">{% include "modules/common/item-price" %}</div>
+                        </div>
+                    </div>
+                    <div class="mz-item-row mz-ordersummary-line-item-price">{% include "modules/common/item-price" %}</div>
+                    <div class="mz-item-row mz-ordersummary-line-item-totalprice">
+                        {% comment %} {% include "modules/common/item-total" %} {% endcomment %}
+                        <span class="mz-item-rowtotal {% if item.unitPrice.saleAmount %}is-saleprice{% endif %}">{{model.currencyCode}} {{ item.total|floatformat(pageContext.currencyInfo.precision) }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="mz-ordercancel-popup">
+     <div class="mz-blue-popup-header">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="open-arrow" class="mz-open-arrow-icon">
+        <div class="mz-blue-lable">{{labels.cancelOrder}}</div>
+        <div class="mz-blue-popup-close-container active">
+            <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Close.svg" alt="close-icon" class="mz-close-icon">
+        </div>
+    </div>
+    <div class="mz-blue-popup-body-container">
+        <div class="mz-titleNote">
+            <span> {{labels.selectItemToCancel}} </span>
+        </div>
+        <div class="mz-titleNoteBottom"></div>
+        <div class="mz-ordercancel-items">
+                <div class="mz-ordercancel-items-header">
+                    <div class="mz-oc-title"> {{ labels.selectAllItems }} </div>
+                    <div class="mz-oc-allcheckboxcontainer">
+                        <label class="checkbox-container">
+                            <input type="checkbox" class="mz-oc-allcheckbox" data-mz-value="{{model.orderNumber}}" data-mz-orderid="{{model.id}}" value="true" name="firstcheck">
+                            <span class="new-checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <ul class="mz-ordercancel-details-list">
+                  <li  class="mz-ordercancel-details-item">
+                     <dl class="mz-propertylist mz-propertylist-order">
+                        {% for shipment in model.shipments  %}
+                            {% for shipment in shipment.shipments  %}
+                                {% for item in shipment.items  %}
+                                    <div class="mz-itemlisting" id="{{shipment.shipmentNumber}}-{{ item.lineId }}">
+                                        <div class="items-group-one">
+                                            <div class="mz-itemlisting-thumb">
+                                                <img class="mz-itemlisting-thumb-img" src="{{ item.imageUrl }}" /> 
+                                            </div>
+                                        </div>
+
+                                        <div class="items-group-two">       
+                                            <div class="mz-itemlisting-details">
+                                                {% comment %} <a class="mz-itemlisting-title" href="{{ item.url }}">
+                                                    {{ item.name }}
+                                                </a><br> {% endcomment %}
+                                                <p class="mz-itemlisting-title">
+                                                    {{ item.name }}
+                                                </p>
+                                                <div class="mz-itemlisting-description">
+                                                    {% for option in item.options %}{{ option.value }}, {% endfor %}
+                                                </div>
+                                            </div>
+
+                                            <div class="mz-ordercancel-quantitiy">
+                                                <span>{{labels.orderPackageQuantity}}</span><br>
+                                                {{ item.quantity }}
+                                            </div>
+
+                                            <div class="mz-ordercancel-subtotal">
+                                                <span>{{labels.subtotal}}</span><br>
+                                                {{model.currencyCode}} {{ item.taxableLineItemCost }}
+                                            </div>
+
+                                        </div>
+
+                                        <div class="items-group-three">
+                                             <div class="mz-ordercancel-singlecheckbox">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" class="mz-oc-singlecheckbox" data-mz-value="{{shipment.shipmentNumber}}" data-mz-Quantity="{{ item.quantity }}" 
+                                                    data-mz-lineid="{{ item.lineId }}" data-mz-shipIdOrg="{{ item.originalOrderItemId }}" value="true" >
+                                                    <span class="newItem-checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+ 
+                                    </div>
+                                    <hr class="ordercancel-down-hr">
+                                {% endfor %} 
+                            {% endfor %} 
+                        {% endfor %} 
+                     </dl>
+                  </li>
+                </ul>
+
+                <p class="popup-order-button">
+                    <button class="back-button">{{ labels.backToOrder }}</button>
+                    <button class="confirm-button" disabled="disabled">{{ labels.confirm }}</button>
+                </p>
+        </div>
+    </div>
+</div>
+
+{% comment %} {% require_script "modules/cancel-order-ui" %} {% endcomment %}

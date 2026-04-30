@@ -1,0 +1,8 @@
+<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price mz-l-stack-section">
+    {% include "modules/product/price-stack" %}
+    {% if model.hasVolumePricing %}
+    <div class="mz-volume-price-container">
+        {% include "modules/product/volume-pricing" %}
+    </div>
+    {% endif %}
+</div>

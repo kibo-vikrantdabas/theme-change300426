@@ -1,0 +1,7 @@
+<h3 class="mz-formstep-header mz-checkoutform-header">
+    {% if model.requiresFulfillmentInfo %}
+      1. {{ labels.deliveryInformation }}
+    {% else %}
+      1.  {{labels.clickAndCollectLocation}}
+    {% endif %}
+</h3>

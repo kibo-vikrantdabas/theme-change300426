@@ -1,0 +1,19 @@
+﻿{% block address-form %}
+    <div class="mz-l-addressform-container {% if not user or user.isAnonymous %} mz-l-address-guest-container {% endif %}">
+
+        {% include "modules/common/address-elements/name-element" %}
+
+        {% include "modules/common/address-elements/phone-number-element" %}
+
+        {% include "modules/common/address-elements/country-element" %}
+
+        {% include "modules/common/address-elements/city-element" %}
+        
+        {% include "modules/common/address-elements/area-street-element" %}
+
+        {% include "modules/common/address-elements/address-type-element" %} 
+    
+        {% include "modules/common/address-elements/default-address-element" %} 
+    
+    </div>
+{% endblock address-form %}

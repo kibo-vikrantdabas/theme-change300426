@@ -1,0 +1,13 @@
+<div class="global-flyout-image">
+    {% if pageContext.isEditMode %}
+            Drop An Element
+    {% endif %}
+    <div class="flyout-image-container">
+        <div class="flyout-image-box global-image-pane-one">
+                {% dropzone "floyout-image-{0}"|string_format(firstImagePane) %} 
+        </div>
+        <div class="flyout-image-box global-image-pane-two">
+                {% dropzone "floyout-image-{0}"|string_format(secondImagePane) %} 
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,21 @@
+<div class="pdp-find-in-store-container deactive">
+    <div class="text-label-find-store">
+        <label for="find-store-text">{{labels.findInStoreText}}</label>
+    </div>
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" class="mz-close-icon">
+    <div class="mz-seprator"></div>
+    <div class="mz-find-store-location-data">
+        <ul class="store-data">
+        {% for locations in  model.availableLocations %}
+            <li class="find-store-data">
+                {{locations.locationName }}
+                {% if locations.inHandStock > 0 %}
+                    <span class="mz-message-instock">{{labels.stockAvailableText}}</span>
+                {% else %}
+                    <span class="mz-message-outofstock">{{labels.outOfStockText}}</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>

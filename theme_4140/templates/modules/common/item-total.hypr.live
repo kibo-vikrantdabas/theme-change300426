@@ -1,0 +1,20 @@
+﻿{% if item.discountedTotal || item.discountedTotal == 0 %}
+	{% if item.discountedTotal < item.subtotal %}
+		<span class="mz-item-rowtotal is-crossedout" {% block crossedout-inline-style %}{% endblock crossedout-inline-style %}><span class="currency-code"> {{model.currencyCode}} </span>	{{ item.subtotal|floatformat(pageContext.currencyInfo.precision) }}</span>
+		{% for productDiscount in item.productDiscounts %}
+			<div class="mz-item-discount">
+			<span class="mz-item-discountname">{{ productDiscount.discount.name }}:</span>
+			{% if productDiscount.discount.freeShipping %}
+				<span class="mz-item-discountamt">{{ labels.freeShipping }}</span>
+			{% else %}
+				<span class="mz-item-discountamt"><span class="currency-code"> {{model.currencyCode}} </span> -{{ productDiscount.impact|floatformat(pageContext.currencyInfo.precision) }}</span>
+			{% endif %}
+			</div>
+		{% endfor %}
+		<span class="mz-item-rowtotal {% if item.unitPrice.saleAmount %}is-saleprice{% endif %}"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.discountedTotal|floatformat(pageContext.currencyInfo.precision) }}</span>
+	{% else %}
+		<span class="mz-item-rowtotal {% if item.unitPrice.saleAmount %}is-saleprice{% endif %}"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.subtotal|floatformat(pageContext.currencyInfo.precision) }}</span>
+	{% endif %}
+{% else %}
+	<span class="mz-item-rowtotal {% if item.unitPrice.saleAmount %}is-saleprice{% endif %}"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.subtotal|floatformat(pageContext.currencyInfo.precision) }}</span>
+{% endif %}

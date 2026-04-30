@@ -1,0 +1,47 @@
+{% if model.content.productImages %}
+  {% if model.productImages.length > 0 %}
+    <div class="mz-productimages-thumbs pdp-images-wrapper pdp-grid {% if model.productImages.length == 1  %}afg-ms-single-pdp-image{% endif %}" onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'pdp page','event_params':{'event_act': 'pdp enlarge image', 'event_lbl' : '{{model.content.productName}}|{{model.productCode}}'}})">
+      {% for image in model.productImages %}
+            <img class="mz-productimages-thumbimage" 
+             srcset="{{image.imageUrl}}?quality=75&maxWidth=320 320w, 
+                    {{image.imageUrl}}?quality=75&maxWidth=400 400w,
+                    {{image.imageUrl}}?quality=75&maxWidth=480 480w,
+                    {{image.imageUrl}}?quality=75&maxWidth=500 500w,
+                    {{image.imageUrl}}?quality=75&maxWidth=640 640w,
+                    {{image.imageUrl}}?quality=75&maxWidth=675 675w,
+                    {{image.imageUrl}}?quality=75&maxWidth=766 766w,
+                    {{image.imageUrl}}?quality=75&maxWidth=1000 1000w
+                    "
+            sizes="(max-width: 1000w) 100vw,640w"
+            loading="lazy"
+             {% if image.altText %} title="{{ image.altText }}" alt="{{ image.altText }}"{% endif %} />
+      {% endfor %}
+    </div>
+  {% else %}
+    {% if model.content.productImages.length > 0 %}
+      <div class="mz-productimages-thumbs pdp-images-wrapper pdp-grid {% if model.content.productImages.length == 1  %}afg-ms-single-pdp-image{% endif %}" onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'pdp page','event_params':{'event_act': 'pdp enlarge image', 'event_lbl' : '{{model.content.productName}}|{{model.productCode}}'}})">
+        {% for image in model.content.productImages %}
+              <img class="mz-productimages-thumbimage"   
+              srcset="{{image.imageUrl}}?quality=75&maxWidth=320 320w, 
+                    {{image.imageUrl}}?quality=75&maxWidth=400 400w,
+                    {{image.imageUrl}}?quality=75&maxWidth=480 480w,
+                    {{image.imageUrl}}?quality=75&maxWidth=500 500w,
+                    {{image.imageUrl}}?quality=75&maxWidth=640 640w,
+                    {{image.imageUrl}}?quality=75&maxWidth=675 675w,
+                    {{image.imageUrl}}?quality=75&maxWidth=766 766w,
+                    {{image.imageUrl}}?quality=75&maxWidth=1000 1000w
+                    "   
+                sizes="(max-width: 1000w) 100vw,640w"
+                loading="lazy"
+              {% if image.altText %} title="{{ image.altText }}" alt="{{ image.altText }}"{% endif %} />
+        {% endfor %}
+      </div>
+    {% else %}
+      <span class="mz-productimages-noimage">[{{ labels.noImages}}]</span>
+    {% endif %}
+  {% endif %}
+
+{% else %}
+<span class="mz-productimages-noimage">[{{ labels.noImages}}]</span>
+{% endif %}
+

@@ -1,0 +1,6 @@
+<div class="mz-product-color-options-container">
+	<div class="mz-color-chart-display">
+		<span class="color-label">{{labels.productColorOptions}}
+        <a href="javascript:;" class="color-name">{{labels.colorForPDP}}</a></span>
+	</div>
+</div>

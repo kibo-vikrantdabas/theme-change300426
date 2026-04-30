@@ -1,0 +1,16 @@
+ <h3 class="mz-formstep-header mz-checkoutform-header">
+        1. {{ labels.deliveryMethod }}
+    </h3>
+    <hr class="mz-downhr-checkout">
+    <div class="mz-formstep-body mz-checkoutform-delivery">
+      <div class="mz-checkout-collection {% if  model.items|first|prop('fulfillmentMethod')|lower == 'ship' %} mz-disableCollection {% endif %} {% if  model.items|first|prop('fulfillmentMethod')|lower != 'ship' %} active {% endif %}">
+      <img src="{{siteContext.cdnPrefix}}/resources/images/icons/Collect.svg" alt="">
+      <label>{{labels.collection}}
+      </label>
+      </div>
+      <div class="mz-checkout-delivery {% if  model.items|first|prop('fulfillmentMethod')|lower != 'ship' %} mz-disableDelivery {% endif %} {% if  model.items|first|prop('fulfillmentMethod')|lower == 'ship' %} active {% endif %}">
+      <img src="{{siteContext.cdnPrefix}}/resources/images/icons/delivery.svg" alt="">
+      <label>{{labels.delivery}}
+      </label>
+      </div>
+    </div>

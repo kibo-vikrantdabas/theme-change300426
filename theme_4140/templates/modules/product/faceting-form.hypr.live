@@ -1,0 +1,66 @@
+<section class="mz-facetingform">
+  <span class="close-filter"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}close.svg" alt="close-icon" ></span>
+    {% if model.hasValueFacets %}
+    <div class="mz-l-sidebaritem top-container">
+        <h3 class="filter-title-desktop">{{ labels.filters }}<span class="desktop-filter-count"></span></h3>
+        <h3 class="filter-title-mobile">{{ labels.filters }}</h3>
+        <button class="mz-button mz-facetingform-clearall clear-all-btn" data-mz-action="clearFacets" data-mz-url="{% make_url "facet" "clear"  %}">{{ labels.clearAllFilters }}</button>
+    </div>
+    {% comment %} Selected Filters {% endcomment %}
+    <div class="filter-selected" style="display: none;"></div>
+    {% else %}
+    <div class="mz-l-sidebaritem top-container">
+      <h3 class="filter-title-desktop">{{ labels.filters }}<span class="desktop-filter-count"></span></h3>
+      <h3 class="filter-title-mobile">{{ labels.filters }}</h3>
+      <button class="mz-button mz-facetingform-clearall clear-all-btn hidden" data-mz-action="clearFacets" data-mz-url="{% make_url "facet" "clear"  %}">{{ labels.clearAllFilters }}</button>
+    </div>
+    {% endif %}
+    {% for facet in model.facets %}
+      {% if facet.values and facet.facetType == "Hierarchy" %}
+        {% if facet.values.length == 1 %}
+          {% include "modules/product/hierarchy-facets" with facet=facet facetValues=facet.values|first|prop("childrenFacetValues") %}
+        {% else %}
+          {% include "modules/product/hierarchy-facets" with facet=facet facetValues=facet.values %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    <div class="widget-accordion">
+    {% for facet in model.facets %}
+    {% if facet.values and facet.facetType != "Hierarchy" %}
+    <div class="mz-l-sidebaritem fl-container">
+        <h4 class="facets-label  accordion-toggle">{% if facet.label|lower == 'price' %} {{labels.price}} {% else %}{{ facet.label }}{% endif %}</h4>
+        <div class="facets-lists-container accordion-content">
+          {% if facet.values and facet.values.length > 1 %}
+          <div class="filter-search">
+              <input type="text" value="" class="search-filter" placeholder="{{ labels.search }}" />
+          </div>
+          {% endif %}
+          <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy facets-lists ">
+              {% for fval in facet.values %}
+                      <li class="not-hierarchy">
+                        <div class="filter-select">
+                          <div class="input-check">
+                            <input type="checkbox" id="{{facet.field|slugify }}_{{ fval.value|slugify }}" 
+                            class="mz-facetingform-value" {% if fval.isApplied %}checked="checked"{% endif %} data-mz-facet="{{ facet.field }}" 
+                            data-mz-facet-value="{{ fval.value }}" data-mz-facet-label="{% if facet.field == 'price' %} {{ siteContext.currencyInfo.currencyCode }}
+                            {% endif %}{{ fval.label }}" data-mz-url="{% make_url "facet" fval %}" data-mz-mobile-url="{% make_url "facet" fval %}">
+                            <span class="chkmark"></span>
+                            <label class="mz-facetingform-valuelabel" for="{{facet.field|slugify }}_{{ fval.value|slugify }}">
+                              {% if facet.field == 'price' %}
+                              {{ siteContext.currencyInfo.currencyCode }}
+                              {% endif %}
+                              {{ fval.label }}
+                            </label>
+                          </div>
+                        </div>
+                          <span class="filter-count">({{ fval.count }})</span>
+                      </li>
+              {% endfor %}
+          </ul>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+</section>
+{% require_script "pages/category" %}

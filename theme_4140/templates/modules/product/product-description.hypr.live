@@ -1,0 +1,10 @@
+ {# Product Short Description #}
+{% if model.content.productShortDescription and themeSettings.showProductDetailShortDesc %}
+    <div class="mz-productdetail-shortdesc mz-l-stack-section">
+      <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>
+    </div>
+{% endif %}
+ {# Product Full  Description #}
+<div class="mz-productdetail-fulldesc mz-l-stack-section">
+  {{ model.content.productFullDescription|safe }}
+</div>

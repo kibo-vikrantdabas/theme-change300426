@@ -1,0 +1,49 @@
+{% for link in navNodes %}
+    {% if not link.isHomePage %}
+        {% if not link.isHidden  and forloop.counter0 < themeSettings.maxTopLevelNavItems %}
+            {% with count|add(1) as currentIndex %}
+                {% set_var count=currentIndex %}
+                {% set_var totalCategories=link.items.length %}
+                {% set_var totalHiddenCategories=0 %}
+                {% for sublink in link.items %}
+                    {% if sublink.isHidden==true %}
+                        {% with totalHiddenCategories|add(1) as increment%}
+                            {% set_var totalHiddenCategories=increment %}
+                        {% endwith %}
+                    {% endif %}
+                    {% endfor %}
+                   <li class="mz-sitenav-item-mobile active">
+                     {% if not totalCategories %} {% set_var totalCategories=0 %} {% endif %}
+                    {% if totalCategories == totalHiddenCategories %} 
+                    <div class="mz-sitenav-item-inner-mobile">
+                        <div class="mz-sitenav-item-inner-mobile-header">
+                            <span class="active-nav mz-parent-category-left-arrow deactive"> <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="parent-category-icon" class=""></span>
+                            <a class="mz-sitenav-link-mobile mz-parent-category-right-arrow no-child" href="{{link.url}}"><span class="mz-sitenav-link-mobile">{{link.name|truncatechars(themeSettings.maxTopLevelNavLabelLength)|safe}}</span></a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="mz-sitenav-item-inner-mobile">
+                        <div class="mz-sitenav-item-inner-mobile-header">
+                            <span class="active-nav mz-parent-category-left-arrow deactive"> <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="parent-category-icon" class=""></span>
+                            <span class="mz-sitenav-link-mobile">{{link.name|truncatechars(themeSettings.maxTopLevelNavLabelLength)|safe}}</span>
+                            {% comment %} For Future Enhancement {% endcomment %}
+                         {% comment %}<a class="mz-sitenav-link-mobile" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">{{link.name|truncatechars(themeSettings.maxTopLevelNavLabelLength)|safe|title}}</a> {% endcomment %} 
+                            {% comment %} {% set_var sublinkNotHiddenFlag=false %}
+                            {% for sublink in link.items %}
+                                {% if not sublink.isHidden %}
+                                    {% set_var sublinkNotHiddenFlag=true %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if link.items.length and sublinkNotHiddenFlag %} {% endcomment %}
+                           <span class="active-nav mz-parent-category-right-arrow active"> <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="parent-category-icon" class="" {% if totalCategories == totalHiddenCategories %} style="visibility: hidden;"{% endif %}></span>
+                            <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Add.svg" alt="close-category-icon" class="mz-close-category-icon deactive">
+                        </div>
+                        <div class="mz-mobile-parent-category-container mz-border deactive"></div>
+                        {% include "modules/global-nav/mobile/global-nav-child" with items=link.items index=forloop.index parentCategory=link%}
+                    </div>
+                    {%endif%}
+                </li>
+            {% endwith %}
+        {% endif %}
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,83 @@
+﻿<h3 class="mz-l-stack-sectiontitle">{{ labels.deliveryaddresses }}{% if model.hasRequiredBehavior %} <a href="javascript:;" class="hidden" data-mz-action="beginAddContact">{{ labels.addNewContact }}</a>{% endif %}</h3>
+<div class="mz-accountaddressbook-list">
+
+{% if model.hasSavedContacts || editing.contact == "new" %}
+  {% for contact in model.contacts %}
+  {% if editing.contact == contact.id %}
+  {% include "modules/my-account/my-account-address-form" with model=model.editingContact %}
+  {% else %}
+  <div class="cards-list">
+  <div class="mz-accountaddressbook-contact savedcards-wrapper">
+    <div class="afg-ms-savedcards-container">
+      <div class="mz-accountaddressbook-contactdetails mz-addresssummary savedcards-container">
+
+        {% if contact.address.addressType == 'Commercial' %}
+        <div class="title">{{labels.worktype}} </div>
+        {% else %}
+        <div class="title">{{labels.home}} </div>
+        {% endif %}
+        
+        {% include "modules/common/address-summary" with model=contact %}
+      
+      {% comment %}    <span class="hidden">{{ contact.email }}</span>{% endcomment %}
+      </div>
+
+      <div class="mz-accountaddressbook-actions">
+        {% if model.isNonPurchaser == false %}
+          <a class="mz-accountaddressbook-edit edit-action-link" href="javascript:;" data-mz-action="beginEditContact" data-mz-contact="{{ contact.id }}">{{ labels.edit }}</a>
+        {% endif %}
+        {% if model.hasRequiredBehavior %}
+          <a class="mz-accountaddressbook-delete delete-action-link" href="javascript:;" data-mz-action="beginDeleteContact" data-mz-contact="{{ contact.id }}">{{ labels.remove }}</a>
+        {% endif %}
+      </div>
+    </div>
+    {% for type in contact.types %}
+    <span class="mz-accountaddressbook-contacttype">
+        {% if type.isPrimary && type.name|lower =='shipping' %}
+        <div class="hidden">
+        <strong>{{ type.name }}</strong>
+        <em class="is-primary">({{ labels.primary }})</em>
+        </div>
+
+        <div class="is-primary primary-card">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}dark-Green-Tick.svg" alt="help-icon" class="mz-order-history-icon" />
+        {{labels.defaultAddress}}
+        </div>
+
+        {% endif %}
+    </span>
+    {% endfor %}
+  </div>
+</div>
+  {% endif %}
+  {% endfor %}
+  {% if editing.contact == "new" and model.hasRequiredBehavior %}
+  {% include "modules/my-account/my-account-address-form" with model=model.editingContact %}
+  {% endif %}
+
+
+{% else %}
+<p class="mz-accountaddressbook-empty hidden">
+  {{ labels.noSavedContacts }} {% if model.hasRequiredBehavior %}
+  <a href="javascript:;" data-mz-action="beginAddContact">{{ labels.addNewContact }}{% endif %}</a>
+</p>
+{% endif %}
+<div class="cards-list">
+  {% comment %} <div class="no-savedcards-wrapper savedcards-wrapper">
+      <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}AddLocation.svg" alt="card-icon" class="mz-order-history-icon">
+      <div class="title">
+          <a href="#" data-mz-action="beginAddContact">
+            {{ labels.addNewContact }}
+          </a>
+      </div>
+      <p> {{ labels.newContacts }} </p>
+  </div> {% endcomment %}
+  <div class="no-savedcards-wrapper savedcards-wrapper">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}AddLocation-new.svg" alt="card-icon" class="mz-order-history-icon">
+    <div class="title">{{ labels.addNewContact }}</div>
+    <p> {{labels.newContacts}} </p>
+    <button class="btn-add-new-card pointer" data-mz-action="beginAddContact">{{ labels.addContact }}</button>
+  </div>
+</div>
+
+</div>

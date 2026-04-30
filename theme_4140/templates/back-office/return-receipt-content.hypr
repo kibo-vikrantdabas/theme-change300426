@@ -1,0 +1,67 @@
+<table>
+  <tr>
+    <td>
+      <h2>{{ labels.returnReceiptHeader | string_format(customContent.companyName,model.originalOrderNumber)|safe }} </h2>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      {{ labels.returnReceiptBodyHeader | string_format(model.contact.firstName,model.contact.lastNameOrSurname,model.returnNumber,customContent.companyName,model.originalOrderNumber) |safe}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table class="grid">
+        <thead>
+          <tr>
+            <th class="align-center">{{ labels.returnReceiptItemQtyColumn }}</th>
+            <th>{{ labels.returnReceiptItemUPCColumn }}</th>
+            <th>{{ labels.returnReceiptItemNameColumn }}</th>
+            <th>{{ labels.returnReceiptItemStatusColumn }}</th>
+            <th class="align-center">{{ labels.returnReceiptUnitPriceColumn }}</th>
+            <th class="align-center">{{ labels.returnReceiptItemTotalColumn }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in model.items %}
+          <tr>
+            <td class="align-center">
+              {{ item.quantityReceived }}
+            </td>
+            <td>
+              {{ item.product.productCode }}
+            </td>
+            <td>
+              {{ item.product.name }}
+            </td>
+            <td>
+              {{ item.receiveStatus }}
+            </td>
+            <td class="align-center">
+              {{ item.product.price.price }}
+            </td>
+            <td class="align-center">
+              {{ item.product.price.price|multiply(item.quantityReceived) }}
+            </td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="4"></td>
+            <td class="align-center">
+              <b>{{ labels.returnReceiptReductionAmountColumn }}</b>
+            </td>
+            <td class="align-center">{{ model.refundAmount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      {{ labels.returnReceiptBodyContent | string_format(customContent.websiteUrl, customContent.companyName) |safe}}
+    </td>
+  </tr>
+</table>
+
+
+

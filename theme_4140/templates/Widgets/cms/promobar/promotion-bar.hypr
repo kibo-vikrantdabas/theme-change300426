@@ -1,0 +1,43 @@
+{% preload_json model.config "configData" %}
+
+{% if pageContext.isEditMode %}
+    <div style="outline-color: #CCC;outline-style:dashed;outline-width: 1.1px;"><span>Drop an Element</span></div>
+{% endif %}
+
+<div id="carousel">
+    <div id="slides">
+      <ul>
+         {% if model.config.promotion1 != null or if model.config.promotion1 != ""  %}
+            <li class="slide">
+                      <a {% if model.config.promotion1url %} href="{{ model.config.promotion1url }}" {% else %} href="#0" {% endif %} >{{ model.config.promotion1 }}</a>
+            </li>
+        {% endif %}
+        {% if model.config.promotion2 != null or if model.config.promotion2 != ""  %}
+            <li class="slide">
+                      <a {% if model.config.promotion2url %} href="{{ model.config.promotion2url }}" {% else %} href="" {% endif %} >{{ model.config.promotion2 }}</a>
+            </li>
+        {% endif %}
+        {% if model.config.promotion3 != null or if model.config.promotion3 != "" %}
+            <li class="slide">
+                       <a {% if model.config.promotion3url %} href="{{ model.config.promotion3url }}" {% else %} href="" {% endif %} >{{ model.config.promotion3 }}</a>
+            </li>
+        {% endif %}
+        {% if model.config.promotion4 != null or if model.config.promotion4 != "" %}
+            <li class="slide">
+                       <a {% if model.config.promotion4url %} href="{{ model.config.promotion4url }}" {% else %} href="" {% endif %} >{{ model.config.promotion4 }}</a>
+            </li>
+        {% endif %}
+        {% if model.config.promotion5 != null or if model.config.promotion5 != "" %}
+            <li class="slide">
+                       <a {% if model.config.promotion5url %} href="{{ model.config.promotion5url }}" {% else %} href="" {% endif %} >{{ model.config.promotion5 }}</a>
+            </li>
+        {% endif %}
+      </ul>
+   </div>
+    <div id="buttons">
+            <a class="prev" id="prev" href="#"><</a>
+            <a class="next" id="next" href="#">></a> 
+    </div>
+</div>
+
+{% require_script "modules/promotionBanner" %}

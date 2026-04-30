@@ -1,0 +1,22 @@
+<div class="mz-l-formfieldgroup-row mz-addressform-firstname">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="firstname">{{ labels.firstName }}<span class="is-required">*</span></label>
+        <label class="mz-required-field">*{{labels.checkoutrequiredFields }}</label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+        <input id="{% block id-prefix %}{% endblock id-prefix %}firstname" class="mz-address-firstName billing-input billing-frst-name {% if model.firstName %} add-input-border {%endif%}" type="text" {% if not model.hasRequiredBehavior %} disabled {% endif %} name="firstname" data-mz-value="{{ addresscontext }}firstName" value="{{ model.firstName }}" maxlength="200">
+        {% comment %} <img src="../../resources/images/icons/green tick.svg" class="first-name-image  {% if model.firstName %} active {% endif %}" alt=""> {% endcomment %}
+        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}firstName"></span>
+    </div>
+</div>
+
+<div class="mz-l-formfieldgroup-row mz-addressform-lastname">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="lastname">{{ labels.lastName }}<span class="is-required">*</span></label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+        <input id="{% block id-prefix %}{% endblock id-prefix %}lastname" class="mz-address-lastName billing-input billing-last-name {% if model.lastNameOrSurname %} add-input-border {%endif%}" type="text" {% if not model.hasRequiredBehavior %} disabled {% endif %} name="lastname" data-mz-value="{{ addresscontext }}lastNameOrSurname" value="{{ model.lastNameOrSurname }}" maxlength="200">
+         {% comment %} <img src="../../resources/images/icons/green tick.svg" class="second-name-image {% if model.lastNameOrSurname %} active {% endif %}"  alt=""> {% endcomment %}
+        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}lastNameOrSurname"></span>
+    </div>
+</div>

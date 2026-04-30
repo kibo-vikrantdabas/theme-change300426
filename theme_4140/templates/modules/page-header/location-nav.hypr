@@ -1,0 +1,18 @@
+<div class="mz-location-nav-container">
+    <div class="page-container promotion-bannner-container">
+    <div class="mz-promotion-bannner">
+        {% dropzone "promotion" scope="site" %}
+    </div>
+    <div class="promotion-right">
+        <div class="mz-help-section"> <a href="{{siteContext.siteSubdirectory}}/need-help">{{labels.help}}</a></div><span class="mz-seprator">|</span>
+        <div class="mz-find-store-section"><a href="{{siteContext.siteSubdirectory}}/store-finder" onclick="window.globalEventBus.emit('dataLayerEvent',{'custom_event':'navigation','event_params':{'event_act':'top header links', 'event_lbl': 'find a store'}})">{{labels.findAStore}}</a></div><span class="mz-seprator">|</span>
+        <div class="mz-country-section">
+            {% for c in model %}
+              {% if c.countryCode == themeSettings.countrySpecificCode %}
+                    <img src="{{c.flagURL}}" alt="country-selector-icon" class="mz-country-selector-icon">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>

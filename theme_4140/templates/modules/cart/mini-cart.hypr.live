@@ -1,0 +1,78 @@
+<div class="mz-popover-cart">
+<div class="mini-cart-main-container">
+
+    <div class="mini-cart-header">
+      <div class="bag-3-items"><span class="bag-label">{{labels.bag}}</span> <span class="item-span">({{model.count}} {{labels.items}})</span>
+      </div>
+    </div>
+      <div class="mini-cart-body">
+        <div class="item-main-container">
+            <div class="cart-items">
+              {% if not model.isEmpty %}
+                 {% for item in model.items %}
+                    <div class="item-div">
+                       <div class="product-details">
+                          <div class="mini-cart-image">
+                                  {% if item.product.imageUrl and themeSettings.showCartItemImage %}
+                                     <a href="{{item.product.url}}"> <img class="mz-carttable-item-image" src="{% make_url "image" item.product with max=128  %}" {% if item.product.imageAlternateText %}alt="{{ item.product.imageAlternateText }}"{% else %}alt="cart-item-image"{% endif %} /></a>
+                                  {% else %}
+                                   <span class="mz-cart-noimage">[{{ labels.noImages}}]</span>
+                                  {%endif%}
+                           </div>
+                             {% with item.product.options|findwhere('attributeFQN', 'tenant~color') as color1 %}
+                               {% with item.product.options|findwhere('attributeFQN', 'tenant~colour') as color %}
+                                 {% with item.product.options|findwhere('attributeFQN', 'tenant~primary-size') as size %}
+                                    {% with item.product.options|findwhere('attributeFQN', 'tenant~size1') as size1 %}
+                                          <div class="mini-cart-item-details">
+                                              <span class="product-name"><a href="{{item.product.url}}" title="{{ item.product.name }}">{{ item.product.name }}</a></span>
+                                                {% if color1 %}
+                                                    <span class="product-color">{{ labels.itemColor }}: {{ color1.stringValue }}</span>
+                                                {% else %}
+                                                    <span class="product-color">{{ labels.itemColor }}: {{ color.stringValue }}</span>
+                                                {% endif %}
+                                                {% if size1 %}
+                                                    <span class="product-size">{{ labels.itemSize }}: {{ size1.stringValue }}</span>
+                                                {% else %}
+                                                    <span class="product-size">{{ labels.itemSize }}: {{ size.stringValue }}</span>
+                                                {% endif %}
+                                              <span class="product-qty">{{labels.b2bQuantity}}: {{item.quantity}}</span>
+                                              <span class="product-remove"><a  href="javascript:;" data-mz-action="removeItem" data-mz-cart-item="{{ item.id }}" >{{labels.remove}}</a></span>
+                                          </div>
+                                    {% endwith %}
+                                  {% endwith %}
+                                {% endwith %}
+                              {% endwith %}
+                              <div class="item-price">
+                              {% with item.productDiscounts|first as productDiscount %}
+                                {% if item.unitPrice.saleAmount %}
+                                    {% if not productDiscount or productDiscount.appliesToSalePrice %} 
+                                        <span class="product-price-discount mz-item-price is-saleprice">{% include "modules/common/currency-code" %} {{ item.unitPrice.extendedAmount|multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }}</span>
+                                        <span class="product-price mz-item-price is-crossedout" {% block crossedout-inline-style %}{% endblock crossedout-inline-style %}>{% include "modules/common/currency-code" %} {{ item.unitPrice.listAmount|multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }}</span>
+                                      
+                                    {% else %}
+                                        <span class="product-price  mz-item-price">{% include "modules/common/currency-code" %} {{ item.unitPrice.extendedAmount |multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }}</span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="product-price  mz-item-price">{% include "modules/common/currency-code" %} {{ item.unitPrice.extendedAmount |multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }}</span>
+                                {% endif %}
+                              {% endwith %}
+                              </div>
+                       </div>
+                   </div>
+                {% comment %} </div>
+              </div> {% endcomment %}
+                  {%endfor%}
+              {%endif%}
+            </div>
+        </div>
+      </div>
+        
+      </div>
+        <div class="mini-cart-footer">
+          <div class="footer-checkout">
+            <a data-mz-action='redirectToCart' href="{{siteContext.siteSubdirectory}}/cart"><button class="mz-mini-cart-bag">{{labels.viewBag}}</button></a>
+            <button class="mz-mini-checkout" data-mz-action="checkout">{{labels.proceedToCheckout}}</button>
+          </div>
+        </div>
+ </div>
+</div>

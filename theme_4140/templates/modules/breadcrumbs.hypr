@@ -1,0 +1,114 @@
+﻿{% with pageContext.title as title %}
+{% if  pageContext.cmsContext.template.path == "home" or  pageContext.cmsContext.template.path == "parent-category" or   pageContext.cmsContext.template.path == "category" or  pageContext.cmsContext.template.path == "product" %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+    {% set_var index_position=0 %}
+    {% if navigation.currentNode.nodeType == "product"%}
+      {% for link1 in navigation.tree %}
+        {% if link1.index == "1" and link1.nodeType == "page"%}
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "{{link1.name|safe}}",
+                  "item": "{{pageContext.secureHost}}{{siteContext.siteSubdirectory}}{{link1.url|replace(siteContext.siteSubdirectory, '')}}"
+                } ,
+                {% set_var index_position=1 %}
+        {% endif %}
+      {% endfor%}
+    {% endif %}
+    {% if navigation.breadcrumbs.length > 1 %}
+      {% for crumb in navigation.breadcrumbs %}
+        {% if not crumb.isHidden and not forloop.last %}
+                { 
+                  "@type": "ListItem",
+                  "position": {{forloop.index|add(index_position) }},
+                  "name": "{{crumb.name|safe}}",
+                  "item": "{{pageContext.secureHost}}{{siteContext.siteSubdirectory}}{{crumb.url|replace(siteContext.siteSubdirectory, '')}}"
+                } ,
+        {% endif %}
+        {% if not crumb.isHidden and forloop.last %}
+                {
+                  "@type": "ListItem",
+                  "position": {{forloop.index|add(index_position) }},
+                  "name": "{{crumb.name|safe}}",
+                  "item": "{{pageContext.secureHost}}{{siteContext.siteSubdirectory}}{{crumb.url|replace(siteContext.siteSubdirectory, '')}}"
+
+                } 
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% for link in navigation.tree %}
+        {% if not crumbfound and not forloop.last %}
+          {% if link.items %}
+            {% with link.items|findwhere("name", title) as correctcrumb %}
+              {% if correctcrumb %}
+                {% set_var crumbfound=true %}
+                 {
+                  "@type": "ListItem",
+                  "position": {{forloop.index|add(index_position) }},
+                  "name": "{{link.name|safe}}",
+                  "item": "{{pageContext.secureHost}}{{siteContext.siteSubdirectory}}{{link.url|replace(siteContext.siteSubdirectory, '')}}"
+                 },
+              {% endif %}
+            {% endwith %}
+          {% endif %}
+        {% endif %}
+        {% if not crumbfound and forloop.last %}
+          {% for crumb in navigation.breadcrumbs %}
+            {% if not crumb.isHidden %}
+                {
+                  "@type": "ListItem",
+                  "position": {{forloop.index|add(index_position) }},
+                  "name": "{{crumb.name|safe}}",
+                  "item": "{{pageContext.secureHost}}{{siteContext.siteSubdirectory}}{{crumb.url|replace(siteContext.siteSubdirectory, '')}}"
+                } 
+            {% endif %}
+          {% endfor %}
+        {% else %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+      ]}
+ </script>
+{% endif %}
+{% endwith %} 
+
+<div class="mz-breadcrumbs afg-ms-mz-breadcrumbs">
+  {% if navigation.breadcrumbs|first|prop("nodeType")|lower == "category" %}
+    <a href="/{% if themeSettings.isArabicLanguageSite %}{{themeSettings.arSiteLocale}}{% else %}{{themeSettings.enSiteLocale}}{% endif %}" class="mz-breadcrumb-link">{{labels.home}}</a>
+    <span class="mz-breadcrumb-separator">&#47;</span>
+  {% endif %}
+ {% if pageContext.cmsContext.template.path == 'parent-category'  or pageContext.cmsContext.template.path == 'category' %}
+      {% for breadcrumb in model.content.categoryImages %}
+        {% if breadcrumb.mediaType|lower == "slug" %}
+          {% if not breadcrumb.isHidden %}
+              {% if not forloop.last %}
+                <a href="{{siteContext.siteSubdirectory}}{{breadcrumb.altText|replace(siteContext.siteSubdirectory, '')}}" class="mz-breadcrumb-link{% if forloop.first %} is-first{% endif %}">{{breadcrumb.imageLabel|safe}}</a>
+                <span class="mz-breadcrumb-separator">&#47;</span>
+              {% else %}
+                <span class="mz-breadcrumb-current">{{ breadcrumb.imageLabel|safe }}</span>
+              {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+  {% else %}
+      {% for crumb in navigation.breadcrumbs %}
+        {% if crumb.nodeType|lower == "category" %}
+          {% if not crumb.isHidden %}
+              {% if not forloop.last %}
+                <a href="{{siteContext.siteSubdirectory}}{{crumb.url|replace(siteContext.siteSubdirectory, '')}}" class="mz-breadcrumb-link{% if forloop.first %} is-first{% endif %}">{{crumb.name|safe}}</a>
+                <span class="mz-breadcrumb-separator">&#47;</span>
+              {% else %}
+                <span class="mz-breadcrumb-current">{{ crumb.name|safe }}</span>
+              {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+  {% endif %}
+  {% if pageContext.cmsContext.template.path == "product" %}
+    <span class="mz-breadcrumb-current">{{model.content.productName}}</span>
+  {% endif %}
+</div>

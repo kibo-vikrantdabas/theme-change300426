@@ -1,0 +1,14 @@
+<div class="mz-locator-loyality-container">
+    <div class="mz-menu-find-store-container">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}BlackLocation.svg" alt="locator-icon" class="mz-find-store-icon">
+        <div class="mz-find-store-link">
+            <a onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'navigation','event_params':{'event_act': 'top header links','event_lbl': 'find a store'}})" href="{{siteContext.siteSubdirectory}}/store-finder">{{labels.findAStore}}</a>
+        </div>
+    </div>
+    <div class="mz-nona-loyalty-container">
+        <img src="{{labels.imagePathUrl}}/icons/SDR-2159-Blue-logo.png" alt="loyalty-icon" class="mz-loyalty-icon"  loading="lazy"  loading="lazy">
+        <div class="mz-blueloyality-link">
+            <a onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'account','event_params':{'event_act': 'blue loyalty','event_lbl': 'blue loyalty'}})" href="{{siteContext.siteSubdirectory}}/blue-rewards">{{ labels.blueLoyalty }}</a> 
+        </div>
+    </div>
+</div>

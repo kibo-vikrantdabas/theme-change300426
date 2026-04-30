@@ -1,0 +1,179 @@
+
+.mz-mobile-header {
+	position: relative;
+	.mz-subheader-container-mobile{
+		display: flex;
+		justify-content: space-between;		
+		.mz-mobile-hamburg{
+			display: flex;
+			justify-items: center;
+			.mz-hamburgmenu-option-container{
+				top: -32px;
+				.mz-menu-site-logo{
+					img{
+						height: 44px;
+						width: 70px;
+					}
+				}
+			}
+		}
+		.mz-mobile-utility{
+			.mz-utilitynav{
+				position: initial;
+				margin-bottom: 0 !important;
+				.mz-bag-container{					
+					.mz-utilitynav-link{
+						display: flex;
+						align-items: center;
+						// margin-right: 8px;
+						justify-content: center;
+						height: 24px;
+					}
+				}			
+			}
+		}
+	}
+}
+
+// Fixing navbar for mobile spacing issue
+@media(max-width:768px){
+	body .navbar-mobile{
+		.mz-subheader-container-mobile{
+			// Dont change this value. in case changin bottom padding you change the top padding of head tag of category
+			padding: 20px 18px 20px 13px;
+			// border-bottom: 1px solid #ccc;
+		}	
+	}
+	body.mz-category .navbar-mobile .mz-subheader-container-mobile {
+		border-bottom: 1px solid #ccc;
+	}
+	body.mz-homepage .navbar-mobile .mz-subheader-container-mobile {
+		border-bottom-width: 0px;
+	}
+	body .mz-utility-signin-mobile{
+		font-size: 12px !important;
+	}
+	body .mz-mobile-header.navbar-mobile .mz-subheader-container-mobile .mz-mobile-searchbox .mz-searchbox-field,
+	body .mz-mobile-header.navbar-mobile .mz-subheader-container-mobile .mz-mobile-searchbox .mz-searchbox-field .tt-hint,
+	body .mz-mobile-header .mz-subheader-container-mobile .mz-mobile-searchbox .mz-searchbox-field .tt-input
+	 {
+		width: ~"calc(100vw - 31px)" !important;
+	}
+	body .mz-utilitynav .display-in-mobile-unauth{ 
+		top: 3px;
+		left: 5px;
+		right: auto;
+	}
+	.scroll-height, .mz-category, .mz-guest-checkout-signin {
+		.navbar-mobile {
+			.mz-subheader-container-mobile {
+				border-bottom: 1px solid #ccc;
+			}
+		}
+	}
+}
+
+
+.mz-mobile-header.scrolled {
+	.mz-subheader-container-mobile{
+		display: flex;
+		justify-content: space-between;
+		padding: 12px;	
+		.mz-mobile-hamburg{
+			display: flex;
+			justify-items: center;
+			.mz-hamburgmenu-container{
+				img {
+					top: 0; 
+					width: 24px;
+					height: 24px;
+				}
+			}
+			.mz-hamburgmenu-option-container{
+				top: -32px;
+			}
+		}	
+		.mz-mobile-utility{
+			.mz-utilitynav{
+				img{
+					width: 24px;
+					height: 24px;
+				}
+				.mz-utilitynav-item.mz-sigin-container {
+					top: -1px !important;
+				}
+			}
+		}
+	}
+}
+
+// New UI mobile
+
+@media (min-width: 992px) {
+	.afg-ms-mobile-header {
+		display: flex;
+		justify-content: space-between;
+		margin: 17px 0 10px;
+		@media (min-width: 992px) and (max-width: 1299px) {
+			margin: 17px 22px 10px;
+		}
+		.mz-subheader-container-mobile {
+			flex: 1 1 100%; 
+			.mz-mobile-searchbox {
+				margin-left: 6%;
+				.searchbox {
+					margin-left: 0;
+				}
+			}
+		}
+	}
+}	
+@media (max-width: 992px) {
+	.afg-ms-pageheader {
+		.afg-ms-mobile-header {			
+			.mz-subheader-container-mobile {
+				padding: 12px 20px;
+			}
+			.mz-mobile-brand {
+				position: relative;
+				right: 25px;
+			}
+			.mz-mobile-hamburg {
+				.mz-hamburgmenu-container {
+					img {
+						width: 24px;
+						height: 24px;
+					}
+				}
+				.mz-searchbox-icon {
+					img {
+						margin-right: 15px;
+					}
+				}
+			}	
+			&.scrolled {
+				margin-bottom: 0;
+				.mz-subheader-container-mobile {
+					padding: 10px 20px;
+				}
+			}		
+		}		
+	}
+	.agf-ms-pagewrapper {
+		&.sticky {
+			.afg-ms-mobile-header {
+				&.scrolled {
+					.mz-fade-out {
+						display: none!important;
+					}
+				}	
+			}			
+		}
+	}
+}
+
+@media screen and (min-width: 1023px) {
+	.afg-ms-mobile-header {
+		display: none;
+	}
+}

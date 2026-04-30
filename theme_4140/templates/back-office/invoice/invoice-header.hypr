@@ -1,0 +1,18 @@
+<thead class="invoice-header"><tr>
+        <th class="company-logo">
+            <img width="80px" height="50px" src="{{themeSettings.markAndSpencerLogo.imageUrl}}" alt="M&S"/>
+        </th>
+        <th class="company-arabic-logo">
+            <img style="margin-left:20px" src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}ArabicLogo.svg" alt="M&S" width="80px" height="50px"/>
+        </th>
+    </tr>
+    <tr>
+        <th class="invoice-info" colspan="2">
+            <div class="invoice-title">
+                <div class="heading">Invoice                
+                <span class="arabic-heading">فاتورة</span></div>
+                <div class="invoice-date">{% now l %}, {% now d %} {% now F %} {% now Y %}</div>
+            </div>
+        </th>
+    </tr>
+</thead>

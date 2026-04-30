@@ -1,0 +1,3 @@
+{% if pageContext.cmsContext.template.path|lower == 'checkout' %}
+        <div class="mz-backdrop deactive"></div>
+{% endif %}

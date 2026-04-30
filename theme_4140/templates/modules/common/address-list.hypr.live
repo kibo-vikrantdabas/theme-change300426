@@ -1,0 +1,17 @@
+﻿{% if pageContext.cmsContext.template.path|lower == "checkout" %}
+    <div class="mz-shippdingAddressSelectHint">
+        {% if model.firstName %}
+            <span class="mz-firstName"> {{ model.firstName }} - </span>
+        {% endif %}
+        {% if model.address.cityOrTown != "n/a" %}
+             <span class="mz-City">{{ model.address.cityOrTown }}</span>
+        {% endif %}
+    </div>
+{% else %}
+{{ model.firstName }} {{ model.lastNameOrSurname }}, {{ model.address.address1 }}
+    {% if model.address.address2 %}{{ model.address.address2 }}
+    {% endif %}
+    {% if model.address.address3 %}{{ model.address.address3 }}
+    {% endif %}
+    , {{ model.address.cityOrTown }}, {{ model.address.stateOrProvince }}
+{% endif %}

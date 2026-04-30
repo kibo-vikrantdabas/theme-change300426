@@ -1,0 +1,19 @@
+{% for item in model.items %} 
+    <tr>
+        <td style="width:5%;"><div class="item-count">{{forloop.index}}.</div></td>
+        <td style="width:35%;"><div class="item-info"> {{item.name}}
+            <br> {{color.stringValue}} {%if size1 or size2 %} , {{labels.itemSize}} {{size1.stringValue}} {{size2.stringValue}} {%endif%}
+        </div></td>
+        <td style="width:10%;">{{item.data.unitPrice_WithoutVAT|floatformat(pageContext.currencyInfo.precision)}}</td>
+        <td style="width:10%;">{{item.quantity}}</td>
+        <td style="width:10%;">{{item.itemDiscount|floatformat(pageContext.currencyInfo.precision)}}</td>
+        <td style="width:10%;">{% if item.data.vat_Value %}{{item.data.vat_Value}}%{% else %} NA {% endif %}</td>
+        <td style="width:10%;">
+        {% if item.data.vat_Amount %}
+            {{item.data.vat_Amount|floatformat(pageContext.currencyInfo.precision)}}
+        {% else %}
+            NA
+        {% endif %}</td>
+        <td style="width:15%;">{{item.taxableLineItemCost|floatformat(pageContext.currencyInfo.precision)}}</td>
+    </tr>
+{% endfor %}

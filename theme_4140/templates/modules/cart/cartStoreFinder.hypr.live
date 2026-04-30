@@ -1,0 +1,48 @@
+{% extends 'modules/common/modal-dialog' %}
+{% block modal-header%}
+	<div class="location-modal-header">
+		<h4>{{labels.collectionAvailableAt}} {% if model.selectedLocation %} {{model.selectedLocation}} {% else %}{{model.nearestLocation}}{% endif %}</h5>
+		<button class="modal-close-btn" data-mz-action="closeModal">
+			<img src='{{siteContext.cdnPrefix}}/resources/images/icons/svg/Close.svg' />
+		</button>
+	</div>
+{% endblock modal-header %}
+{% block modal-body %}
+<div class="search-locations-container">
+	{% include "modules/cart/store-finder/modal-search"%}
+</div>
+<div class="list-map-toggle-container">
+	<div class="list-map-toggle-item {% if model.activeDisplay == "list" %} active {% endif %}">
+	{% if model.zeroNearbyLocations %}
+		<div class="no-results-display-message">
+			<p><strong> {{labels.noResultsFor}} <span class="no-result-user-input"> {% if model.searchInput and model.currentLocationSearch %} {{labels.currentLocation}}{% else%} '{{model.searchInput}}' {% endif %}</span> </strong></p>
+			<p> {{labels.checkAvailableStores}}</p>
+		</div>
+	{% endif %}
+	{% if model.locationsHaveBeenFiltered %}
+		{% for location in model.locations.items %}
+			{% include "modules/common/store-finder/location-dropdown" %}
+		{% endfor  %}
+	{% endif %}
+	</div>
+	<div class="list-map-toggle-item {% if model.activeDisplay == "map" %} active {% endif %}" >
+		<div id='googlemap'>
+			<div class="location-alert-msg">
+				<img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/help-alert.svg?query" alt="help-icon" class="mz-help-icon">
+				<span class="map-label-msg">{{labels.mapGoesHere}}</span>
+			</div>
+		</div>
+		{% if model.zeroNearbyLocations %}
+			<div class="no-results-display-message">
+				<p><strong> {{labels.noResultsFor}} <span class="no-result-user-input"> {% if model.searchInput and model.currentLocationSearch %} {{labels.currentLocation}}{% else%} '{{model.searchInput}}' {% endif %}</span> </strong></p>
+				<p> {{labels.checkAvailableStores}}</p>
+			</div>
+		{% endif %}
+		{% comment %} {% for location in model.locations.items%}
+			{% include "modules/common/store-finder/location-dropdown" %}	
+		{% endfor %} {% endcomment %}
+	</div>
+</div> 
+{% endblock modal-body %}
+{% block modal-footer %}
+{% endblock modal-footer %}

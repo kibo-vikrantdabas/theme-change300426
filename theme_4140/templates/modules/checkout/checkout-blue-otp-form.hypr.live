@@ -1,0 +1,32 @@
+{% if model.displayOTPForm %}
+    <div class="mz-checkout-blue-otp-form-container">
+    <div class="mz-blue-otp-phone-number-container">
+        <div class="mz-blue-otp-message">{{labels.aOneTimePassword}}</div>
+        <div class="mz-blue-phone-number">{{ model.customerBlueMobileNumber }}</div>
+    </div>
+
+    <div class="mz-blue-otp-form-container">
+        <div class="mz-otp-lable">{{labels.enterOtpCode}}</div>
+        <input type="number" name="OTPNumber" data-mz-value="OTPNumber" value="{{model.OTPNumber}}" class="mz-blue-otp-number-input mz-preventArrowKey {% if model.isOTPInvalid or model.isOTPExpired %} mz-wrongOTP {% endif %}" placeholder="{{labels.pleaseEnterYourOTP}}" maxlength="6" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+        
+        {% if model.isOTPInvalid %} <div class="mz-wrongOTPMessage">{{labels.otpInvalidMsg}}</div> {% endif %}
+        {% if model.isOTPExpired %} <div class="mz-expiredOTPMessage">{{labels.otpHasExpiredMsg}}</div> {% endif %}    
+        
+        <div class="mz-otplables">
+        <span class="mz-otptimer">{% if model.isOTPExpired %} {{ labels.timesUp }} {% else %} 00:59  {% endif %}</span>
+        <button type="button" class="mz-otp-resend"{% if not model.isOTPExpired %} disabled {% endif %}>{{labels.resendOtp}}</button>
+        </div>
+        
+        <button id="mz-submitOTPNumber" type="button" class="mz-otp-submit {% if model.isAllowLoading %} mz-loader-btn {% endif %}" {% if model.isOTPExpired %} disabled {% endif %}>{{labels.submit}}</button>
+    </div>
+    <div class="mz-useAnotherBlueAccountContainer">
+        <button class="mz-useAnotherBlueAccountButton">{{labels.useAnotherBlueAccount}}</button>
+    </div>
+    </div>
+{% endif %}
+
+{% if model.displayBlueWalletAmountCapture %}
+<div class="mz-amount-deduct-from-wallet">
+    {% include "modules/checkout/checkout-blue-amount-deduct" with model %}
+</div>
+{% endif %}

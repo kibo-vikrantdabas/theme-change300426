@@ -1,0 +1,23 @@
+{% if  model.shouldCODDisplay %}
+<label for="paymentType-newPayment-paymentCod">
+<div class="cash-ondelivery-payment rectangle {% if model.isCheckPayment %} mz-payment-selected {% endif %}">
+    <div class="mz-l-formfieldgroup-row mz-paymentselector-option  {% if model.paymentType == 'CashOnDelivery' and not model.usingSavedCard %}mz-checkoutform-active1{% endif %}">
+        <div class="credit-debit-card-div">
+            <div class="credit-debit-card-div-radio">
+                <label class="container-radio">
+                <input data-mz-value="paymentType" data-mz-new-cashOnDelivery data-mz-payment-type id="paymentType-newPayment-paymentCod" name="paymentType" type="radio" class="mz-paymenttype-input cod-payment-type mz-CashOnDeliveryInput" value="Check" {% if model.isCheckPayment %} checked="true"{% endif %}  {% if not model.isCheckPayment and model.disablePaymentOption %}disabled="disabled"{% endif %}/>
+                <span class="checkmark-radio {% if model.isCheckPayment %} checkmark-radio-selected {% endif %}"></span>
+                </label>
+            </div>
+            <div>
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/CashOnDelivery.svg" alt="cashOnDelivery" class="card-payment">
+                <div class="card-payment-detail-div">
+                    <label for="paymentType-newPayment-paymentCod" class="mz-paymentselector-label mz-paymentselector-label-newcreditcard  mz-checkoutform-radio credit-debit-card" for="paymentType-newcreditcard-{{ paymentId }}">{% if model.savedPaymentMethods %}{{ labels.cashOnDelivery }}{% else %}{{ labels.cashOnDelivery }}{% endif %}</label>
+                    <label for="paymentType-newPayment-paymentCod"class="use-card-info">{{labels.useCashOnDelivery}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</label>
+{% endif %}

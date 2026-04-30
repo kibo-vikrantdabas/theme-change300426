@@ -1,0 +1,13 @@
+{% if pageContext.cmsContext.template.path|lower == "category" %}
+    {% if model %}
+        {% for entity in model %}
+            {% if entity.categoryCode == pageContext.categoryCode %} 
+                {% for bannerEntity in entity.banners %}
+                    <div class="mz-plpBannerContainer" style="grid-row:{{bannerEntity.row}}; grid-column-start:{{bannerEntity.column-start}};grid-column-end:{{bannerEntity.column-end}};">
+                        {% dropzone {{bannerEntity.dropzoneId}} %}
+                    </div>
+                {% endfor %}
+            {% endif %} 
+        {% endfor %}
+    {% endif %} 
+{% endif %}

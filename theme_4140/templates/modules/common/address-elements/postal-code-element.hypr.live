@@ -1,0 +1,9 @@
+<div {% if model.address.CountryCode != "UK" %}style="display: none"{% endif %} class="mz-l-formfieldgroup-row mz-addressform-postaltown">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="postal-town">{{ labels.postalTown }}</label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+        <input id="{% block id-prefix %}{% endblock id-prefix %}postal-town" class="billing-input" type="text" {% if not model.hasRequiredBehavior %} disabled {% endif %} name="postal-town" data-mz-value="{{ addresscontext }}address.postalOrZipCode" value="{{ model.address.postalOrZipCode }}">
+        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}address.postalOrZipCode"></span>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="chart">
+	<h5>Shoe Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>S/M/L/XL</span>
+			<span>UK</span>
+			<span>AU/NZ</span>
+			<span>US/CA</span>
+			<span>EU</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">S</td>
+						<td class="active">S</td>
+						<td class="active">S</td>
+						<td class="active">S</td>
+						<td class="active">M</td>
+						<td class="active">M</td>
+						<td class="active">M</td>
+						<td class="active">M</td>
+						<td class="active">L</td>
+						<td class="active">L</td>
+						<td class="active">L</td>
+						<td class="active">L</td>
+						<td class="active">L</td>
+					</tr>
+					<tr>
+						<td class="active">3</td>
+						<td class="active">3.5</td>
+						<td class="active">4</td>
+						<td class="active">4.5</td>
+						<td class="active">5</td>
+						<td class="active">5.5</td>
+						<td class="active">6</td>
+						<td class="active">6.5</td>
+						<td class="active">7</td>
+						<td class="active">7.5</td>
+						<td class="active">8</td>
+						<td class="active">8.5</td>
+						<td class="active">9</td>
+					</tr>
+					<tr>
+						<td class="active">4.5</td>
+						<td class="active">5</td>
+						<td class="active">6</td>
+						<td class="active">6.5</td>
+						<td class="active">7</td>
+						<td class="active">8</td>
+						<td class="active">8.5</td>
+						<td class="active">9</td>
+						<td class="active">9.5</td>
+						<td class="active">10</td>
+						<td class="active">11</td>
+						<td class="active">11.5</td>
+						<td class="active">12</td>
+					</tr>
+					<tr>
+						<td class="active">4.5</td>
+						<td class="active">5</td>
+						<td class="active">6</td>
+						<td class="active">6.5</td>
+						<td class="active">7</td>
+						<td class="active">8</td>
+						<td class="active">8.5</td>
+						<td class="active">9</td>
+						<td class="active">9.5</td>
+						<td class="active">10</td>
+						<td class="active">11</td>
+						<td class="active">11.5</td>
+						<td class="active">12</td>
+					</tr>
+					<tr>
+						<td class="active">35.5</td>
+						<td class="active">36</td>
+						<td class="active">37</td>
+						<td class="active">37.5</td>
+						<td class="active">38</td>
+						<td class="active">39</td>
+						<td class="active">39.5</td>
+						<td class="active">40</td>
+						<td class="active">40.5</td>
+						<td class="active">41</td>
+						<td class="active">42</td>
+						<td class="active">42.5</td>
+						<td class="active">43</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

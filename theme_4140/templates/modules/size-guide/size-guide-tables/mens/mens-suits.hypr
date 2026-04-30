@@ -1,0 +1,327 @@
+<div class="chart">
+	<h5>Suit Jackets</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Chest</span>
+			<span>Short</span>
+			<span>Medium</span>
+			<span>Long</span>
+			<span>Extra Long</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="unit-cm active">91</td>
+						<td class="unit-cm active">97</td>
+						<td class="unit-cm active">102</td>
+						<td class="unit-cm active">107</td>
+						<td class="unit-cm active">112</td>
+						<td class="unit-cm active">116</td>
+						<td class="unit-cm active">122</td>
+						<td class="unit-cm active">127</td>
+						<td class="unit-cm active">132</td>
+						<td class="unit-in">36</td>
+						<td class="unit-in">38</td>
+						<td class="unit-in">40</td>
+						<td class="unit-in">42</td>
+						<td class="unit-in">44</td>
+						<td class="unit-in">46</td>
+						<td class="unit-in">48</td>
+						<td class="unit-in">50</td>
+						<td class="unit-in">52</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">73</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">75</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">77</td>
+						<td class="unit-cm active">78</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-in">28¾</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29½</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30¼</td>
+						<td class="unit-in">30¾</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">N/A</td>
+						<td class="unit-in">N/A</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">77</td>
+						<td class="unit-cm active">78</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">80</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-in">30¼</td>
+						<td class="unit-in">30¾</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31½</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32¾</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">82</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">84</td>
+						<td class="unit-cm active">85</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-in">N/A</td>
+						<td class="unit-in">N/A</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32¼</td>
+						<td class="unit-in">32¾</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33½</td>
+						<td class="unit-in">34</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-cm active">82</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">84</td>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-cm active">N/A</td>
+						<td class="unit-in">N/A</td>
+						<td class="unit-in">N/A</td>
+						<td class="unit-in">N/A</td>
+						<td class="unit-in">N/A</td>
+						<td class="unit-in">32¼</td>
+						<td class="unit-in">32¾</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">N/A</td>
+						<td class="unit-in">N/A</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+<h5>Suit Trousers</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>
+				<b>Waist (to fit)</b>
+			</span>
+			<span>Inside leg</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">84</td>
+						<td class="unit-cm active">91</td>
+						<td class="unit-cm active">96</td>
+						<td class="unit-cm active">102</td>
+						<td class="unit-cm active">107</td>
+						<td class="unit-cm active">112</td>
+						<td class="unit-cm active">117</td>
+						<td class="unit-cm active">122</td>
+						<td class="unit-cm active">127</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">36</td>
+						<td class="unit-in">38</td>
+						<td class="unit-in">40</td>
+						<td class="unit-in">42</td>
+						<td class="unit-in">44</td>
+						<td class="unit-in">48</td>
+						<td class="unit-in">50</td>
+						<td class="unit-in">52</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-cm active">74</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+						<td class="unit-in">29</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-cm active">76</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+						<td class="unit-in">30</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-cm active">79</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+						<td class="unit-in">31</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-cm active">81</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+						<td class="unit-in">32</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-cm active">83</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+						<td class="unit-in">33</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-cm active">86</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+						<td class="unit-in">34</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-cm active">88</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+						<td class="unit-in">35</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

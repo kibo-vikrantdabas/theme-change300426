@@ -1,0 +1,10 @@
+<div class="categoriesBlock">
+	<a href="{{siteContext.siteSubdirectory}}{{themeSettings.categoryPrefixUrl}}/{{model.content.slug}}/{{child.content.slug}}" title="{{child.content.name}}">
+		{% if child.content.categoryImages %}
+			<img src="{{ child.content.categoryImages|first|prop('imageUrl') }}" loading="lazy" alt="category-image"/>
+		{% else %}
+			<img class="mz-cms-image-cover placeholder-img" alt="placweholder" with max = 250 as_parameter src="{{labels.imagePathUrl}}/placeholder.png">
+		{% endif %}
+	</a>
+	<p><a class="" href="{{siteContext.siteSubdirectory}}{{themeSettings.categoryPrefixUrl}}/{{model.content.slug}}/{{child.content.slug}}" title="{{child.content.name}}">{{child.content.name}}</a></p>
+</div>

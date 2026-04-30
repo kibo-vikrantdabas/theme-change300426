@@ -1,0 +1,9 @@
+{% comment %} Not sure if this is necessary....{% endcomment %}
+{% if model.requiresDigitalFulfillmentContact %}
+    <div class="mz-formstep-fields mz-l-formfieldgroup mz-checkoutform mz-checkoutform-active">
+        {% include "modules/checkout/checkout-digital-fulfillment" with editingContact=model %}
+    </div>
+    <div class="mz-formstep-summary mz-addresssummary mz-checkoutform-active">
+        <span>{{labels.giftCardEmail}}: {{ model.email }}</span>
+    </div>
+{% endif %}

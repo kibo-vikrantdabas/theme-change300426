@@ -1,0 +1,48 @@
+<div class="billing">
+    <h2 class="delivery-header">{{ labels.billingAddress}}</h2>
+    <li class="delivery-address">
+        {% if model.billingInfo.billingContact.firstName %}
+            <span>{{ model.billingInfo.billingContact.firstName}}</span>
+        {% endif %}
+
+        {% if model.billingInfo.billingContact.lastNameOrSurname %}
+            <span>{{ model.billingInfo.billingContact.lastNameOrSurname}}</span><br>
+        {% endif %}
+
+        {% if model.billingInfo.billingContact.address.address1 %}
+            {{ model.billingInfo.billingContact.address.address1}} 
+        {% endif %}
+
+        {% if model.billingInfo.billingContact.address.address2 %}
+            {{ model.billingInfo.billingContact.address.address2}} 
+        {% endif %}
+
+        {% if model.billingInfo.billingContact.address.address3 %}
+            {{ model.billingInfo.billingContact.address.address3}},<br>
+        {% endif %}
+        
+        {% if model.billingInfo.billingContact.address.cityOrTown %}
+            {{ model.billingInfo.billingContact.address.cityOrTown}}, <br>
+        {% endif %}
+        
+        {% if model.billingInfo.billingContact.address.countryCode %}
+            {% if not pageContext.billingCountries %}
+                {% if model.billingInfo.billingContact.address.countryName %}
+                    {{model.billingInfo.billingContact.address.countryName}}<br>
+                {% else %}
+                    {{model.billingInfo.billingContact.address.countryCode}}<br>
+                {% endif %}
+            {% else %}
+                {% for country in pageContext.billingCountries %}
+                    {% if model.billingInfo.billingContact.address.countryCode  == country.value %}
+                        {{ country.key }}<br>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+
+        {% if model.billingInfo.billingContact.phoneNumbers.home %}
+            {{ model.billingInfo.billingContact.phoneNumbers.home}}
+        {% endif %}
+    </li>
+</div>

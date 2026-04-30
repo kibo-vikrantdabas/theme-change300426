@@ -1,0 +1,88 @@
+﻿{% if model.isEnabled %}
+    <div class="mz-paymentmethod {% block module-classes %}{% endblock module-classes %}">
+        <div class="mz-paymentmethod-details">
+                {% block payment-method-details %}
+                    <strong class="mz-paymentmethod-methodtype">{{ labels.purchaseOrder }}</strong>
+                    <br/>
+                    <br/>
+                    <div class="mz-paymentmethod-methodtype">{{ labels.purchaseOrderPaymentTerms }}: {% for term in model.paymentTerms %} {{ term.description }}{% if not forloop.last %},{% endif %} {% endfor %}</div>
+                    {% if not blockCreditLimit %}<div class="mz-paymentmethod-methodtype">{{ labels.creditLimit }} {{ model.creditLimit | currency }}</div>{% endif %}
+                    <div class="mz-paymentmethod-methodtype">{{ labels.availableBalance }}: {{ model.availableBalance | currency }}</div>
+                    <br/>
+                    <em class="is-primary">{{ labels.defaultPaymentMethod }}</em>
+                {% endblock payment-method-details %}
+        </div>
+    </div>
+{% else %}
+    <div class="cards-list">
+    <div class="mz-paymentmethod {% block module-classes %}{% endblock module-classes %}">
+
+        <div class="mz-paymentmethod-methoddetails savedcards-wrapper {% if model.isDefaultPayMethod %} primary-card-block {% endif %}">
+            {% block payment-method-details %}
+                <div class="afg-ms-savedcards-container">
+                    <div class="savedcards-container">
+                        <strong class="mz-paymentmethod-methodtype title">
+                            {% if model.paymentOrCardType === "VISA" %}
+                            <img class="credit-card-image cc " src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/VISA.svg" alt="visa">
+                            {% endif %}
+                            {% if model.paymentOrCardType === "AMEX"%}
+                            <img class="credit-card-image cc" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/AmericanExpress-2.svg" alt="amex">
+                            {% endif %}
+                            {% if model.paymentOrCardType === "MC" %}
+                            <img class="credit-card-image cc" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Masters.svg" alt="mastercard">
+                            {% endif %}
+                            {% if model.paymentOrCardType === "DISCOVER" %}
+                            <img class="credit-card-image cc" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/DiscoverCard.svg" alt="discover" height="35">
+                            {% endif %}
+                            {% if model.paymentOrCardType === "JCB" %}
+                            <img class="credit-card-image cc" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/JCB.svg" alt="jcb" height="30">
+                            {% endif %}
+                            {% if model.paymentOrCardType === "BLUEPREPAIDCARD" %}
+                            <img class="credit-card-image cc" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/BluePayment.svg" alt="jcb" height="60">
+                            {% endif %}
+                            {% if model.paymentOrCardType === "" %}
+                            <img class="credit-card-image cc" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/CreditCard.svg" alt="creditCard">
+                            {% endif %}
+                            {{ model.cardType|title }}
+                        </strong>
+                        <div class="mz-paymentmethod-cardnumber"> Card ending <strong class="card-ending">{{ model.cardNumberPart|split('*')|last }}</strong>
+                            | {{ labels.expires }} 
+                            <strong> 
+                                {% if model.expireMonth === 10 or  model.expireMonth === 11 or  model.expireMonth === 12 %}
+                                {{ model.expireMonth }}/{{model.expireYear|replace("20","") }}
+                                {% else %}
+                                0{{ model.expireMonth }}/{{model.expireYear|replace("20","") }}
+                                {% endif %}
+                            </strong>
+                        </div>
+                        {% comment %} <p> {{ model.nameOnCard }} </p> {% endcomment %}
+                        {% for contact in address %}
+                        {% if contact.id == model.contactId %}
+                            <dd>
+                                <dl>{{contact.firstName}} {{contact.lastNameOrSurname}}</dl>
+                                <dl>{{contact.address.address2}}</dl>
+                                <dl>{{contact.address.address1}}</dl>
+                                <dl>{{contact.address.cityOrTown}} - {{contact.address.countryCode}}</dl>
+                                <dl {% if themeSettings.isArabicLanguageSite %}dir="ltr" style="float:right"{% endif %}>{{contact.phoneNumbers.home}}</dl>
+                            </dd>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="mz-paymentmethod-actions">
+                        {% block payment-method-actions %}
+                        {% endblock payment-method-actions %}
+                    </div>
+                </div>
+            {% if model.isDefaultPayMethod %}
+            <div class="is-primary">
+             <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}dark-Green-Tick.svg" alt="help-icon" class="mz-order-history-icon" />
+             <strong>{{ labels.defaultCard }}</strong>
+            </div>
+            {% else %}
+            <div class="is-not-primary"></div>
+            {% endif %}
+            {% endblock payment-method-details %}
+        </div>
+    </div>
+</div>
+{% endif %}

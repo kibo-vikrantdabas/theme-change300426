@@ -1,0 +1,123 @@
+﻿﻿{% extends "page" %}
+
+{% block cacheheaders %}
+{% if themeSettings.akamaiEdgeControlEnabledHome %}
+    {% include "modules/cache-headers" %}
+{% endif %}
+{% endblock cacheheaders %}
+
+{% block title-tag-content %} {{ pageContext.metaTitle }} {% endblock title-tag-content %}
+{% comment %} {% block title-tag-content %} Welcome To {% firstof themeSettings.organizationlName %} {% firstof themeSettings.countryName %}{% endblock title-tag-content %} {% endcomment %}
+{% comment %} {% block title-tag-content %} Welcome To {% parent %} {% firstof themeSettings.countryName %}{% endblock title-tag-content %} {% endcomment %}
+
+
+{% block body-tag-classes %} mz-homepage {% endblock body-tag-classes %}
+
+{% block body-content %}
+{% require_script "pages/home" %}
+
+<div style="min-height: 192px">
+    <div class="afg-ms-masterhead-home" style="display: none;">
+	    <div class="afg-ms-homeCarousel">
+            {% dropzone "masterhead-homeCarousel" scope="template" %}
+        </div>
+    </div> 
+</div>
+
+{% dropzone "category-heading" scope="template" %}
+
+{% comment %}
+<div class="category widget-spacer homeCategoryWrapper">
+    {% for cat in categories.top  %}
+    <div class="category-container">
+       <div class="category-image"><a href="{{cat.url}}"> <img  src="{{cat.content.categoryImages|first|prop('imageUrl')}}" loading="lazy"></a></div>
+       <div class="category-name"><a href="{{cat.url}}"> {{cat.content.name}} </a></div> 
+    </div>
+    {% endfor %}
+</div>
+{% endcomment %}
+<div class="categoryListing">
+    <div class="mainCategories">
+        {% for cat in categories.top  %}
+	{% if cat.isDisplayed %}
+        <div class="categoriesBlock">
+        <a title={{cat.content.name|lower}} href="{{siteContext.siteSubdirectory}}{{themeSettings.categoryPrefixUrl}}/{{cat.content.slug}}"> <img src="{{cat.content.categoryImages|first|prop('imageUrl')}}" loading="lazy"></a>
+        <p><a href="{{siteContext.siteSubdirectory}}{{themeSettings.categoryPrefixUrl}}/{{cat.content.slug}}"> {{cat.content.name}} </a></p> 
+        </div>
+	{% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="christmas widget-spacer">
+    {% dropzone "home" scope="template" %}
+</div>
+
+<div class="row-full bg-grey top-picks-autumn-wrapper">
+   <div class="top-picks-section">
+    <div class="col-half bg-white">
+        <div class="top-pick-autumn">
+            {% dropzone "top-pick-autumn" scope="template" %}
+        </div>
+    </div>
+        <div class="col-half">
+            <div class="top-ftr-section">
+                {% dropzone "top-ftr-section" scope="template" %}
+            </div>
+        </div>
+   </div>
+</div>
+
+<div class="row-full intro-jaeger-wrapper">
+    <div class="col-half bg-black">
+        <div class=" intro-jaeger-text">
+            {% dropzone " intro-jaeger-text" scope="template" %}
+        </div>
+    </div>
+    <div class="col-half bg-jaeger-img">
+        <div class=" intro-jaeger-img">
+            {% dropzone " intro-jaeger-img" scope="template" %}
+        </div>
+    </div>
+</div>
+<div class="top-picks-wrapper-heading afg-ms-top-picks-heading top-picks-wrapper-heading-container">
+    {% dropzone "top-picks-wrapper-heading" scope="template" %}
+</div>
+
+<div class="top-picks-wrapper widget-spacer afg-ms-top-picks-grid">
+    {% dropzone "home-wrapper" scope="template" %}
+</div>
+
+{# CLP product offers  #}
+{% comment %} <div class="home-offers-bg widget-spacer">
+    {% dropzone "home-offers-bg" scope="template" %}
+</div>
+
+<div class="home-offers-wrappers widget-spacer">
+    {% dropzone "home-offers" scope="template" %}
+</div> {% endcomment %}
+
+
+
+<div class="row-full shop-by-brand-wrapper">
+    <div class="col-full">
+        <div class=" shop-by-brand">
+            {% dropzone " shop-by-brand" scope="template" %}
+        </div>
+    </div> 
+    
+</div>
+
+<div class="autumn-container-ttl ">
+    {% dropzone "autumnTitle" scope="template" %}
+</div>
+<div class="autumn-container widget-spacer">
+    {% dropzone "home4" scope="template" %}
+</div>
+    
+{% include "modules/common/signup-email" %}
+{% endblock body-content %}
+
+{% block body-below-content %}
+{% endblock body-below-content %}

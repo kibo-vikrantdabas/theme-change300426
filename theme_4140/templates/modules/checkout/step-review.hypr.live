@@ -1,0 +1,41 @@
+﻿    <div class="mz-formstep-body mz-checkoutform step-review-main-div">
+            {% if themeSettings.requireCheckoutAgreeToTerms %}
+            <div class="mz-l-formfieldgroup mz-l-formfieldgroup-norows mz-checkoutform desktop-checkout">
+                <label class='inline term-agree-label'>
+                    <input type="checkbox" name="terms-and-conditions" id="mz-terms-and-conditions" data-mz-value="agreeToTerms"  {% if model.billingInfo.agreeToTerms or model.billingInfo.hasPaymentDone %} checked="checked"{% endif %}> 
+                    
+                    {{ labels.agreeToTerms|string_format(siteContext.siteSubdirectory)|safe }}
+                </label>
+                <span class="mz-validationmessage checkout-agreeToTerms {% comment %}{% if not model.billingInfo.hasPaymentDone %} hidden {% endif %} {% endcomment %} hidden" data-mz-validationmessage-for="agreeToTerms" >
+                  {{labels.checkoutTermsCondition}}
+                 </span>
+            </div>
+            <div class="mz-l-formfieldgroup mz-l-formfieldgroup-norows mz-checkoutform mobile-checkout">
+              <label class='inline term-agree-label'>
+                   <input type="checkbox" name="terms-and-conditions" id="mz-terms-and-conditions" data-mz-value="agreeToTerms"  {% if model.billingInfo.agreeToTerms or model.billingInfo.hasPaymentDone %} checked="checked"{% endif %} data-mz-action="enablePlacePay">  
+                  {{ labels.agreeToTerms|string_format(siteContext.siteSubdirectory)|safe }}
+              </label>
+              <span class="mz-validationmessage checkout-agreeToTerms {% comment %}{% if not model.billingInfo.hasPaymentDone %} hidden {% endif %} {% endcomment %} hidden" data-mz-validationmessage-for="agreeToTerms" >
+                {{labels.checkoutTermsCondition}}
+               </span>
+            </div>
+
+            {% endif %}
+
+            {% comment %} <div class="mz-formstep-next">
+              <button type="button" id="place-order-btn" class=" mz-button-large place-order-btn" data-mz-action="submit" {% if not model.billingInfo.hasPaymentDone %} disabled="disabled" {% endif %}><span>{{ labels.placedOrder }}</span></button>
+            </div> {% endcomment %}
+
+
+            {% if model.billingInfo.isApplePayPaymentType and model.billingInfo.paymentType == 'CreditCard' %}
+            <div class="mz-formstep-next">
+              <button type="button" id="place-order-btn" class=" mz-button-large place-order-btn-not-in-use place-order-btn-apple-pay-new" data-mz-action="submit" {% if not model.billingInfo.hasPaymentDone %} disabled="disabled" {% endif %}><span>{{ labels.placedOrderApple }} <img src= "{{siteContext.cdnPrefix}}/resources/images/Apple-Pay-White-Logo.png"/ alt="Apple Logo" width="70" height="50"> </span></button>
+            </div>
+
+            {% else %}
+            <div class="mz-formstep-next">
+              <button type="button" id="place-order-btn" class=" mz-button-large place-order-btn" data-mz-action="submit" {% if not model.billingInfo.hasPaymentDone %} disabled="disabled" {% endif %}><span>{{ labels.placedOrder }}</span></button>
+            </div>
+            {% endif %}
+    </div>
+

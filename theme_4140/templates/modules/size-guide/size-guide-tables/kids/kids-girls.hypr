@@ -1,0 +1,446 @@
+<div class="chart">
+	<h5>Single Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Age (Years) </span>
+			<span>Height</span>
+			<span>Chest</span>
+			<span>Waist</span>
+			<span>Hips</span>
+		</div>
+		<div class="table">
+			<table>
+				<tr>
+					<td class="active">2-3</td>
+					<td class="active">3-4</td>
+					<td class="active">4-5</td>
+					<td class="active">5-6</td>
+					<td class="active">6-7</td>
+					<td class="active">7-8</td>
+					<td class="active">8-9</td>
+					<td class="active">9-10</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">90-98</td>
+					<td class="unit-cm active">98-104</td>
+					<td class="unit-cm active">104-110</td>
+					<td class="unit-cm active">110-116</td>
+					<td class="unit-cm active">116-122</td>
+					<td class="unit-cm active">122-128</td>
+					<td class="unit-cm active">128-134</td>
+					<td class="unit-cm active">134-140</td>
+					<td class="unit-in">35½-38½</td>
+					<td class="unit-in">38½-41</td>
+					<td class="unit-in">41-43¼</td>
+					<td class="unit-in">43¼-45½</td>
+					<td class="unit-in">45½-48</td>
+					<td class="unit-in">48-50½</td>
+					<td class="unit-in">50½-52¾</td>
+					<td class="unit-in">52¾-55</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">51-54</td>
+					<td class="unit-cm active">54-56</td>
+					<td class="unit-cm active">56-58</td>
+					<td class="unit-cm active">58-61</td>
+					<td class="unit-cm active">61-63</td>
+					<td class="unit-cm active">63-66</td>
+					<td class="unit-cm active">66-69</td>
+					<td class="unit-cm active">69-72</td>
+					<td class="unit-in">20-21¼</td>
+					<td class="unit-in">21¼-22</td>
+					<td class="unit-in">22-22¾</td>
+					<td class="unit-in">22¾-24</td>
+					<td class="unit-in">24-24¾</td>
+					<td class="unit-in">24¾-26</td>
+					<td class="unit-in">26-27</td>
+					<td class="unit-in">27-28½</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">50.5-52</td>
+					<td class="unit-cm active">52-53.5</td>
+					<td class="unit-cm active">53.5-55</td>
+					<td class="unit-cm active">55-56</td>
+					<td class="unit-cm active">56-57</td>
+					<td class="unit-cm active">57-58</td>
+					<td class="unit-cm active">58-60</td>
+					<td class="unit-cm active">60-62</td>
+					<td class="unit-in">20-20½</td>
+					<td class="unit-in">20½-21</td>
+					<td class="unit-in">21-21¾</td>
+					<td class="unit-in">21¾-22</td>
+					<td class="unit-in">22-22½</td>
+					<td class="unit-in">22½-23</td>
+					<td class="unit-in">23-23¼</td>
+					<td class="unit-in">23¼-24¼</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">52-55</td>
+					<td class="unit-cm active">55-58</td>
+					<td class="unit-cm active">58-61</td>
+					<td class="unit-cm active">61-64</td>
+					<td class="unit-cm active">64-67</td>
+					<td class="unit-cm active">67-70</td>
+					<td class="unit-cm active">70-73.5</td>
+					<td class="unit-cm active">73.5-77</td>
+					<td class="unit-in">20½-21½</td>
+					<td class="unit-in">21½-23</td>
+					<td class="unit-in">23-24</td>
+					<td class="unit-in">24-25</td>
+					<td class="unit-in">25-26½</td>
+					<td class="unit-in">26½-27½</td>
+					<td class="unit-in">27½-28¾</td>
+					<td class="unit-in">28¾-30¼</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Single Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Age (Years) </span>
+			<span>Height</span>
+			<span>Chest</span>
+			<span>Waist</span>
+			<span>Hips</span>
+		</div>
+		<div class="table">
+			<table>
+				<tr>
+					<td class="active">10-11</td>
+					<td class="active">11-12</td>
+					<td class="active">12-13</td>
+					<td class="active">13-14</td>
+					<td class="active">14-15</td>
+					<td class="active">15-16</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">140-146</td>
+					<td class="unit-cm active">146-152</td>
+					<td class="unit-cm active">152-158</td>
+					<td class="unit-cm active">158-164</td>
+					<td class="unit-cm active">164</td>
+					<td class="unit-cm active">164</td>
+					<td class="unit-in">55-57½</td>
+					<td class="unit-in">57½-59¾</td>
+					<td class="unit-in">59¾-62¼</td>
+					<td class="unit-in">62¼-64½</td>
+					<td class="unit-in">64½</td>
+					<td class="unit-in">64½</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">72-75</td>
+					<td class="unit-cm active">75-78</td>
+					<td class="unit-cm active">78-83</td>
+					<td class="unit-cm active">83-87</td>
+					<td class="unit-cm active">87-91</td>
+					<td class="unit-cm active">91-95</td>
+					<td class="unit-in">28-29½</td>
+					<td class="unit-in">29½-30½</td>
+					<td class="unit-in">30½-32¼</td>
+					<td class="unit-in">32¼-34</td>
+					<td class="unit-in">34-36</td>
+					<td class="unit-in">36-37½</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">62-63</td>
+					<td class="unit-cm active">63-64</td>
+					<td class="unit-cm active">64-65.5</td>
+					<td class="unit-cm active">65.5-67</td>
+					<td class="unit-cm active">67-71</td>
+					<td class="unit-cm active">71-74</td>
+					<td class="unit-in">24¼-24¾</td>
+					<td class="unit-in">24¾-25</td>
+					<td class="unit-in">25-25¾</td>
+					<td class="unit-in">25¾-26½</td>
+					<td class="unit-in">26½-28</td>
+					<td class="unit-in">28-29</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">77-80</td>
+					<td class="unit-cm active">80-84</td>
+					<td class="unit-cm active">84-88</td>
+					<td class="unit-cm active">88-92</td>
+					<td class="unit-cm active">92-96</td>
+					<td class="unit-cm active">96-100</td>
+					<td class="unit-in">30¼-31½</td>
+					<td class="unit-in">31½-33</td>
+					<td class="unit-in">33-34½</td>
+					<td class="unit-in">34½-36¼</td>
+					<td class="unit-in">36¼-37¾</td>
+					<td class="unit-in">37¾-39½</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Trousers</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Age (Years) </span>
+			<span>Inside leg (S)</span>
+			<span>Inside leg (R)</span>
+			<span>Inside leg (L)</span>
+		</div>
+		<div class="table">
+			<table>
+				<tr>
+					<td class="active">1-1.5</td>
+					<td class="active">1.5-2</td>
+					<td class="active">2-3</td>
+					<td class="active">3-4</td>
+					<td class="active">4-5</td>
+					<td class="active">5-6</td>
+					<td class="active">6-7</td>
+					<td class="active">7-8</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">N/A</td>
+					<td class="unit-cm active">N/A</td>
+					<td class="unit-cm active">36</td>
+					<td class="unit-cm active">40</td>
+					<td class="unit-cm active">44</td>
+					<td class="unit-cm active">47</td>
+					<td class="unit-cm active">50</td>
+					<td class="unit-cm active">53</td>
+					<td class="unit-in">N/A</td>
+					<td class="unit-in">N/A</td>
+					<td class="unit-in">14</td>
+					<td class="unit-in">15¾</td>
+					<td class="unit-in">17¼</td>
+					<td class="unit-in">18¼</td>
+					<td class="unit-in">19¾</td>
+					<td class="unit-in">20¾</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">32</td>
+					<td class="unit-cm active">36</td>
+					<td class="unit-cm active">40</td>
+					<td class="unit-cm active">44</td>
+					<td class="unit-cm active">48</td>
+					<td class="unit-cm active">51</td>
+					<td class="unit-cm active">54</td>
+					<td class="unit-cm active">57</td>
+					<td class="unit-in">12½</td>
+					<td class="unit-in">14</td>
+					<td class="unit-in">15¾</td>
+					<td class="unit-in">17¼</td>
+					<td class="unit-in">19</td>
+					<td class="unit-in">20</td>
+					<td class="unit-in">21¼</td>
+					<td class="unit-in">22½</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">N/A</td>
+					<td class="unit-cm active">N/A</td>
+					<td class="unit-cm active">44</td>
+					<td class="unit-cm active">48</td>
+					<td class="unit-cm active">52</td>
+					<td class="unit-cm active">55</td>
+					<td class="unit-cm active">58</td>
+					<td class="unit-cm active">61</td>
+					<td class="unit-in">N/A</td>
+					<td class="unit-in">N/A</td>
+					<td class="unit-in">17½</td>
+					<td class="unit-in">19</td>
+					<td class="unit-in">20½</td>
+					<td class="unit-in">21¾</td>
+					<td class="unit-in">22¾</td>
+					<td class="unit-in">24</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Trousers (Continued)</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Age (Years) </span>
+			<span>Inside leg (S)</span>
+			<span>Inside leg (R)</span>
+			<span>Inside leg (L)</span>
+		</div>
+		<div class="table">
+			<table>
+				<tr>
+					<td class="active">8-9</td>
+					<td class="active">9-10</td>
+					<td class="active">10-11</td>
+					<td class="active">11-12</td>
+					<td class="active">12-13</td>
+					<td class="active">13-14</td>
+					<td class="active">14-15</td>
+					<td class="active">15-16</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">56</td>
+					<td class="unit-cm active">59</td>
+					<td class="unit-cm active">62</td>
+					<td class="unit-cm active">65</td>
+					<td class="unit-cm active">68</td>
+					<td class="unit-cm active">71</td>
+					<td class="unit-cm active">74</td>
+					<td class="unit-cm active">74</td>
+					<td class="unit-in">22</td>
+					<td class="unit-in">23¼</td>
+					<td class="unit-in">24¼</td>
+					<td class="unit-in">25½</td>
+					<td class="unit-in">26¾</td>
+					<td class="unit-in">28</td>
+					<td class="unit-in">29</td>
+					<td class="unit-in">29</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">60</td>
+					<td class="unit-cm active">63</td>
+					<td class="unit-cm active">66</td>
+					<td class="unit-cm active">69</td>
+					<td class="unit-cm active">72</td>
+					<td class="unit-cm active">75</td>
+					<td class="unit-cm active">75</td>
+					<td class="unit-cm active">75</td>
+					<td class="unit-in">23½</td>
+					<td class="unit-in">24¾</td>
+					<td class="unit-in">26</td>
+					<td class="unit-in">27½</td>
+					<td class="unit-in">28½</td>
+					<td class="unit-in">29½</td>
+					<td class="unit-in">29½</td>
+					<td class="unit-in">29½</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">64</td>
+					<td class="unit-cm active">67</td>
+					<td class="unit-cm active">70</td>
+					<td class="unit-cm active">73</td>
+					<td class="unit-cm active">76</td>
+					<td class="unit-cm active">79</td>
+					<td class="unit-cm active">82</td>
+					<td class="unit-cm active">82</td>
+					<td class="unit-in">25</td>
+					<td class="unit-in">26½</td>
+					<td class="unit-in">27½</td>
+					<td class="unit-in">28¾</td>
+					<td class="unit-in">30</td>
+					<td class="unit-in">31</td>
+					<td class="unit-in">32¼</td>
+					<td class="unit-in">32¼</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Trousers Plus</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Age (Years)</span>
+			<span>Waist</span>
+			<span>Standard (Inside Leg)</span>
+		</div>
+		<div class="table">
+			<table>
+				<tr>
+					<td class="active">2-3</td>
+					<td class="active">3-4</td>
+					<td class="active">4-5</td>
+					<td class="active">5-6</td>
+					<td class="active">6-7</td>
+					<td class="active">7-8</td>
+					<td class="active">8-9</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">57-58</td>
+					<td class="unit-cm active">58-59</td>
+					<td class="unit-cm active">59-61</td>
+					<td class="unit-cm active">61-62</td>
+					<td class="unit-cm active">62-63</td>
+					<td class="unit-cm active">63-64</td>
+					<td class="unit-cm active">64-66</td>
+					<td class="unit-in">22½-23</td>
+					<td class="unit-in">23-23¼</td>
+					<td class="unit-in">23¼-24</td>
+					<td class="unit-in">24-24½</td>
+					<td class="unit-in">24½-24¾</td>
+					<td class="unit-in">24¾-25</td>
+					<td class="unit-in">25-26</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">40</td>
+					<td class="unit-cm active">44</td>
+					<td class="unit-cm active">48</td>
+					<td class="unit-cm active">51</td>
+					<td class="unit-cm active">54</td>
+					<td class="unit-cm active">57</td>
+					<td class="unit-cm active">60</td>
+					<td class="unit-in">15¾</td>
+					<td class="unit-in">17¼</td>
+					<td class="unit-in">19</td>
+					<td class="unit-in">20</td>
+					<td class="unit-in">21¼</td>
+					<td class="unit-in">22½</td>
+					<td class="unit-in">23½</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Trousers Plus (Continued)</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Age (Years)</span>
+			<span>Waist</span>
+			<span>Standard (Inside Leg)</span>
+		</div>
+		<div class="table">
+			<table>
+				<tr>
+					<td class="active">9-10</td>
+					<td class="active">10-11</td>
+					<td class="active">11-12</td>
+					<td class="active">12-13</td>
+					<td class="active">13-14</td>
+					<td class="active">14-15</td>
+					<td class="active">15-16</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">66-68</td>
+					<td class="unit-cm active">68-69</td>
+					<td class="unit-cm active">69-70</td>
+					<td class="unit-cm active">70-72</td>
+					<td class="unit-cm active">72-74</td>
+					<td class="unit-cm active">74-77</td>
+					<td class="unit-cm active">77-81</td>
+					<td class="unit-in">26-26¾</td>
+					<td class="unit-in">26¾-27</td>
+					<td class="unit-in">27-27½</td>
+					<td class="unit-in">27½-28½</td>
+					<td class="unit-in">28½-29</td>
+					<td class="unit-in">29-30¼</td>
+					<td class="unit-in">30¼-32</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">63</td>
+					<td class="unit-cm active">66</td>
+					<td class="unit-cm active">69</td>
+					<td class="unit-cm active">72</td>
+					<td class="unit-cm active">75</td>
+					<td class="unit-cm active">75</td>
+					<td class="unit-cm active">75</td>
+					<td class="unit-in">24¾</td>
+					<td class="unit-in">26</td>
+					<td class="unit-in">27½</td>
+					<td class="unit-in">28½</td>
+					<td class="unit-in">29½</td>
+					<td class="unit-in">29½</td>
+					<td class="unit-in">29½</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

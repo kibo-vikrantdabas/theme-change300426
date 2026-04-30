@@ -1,0 +1,6 @@
+
+<div class="mz-email-notify-popup-container deactive">
+    <div class="arrow"></div>
+    {% include "modules/product/product-instock-request"  %}
+
+</div> 

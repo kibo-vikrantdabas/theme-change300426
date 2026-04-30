@@ -1,0 +1,12 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <title>icon/Close</title>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <polygon points="3.91841387 2.00588291 25.1926263 23.2807028 46.0815861 2.39113557 48 4.30954943 27.1107505 25.1988269 47.9891478 46.0766169 46.0707339 47.9950307 25.1926263 27.1169511 4.30366653 48.0058829 2.38525266 46.087469 23.2745022 25.1988269 2 3.92429677" fill-rule="nonzero" fill="#ffffff" id="Shape"/>
+ </g>
+</svg>

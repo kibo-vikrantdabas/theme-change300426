@@ -1,0 +1,36 @@
+.mz-mobile-header {
+  .mz-subheader-container-mobile {
+    .mz-mobile-searchbox{
+        position: absolute;
+        bottom: 0;
+        .mz-searchbox{
+            top:0;
+            left: 0!important;
+            @media only screen and (min-width:390px) and (max-width:409px) {
+                left: 1.3em !important;
+            }
+            
+        }
+        .mz-searchbox-field{
+            margin-left: 0;
+            width: calc(~"100vw - 20px")!important;
+
+            .tt-hint,.tt-input{
+                width: calc(~"100vw - 20px")!important;
+                @media only screen and (min-width:370px) and (max-width:385px) {
+                    width: calc(~"100vw - 23px")!important;
+                }
+                @media only screen and (min-width:410px) and (max-width:415px) {
+                    width: calc(~"100vw - 23px")!important;
+                }
+            }
+            @media only screen and (min-width:410px) and (max-width:500px) {
+                margin-right: 0;
+            }
+            @media only screen and (min-width:410px) and (max-width:500px) and (-webkit-device-pixel-ratio: 3) {
+                top: 3.5em;
+            }
+        }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<div class="mz-size-container mz-size-container-desktop">
+	
+	{% if size1 and not size2%}
+		{% if option.attributeFQN|lower == "tenant~size1" %}
+			{% if model.sizes %}
+				<div class="mz-secondary-size size-option-view hidden">
+					<ul class="size-range-container single-size" id="product-size1-range">
+						{% for value in model.sizes%}
+							{% with value.inventoryInfo.onlineStockAvailable as stockVal%}
+								{% with value.options|findwhere("attributeFQN", "tenant~size1") as selectSize %}
+									<li class="product-size-variant {% if value.isSelected %} selected-size{% endif %} {% if stockVal == 0%} out-of-stock {% endif %}" data-mz-product-option="{{selectSize.attributeFQN}}" data-value="{{selectSize.value}}">
+										<div class="size-swatches-link {% if value.isSelected %} selected-size{% endif %} {% if stockVal == 0%} out-of-stock {% endif %}">
+											<span class="display-size-value ">{% if selectSize.stringValue %}{{selectSize.stringValue}} {% else %} {{selectSize.value}} {% endif %} {% if stockVal == 0%} <span class="stock-error out-of-stock-message">{{labels.outOfStock}}</span> {% endif%}</span>
+										</div>
+									</li>
+								{% endwith %}
+							{% endwith %}
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+		{% endif %}
+	{% else %}
+		{% if option.attributeFQN|lower == "tenant~size2" %}
+			{% if model.sizes %}
+				<div class="mz-secondary-size size-option-view hidden">						
+							<ul class="product-swatches size-range-container" id="product-size2-range">
+								{% for size2 in model.sizes %}
+									<div class="mz-secondary-size">
+										<div class="product-size-secondary">{% if size2.stringValue %}{{size2.stringValue}} {% else %} {{size2.size2}} {% endif %}</div>
+											
+										{% for size1 in size2.sizeOneOptions %}
+											{% with size1.inventoryInfo.onlineStockAvailable as stock%} 
+												{% with size1.options|findwhere("attributeFQN", "tenant~size1") as size1 %}
+													<li class="product-size-variant {% if (size2.isSelected and size1.isSelected) %} selected-size {% endif %} {% if stock == 0 %}out-of-stock{% endif %}" data-mz-product-option="tenant~size2" data-value="{{size2.size2}}">
+														<div class="size-swatches-link {% if (size2.isSelected and size1.isSelected) %} selected-size {% endif %} {% if stock == 0 %}out-of-stock{% endif %}" data-mz-product-option="tenant~size1" data-value="{{size1.value}}">
+															<span class="display-size-value">{% if size1.stringValue %}{{size1.stringValue}} {% else %} {{size1.value}} {% endif %} / {% if size2.stringValue %}{{size2.stringValue}} {% else %} {{size2.size2}} {% endif %} {% if stock == 0%} <span class="stock-error out-of-stock-message">{{labels.outOfStock}}</span> {% endif%}</span> 
+														</div>
+													</li>                                
+												{% endwith %}
+											{% endwith %}
+										{% endfor %}
+									</div>
+								{% endfor %}
+							</ul>
+					</div>
+			{% endif %}                      
+		{% endif %}
+	{% endif %}
+</div>  

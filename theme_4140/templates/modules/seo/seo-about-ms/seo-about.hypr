@@ -1,0 +1,4 @@
+{% if pageContext.cmsContext.template.path == 'about-marks-spensor' %}
+    {% include "modules/seo/seo-about-ms/seo-about-ms-faq" %}
+    {% comment %} {% include "modules/seo/seo-about-ms/seo-about-ms-howTo" %} {% endcomment %}
+{% endif %}

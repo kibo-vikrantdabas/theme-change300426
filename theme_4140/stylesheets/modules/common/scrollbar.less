@@ -1,0 +1,30 @@
+::-webkit-scrollbar-track {
+    background: @lightGray;
+    border: 0 none @white;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+    background: @scrollBarColor;
+    border: 0 none @white;
+    border-radius: 65px;
+}
+::-webkit-scrollbar-corner {
+    background: 0 0;
+}
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+@media @desktopScreens {
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 5px;
+    } 
+}
+
+@media @tabletMin {
+    ::-webkit-scrollbar {
+        width: 0px !important;
+        height: 5px;
+    }
+}

@@ -1,0 +1,41 @@
+{% if themeSettings.showAddressTypeDropdown %}
+    {% if addresscontext == 'billingContact.'%}
+    <div class="mz-l-formfieldgroup-row mz-addressform-addresstype address-type-billing">
+        <div class="mz-l-formfieldgroup-cell">
+            <label for="addresstype">{{ labels.addressType }}*</label>
+        </div>
+        <div class="mz-l-formfieldgroup-cell">
+            <div class="mz-address-type">
+            <div class="address-home">
+                <input type="radio" id="home" name="address-type" class="home-address billing-home-address-type" value="Residential" data-mz-value="{{ addresscontext }}address.addressType" {% if model.address.addressType == "Residential" %} checked {% endif%} >
+                <label for="home" class="label-home">{{labels.home}}</label>
+            </div>
+            <div class="address-office">
+                <input type="radio" id="office" name="address-type" class="office-address billing-office-address-type"  data-mz-value="{{ addresscontext }}address.addressType" value="Commercial" {% if model.address.addressType == "Commercial" %} checked {% endif%}>
+                <label for="office" class="label-office">{{labels.office}}</label>
+            </div>
+           
+            </div>
+        </div>
+    </div>
+    {%else%}
+        <div class="mz-l-formfieldgroup-row mz-addressform-addresstype address-type-deleivery">
+            <div class="mz-l-formfieldgroup-cell">
+                <label for="addresstype">{{ labels.addressType }} </label>
+            </div>
+            <div class="mz-l-formfieldgroup-cell">
+                <div class="mz-address-type">
+                <div class="address-home">
+                    <input type="radio" name="address-type" class="home-address" value="Residential" data-mz-value="{{ addresscontext }}address.addressType" {% if model.address.addressType == "Residential" %} checked {% endif %}>
+                    <label for="home" class="label-home">{{labels.hometype}}</label>
+                </div>
+                <div class="address-office">
+                    <input type="radio"  name="address-type" class="office-address" value="Commercial" data-mz-value="{{ addresscontext }}address.addressType" {% if model.address.addressType == "Commercial" %} checked {% endif %}>
+                    <label for="office" class="label-office">{{labels.worktype}}</label>
+                </div>
+                {% comment %} <img src="../../resources/images/icons/green tick.svg" class="address-type-image hidden {% if model.address.addressType == "Residential" or model.address.addressType == "Commercial" %} active {% endif %}" alt=""> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    {%endif%}
+{% endif %}

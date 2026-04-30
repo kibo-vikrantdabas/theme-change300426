@@ -1,0 +1,12 @@
+<div class="mz-accountsettings-mobile">
+    <label class="mz-account-settings-label-name">{{ labels.mobile }} 
+      <span class="help-info"></span>
+      <span class="info-box gender-info-detail">{{labels.addMobileOrderText}}</span>
+    </label>
+    <div class="input-holder">
+        <select name="" id="code" dir="ltr" disabled>
+            <option value="{{themeSettings.countrySpecificDialingCode}}" class="mz-countryCode" selected>{{themeSettings.countrySpecificDialingCode}}</option>
+        </select>
+        <input type="number" class="mz-accountsettings-mobileinput" name="userMobileNumber" data-mz-value="userMobileNumber" value={{model.userMobileNumber}} onkeydown="javascript: return event.keyCode == 69 ? false : true" />
+    </div>
+</div>

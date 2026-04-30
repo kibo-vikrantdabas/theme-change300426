@@ -1,0 +1,1822 @@
+﻿.mz-checkout-payment {
+
+    clear: both;
+    min-width: 340px;
+    .mz-checkout-paymenttitle {
+        border-bottom: 1px solid #eee;
+        font-weight: normal;
+        strong {
+            font-size: @fontSizeLarger;
+        }
+    }
+
+
+    &-change, &-done {
+        float: right;
+    }
+}
+
+.mz-paymentselector.mz-l-formfieldgroup {
+    .mz-digitalwallets {
+        padding-top: @gutter/2;
+    }
+    .mz-l-formfieldgroup .mz-l-formfieldgroup-row {
+        display: table-row;
+    }
+    .mz-paymentselector-option .mz-checkoutform-radio {
+        text-align: left;
+        display: block;
+        font-size: @fontSizeLarger;
+    }
+    .mz-l-formfieldgroup-cell {
+        > label {
+            text-align: right;
+            display: block;
+            min-width: 155px;
+        }
+        .mz-paymentselector-reenter-cvv {
+         
+            label {
+                text-align: left;
+                min-width: auto;
+                display: inline-block;
+                margin-right: @gutter/4;
+            }
+        }
+    }
+    .mz-payment-credit-card-savepayment-row {
+        margin-left: 155px;
+    }
+}
+
+.mz-paymentselector-label-separator {
+    text-align: center;
+    border-bottom: 1px dashed #eeeeee;
+    text-decoration: none;
+}
+
+.mz-paymentselector-separator {
+    border-top: 1px solid #eee;
+    padding-top: @gutter;
+}
+
+.mz-paymentselector-newcreditcard .mz-l-formfieldgroup-cell:first-child label {
+    min-width: 155px;
+}
+
+
+
+.mz-card-payment-selector{
+    height: 49px;
+    width: 212px;
+  
+  }
+  .credit-debit-card-div{
+    display: flex;
+    margin-bottom: 25px;
+    img{
+      // height: 27px;
+      // width: 45px;
+    }
+    @media @mobileScreens{
+      .credit-debit-card-div-info {
+      display: flex;
+      padding-bottom: 10px;
+      }
+    }
+  }
+  .mz-forms-edit-button{
+    color:black;
+  }
+  .credit-debit-card-div-radio{
+    margin-top:37px;
+    margin-right:10px;
+    @media @mobileScreens{
+      margin-left: -4px;
+      margin-right: 8px;
+    }
+  }
+  .credit-debit-card {
+    // margin-top:21px;
+    // margin-left:62px;
+    height: 21px;
+    width: 150px;
+    color: @lightBlack;
+    font-family: @fontFamily;
+    font-size: @fontSizeLarger;
+    font-weight: @fontBold;
+    letter-spacing: 0;
+    line-height: 21px;
+    margin-bottom: 10px;
+  }
+  .card-payment{
+    //margin-top: 33px;
+    margin-top: 20px;
+    margin-right: 17px;
+  
+  }
+  .card-payment-cvv{
+    margin-top:-5px;
+  }
+  .card-payment-detail-div{
+    float: right;
+    /* margin-left: 40px; */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .knet-card {
+    min-width: 50px;
+    margin-block-start: 8%;
+  }
+  .benefitpay-card {
+    min-width: 50px;
+    margin-block-start: 8%;
+  }
+  .qpay-card {
+    min-width: 50px;
+    margin-block-start: 8%;
+  }
+  .omannet-card {
+    min-width: 50px;
+    margin-block-start: 8%;
+  }
+  .use-card-info {
+    height: 18px;
+   // width: 146px;
+    color: @lightBlack;
+    font-family: @fontFamily;
+    font-size: @fontSize;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 18px;
+  }
+  .total-to-pay-div {
+    border: 1px solid @lightWhite;
+   // min-width:720px;
+    height: 76px;
+    border-bottom: 0;
+
+    @media @mobileScreens{
+      min-width: 355px;
+      height: 56px;
+      margin:0 10px 0 10px;
+    }
+  }
+  
+  .total-to-pay{
+    margin: 32px 469px 24px 33px;
+    height: 20px;
+    width: 400px;
+    color: @lightBlack;
+    font-family: @fontFamily;
+    font-size: @fontSizeLarge;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 20px;
+    @media @mobileScreens{
+      margin:20px 169px 16px 12px;
+      font-size:16px;
+    }
+  }
+  .total-amount-span{
+    margin-top: 0.5px;
+    position: absolute;
+    margin-left: 7.5px;
+  }
+  .payment-method-div{
+    border: 1px solid @lightWhite;
+    display: flex;
+    flex-direction: row;
+   // width:720px;
+   // min-width: 720px;
+    height: 76px;
+    border-bottom: 0;
+    @media @mobileScreens{
+      //width: 355px;
+      min-width: 355px;
+      height: 92px;
+      margin:0 10px 0 10px;
+      display: grid;
+    }
+   
+  }
+  .payment-method{
+    margin-bottom: 23px;
+    margin-top: 28.8px;
+      height: 21px;
+     // width: 183px;
+      color: @lightBlack;
+      font-family: @fontFamily;
+      font-size: @fontSizeLarger;
+      font-weight: @fontBold;
+      letter-spacing: 0;
+      line-height: 21px;
+      margin-left:33px;
+      @media @mobileScreens{
+        width: 355px;
+        // height: 92px;
+        // margin: 19.8px 218px 16px 12px;
+        margin-top: 19.8px;
+        margin-left: 12px;
+        margin-bottom:0;
+      }
+      @media @tabletScreens{
+        width: 240px;
+      }
+  }
+  .payment-method-type{
+    margin-right: 20px;
+    margin-bottom: 23px;
+    @media only screen {
+      text-align: right;
+      flex: auto;
+    }
+    @media @mobileScreens{
+     margin: 0;
+     width: 355px;
+     margin-top: -15px;
+     margin-left: 7px;
+     text-align: left;
+    }
+    @media only screen and (min-width:1024px) and (max-width:1090px) {
+        margin-left: 70px;
+    }
+    @media only screen and (min-width:1091px) and (max-width:1200px) {
+        margin-left: 130px;
+    }
+  }
+  .payment-option-selector{
+    border: 1px solid @lightWhite;
+   // height:417px;
+    //width:720px;
+   // min-width:720px;
+    //max-height: 850px;
+    //max-height: 900px;
+    @media @mobileScreens{
+     // width: 355px;
+      min-width:355px;
+      margin:0 10px 0 10px;
+    }
+    .mz-paymentselector-validation{
+         display:inline !important;
+    }
+  }
+  .choose-payment-div {
+    height: 21px;
+    width: 214px;
+    color: @lightBlack;
+    font-family: @fontFamily;
+    font-size: @fontSizeLarger;
+    font-weight:  @fontBold;
+    letter-spacing: 0;
+    line-height: 21px;
+    margin-top:31.8px;
+    margin-left:25px;
+    @media @mobileScreens{
+      margin-left: 13px;
+      margin-top:19.8px;
+      margin-bottom: 20px;
+    }
+    .forDesktopPay{
+      display:block;
+      @media @mobileScreens{
+        display:none;
+      }
+    }
+    .forMobilePay{
+      display:none;
+      @media @mobileScreens{
+        display:block;
+      }
+    }
+  }
+  .rectangle {
+    box-sizing: border-box;
+   // height: 91px;
+    //width: 652px;
+    //min-width:652px;
+    border: 1px solid #E5E5E5;
+    border-radius: 3px;
+    background-color: @white;
+    margin: 24px 34px 24px 34px;
+   // max-height: 517px;
+    @media @mobileScreens{
+        //height: 81px;
+       // width: 331px;
+       min-width: 331px;
+        margin:16px 11px 16px 13px;
+    }
+  }
+  .card-type{
+    //margin-top: 20px;
+    margin-top:13px;
+    // margin-right: 17px;
+      // height: 24px;
+      // width: 38px;
+      @media @mobileScreens{
+        margin-top: 13px;
+        width: 42px;
+        height: 55px;
+        object-fit: cover;
+        
+      }
+  }
+  .mz-paymenttype-input{
+    margin-left:18px !important;
+    width: 18px !important;
+    height: 18px;
+  }
+  .new-card-div{
+        height: 18px;
+        width: 96px;
+        color: @lightBlack;
+        font-family: @fontFamily;
+        font-size: @fontSize;
+        font-weight: @fontBold;
+        letter-spacing: 0;
+        line-height: 18px;
+        //margin-left:76px;
+        margin-top:29.2px;
+        margin-bottom:20px;
+  }
+  .mz-payment-step-container{
+    @media only screen and (min-width: 400px) and (max-width: 768px) {
+      //height: 404px;
+      width: 355px;
+      margin:0 10px 0 10px;
+  
+    }  
+    @media only screen and (min-width: 355px) and (max-width: 380px) {
+      //height: 404px;
+      width: 355px;
+      margin-left: -18px;
+     }
+  }
+  .mz-checkout-form .mz-l-column {
+    width:52% !important;
+  }
+  .card-text-input{
+      box-sizing: border-box;
+      height: 40px;
+      width: 361px !important;
+      border: 1px solid @lightWhite !important;
+      background-color: @white;
+      padding-left: 16px !important;
+      margin-bottom:0 !important;
+      @media @mobileScreens{
+        width:311px !important;
+      }
+      @media only screen and (min-width: 389px) and (max-width: 400px) {
+        width: 327px !important;
+       }
+       @media only screen and (min-width: 400px) and (max-width: 413px) {
+        width: 348px !important;
+       }
+       @media only screen and (min-width: 413px) and (max-width: 450px) {
+        width: 350px !important;
+       }
+  }
+ 
+  .card-text-input-number{
+    box-sizing: border-box;
+    height: 40px;
+    width: 361px !important;
+    border: 1px solid @lightWhite !important;
+    background-color: @white;
+    padding-left: 63px !important;
+    margin-bottom:0 !important;
+    @media @mobileScreens{
+      width:311px !important;
+    }
+    @media only screen and (min-width: 389px) and (max-width: 400px) {
+      width: 327px !important;
+     }
+     @media only screen and (min-width: 400px) and (max-width: 413px) {
+      width: 348px !important;
+     }
+     @media only screen and (min-width: 413px) and (max-width: 450px) {
+      width: 350px !important;
+     }
+}
+  .mz-payment-card-row{
+    width: 100%;
+    //height: 63px;
+    height: 70px;
+    margin-top: 20px;
+  }
+  .card-payment-main-container{
+    
+    width: 361px !important;
+    margin-left: 76px;
+    @media @mobileScreens{
+      width:331px !important;
+      padding:10px;
+      margin-left:0;
+      margin-top: -38px; // ui fixes
+    }
+
+  }
+  .card-text-input-half {
+    box-sizing: border-box;
+    height: 40px;
+    width: 60px !important;
+    border: 1px solid @lightWhite !important;
+    background-color: @white;
+    padding-left: 21px !important;
+    margin-bottom:0 !important;
+}
+.card-slash{
+  margin:14.8px 5px 14px 5px;
+}
+.card-cvv{
+    box-sizing: border-box;
+    height: 40px;
+    width: 90px !important;
+    border: 1px solid @lightWhite !important;
+    background-color: @white;
+    padding-left: 32px !important;
+    margin-bottom:0 !important;
+    margin-right:12px;
+}
+.card-cvv-saved{
+  box-sizing: border-box;
+  height: 40px;
+  width: 90px !important;
+  border: 1px solid @black !important;
+  background-color: @white;
+  padding-left: 32px !important;
+  margin-bottom:0 !important;
+  margin-right:12px;
+}
+.card-text-title{
+    height: 18px;
+    color: @lightBlack;
+    font-family: @fontFamily;
+    font-size: @fontSize;
+    font-weight: @fontBold;
+    letter-spacing: 0;
+    line-height: 18px;
+    margin-bottom:5px;
+}
+.useshippinglabel{
+  height: 24px;
+  width: 519px;
+  color: @lightBlack;
+  font-family: @fontFamily;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 24px;
+  @media @mobileScreens{
+    width: 273px;
+    margin-bottom:10px;
+    margin-top: -3px;
+  }
+}
+.mz-paymentselector{
+  .mz-checkoutform-active{
+    background-color: transparent;
+    border: 1px solid @black;
+  }
+  .mz-payment-selected {
+    background-color: transparent;
+    border: 1px solid @black;
+  }
+}
+// .mz-checkoutform-paymentinfo{
+//   padding-left:0px !important;
+//   .mz-checkout-form{
+//     padding-left:0px !important;
+//   }
+// }
+.mz-checkoutform-active1{
+  border: 1px solid @black;
+}
+.card-payment-main-container .mz-l-stack-section{
+  margin-top:25px !important;
+}
+
+.mz-billing-address-div{
+  display:flex;
+  margin-top:25px !important;
+  .container{
+    margin-left: 0 !important;
+    margin-right: 14px !important;
+  }
+  .address-type-image{
+    display:none;
+  }
+}
+//custome checkbox/Radio
+.credit-debit-card-div-radio, .mz-billing-address-div, .toSaveCardDetails {
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 12px;
+  margin-left: 18px;
+  cursor: pointer !important;
+  font-size: @fontSizeBig;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+// /* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px !important;
+  width: 16px !important;
+  background-color: @white;
+}
+
+// /* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: @white;
+}
+
+// /* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #005640;;
+}
+
+// add a background color when An amount is requested by using Blue Payment
+.container .mz-bluePaymentRequested ~ .checkmark {
+  background-color: #005640;;
+}
+
+
+
+// /* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+// /* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after,
+.container .mz-bluePaymentRequested ~ .checkmark:after {
+  display: block;
+}
+
+// /* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 3px;
+  height: 8px;
+  border: solid @white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+// custom css for Radio
+.container-radio {
+  display: block;
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 12px;
+  margin-left: 18px;
+  cursor: pointer !important;
+  font-size: @fontSizeBig;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark-radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: @white;
+  border: 1px solid @lightWhite;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container-radio:hover input ~ .checkmark-radio {
+  background-color:@white;
+}
+
+.checkmark-radio-selected{
+  background-color:#005640 !important;
+  width: 13px;
+  height: 13px;
+  //border: 3px solid #EBECF0;
+  border: 3px solid @sliderProgress;
+
+}
+.cash-ondelivery-payment {
+  .checkmark-radio-selected{
+    width: 16px;
+    height: 16px;
+  }
+}
+/* When the radio button is checked, add a blue background */
+.container-radio input:checked ~ .checkmark-radio {
+  background-color: #005640;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark-radio:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container-radio input:checked ~ .checkmark-radio:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container-radio .checkmark-radio:after {
+  top: -3px;
+  left: -3px;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 3px solid @sliderProgress;
+}
+}
+// input[type="checkbox"]::before {
+//   /* ...existing styles */
+
+//   /* Windows High Contrast Mode */
+//   background-color: green;
+// }
+
+.credit-card-image{
+ // height: 21.85px;
+  left: 10px;
+  // top: 6px;
+  top:1px;
+  /* position: relative; */
+  /* margin-left: -5px; */
+  position: absolute;
+  width: 38px;
+}  
+
+.card-number-input-div{
+  position:relative
+}
+.mz-paymentselector{
+  .mz-validationmessage{
+    font-size: 12px;
+    display: block;
+  //  height: 21px;
+    /* width: 142px; */
+    color: #A6192E;
+    font-family: @fontFamily;
+    font-size: @fontSizeLarger;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 21px;
+    margin-bottom: 10px;
+    margin-top: 6px;
+  }
+}
+.cvv-div{
+  display:flex;
+
+}
+.save-card-button-div{
+
+  // margin-left: 442px;
+  // margin-bottom: 20px;
+    margin-left: 372px;
+    margin-bottom: 23px;
+  @media @mobileScreens{
+    //margin-left: 220px;
+    margin-left:0 !important;
+    margin-bottom: 15px !important;
+
+  }
+  .save-card-details-btn{
+    height: 48px;
+    width: 176px;
+    background-color: #627786;
+      color: @white;
+      font-family: @fontFamily;
+      font-size: @fontSizeLarger;
+      font-weight: @fontBold;
+      letter-spacing: 0;
+      line-height: 21px;
+      text-align: center;
+      @media @mobileScreens{
+        width: 311px;
+    
+      }
+
+      @media only screen and (min-width: 389px) and (max-width: 400px){
+         width:327px;
+       }
+       @media only screen and (min-width: 400px) and (max-width: 413px){
+        width:348px;
+      }
+      @media only screen and (min-width: 413px) and (max-width: 450px){
+        width:350px;
+      }
+  }
+}
+.mz-checkout{
+.mz-l-2column-right .mz-l-column + .mz-l-column{
+  padding-left: 0;
+  padding-right: 25px;
+  margin-right: 35px;
+}
+}
+
+
+@media @tabletScreens{
+ .mz-checkout{
+   #checkout-rightcol{
+     display:none;
+   }
+  .mz-l-2column-right .mz-l-column{
+    float:left;
+    width:100%;
+  }
+  .mz-l-2column-right .mz-l-column + .mz-l-column{
+    padding-left:25px;
+  }
+ }
+}
+.billing-address-container{
+   // height: 541px;
+    width: 436px;
+    margin-left: 20px;
+
+    @media @mobileScreens{
+     // margin-left:0;
+     margin-left: 15px;
+    }
+    .is-required{
+      color:#333333 !important;
+    }
+  .mz-addressform-comments{
+    display: none !important;
+  }
+  .mz-l-formfieldgroup-cell input[type=text]{
+    @media @mobileScreens{
+      width:311px !important;
+    }
+  }
+  .mz-l-formfieldgroup-cell select{
+    @media @mobileScreens{
+      width:311px !important;
+    }
+  }
+  .mz-address-field{
+    width: 436px !important;
+    @media @mobileScreens{
+      width:311px !important;
+    }
+  }
+  .mz-l-formfieldgroup-cell {
+    label{
+        height: 18px;
+        color: @blackColor;
+        font-family: @fontFamily;
+        font-size: @fontSize;
+        font-weight: @fontBold;
+        letter-spacing: 0;
+        line-height: 18px;
+    }
+  }
+  .mz-required-field{
+    display: none !important;
+  }
+  .mz-l-formfieldgroup-row{
+      height: 63px;
+      width: 255px;
+      margin-bottom: 20px;
+      @media @mobileScreens{
+        width:311px;
+      }
+  }
+  .mz-l-formfieldgroup .mz-l-formfieldgroup-cell{
+     padding-bottom:5px !important;
+  }
+  .address-type-billing .mz-l-formfieldgroup-cell:nth-child(odd){
+    padding-bottom:12px !important;
+  }
+  .billing-home-address-type{
+    width: 18px !important;
+height: 18px !important;
+margin-top: 14px;
+@media @mobileScreens{
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: 14px;
+}
+  }
+  .billing-office-address-type{
+    width: 18px !important;
+height: 18px !important;
+margin-top: 14px;
+@media @mobileScreens{
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: 14px;
+}
+  }
+}
+
+.mz-checkoutform-paymentinfo{
+  .mz-l-stack-section{
+    clear:none !important;
+  }
+}
+
+
+.mz-payment-cvv-div{
+  margin-top:11px;
+  height: 86px;
+  width: 568px;
+  background-color: #e0e4e7;
+ // margin-left: -76px;
+  margin-left: -77px;
+  //margin-left:-88px;
+  display: grid;
+  padding-left: 75px;
+  padding-top: 18px;
+  border-left: 5px solid @black;
+  border-right: 0.5px solid #e0e4e7;
+  @media @mobileScreens{
+    width: 339px;
+    //width: 341px;
+    border-right: 0.5px solid #e0e4e7;
+    margin-left: -11px;
+    padding-left: 20px
+  }
+  @media only screen and (min-width: 374px) and (max-width: 388px){
+    // width:303px;
+    width: 305px;
+    border-right: 0.5px solid #e0e4e7;
+  }
+  @media only screen and (min-width: 389px) and (max-width: 400px){
+    width: 317px;
+   // width:322px;
+    border-right: 0.5px solid #e0e4e7;
+  }
+  @media only screen and (min-width: 410px) and (max-width: 413px){
+     width:338.5px;
+   }
+   @media only screen and (min-width: 413px) and (max-width: 415px){
+     width:340px;
+   }
+  
+ 
+  @media only screen and (min-width: 768px) and (max-width: 808px){
+    //width:591px;
+    //width: 571px;
+    width:519px;
+  }
+  @media only screen and (min-width: 809px) and (max-width:818px){
+   // width:634px;
+   width:561px;
+  }
+  @media only screen and (min-width: 819px) and (max-width:900px){
+    // width:634px;
+    width:633px;
+   }
+  @media only screen and (min-width: 900px) and (max-width:999px){
+    width:779px;
+  }
+  @media only screen and (min-width: 700px) and (max-width:713px){
+    width: 530px
+  }
+}
+.your-card-details {
+  height: 18px;
+  width: 119px;
+  color: @lightBlack;
+  font-family: @fontFamily;
+  font-size: @fontSize;
+  font-weight: @fontBold;
+  letter-spacing: 0;
+  line-height: 18px;
+  margin-bottom:24px;
+}
+.your-card-details-div{
+  margin-bottom:10px;
+}
+.saved-pyament-select{
+  height: 48px !important;
+  width: 361px !important;
+  position: relative;
+  @media @mobileScreens{
+      width: 311px !important;
+  }
+}
+.saved-pyament-select{
+  option:hover{
+      background-color: #ccc;
+      width: 361px;
+
+      @media @mobileScreens{
+        width:311px;
+        background-color: #ccc;
+      }
+
+  }
+}
+.display-image{
+  position: absolute;
+    //left: 210px;
+  // top: 1095px;
+    //top:1139px;
+  // padding-top:7px;
+  // New changes
+   left: 207px;
+   // padding-top: 5px;
+   margin-top:5px;
+
+  @media @mobileScreens{
+    position: absolute;
+    left: 33px;
+    //top: 1233px;
+   // padding-top:7px;
+     margin-top:7px;
+
+  }
+
+  @media @tabletScreens{
+    position: absolute;
+    left: 125px;
+   // top: 1101px;
+ //  padding-top:7px;
+    margin-top:7px;
+
+
+  }
+}
+.card-img{
+  margin-top:0 !important;
+}
+.card-jcb-img{
+  margin-top:5px !important;
+}
+.model-display-img{
+  position: absolute;
+// New changes
+   left: 207px;
+    padding-top: 0px;
+    @media @mobileScreens{
+      position: absolute;
+      left: 33px;
+      //top: 1233px;
+      padding-top: 0px;
+  
+    }
+  
+    @media @tabletScreens{
+      position: absolute;
+      left: 125px;
+     // top: 1101px;
+     padding-top: 0px;
+  
+    }
+}
+.cc-img{
+  position: absolute;
+  //left: 210px;
+  //top: 1106px !important;
+ // top: 1144px !important;
+   padding-top:12px;
+   //new changes
+   left:206px;
+
+
+  @media @mobileScreens{
+    position: absolute;
+    //left: 33px;
+    //top: 1239px !important;
+   // padding-top:12px;
+    // new css
+    left: 28px;
+    padding-top: 12px;
+}  
+  
+  @media @tabletScreens{
+    position: absolute;
+    left: 125px;
+   // top: 1101px;
+   padding-top:12px;
+  }
+}
+
+.cc-model-img{
+    position: absolute;
+    padding-top: 6px;
+    left: 204px;
+    
+  @media @mobileScreens{
+    position: absolute;
+    left: 28px;
+    padding-top: 6px;
+  }
+  @media @tabletScreens{
+    position: absolute;
+    left: 120px;
+    padding-top: 6px;
+  }  
+}
+.saveCardView{
+  float: right;
+  right: -180px;
+  position: relative;
+  top: -42px;
+  cursor: pointer;
+  text-decoration: underline;
+
+  @media @tabletScreens{
+    right: -130px;
+  }
+  @media @mobileScreens{
+    right:24px;
+  }
+  @media only screen and (min-width: 389px) and (max-width:400px){
+    right:5px;
+   }
+   @media only screen and (min-width: 410px) and (max-width:413px){
+    right:-12px;
+   }
+   @media only screen and (min-width: 413px) and (max-width:450px){
+    right:-16px;
+   }
+}   
+
+.payment-header{
+  height: 49px;
+  border-top: 1px solid @lightWhite;
+  border-bottom: 1px solid @lightWhite !important;
+  padding-top: 24px !important;
+  @media @mobileScreens{
+    margin-left:11px;
+  }
+}
+
+.payment-header-incomplete{
+//  border-top: 1px solid @lightWhite;
+  padding-top: 24px !important;
+  @media @mobileScreens{
+    margin-left:11px;
+  }
+}
+.addnewcard{
+  position: relative;
+    left: 321px;
+    text-decoration: underline;
+    color: #757575;
+    font-family: @fontFamily;
+    font-size: @fontSize;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: right;
+    @media @mobileScreens{
+      left:100px;
+    }
+    @media @tabletScreens{
+      left: 277px;
+    }
+    @media only screen and (min-width: 819px) and (max-width:900px){
+      // width:634px;
+      left: 375px;
+     }
+     @media only screen and (min-width: 400px) and (max-width:411px){
+      // width:634px;
+      left: 131px;
+     }
+     @media only screen and (min-width: 412px) and (max-width:412px){
+      // width:634px;
+      left: 110px;
+     }
+     @media only screen and (min-width: 413px) and (max-width:415px){
+      // width:634px;
+      left: 131px;
+     }
+
+}
+.mz-checkoutform-paymentinfo{
+ @media @tabletScreens {
+   margin-right:10px;
+ }
+ @media @mobileScreens{
+   margin-left:-11px;
+ }
+}
+.mz-paymentselector{
+  display: inline !important;
+}
+.savecard-select-div{
+  select {
+    background-color: white;
+    border: thin solid grey;
+   // border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 2em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  select.arrows {
+    background: url(../resources/images/icons/svg/downArrow.svg),url(../resources/images/icons/svg/upArrow.svg);
+    background-position: 95.6% 80%,101% 52%;
+    background-size: 15px,34px;
+    background-repeat: no-repeat;
+    @media(max-width:768px){
+      background-position:  94.9% 80%,101% 52% !important;
+    }
+    @media @mobileScreens {
+      background-position: 95% 80%,101.5% 52%;
+    }
+  }
+   select option{
+    //background-image: url('../resources/images/icons/arrow-down.png') no-repeat;
+   }
+
+  select.arrows:focus {
+    border-color: gray;
+    outline: 0;
+  }
+}
+.payment-method-type-header{
+    right: 0;
+    top: 2px;
+    position: absolute;
+}
+.checkout-display-payment-method{
+  display: none;
+}
+.mz-checkoutform-paymentinfo.is-new .checkout-display-payment-method{
+  display: block;
+}
+.place-order-btn{
+  //margin-top:-39px;
+  margin-left: 70px;
+  margin-top: -11px;
+  width: 288px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 21px;
+  background-color:#BED855;
+  background-image: url('../resources/images/icons/svg/Lock.svg');
+  background-repeat: no-repeat;
+  background-position: 58px;
+  background-size: 21px;  
+ // float: right;
+  padding: 13px 55px 12px 88px;
+  margin-bottom: 32px;
+  border:none !important;
+  &:hover{
+    background-color: #BED855;
+  }
+
+  @media @mobileScreens{
+    margin-top:0;
+    float:none;
+    width:100%;
+    margin-left: -12px;
+    background-position: 92px;
+    padding:0;
+  }
+  @media only screen and (min-width:389px) and (max-width:400px) {
+    background-position: 85px;
+  }
+
+  @media only screen and (max-width: 376px) {
+    padding: 13px 55px 12px 88px;
+  }
+
+  @media only screen and (min-width:1024px) and (max-width:1090px) {
+    margin-top: 12px;
+    margin-right: 20%;
+  }
+  @media only screen and (min-width:1091px) and (max-width:1200px) {
+    margin-top: 12px;
+    margin-right: 26%;
+  }
+  
+}
+
+.place-order-btn-apple-pay-new{
+  background: #000;
+  color: #fff !important;
+  padding: 2px 35px 12px 47px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 21px;
+  margin-left: 70px;
+  margin-top: -11px;
+  width: 288px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 21px;
+  background-color: #000;
+  margin-bottom: 32px;
+  border: none !important;
+    &:hover{
+      background: #000;
+    }
+
+  @media @mobileScreens{
+    margin-top:0;
+    float:none;
+    width:100%;
+    margin-left: 0px;
+    background-position: 92px;
+    padding:0;
+  }
+  @media only screen and (min-width:389px) and (max-width:400px) {
+    background-position: 85px;
+  }
+
+  @media only screen and (max-width: 376px) {
+    padding: 0px 55px 12px 55px;
+  }
+
+  @media only screen and (min-width:1024px) and (max-width:1090px) {
+    margin-top: 12px;
+    margin-right: 20%;
+  }
+  @media only screen and (min-width:1091px) and (max-width:1200px) {
+    margin-top: 12px;
+    margin-right: 26%;
+  }
+}
+
+.mobile-checkout{
+  display:none;
+  @media @mobileScreens{
+    display:block;
+    text-align: center;
+    width: 286px;
+    margin-top: -60px;
+  }
+  @media only screen and (min-width: 389px) and (max-width: 768px){
+    margin-left:17px;   
+   }
+}
+.term-agree-label{
+   font-size: 13px;
+   color:#333333;
+   font-family:@fontFamily;
+   margin-left: -14px;
+   @media only screen and (min-width:768px) and (max-width:1024px) {
+    margin-left: 24px;
+  }
+
+  @media only screen and (min-width:1091px) and (max-width:1200px) {
+    margin-left: 100px;
+  }
+}
+.desktop-checkout{
+  @media @mobileScreens{
+    display:none;
+  }
+}
+.current-payment-data{
+  margin-left: 35px;
+  font-size: 14px;
+  font-family: @fontFamily;
+  color: #333;
+  display:flex;
+  flex-direction: row;
+  @media @mobileScreens{
+    margin-left: 95px;
+  }
+}
+.card-edit{
+      margin-top: 16px;
+      position: absolute;
+      left: 45%;
+      @media @mobileScreens{
+        left:84%;
+      }
+      @media @tabletScreens{
+        left:84%;
+      }
+      @media only screen and (min-width:1910px) and (max-width:1940px) {
+        left: 39%;
+      }
+
+}
+.mz-checkout{
+  .mz-messagebar{
+    @media @mobileScreens{
+      top: 0;
+      position: relative;
+      margin-top: 22px;
+      z-index: 10;
+      width: 100%;
+    }
+  }
+  .mz-l-column-shipmentInfo{
+    @media @mobileScreens{
+      //margin-top: 76px;
+    }
+  }
+}
+.shipping-method-nxt-btn{
+    width: 288px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 21px;
+    background-color: #bed855;
+    background-image: url(../resources/images/icons/Lock.svg);
+    background-repeat: no-repeat;
+    background-position: 58px;
+    background-size: 21px;
+    float: right;
+}
+.edit-card-btn{
+  height: 28px;
+  width: 26px;
+  color: #757575;
+  font-family: "MSLondon";
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 28px;
+  text-align: right;
+  text-decoration: underline;
+}
+.loader-btn{
+  background-image: url(../resources/images/icons/svg/Loader-Icon.svg);
+  color: transparent;
+  background-position: 135px;
+  background-size: 29px;
+  pointer-events: none;
+  width: 288px;
+  background-color: #E4E4E4 !important;
+  @media @mobileScreens{
+    margin-top:0;
+    float:none;
+    width:100%;
+    margin-left: -7px;
+    background-position: 165px;
+    padding:0;
+  }
+
+  @media only screen and (max-width: 376px) {
+    padding: 13px 55px 12px 88px;
+  }
+
+  @media only screen and (min-width:1024px) and (max-width:1090px) {
+    margin-top: 12px;
+    margin-right: 20%;
+  }
+  @media only screen and (min-width:1091px) and (max-width:1200px) {
+    margin-top: 12px;
+    margin-right: 26%;
+  }
+}
+.loader-btn-place{
+  background-image: url(../resources/images/icons/svg/Loader-Icon.svg);
+  color: transparent;
+  background-position: 135px;
+  background-size: 29px;
+  pointer-events: none;
+  width: 288px;
+  background-color: #E4E4E4 !important;
+  margin-top:-39px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 21px;
+  float: right;
+  padding: 13px 55px 12px 88px;
+  margin-bottom: 55px;
+  border:none !important;
+}
+.jcb{
+  top:6px;
+}
+.jcb-img{
+  position: absolute;
+  left: 211px;
+  margin-top: 11px;
+  @media @mobileScreens{
+    left: 37px;
+  }
+  @media @tabletScreens{
+    left: 127px;
+  }
+  img{
+    height: 38px;
+    width: 38px;
+  }
+}
+.credit-debit-card-div-radio, .toSaveCardDetails, 
+.mz-billing-address-div {
+  .checkmark-radio-selected {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.credit-cart-payment {
+  .checkout-payment-saved-cards {
+    .savecard-select-div {
+      select {
+        padding: 0.5em 3.5em 0.5em 5em;
+        @media @mobileScreens {
+          width: 100%!important;
+          padding: 0.5em 3.5em 0.5em 4em;
+        }
+        &.arrows  {
+          @media (max-width: 480px) and (min-width: 400px) {
+            background-position: 94.9% 80%,100% 52% !important;
+          }
+        }
+      }      
+    }
+  }
+}
+
+.mz-paymentselector.mz-l-formfieldgroup {
+  .mz-paymentselector-newcreditcard {
+    @media @mobileScreens {
+      display: block!important;
+      padding: 0!important;
+      border: none;
+    }
+    .card-payment-main-container {
+      @media @mobileScreens {
+        width: 100%!important;
+        box-sizing: border-box;
+      }
+      .saveCardView {
+        @media @mobileScreens {
+          right: 0;
+        }
+      }
+      .mz-payment-new-card-add {
+        .mz-l-stack-section {
+          @media @mobileScreens {
+            margin: 30px 0 0!important;
+          }
+        }
+      }
+      .checkout-payment-saved-cards {
+        .mz-l-formfieldgroup-row {
+          @media @mobileScreens {
+            display: block;
+          }
+        }
+      }
+    }
+    .billing-address-container {
+      width: 360px;
+      margin-left: 32px;
+      @media @mobileScreens {
+        width: 100%;
+        margin-left: 0;
+      }
+      .mz-l-addressform-container {
+        @media @mobileScreens {
+          margin-left: 0;
+        }
+      }
+      .mz-l-formfieldgroup-address {
+        display: block;
+        .mz-l-formfieldgroup-cell {
+          &:nth-child(even) {
+            padding: 0!important;
+          }  
+          &:nth-child(odd) {
+            padding-bottom: 10px!important;
+          }      
+          input,
+          select {
+            width: 100%!important;
+            border-color: #ccc!important;
+            font-size: @fontSize;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 18px;
+            color: @black;
+            &::placeholder {
+              color: #999;
+            }
+          }
+          &:first-child {
+            label {
+              margin: 0;
+              min-width: auto;
+              color: @black;
+              font-weight: 600;
+              line-height: 20px;
+            }
+          }
+        }
+        .mz-addressform-phone {
+          .mz-l-formfieldgroup-cell {
+            &:last-child {
+              display: grid;
+              grid-template-columns: 1fr 3fr 0;
+              select {
+                width: 90px!important;
+                margin-right: 10px;
+                color: @black;
+                font-weight: @fontBold;
+                // background-image: url(../resources/images/icons/svg/downArrow.svg);
+                background-size: 16px;
+                background-position-y: center;
+                background-position-x: 80%;
+                background-repeat: no-repeat;
+              }
+            }
+          }
+        }
+        .mz-addressform-state {
+          .mz-l-formfieldgroup-cell {
+            select {
+                background-image: url(../resources/images/icons/svg/downArrow.svg);
+                background-size: 16px;
+                background-position-y: center;
+                background-position-x: 95%;
+                background-repeat: no-repeat;                
+            }
+          }
+        }
+        .mz-addressform-country {
+          .mz-l-formfieldgroup-cell {
+            select {
+              background-color: #f5f5f5;
+              font-weight: @fontBold;
+              color: #999;
+            }
+            img {
+              display: none;
+            }
+          }
+        }
+        .address-type-billing {
+          margin-bottom: 20px;
+          .mz-l-formfieldgroup-cell {
+            input,
+            label {
+              margin-top: 0;
+              min-width: auto;
+              color: @black;
+              font-weight: 600;            
+            }
+            .address-office {
+              margin-left: 0;
+              @media @mobileScreens {
+                margin-left: 0!important;
+              }
+            }
+            input {
+              width: 18px!important;
+              @media @mobileScreens {
+                margin-left: 0!important;
+              }
+            }
+            .mz-address-type {
+              column-gap: 16px;
+              label {
+                font-size: 15px;
+              }
+            }
+          }
+        }
+        .mz-billing-address-div {
+          .useshippinglabel {
+            @media @mobileScreens {
+              width: auto;
+              height: auto;
+              margin-bottom: 0;
+              margin-top: 0;
+            }
+          }
+        }
+        .mz-addressform-comments {
+          margin: 0;
+          position: relative;
+          .mz-l-formfieldgroup-cell {
+            display: flex;
+            column-gap: 12px;
+            padding-bottom: 0;
+            input {
+              width: 20px;
+              height: 20px;
+              margin: 0;
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+              height: 0;
+              width: 0;
+              // @media @mobileScreens {
+              //   width: 20px!important;
+              // }
+              &:checked {
+                ~.checkmark {
+                  background-color: #005640;
+                  &::after {
+                    display: block;
+                  }
+                }
+              }
+            }
+            label {
+              min-width: 20px;
+            }
+            .makedefaultText {
+              margin: 0;
+              font-size: @fontSize;
+              font-weight: 600;
+              letter-spacing: 0;
+              line-height: 20px;
+              color: @black;
+            }
+          }
+          .checkmark {
+            width: 18px;
+            height: 18px;              
+            &::after {
+              content: '';
+              position: absolute;
+              display: none;
+              left: 7px;
+              top: 3px;
+              width: 2.5px;
+              height: 6.3px;
+              border: solid #fff;
+              border-width: 0 3px 3px 0;
+              -webkit-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .mz-l-formfieldgroup-row {
+        display: block;
+        height: auto;
+        width: auto;
+        margin-bottom: 11px;
+      }
+    }
+    .save-card-button-div {
+      .save-card-details-btn {
+        @media @mobileScreens {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.mz-checkout {
+  .mz-checkoutform-review {
+    .place-order-btn {
+      @media @mobileScreens {
+        background-image: none;
+        padding: 0;
+      }
+      span {
+        @media @mobileScreens {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          column-gap: 8px; 
+        }        
+        &::before {
+          @media @mobileScreens {
+            content: '';
+            background-image: url('../resources/images/icons/svg/Lock.svg');
+            background-repeat: no-repeat;
+            background-size: 21px;
+            width: 21px;
+            height: 21px;
+          }          
+        }
+      }
+    }
+  }
+}
+
+.checkout-agreeToTerms{
+  font-size: 13px;
+    font-weight: semibold;
+    font-weight: 600;
+    color: #EA122A;
+    /* width: 72%; */
+    margin-left: -14px;
+    margin-top: 5px;
+    width: 110%;
+}
+
+.step-review-main-div{
+  display: flex;
+  flex-direction: row;
+  @media @mobileScreens{
+     display:inline;
+  }
+  .mz-formstep-next{
+    width: 50%;
+   @media @mobileScreens{
+      width:100%;
+   }
+  }
+  .desktop-checkout{
+    width: 50%;
+   @media @mobileScreens{
+     width:100%;
+   }
+  }
+}
+
+.apple-payment-img{
+  width: 50px;
+  height: 30px;
+  margin-top: 32px;
+  margin-right: 17px;
+}
+
+.apple-payment-img-header{
+  width: 34.904762px;
+  height: 22px;
+  margin-right: -6px;
+}
+
+.apple-pay-payment {
+      select {
+        padding: 0.5em 3.5em 0.5em 5em;
+        @media @mobileScreens {
+          width: 100%!important;
+          padding: 0.5em 3.5em 0.5em 4em;
+        }
+        &.arrows  {
+          @media (max-width: 480px) and (min-width: 400px) {
+            background-position: 94.9% 80%,100% 52% !important;
+          }
+        }
+      }      
+}
+.toSaveCardDetails {
+  margin-top: 25px;
+  .container {
+    margin-left: 0 !important;
+    margin-right: 9px !important;
+    display: inline-block;
+    height: 5px;
+ 
+    .mz-billingShippingAddressCheck {
+      display: inline-block;
+    }
+  }
+}
+.mz-billing-address-div {margin-top:15px !important}
+.toSaveCardDetails + .mz-l-stack-section {
+  margin-top:0px !Important;
+  }
+.toSaveCardDetails + .mz-l-stack-section:before{
+    display: none !important;
+  }

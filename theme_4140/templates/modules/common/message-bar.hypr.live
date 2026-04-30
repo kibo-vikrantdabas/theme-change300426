@@ -1,0 +1,73 @@
+﻿<div class="mz-messagebar" data-mz-message-bar> 
+    {% if model.length > 0 %}
+        {% for msg in model %}
+            {% if msg.messageType %}
+                {% if msg.messageType == "exclusivePricelist" %}
+                    <ul class="is-showing mz-infos">
+                        <li class="mz-message-item" >{{ labels|prop(msg.messageType) }}</li>
+                        <ul>
+                            {% for itemsRemoved in msg.productsRemoved %}
+                            <li class="mz-message-item">{{itemsRemoved.name}} ({% if itemsRemoved.variationProductCode %}{{itemsRemoved.variationProductCode}}{%else%}{{itemsRemoved.productCode}}{%endif%})</li>
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                {% endif %}
+                {% if msg.messageType == "newPricelist" %}
+                        <ul class="is-showing mz-success">
+                            <li class="mz-message-item" >{{ labels|prop(msg.messageType) }}</li>
+                        </ul>
+                 {% endif %}
+                 {% if msg.messageType == "returnSuccess" %}
+                        <ul class="is-showing mz-success">
+                            <li class="mz-message-item" >{{ labels|prop(msg.messageType) }}</li>
+                        </ul>
+                 {% endif %}
+                 {% if msg.messageType == "returnFailure" %}
+                        <ul class="is-showing mz-success">
+                            <li class="mz-message-item" >{{ labels|prop(msg.messageType) }}</li>
+                        </ul>
+                 {% endif %}
+                 {% if msg.messageType == "noReturnableItems" %}
+                        <ul class="is-showing mz-infos">
+                            <li class="mz-message-item" >{{ labels|prop(msg.messageType)}}</li>
+                        </ul>
+                 {% endif %}
+                 {% if msg.messageType == "borderFree" %}
+                        <ul class="is-showing {% if msg.status == "PENDING"%}mz-infos{% else %} mz-success{% endif %}">
+                            <li class="mz-message-item" >{{ msg.message }}</li>
+                        </ul>
+                 {% endif %}
+                 {% if msg.messageType == "BulkAddToCartErrors" %}
+                    <ul class="is-showing mz-infos">
+                        <li class="mz-message-item">{{ labels.bulkAddToCartErrors|string_format(msg.message)|safe }}</li>
+                    </ul>
+                {% endif %}
+                {% if msg.messageType == "BulkReorderErrors" %}
+                    <ul class="is-showing mz-errors">
+                        <li class="mz-message-item">{{ labels.bulkAddToCartErrors|string_format(msg.message)|safe }}</li>
+                    </ul>
+                {% endif %}
+                {% if msg.messageType == "Warning" %}
+                    <ul class="is-showing mz-infos">
+                        <li class="mz-message-item">{{ msg.message }}</li>
+                    </ul>
+                {% endif %}
+                {% if msg.messageType == "Error" %}
+                    <ul class="is-showing mz-errors">
+                        <li class="mz-message-item">{{ msg.message }}</li>
+                    </ul>
+                {% endif %}
+            {% else %}
+            {% if msg.name =="card.paymentOrCardType" || msg.name =='card.cardNumberPartOrMask' || msg.name =='card.expireMonth' || msg.name =='card.expireYear' || msg.name =='card.nameOnCard' || msg.name =='card.cvv' || msg.message == 'Phone number required' || msg.message == 'City or town required' || msg.message == 'Last name required' || msg.message == 'First name required' || msg.message == 'Street address required' %}
+         
+            {%else%}
+            <ul class="is-showing mz-errors">
+                <li class="mz-message-item">{{ msg.message }}</li>
+            </ul>
+            {% endif %}
+             
+            {% endif %}
+        {% endfor %}
+        <span class="dismiss-message" data-mz-action="dismissMessage">X</span>
+    {% endif %}
+</div>

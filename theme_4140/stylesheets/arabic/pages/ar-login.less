@@ -1,0 +1,368 @@
+.icon-arrow {
+    height: 15px;
+    width: 15px;
+}
+.mz-login-form-field .element-div{
+    margin-top:10px;
+}
+
+.mz-login-email-valid-div{
+    margin:0 4px 24px 5px;
+    color: #757575;
+    font-family: @fontFamily;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 21px;
+    
+  }
+.mz-login-main-container{
+    display: grid;
+    margin-top: -5px;
+    input{
+        border-radius: 0;
+        -webkit-appearance: none;
+      }
+    .mz-pagetitle{
+           height: 43px;
+           width: 280px;
+           color: #333;
+           font-family: @fontFamily;
+           font-size: 36px;
+           font-weight: 600;
+           letter-spacing: 0;
+           line-height: 43px;
+       
+    }
+    
+.eye{
+    position: absolute;
+    left: 0;
+    top: 14px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+    .mz-forgot{
+           height: 21px;
+           width: 137px;
+           color: #000;
+           font-family: @fontFamily;
+           font-size: 16px;
+           font-weight: 600;
+           letter-spacing: 0;
+           line-height: 21px;
+           text-transform: capitalize;
+           float: left;
+           margin: 10px 0 30px 0;
+           text-align: left;
+    }
+    a{
+        color:@black;
+    }
+    a:hover{
+        color:@black;
+    }
+    a:visited{
+        color:@black;
+    }
+    .mz-signup-footer{
+       .mz-signup-query{
+               margin-top:20px;
+               height: 21px;
+               color: @black;
+               font-family: @fontFamily;
+               font-size: 16px;
+               letter-spacing: 0;
+               line-height: 21px;
+               font-weight: 600;
+       }
+       .mz-privacy-policy{
+             margin-top:34px;
+               height: 21px;
+               width: 502px;
+               color: @black;
+               font-family: @fontFamily;
+               font-size: 14px;
+               font-weight: bold;
+               letter-spacing: 0;
+               line-height: 21px;
+            
+       }
+   }
+}
+.mz-login-form-main-container{
+   margin: 0 auto;
+   width:70%;
+   max-width: 510px;
+   @media only screen and (min-width: 765px) and (max-width:825px) {
+        margin-top: 20px;
+   }
+   @media only screen and (min-width: 389px) and (max-width:400px) {
+      margin:0 -25px 0 0px !important;
+      .eye {
+        margin-left: 0px;
+      }
+   }
+   @media only screen and (min-width: 400px) and (max-width:500px) {
+    .eye {
+      margin-left: 12px;
+    }
+   }
+   .password-field-input{
+       position: relative;
+   }
+   .login-validation-error-msg{
+       margin-bottom:10px;
+   }
+   .login-validation-msg{
+    margin:0 4px 24px 5px;
+   // color: #EA122A;
+    color: #A6192E;
+    font-family: @fontFamily;
+    font-size: @fontSize + 2px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 21px;
+    display: inline-block;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+   .text-input{
+       display: inline-block;
+       width:100%;
+       max-width:494px;
+       height: 48px;
+       padding:0;
+       padding-right:16px;
+       margin:0;
+       border: 1px solid #CCC;
+       fill: #FFF;
+       &::placeholder {
+        color: #757575;
+        font-family: @fontFamily;
+        font-size: @fontSizeLarger;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 21px;
+       }
+       @media only screen and (min-width: 389px) and (max-width:400px) {
+        max-width: 352px !important;
+   }
+   }
+   .text-label{
+      display: inline-block;
+      font-family: @fontFamily;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: left;
+      margin:0 0 4px 0;
+      color: #333;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 21px;
+      &:focus{
+       outline: none;
+      }
+   }
+   
+   .mz-login-page-button{
+        width:100%;
+        height: 48px;
+        text-align: center;
+        background-color: #BED855;
+        color: #333;
+        font-family: @fontFamily;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 0;
+        line-height: 21px;
+        text-align: center;
+        border:0;
+   }
+   .mz-login-div{
+    @media only screen and (min-width: 389px) and (max-width:400px) {
+        width: 370px !important;
+   }
+   }
+   .is-invalid{
+    border:none !important;;
+    border-left: 5px solid #EA122A !important;;
+    background-color: #FFF3F4 !important;;
+}
+.is-valid{
+    border: 1px solid #333333 !important;
+}
+}
+
+.mz-anonymousorder-form{
+    .mz-login-form-main-container{
+        @media only screen and (min-width: 389px) and (max-width:400px) {
+            margin:0 auto !important;
+          
+         }
+    }
+}
+@media @mobileScreens {
+    .mz-login-main-container{
+        // display: grid;
+        width: 359px;
+        margin-left:-37.5px;
+        .mz-pagetitle{
+               height: 43px;
+               width: 120px;
+               color: #333;
+               font-family: @fontFamily;
+               font-size: 36px;
+               font-weight: 600;
+               letter-spacing: 0;
+               line-height: 43px;
+           
+        }
+        .mz-forgot{
+               height: 21px;
+               width: 137px;
+               color: #000;
+               font-family: @fontFamily;
+               font-size: 16px;
+               font-weight: 600;
+               letter-spacing: 0;
+               line-height: 21px;
+               text-transform: capitalize;
+               float: left;
+               margin: 10px 0 15px 0;
+               text-align: left;
+        }
+        .mz-signup-footer{
+           .mz-signup-query{
+                   margin-top:20px;
+                   height: 21px;
+                   color: #000;
+                   font-family: @fontFamily;
+                   font-size: 16px;
+                   letter-spacing: 0;
+                   line-height: 21px;
+                   //text-align: right;
+           }
+           .mz-privacy-policy{
+                   margin-top:34px;
+                   height: 21px;
+                   width: 359px;
+                   color: #000;
+                   font-family: @fontFamily;
+                   font-size: 14px;
+                   font-weight: bold;
+                   letter-spacing: 0;
+                   line-height: 21px;
+                   margin-bottom:288px;
+                
+           }
+       }
+   }
+   
+   .mz-login-form-main-container{
+       width:100%;
+       margin:0 -10px 0 0px;
+       max-width:355px;
+
+       .password-field-input{
+           position: relative;
+       }
+       .text-input{
+           display: inline-block;
+           width:100%;
+           max-width: 337px;
+           height: 48px;
+           padding:0;
+           padding-left:16px;
+           margin:0;
+           border: 1px solid #CCC;
+           fill: #FFF;
+       }
+       .text-label{
+          display: inline-block;
+          font-family:@fontFamily;
+          font-size: 14px;
+          line-height: 21px;
+          text-align: left;
+          margin:0 0 4px 0;
+       } 
+       
+       .mz-login-page-button{
+           width:100%;
+           height: 48px;
+           text-align: center;
+           background-color: #BED855;
+       }
+   }
+}
+
+.mz-login-main-container{
+@media only screen and (min-width:400px) and (max-width:415px){
+    margin-left: -20.5px;
+}
+}
+.mz-login-page-button{
+    @media only screen and (min-width:1060px) and (max-width:1063px){
+     width:101% !important;
+    }
+
+    @media only screen and (min-width:501px) and (max-width:768px){
+        width:104% !important;
+    }
+}
+.mz-login-main-container .mz-signup-footer .mz-privacy-policy {
+    @media only screen and (min-width:710px) and (max-width:714px){
+        width:501 !important;
+    }
+}
+
+.mz-loginpage {
+    .mz-login-form-main-container {
+        .mz-pagetitle {
+            @media @mobileScreens {
+                text-transform: uppercase;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+// header search bar changes
+@media screen and (orientation: portrait) and (max-width: 1023px) {
+    .mz-loginpage {
+        .mz-searchbox-container.desktop {
+            display: block !important;
+        }
+
+        .mz-searchbox-icon {
+            visibility: hidden;
+        }
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 1023px) {
+    .mz-loginpage {
+        .mz-searchbox-icon {
+            visibility: visible !important;
+        }
+    }
+}
+
+.orderstatus-wrapper{
+    .mz-pagetitle{
+        @media @mobileScreens{
+            margin-right:10px;
+        }
+    }
+    .mb-30{
+        @media @mobileScreens{
+            margin: 10px 10px 57px 10px;
+        }
+    }
+    .mz-login-form-main-container{
+        @media @mobileScreens{
+           max-width: 355px !important;
+        }
+    }
+}

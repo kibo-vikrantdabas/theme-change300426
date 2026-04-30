@@ -1,0 +1,1 @@
+define(["modules/jquery-mozu"],function(e){e(".mz-size-guide-toggle-btn").click(function(){e(".mz-size-guide-toggle-btn").toggleClass("active"),e(".unit-cm").toggleClass("active"),e(".unit-in").toggleClass("active")}),0!==e(".unit-cm").length&&e(".mz-size-guide-unit-toggle").css("display","flex")});

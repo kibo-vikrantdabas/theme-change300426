@@ -1,0 +1,18 @@
+﻿<div class="mz-contactselector">
+  {% block contact-selector %}
+    
+    <div class="mz-l-formfieldgroup-cell mz-savedShippingAddressDropdownContainer">
+
+      {% if not model.displayAddressForm %}
+         {% include "modules/checkout/address/shipping/saved-shipping-address" %}
+      {% endif %}
+
+      {% if model.displayAddressForm %}
+        {% include "modules/checkout/address/shipping/shipping-address-form" %}
+      {% endif %}
+
+    </div>
+      
+  {% endblock contact-selector %}
+  
+</div>

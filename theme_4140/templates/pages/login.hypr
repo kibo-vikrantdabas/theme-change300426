@@ -1,0 +1,34 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.logIn %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-loginpage {% endblock body-tag-classes %}
+
+{% block body-content %}
+    <div class="mz-l-container">
+        {% include "modules/common/message-bar" with model=model.messages %}
+        <div class="mz-login-main-container ">
+            <div class="mz-login-form-main-container">
+                <div class="mz-form-error"></div>
+                <h1 class="mz-pagetitle">{{ labels.signIn }}</h1>
+                <div id="loginContainer"> 
+                    {% include "modules/login/login" %}
+                </div>
+                {% with labels.signInQuery as signUpQuery %}
+                    {% with labels.register as signUpQueryLink %}
+                        {% with labels.signInMessage|string_format('user/signup', labels.customerDataPromise)|safe as acknowledment %}
+                           {% with "/user/signup" as signUpURL %}
+                          {% include "modules/signup/signup-footer" %}
+                            {%endwith %}
+                        {%endwith%}
+                    {%endwith%}
+                {%endwith%}
+               
+            </div>
+          
+        </div>
+    </div>
+    {% require_script "pages/login" %}
+{% endblock body-content %}
+
+{% block page-footer %} {% endblock page-footer %}

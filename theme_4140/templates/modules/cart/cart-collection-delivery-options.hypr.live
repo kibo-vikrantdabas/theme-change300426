@@ -1,0 +1,37 @@
+{% if not model.isEmpty %}
+<div class="mz-collection-delivery-options-section">
+    <p class="mz-collection-delivery-options-heading">{{labels.cartCollectionDeliveryOptions}}</p>
+    <div class="mz-collection-delivery-options-content">
+        {% if themeSettings.trackeddeliverytitle and model.selectedFulfillmentMethod == "Ship" %}
+        <div class="mz-tracked-delivery-section mz-content-row">
+            <div class="icon"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}DeliveryTrack.svg" height="32" width="32" alt="delivery-track-icon" /></div>
+            <div class="details">
+                <span class="title">{{themeSettings.trackeddeliverytitle}}<span class="business-days">({{themeSettings.trackeddeliverydays}})</span></span>
+                <span class="price-rules">{{themeSettings.trackeddeliverydesc}}</span>
+            </div>
+            <div class="price">{{themeSettings.trackeddeliverycharges}}</div>
+        </div>
+        {% endif %}
+        {% if themeSettings.clickcollecttitle and model.selectedFulfillmentMethod == "Pickup" %}
+        <div class="mz-click-collect-section  mz-content-row">
+            <div class="icon"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Collect.svg" height="32" width="32" alt="click-collect-icon" /></div>
+            <div class="details">
+                <span class="title">{{themeSettings.clickcollecttitle}}<span class="business-days">({{themeSettings.clickcollectdays}})</span></span>
+                <span class="price-rules">{{themeSettings.clickcollectdesc}}</span>
+            </div>
+            <div class="price">{{themeSettings.clickcollectcharges}}</div>
+        </div>
+        {% endif %}
+        {% if themeSettings.isCODDisable === false and model.selectedFulfillmentMethod == "Ship" %}
+        <div class="mz-cod-section  mz-content-row">
+            <div class="icon"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}CashOnDelivery.svg" height="32" width="32" alt="cashon-delivery-icon" /></div>
+            <div class="details">
+                <span class="title">{{themeSettings.codtitle}}<span class="business-days">({{themeSettings.coddays}})</span></span>
+                <span class="price-rules">{{themeSettings.coddesc}}</span>
+            </div>
+            <div class="price">{{themeSettings.codcharges}}</div>
+        </div> 
+        {% endif %}
+    </div>
+</div>
+{% endif %}

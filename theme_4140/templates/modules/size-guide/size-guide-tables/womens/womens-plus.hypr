@@ -1,0 +1,217 @@
+<div class="chart">
+	<h5>Single Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>UK/AU/NZ</span>
+			<span>US/CA</span>
+			<span>EU</span>
+			<span>DE</span>
+			<span>Bust</span>
+			<span>Waist</span>
+			<span>Hips</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">18</td>
+						<td class="active">20</td>
+						<td class="active">22</td>
+						<td class="active">24</td>
+						<td class="active">26</td>
+						<td class="active">28</td>
+						<td class="active">30</td>
+						<td class="active">32</td>
+					</tr>
+					<tr>
+						<td class="active">14</td>
+						<td class="active">16</td>
+						<td class="active">18</td>
+						<td class="active">20</td>
+						<td class="active">22</td>
+						<td class="active">24</td>
+						<td class="active">26</td>
+						<td class="active">28</td>
+					</tr>
+					<tr>
+						<td class="active">46</td>
+						<td class="active">48</td>
+						<td class="active">50</td>
+						<td class="active">52</td>
+						<td class="active">54</td>
+						<td class="active">56</td>
+						<td class="active">58</td>
+						<td class="active">60</td>
+					</tr>
+					<tr>
+						<td class="active">44</td>
+						<td class="active">46</td>
+						<td class="active">48</td>
+						<td class="active">50</td>
+						<td class="active">52</td>
+						<td class="active">54</td>
+						<td class="active">56</td>
+						<td class="active">58</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">108</td>
+						<td class="unit-cm active">114</td>
+						<td class="unit-cm active">120</td>
+						<td class="unit-cm active">126</td>
+						<td class="unit-cm active">132</td>
+						<td class="unit-cm active">138</td>
+						<td class="unit-cm active">144</td>
+						<td class="unit-cm active">150</td>
+						<td class="unit-in">42½</td>
+						<td class="unit-in">45</td>
+						<td class="unit-in">47¼</td>
+						<td class="unit-in">49½</td>
+						<td class="unit-in">52</td>
+						<td class="unit-in">54½</td>
+						<td class="unit-in">56½</td>
+						<td class="unit-in">59</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">92</td>
+						<td class="unit-cm active">98</td>
+						<td class="unit-cm active">104</td>
+						<td class="unit-cm active">110</td>
+						<td class="unit-cm active">116</td>
+						<td class="unit-cm active">122</td>
+						<td class="unit-cm active">128</td>
+						<td class="unit-cm active">134</td>
+						<td class="unit-in">36¼</td>
+						<td class="unit-in">38½</td>
+						<td class="unit-in">41</td>
+						<td class="unit-in">43¼</td>
+						<td class="unit-in">45½</td>
+						<td class="unit-in">48</td>
+						<td class="unit-in">50½</td>
+						<td class="unit-in">52¾</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">115</td>
+						<td class="unit-cm active">121</td>
+						<td class="unit-cm active">127</td>
+						<td class="unit-cm active">133</td>
+						<td class="unit-cm active">139</td>
+						<td class="unit-cm active">145</td>
+						<td class="unit-cm active">151</td>
+						<td class="unit-cm active">157</td>
+						<td class="unit-in">45¼</td>
+						<td class="unit-in">47½</td>
+						<td class="unit-in">50</td>
+						<td class="unit-in">52½</td>
+						<td class="unit-in">54¾</td>
+						<td class="unit-in">57</td>
+						<td class="unit-in">59½</td>
+						<td class="unit-in">61¾</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart">
+	<h5>Dual Size</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>UK/AU/NZ</span>
+			<span>US/CA</span>
+			<span>EU</span>
+			<span>DE</span>
+			<span>Bust</span>
+			<span>Waist</span>
+			<span>Hips</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">18-20</td>
+						<td class="active">22-24</td>
+						<td class="active">26-28</td>
+						<td class="active">30-32</td>
+					</tr>
+					<tr>
+						<td class="active">14-16</td>
+						<td class="active">18-20</td>
+						<td class="active">22-24</td>
+						<td class="active">26-28</td>
+					</tr>
+					<tr>
+						<td class="active">46-48</td>
+						<td class="active">50-52</td>
+						<td class="active">54-56</td>
+						<td class="active">58-60</td>
+					</tr>
+					<tr>
+						<td class="active">44-46</td>
+						<td class="active">48-50</td>
+						<td class="active">52-54</td>
+						<td class="active">56-58</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">108-114</td>
+						<td class="unit-cm active">120-126</td>
+						<td class="unit-cm active">132-138</td>
+						<td class="unit-cm active">144-150</td>
+						<td class="unit-in">42½-45</td>
+						<td class="unit-in">47¼-49½</td>
+						<td class="unit-in">52-54½</td>
+						<td class="unit-in">56½-59</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">92-98</td>
+						<td class="unit-cm active">104-110</td>
+						<td class="unit-cm active">116-122</td>
+						<td class="unit-cm active">128-134</td>
+						<td class="unit-in">36¼-38½</td>
+						<td class="unit-in">41-43¼</td>
+						<td class="unit-in">45½-48</td>
+						<td class="unit-in">50½-52¾</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">115-121</td>
+						<td class="unit-cm active">127-133</td>
+						<td class="unit-cm active">139-145</td>
+						<td class="unit-cm active">151-157</td>
+						<td class="unit-in">45¼-47½</td>
+						<td class="unit-in">50-52½</td>
+						<td class="unit-in">54¾-57</td>
+						<td class="unit-in">59½-61¾</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="chart tablet-small">
+	<div class="full table">
+		<table>
+			<thead>
+				<tr>
+					<th>Trouser leg length</th>
+					<th>To fit body inside leg</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="active">Short</td>
+					<td class="unit-cm active">73</td>
+					<td class="unit-in">29</td>
+				</tr>
+				<tr>
+					<td class="active">Standard (Medium)</td>
+					<td class="unit-cm active">79</td>
+					<td class="unit-in">31</td>
+				</tr>
+				<tr>
+					<td class="active">Long</td>
+					<td class="unit-cm active">85</td>
+					<td class="unit-in">33</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

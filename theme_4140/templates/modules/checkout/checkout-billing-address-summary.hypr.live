@@ -1,0 +1,22 @@
+ <div class="mz-formstep-body mz-checkoutform">
+     <div class="selected-shipmethod-div select-div">
+         <div class="display-shipmentmethod-div">
+            
+            
+             <img src="{{labels.svgIconPath}}delivery-1.svg" alt="location-icon" class="mz-locationIcon">
+             
+              <div class="delivery-days-div">
+                 <span class="billing-info-username"><b>{{model.billingContact.firstName }} {{model.billingContact.lastNameOrSurname}} </b></span>
+                 <span class="billing-info-phonenumber" ><a {% if themeSettings.isArabicLanguageSite%}dir="ltr"{% endif %} href="javascript:;">{{model.billingContact.phoneNumbers.home}}</a> </span>
+                 <span class="billing-info-email"><a href="javascript:;">{{model.billingContact.email}}</a></span>
+             </div>
+              <div class="mz-changeShipmentMethodButton">
+ 
+                 <a href="javascript:;" class="shipment-change-button" data-mz-action="editBillingAddress">{{labels.change}}</a>
+              </div>
+             
+         </div>
+         
+     </div>
+   
+ </div>

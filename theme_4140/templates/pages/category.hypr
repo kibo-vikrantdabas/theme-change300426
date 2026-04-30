@@ -1,0 +1,112 @@
+{% extends "page" %}
+
+{% block cacheheaders %}
+{% if themeSettings.akamaiEdgeControlEnabledPLP %}
+{% include "modules/cache-headers" %}
+{% endif %}
+{% endblock cacheheaders %}
+
+{% block title-tag-content %}
+	{% firstof model.content.metaTagTitle model.name %} 
+{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-category porduct-listing-page {% endblock body-tag-classes %}
+
+{% block body-content %}
+{% require_script "pages/category" %}
+<div class="category-top-container afg-ms-category-top-container">
+	<div class="afg-ms-category-masterhead">
+		<div class="category-main-img">
+			{% for categoryImage in model.content.categoryImages %}				
+				 	
+					{% if model.content.categoryImages.length > 1  and  forloop.index == 2 %}
+						{% if categoryImage.imageUrl %}
+						<img srcset="{{ categoryImage.imageUrl }}?maxWidth=288 288w,
+						{{ categoryImage.imageUrl }}?maxWidth=432 432w,
+						{{ categoryImage.imageUrl }}?maxWidth=490 490w,
+						{{ categoryImage.imageUrl }}?maxWidth=691 691w,
+						{{ categoryImage.imageUrl }}?maxWidth=891 891w" 
+						
+						sizes=" (max-width: 320px) 288px,
+								(max-width: 480px) 432px,
+								(max-width: 767px) 691px,
+								(max-width: 992px) 891px,
+								(max-width: 993px) 490px,
+								490px" loading="lazy" alt="{% if categoryImage.altText %}{{ categoryImage.altText}} {% else %}category-image{% endif %}" class="category-img" />
+							{% else %}
+							{% with model.content.categoryImages|first as firsCategoryImages %}
+							
+								{% if firsCategoryImages.imageUrl %}
+									<img srcset="{{ firsCategoryImages.imageUrl }}?maxWidth=288 288w,
+										{{ firsCategoryImages.imageUrl }}?maxWidth=432 432w,
+										{{ firsCategoryImages.imageUrl }}?maxWidth=490 490w,
+										{{ firsCategoryImages.imageUrl }}?maxWidth=691 691w,
+										{{ firsCategoryImages.imageUrl }}?maxWidth=891 891w" 
+										
+										sizes=" (max-width: 320px) 288px,
+												(max-width: 480px) 432px,
+												(max-width: 767px) 691px,
+												(max-width: 992px) 891px,
+												(max-width: 993px) 490px,
+												490px" loading="lazy" alt="{% if categoryImage.altText %}{{ categoryImage.altText}} {% else %}category-image{% endif %}" class="category-img" />
+
+								{% endif %}
+								{% endwith %}
+						{% endif %}
+					{% endif %}
+					{% if model.content.categoryImages.length  == 1 %}
+						{% if categoryImage.mediaType|lower != "slug" %}
+					  				<img srcset="{{ categoryImage.imageUrl }}?maxWidth=288 288w,
+									{{ categoryImage.imageUrl }}?maxWidth=432 432w,
+									{{ categoryImage.imageUrl }}?maxWidth=490 490w,
+									{{ categoryImage.imageUrl }}?maxWidth=691 691w,
+									{{ categoryImage.imageUrl }}?maxWidth=891 891w" 
+									
+									sizes=" (max-width: 320px) 288px,
+											(max-width: 480px) 432px,
+											(max-width: 767px) 691px,
+											(max-width: 992px) 891px,
+											(max-width: 993px) 490px,
+											490px" loading="lazy" alt="{% if categoryImage.altText %}{{ categoryImage.altText}} {% else %}category-image{% endif %}" class="category-img" />
+
+						{% endif %}
+					{% endif %}
+			{% endfor %}
+		</div>
+		<div class="category-main-details">
+			<div class="afg-ms-category-desc">
+				<h1 class="mz-pagetitle">{%firstof model.content.pageTitle|safe|title model.name|safe|title%}</h1>
+				<p class="category-desc">{{model.content.description}}</p>
+				<span class="showmore">{{labels.readMore}}</span>
+				<span class="showless">{{labels.readLess}}</span>
+			</div>
+			<div class="afg-ms-foundit-container">
+				{% if(pageContext.cmsContext.template.path == 'category') %}
+					{% with pageContext.url|split(siteContext.siteSubdirectory)|last as previousUrl %}
+					{% if(model.childrenCategories.length > 0) %}
+						<div class="foundit">
+							<div class="foundit__wrapper foundit__hide-left-border ">
+								<div class="foundit__banner  foundit__pills-10" >
+									{% for child in model.childrenCategories %}
+										{% if child.isDisplayed %}
+											<div class="foundit__item">
+												<a 
+												class="react-link foundit__link" href="{{siteContext.siteSubdirectory}}{{previousUrl}}/{{child.content.slug}}" title="{{child.content.name}}">{{child.content.name}}</a>
+											</div>
+										{% endif %}
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					{% endif %}
+					{%endwith%}
+				{% endif %}
+			</div>
+		</div
+	</div>
+</div>
+<div data-mz-category="{{model.categoryId}}" class="mz-l-container">
+
+    {% include "pages/category-interior" %}
+</div>
+{% endblock body-content %}

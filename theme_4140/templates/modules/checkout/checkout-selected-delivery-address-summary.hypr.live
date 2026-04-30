@@ -1,0 +1,25 @@
+<div class="mz-shippingSelectedAddressContainer">
+    <div class="mz-ShippedAddressContainer">
+        <div class="mz-shippedContactName">{{ model.firstName }} {{ model.lastNameOrSurname }}</div>
+        <div class="mz-addressContainer">
+            <div class="mz-shippingAddressOne">{{ model.address.address1 }}</div>,
+            {% if model.address.address2 %}
+                <div class="mz-shippingAddressTwo">{{ model.address.address2 }}</div>
+            {% endif %}
+            {% if model.address.address3 %}
+                <div class="mz-shippingAddressThree">{{ model.address.address3 }}</div>
+            {% endif %}
+            <div class="mz-shippingAddressCity">{{ model.address.cityOrTown }}</div>
+            <div class="mz-shippingAddressState">
+            {% if model.address.stateOrProvince != "n/a" %} {{ model.address.stateOrProvince }}&thinsp;-{%endif%} 
+            </div> 
+            <div class="mz-shippingAddressCountryCode">{{model.address.countryCode}}</div>
+        </div>
+        {% if model.phoneNumbers.home %}
+            <div class="mz-shippingAddressMobile" dir="ltr">{{ model.phoneNumbers.home }}</div>
+        {% endif %}
+        {% if model.address.comments %}
+            <div class="mz-shippingAddressComments">{{ model.address.comments }}</div>
+        {% endif %}
+    </div>
+</div>

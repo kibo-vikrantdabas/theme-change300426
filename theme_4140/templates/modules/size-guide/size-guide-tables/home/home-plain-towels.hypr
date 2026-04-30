@@ -1,0 +1,99 @@
+<div class="chart">
+	<h5 style="text-align:center;">TOWELS</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span style="color:#f5f5f5;">TOWELS</span>
+			<span>Lightweight Towel</span>
+			<span>Quick Dry Towel</span>
+			<span>Supersoft Towel</span>
+			<span style="height:61px;">Luxury Egyptian
+				<br>Towel
+				</span>
+				<span style="height:61px;">Heavyweight
+					<br> Egyptian Towel
+					</span>
+					<span style="height:61px;">Premium Supersoft
+						<br> Towel
+						</span>
+						<span style="height:61px;">Autograph Modal
+							<br> Towel
+							</span>
+							<span style="height:61px;">Design Towels</span>
+							<span>Towel Bale</span>
+						</div>
+						<div class="table">
+							<table>
+								<tr>
+									<td class="active">Face towel</td>
+									<td class="active">Guest towel</td>
+									<td class="active">Hand towel</td>
+									<td class="active">Bath towel</td>
+									<td class="active">Bath sheet</td>
+								</tr>
+								<tr>
+									<td class="active"></td>
+									<td class="active"></td>
+									<td class="active">W 50 x L 85 cm</td>
+									<td class="active">W 70 x L 130 cm</td>
+									<td class="active">W 90 x L 150 cm</td>
+								</tr>
+								<tr>
+									<td class="active">W 30 x L 30 cm</td>
+									<td class="active"></td>
+									<td class="active">W 50 x L 90 cm</td>
+									<td class="active">W 70 x L 130 cm</td>
+									<td class="active">W 90 x L 160 cm</td>
+								</tr>
+								<tr>
+									<td class="active">W 30 x L 30 cm</td>
+									<td class="active">W 40 x L 60 cm</td>
+									<td class="active">W 50 x L 90 cm</td>
+									<td class="active">W 70 x L 130 cm</td>
+									<td class="active">W 90 x L 160 cm</td>
+								</tr>
+								<tr>
+									<td class="active" style="height:61px;">W 33 x L 33 cm</td>
+									<td class="active">W 40 x L 60 cm</td>
+									<td class="active">W 50 x L 100 cm</td>
+									<td class="active">W 68 x L 137 cm</td>
+									<td class="active">W 89 x L 178 cm</td>
+								</tr>
+								<tr>
+									<td class="active" style="height:61px;">W 33 x L 33 cm</td>
+									<td class="active"></td>
+									<td class="active">W 50 x L 100 cm</td>
+									<td class="active">W 68 x L 137 cm</td>
+									<td class="active">W 89 x L 178 cm</td>
+								</tr>
+								<tr>
+									<td class="active" style="height:61px;">W 30 x L 30 cm</td>
+									<td class="active"></td>
+									<td class="active">W 50 x L 100 cm</td>
+									<td class="active">W 68 x L 137 cm</td>
+									<td class="active">W 89 x L 178 cm</td>
+								</tr>
+								<tr>
+									<td class="active" style="height:61px;">W 30 x L 30 cm</td>
+									<td class="active">W 40 x L 60 cm</td>
+									<td class="active">W 50 x L 90 cm</td>
+									<td class="active">W 70 x L 140 cm</td>
+									<td class="active">W 90 x L 160 cm</td>
+								</tr>
+								<tr>
+									<td class="active" style="height:61px;">W 30 x L 30 cm</td>
+									<td class="active">W 40 x L 60 cm</td>
+									<td class="active">W 50 x L 90 cm</td>
+									<td class="active">W 70 x L 137 cm</td>
+									<td class="active">W 100 X 150 cm</td>
+								</tr>
+								<tr>
+									<td class="active">W 30 x L 30cm</td>
+									<td class="active"></td>
+									<td class="active">W 50 x L 85cm</td>
+									<td class="active">W 70 x L 130cm</td>
+									<td class="active"></td>
+								</tr>
+							</table>
+						</div>
+	</div>
+				</div>

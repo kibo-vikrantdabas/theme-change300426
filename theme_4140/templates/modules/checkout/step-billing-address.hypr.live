@@ -1,0 +1,14 @@
+<h3 class="mz-formstep-header mz-checkoutform-header">
+  2. {{labels.billingAddressLabel}}
+</h3>
+
+
+{% if model.isBillingAddressSaved %}
+<div id="billng-address-container-preview" >
+  {% include "modules/checkout/checkout-billing-address-summary" %}
+</div>
+{% else %}
+<div class="mz-l-address-guest-container checkout-billing-address-form-container"> 
+  {% include "modules/checkout/checkout-billing-address-form" with model=model.billingContact countries=pageContext.billingCountries states=pageContext.billingStates %}
+</div>
+{% endif %}

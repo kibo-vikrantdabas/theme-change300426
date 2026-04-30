@@ -1,0 +1,24 @@
+<div class="mz-l-formfieldgroup-row mz-addressform-state">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="stateprov">{{ labels.city}}<span class="is-required">*</span></label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+        {% if model.cities and model.address.countryCode %}
+          <select id="{% block id-prefix %}{% endblock id-prefix %}cityOrTown" class="mz-address-state billing-state" {% if not model.hasRequiredBehavior %} disabled {% endif %} data-mz-value="{{ addresscontext }}address.cityOrTown" name="cityOrTown">
+                <option value="">{{labels.pleaseSelectCity}}</option>
+                {% for city in model.address.cities %}
+                    <option {% if model.address.cityOrTown == city %} selected="selected"{% endif %} value="{{ city }}">{{ city }}</option>
+                {% endfor %}
+          </select>
+        {% else %}
+            <select id="{% block id-prefix %}{% endblock id-prefix %}cityOrTownBilling" class="mz-address-state billing-state" {% if not model.hasRequiredBehavior %} disabled {% endif %} data-mz-value="{{ addresscontext }}address.cityOrTown">
+                <option value="">{{labels.pleaseSelectCity}}</option>
+                {% for city in model.address.cities %}
+                    <option {% if model.address.cityOrTown == city %} selected="selected"{% endif %} value="{{ city }}">{{ city }}</option>
+                {% endfor %}
+            </select>
+        {% endif %} 
+
+        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}address.cityOrTown"></span>
+    </div>
+</div>

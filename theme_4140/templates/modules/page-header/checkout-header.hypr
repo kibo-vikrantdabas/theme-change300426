@@ -1,0 +1,17 @@
+<div class="mz-checkout-header-container">
+        <div class="mz-secureLock-Logo">
+                <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Lock.svg" class="lockImage" alt="lock-image">
+        </div>
+
+        <div class="mz-msLogo">
+                <a href="{{PageContext.secureHost}}{{siteContext.siteSubdirectory}}">
+                        <img src="{{themeSettings.markAndSpencerLogo.imageUrl}}" class="mainImage" alt="main-image">
+                </a>
+        </div>
+
+        <div class="mz-paymentLogos">
+               <img src="{{siteContext.cdnPrefix}}/resources/images/icons/visa.png" class="paymentImageV" alt="visa-icon">
+               <img src="{{siteContext.cdnPrefix}}/resources/images/icons/americanexpress.png" class="paymentImageA" alt="americanexpress-icon">
+               <img src="{{siteContext.cdnPrefix}}/resources/images/icons/mastercard.png" class="paymentImageM" alt="mastercard-icon">
+        </div>
+</div>

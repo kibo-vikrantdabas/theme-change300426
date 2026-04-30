@@ -1,0 +1,34 @@
+{% if model.displayBluePrepaidForm %}
+    <div class="mz-blue-prepaid-form-container">
+        <div class="mz-card-details-message">{{labels.blueCardDetails}}</div>
+        <div class="mz-card-number-container">
+                <div class="mz-card-number-labels">{{labels.cardNumber}}*</div>
+                <input type="number" class="mz-card-number-input mz-preventArrowKey {% if model.isCardError %} mz-cardError {% endif %}" min="0"  inputmode="numeric" pattern="[0-9]*" value='{{model.prepaidCardNumber}}' name="prepaidCardNumber" data-mz-value="prepaidCardNumber">
+                {% if model.isCardError %} 
+                    <div class="mz-cardErrorMessage">
+                        {% if model.isCardExpired %} 
+                            {{labels.prepaidCardExpired}} 
+                        {% else %}
+                            {{labels.prepaidCardDeactive}}
+                        {% endif %}
+                    </div> 
+                {% endif %}
+        </div>
+        <div class="mz-card-pin-container">
+            <div class="mz-card-pin-labels">{{labels.cardPin}}*</div>
+            <input type="number" class="mz-card-pin-input mz-preventArrowKey" min="0"  inputmode="numeric" pattern="[0-9]*" value="{{model.prepaidCardPin}}" name="prepaidCardPin" data-mz-value="prepaidCardPin">
+            <div class="mz-cardPinLabel">{{labels.blueCardPinText}}</div>
+        </div>
+        {% if model.isCardNumberOrPinError %}
+            <div class="mz-cardNumberPinErrorMessage">{{labels.prepaidCardPinOrNumberError}}</div>
+        {% endif %}
+        {% comment %} <div class="loader-on-btn  {% if !model.isAllowLoading %} hidden {% endif %}"></div> {% endcomment %}
+        <button id="mz-submitPrepaidCardDetails" class="mz-card-detail-submit {% if model.isAllowLoading %} mz-loader-btn {% endif %}">{{labels.submit}}</button>
+    </div>
+{% endif %}
+
+{% if model.displayBluePrepaidAmountCapture %}
+    <div class="mz-amount-deduct-from-prepaid">
+        {% include "modules/checkout/checkout-blue-amount-deduct" %}
+    </div>
+{% endif %}

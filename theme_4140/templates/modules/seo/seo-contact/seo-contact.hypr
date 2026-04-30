@@ -1,0 +1,3 @@
+{% if pageContext.cmsContext.template.path == 'contact' %}
+    {% include "modules/seo/seo-contact/seo-contact-faq" %}
+{% endif %}

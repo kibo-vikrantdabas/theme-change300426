@@ -1,0 +1,25 @@
+<div class="mz-product-size-info-container">
+	<div class="mz-size-chart-display">
+		<a href="{{siteContext.siteSubdirectory}}{% if model.sizeGuideLink %}/{{model.sizeGuideLink}}{% else %}/size-guide{% endif %}" class='mz-size-guide-link' onclick="window.globalEventBus.emit('dataLayerEvent', {'event':'eventTracker','custom_event':'pdp page','event_params': {'event_act':'see size chart','event_lbl': '{{model.content.productFullDescription}}|{{model.productCode}}'}})"><span class="chart-label">{{labels.sizeChart|upper}}</span></a>
+	</div>
+	{% if model|get_product_attribute_value("tenant~asset-model-wearing") and model|get_product_attribute_value("tenant~asset-model-height") %} 
+		<div class="mz-model-info">
+			<div class="mz-model-infodetails">
+				{% comment %} <div class="afg-size-info">
+					<span class="mz-customers-feedbackText">{{labels.sizeChartCustomersFeedback}}</span>
+					<span class="mz-customers-feedback">{{labels.sizeChartCustomersAnswer}}</span>
+				</div> {% endcomment %}
+				<div class="afg-size-info">
+					<span class="mz-model-detailsText">{{labels.sizeChartModelDetailsText}}</span>
+					{% if model|get_product_attribute_value("tenant~asset-model-wearing") and model|get_product_attribute_value("tenant~asset-model-height") %}
+						<span class="mz-model-details"> {{ labels.pdpModelDataHeight}} {{model|get_product_attribute_value("tenant~asset-model-height")}} {{labels.pdpModelDataSize}}{{model|get_product_attribute_value("tenant~asset-model-wearing")}}</span> 
+					{% endif %}
+				</div>
+				{% comment %} <div class="afg-size-info">
+					<span class="mz-size-text">{{labels.sizeChartLengthText}}</span>
+					<span class="mz-size-details">{{labels.sizeChartLength}}</span>
+				</div>{% endcomment %}
+			</div>
+		</div>
+	{% endif %}
+</div>

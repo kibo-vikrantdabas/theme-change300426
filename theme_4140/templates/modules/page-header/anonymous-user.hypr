@@ -1,0 +1,17 @@
+<div class="mz-signup-message">
+    <div class="sign-in-or-create-an">     
+    {{labels.signIn|replace("I","i")}} {{labels.or}} {{labels.signUpLink|replace("A","a")|replace("C","c")}}&colon;</div>
+    <ul>
+        <li>{{labels.signUpBlobOne}}</li>
+        <li>{{labels.signUpBlobTwo}}</li>
+    </ul>
+</div>
+
+{% include "modules/page-header/anonymous-user-account-order-track" %}
+
+<div class="mz-anonymous-loyalty-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Loyalty.svg" alt="loaylity-icon" class="mz-loyalty-icon">
+    <div class="mz-blueloyality-link">
+        <a onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'account','event_params':{'event_act': 'blue loyalty','event_lbl': 'blue loyalty'}})" href="{{siteContext.siteSubdirectory}}/blue-rewards">{{ labels.blueLoyalty }}</a> 
+    </div>
+</div>

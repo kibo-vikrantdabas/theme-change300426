@@ -1,0 +1,8 @@
+<div class="mz-menu-header active">
+    <div class="mz-menu-site-logo">
+        <img src="{{themeSettings.markAndSpencerLogo.imageUrl}}" alt="site-logo"   loading="lazy"/>
+    </div>
+    <div class="mz-menu-close-icon">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Add.svg" alt="close-menu-icon" class="mz-close-menu-icon"   loading="lazy">
+    </div>
+</div>

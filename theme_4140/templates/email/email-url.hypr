@@ -1,0 +1,3 @@
+{% if path != null %}
+	{{siteContext.domains.current.domainName}}{{path}}
+{% endif %}

@@ -1,0 +1,54 @@
+﻿<h2> {{ labels.accountwelcome }}</h2>
+<div class='order-history-container'>
+<div class="account-left-nav">
+      {% include "templates/modules/my-account/my-account-left-nav" %} 
+</div>
+
+<div class="page">
+<div class="mz-list">
+  {% if showPaging %}
+    <h3 class="mz-l-stack-sectiontitle">{{ labels.myOrders }}</h3>
+    {% include "templates/modules/common/order-listing-header" %} 
+  {% else %}
+  <h3 class="mz-l-stack-sectiontitle">{{ labels.myOrders }}</h3>
+  {% include "templates/modules/common/order-listing-header" %}
+  {% endif %}
+  <div class="mz-orderhistory-section mz-l-paginatedlist">
+      {% if model.items %}
+      <div data-mz-orderlist class="mz-l-paginatedlist-list nithya1">
+        {% include "modules/my-account/order-history-list" %}
+      </div>
+      {% if model.pageCount > 1 %}
+        {% if showPaging %}
+        <div data-mz-pagenumbers class="mz-pagenumbers">
+            {% include "modules/common/page-numbers" %}
+        </div>
+        <div data-mz-pagingcontrols class="mz-pagingcontrols">
+            {% include "modules/common/paging-controls" %}
+        </div>
+        {% endif %}
+      {% endif %}
+    {% else %}
+      <div class="mz-accountNoOrders">{{ labels.accountNoOrders }}</div>
+    {% endif %}
+  </div>
+</div>
+
+<div class= "mz-list-order mz-order-tracking-section">
+  {% if showPaging %}
+    {% comment %} {% include "templates/modules/common/order-list-header" %} {% endcomment %}
+  {% else %}
+  {% comment %} <h3 class="mz-l-stack-sectiontitle">{{ labels.order }}</h3> {% endcomment %}
+  {% endif %}
+  <div class="mz-orderhistory-section mz-l-paginatedlist">
+      {% if model.items %}
+      <div data-mz-orderlist class="mz-l-paginatedlist-list">
+        {% comment %} {% include "modules/my-account/order-history-list" %} {% endcomment %}
+      </div>
+    {% else %}
+    <div class="mz-accountNoOrders">{{ labels.accountNoOrders }}</div>
+    {% endif %}
+  </div>
+</div>
+</div>
+</div>

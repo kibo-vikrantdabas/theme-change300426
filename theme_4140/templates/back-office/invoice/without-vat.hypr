@@ -1,0 +1,13 @@
+<table class="grid items-table">
+    <thead class="invoice-item-header"><tr>
+        <th style="width:5%;">{{labels.items}}(s)</th>
+        <th style="width:35%;">&nbsp;</th>
+        <th style="width:10%;">{{labels.volumePriceUnitPrice}} <br/> <span class="unitPriceArabic">سعر الوحدة</span> </th>
+        <th style="width:10%;">{{labels.b2bQuantity}} <br/> <span class="qtyArabic">الكمية</span> </th>
+        <th style="width:10%;">{{labels.discount}}<br/> <span class="discountArabic">تخفيض</span></th>
+        <th style="width:10%;">{{labels.value}} <br/> <span class="valueArabic">قيمة</span></th>
+    </tr></thead>
+    <tbody>
+        {% include "back-office/invoice/item-details-without-vat" %}
+    </tbody>
+</table>

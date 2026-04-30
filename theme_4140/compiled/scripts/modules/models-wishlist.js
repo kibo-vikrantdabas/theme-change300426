@@ -1,0 +1,1 @@
+define(["underscore","modules/backbone-mozu","modules/models-product"],function(e,o,t){var d=o.MozuModel.extend({});return{Wishlist:o.MozuModel.extend({mozuType:"wishlist",relations:{items:o.Collection.extend({model:d})}}),WishlistItem:d}});

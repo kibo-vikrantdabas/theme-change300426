@@ -1,0 +1,17 @@
+{% if themeSettings.isArabicLanguageSite %}
+        {{ dateTimeFormatInput |date("d") }} {% if dateTimeFormatInput | date("F") == "January" %} {{labels.january}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "February" %} {{labels.february}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "March" %} {{labels.march}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "April" %} {{labels.april}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "May" %} {{labels.may}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "June" %} {{labels.june}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "July" %} {{labels.july}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "August" %} {{labels.august}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "September" %} {{labels.september}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "October" %} {{labels.october}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "November" %} {{labels.november}} {% endif %}
+        {% if dateTimeFormatInput | date("F") == "December" %} {{labels.december}} {% endif %} {{ dateTimeFormatInput |date("Y") }}
+{% else %}
+        {{ dateTimeFormatInput |date("d F Y") }}
+{% endif %}
+

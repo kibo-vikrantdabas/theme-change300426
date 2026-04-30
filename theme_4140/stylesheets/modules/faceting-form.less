@@ -1,0 +1,338 @@
+﻿.mz-facetingform {
+    h4 {
+        margin: 0;
+        font-size: @fontSizeLarger;
+        @media only screen and (max-width: 767px) {
+            padding:10px 20px 10px 0px;
+            font-weight: 700;
+            color: @black;
+        }
+        @media only screen and (min-width: 768px) {
+            padding:10px 30px 10px 10px;
+            font-weight: 600;
+            color: @lightBlack;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+    .mz-button{
+        background-color: transparent;
+        border-radius: 0;
+        border: 0;
+        font-weight: 600;
+        font-family: @fontFamily;
+        text-align: right;
+        @media only screen and (min-width: 768px) {
+            color: @blue;
+        }
+        @media only screen and (max-width: 767px) {
+            color: @black;
+            text-decoration: underline;
+            font-size: @fontSizeLarger;
+            font-weight: 700;
+        }
+    }
+    .mz-facetingform-facet {
+        list-style-type: none;
+        @media only screen and (max-width: 767px) {
+            padding: 10px 10px 0 0;
+        }
+        @media only screen and (min-width: 768px) {
+            padding: 0 15px 0 10px;
+            margin: 10px 0;
+        }
+        margin:0;
+        li {
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.hierarchy-parent{
+            margin: 10px 0;
+            flex-direction: column;
+            ul{
+                li{
+                    flex-direction: column;
+                    li.grand.hierarchy-child{
+                        flex-direction: row;
+                    }
+                }
+                li:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .hierarchy-parent > a{
+            display: block;
+            width: 100%;
+            padding-bottom: 5px;
+            border-bottom: 1px solid @lightWhite;
+        }
+        a {
+            text-decoration: none;
+        }
+        input[type="radio"], input[type="checkbox"]{
+            margin: 2px 0 0 0;
+        }
+    }
+    .filter-select{
+        display: flex;
+        align-items: center;
+        .input-check{
+            position: relative;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: pointer;
+            input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+                z-index: 1;
+                &:checked ~ .chkmark {
+                    background-color: @black;
+                }
+                &:checked ~ .chkmark:after {
+                    display: block;
+                }
+            }
+            .chkmark {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 25px;
+                width: 25px;
+                background-color: transparent;
+                border:1px solid @lightWhite;
+                &:after {
+                    left: 9px;
+                    top: 5px;
+                    width: 5px;
+                    height: 10px;
+                    border: solid @white;
+                    border-width: 0 3px 3px 0;
+                    -webkit-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                  }
+            }
+        }
+        .chkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+          }
+    }
+    .mz-facetingform-valuelabel, .filter-count, .mz-facetingform-link {
+        display: inline-block;
+        font-size: @fontSizeLarger - 1;
+        font-weight: 600;
+        letter-spacing:0.5px;
+    }
+    .mz-facetingform-valuelabel{
+        color: @blackColor;
+    }
+    .filter-count {
+        color: @lightGray2;
+    }
+    .mz-facetingform-valuelabel{
+        margin-left: 40px;
+        margin-top: 2px;
+        display: flex;
+        align-items: center;
+    }
+    .mz-facetingform-facet-hierarchy {
+        li{
+            align-items: flex-start;
+        .mz-facetingform-facet-hierarchy {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .grand-hierarchy-container{
+                width: 95%;
+                label{
+                    font-size: @fontSize;
+                }
+            }
+            .hierarchy-child {
+                display: flex;
+                flex-direction: row;
+                margin: 0 0 5px 0;
+                justify-content: space-between;
+                width: 100%;
+                &::before {
+                    display: none;
+                    content: "\221F";
+                    font-size: @fontSizeLarger;
+                }
+            }
+            .grand.hierarchy-child{
+                flex-direction: row;
+                margin: 0 0 15px 0;
+            }
+            .hierarchy-child:last-child{
+                margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .facets-label{
+        cursor: pointer;
+        position: relative;
+        &::after {
+            content: "";
+            border: 0;
+            background: url('@{svgIconsPath}right-arrow.svg') no-repeat;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            right: 0;
+            top: 14px;
+            background-size: 100%;
+            z-index: 1;
+            pointer-events: none;
+            color: @white;
+            transition: .3s ease;
+            transform: rotate(90deg);
+            @media only screen and (min-width: 768px) {
+                right: 10px;
+            }
+        }
+        &.active::after{
+            transform: rotate(270deg);
+            transition: .3s ease;
+        }
+        @media only screen and (min-width: 768px) {
+            border-bottom: 1px solid @grey;
+        }
+    }
+    .mz-l-sidebaritem{
+        .facets-lists{
+            transition: .3s ease;
+            pointer-events: all;
+            opacity: 1;
+            text-transform: capitalize;
+            @media only screen and (min-width: 680px) {
+                overflow-y: auto;
+                max-height: 200px;
+                overflow-x: hidden;
+            }
+            input[type="checkbox"]{
+                width: 25px;
+                height: 25px;
+            }
+            .color-swatch-icon{
+                width: 10px;
+                height: 10px;
+                border-radius: 100%;
+                position: absolute;
+                left: 35px;
+                top: 8px;
+            }
+        }
+        .facets-lists-container.accordion-content {
+            display: none;
+            @media only screen and (min-width: 768px) {
+                margin-top: 15px;
+            }
+        }
+    }
+    .close-filter{
+        position: absolute;
+        z-index: 2;
+        right: 0px;
+        top: 0px;
+        cursor: pointer;
+        @media @tabletAndDesktopScreens {
+            display: none;
+        }
+        img{
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+.filter-mobile-container{
+    @media only screen and (min-width: 768px) {
+        display: none;
+    }
+    @media only screen and (min-width: 712px) {
+        display: none !important;
+    }
+    @media only screen and (max-width: 360px) {
+       margin-left: 5px;
+       margin-right: 5px;
+    }
+    @media only screen and (max-width: 767px) {
+        background: @lightGray3;
+        margin-top:20px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        span{
+            font-size: @fontSize;
+            font-weight: 700;
+        }
+        .filter-btn{
+            background: @darkGray;
+            color: @white;
+            font-size: @fontSize;
+            font-weight: 700;
+            min-width: 100px;
+            padding: 5px 15px 5px 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            .filter-icon{
+                position: absolute;
+                left: 2px;
+                top: 2px;
+            }
+            span.filterCount {
+                display: inline-block;
+                margin: 0 15px 0 7px;
+                font-weight: 600;
+            }
+            path{
+                fill: @white;
+            }
+            .filter-active{
+                display: none;
+            }
+            &.active{
+                .filter-active{
+                    display: block;
+                    position: absolute;
+                    right: 8px;
+                    top: 7px;
+                }
+            }
+        }
+
+    }
+}
+.sticky-active{
+    position: fixed;
+    width: 100%;
+    top: 45px;
+    left: 0;
+    z-index: 5;
+}
+.mobileview{
+    @media @tabletAndDesktopScreens {
+        display: none;
+    }
+}
+.desktopview{
+    @media @mobileScreens {
+        display: none;
+    }
+}

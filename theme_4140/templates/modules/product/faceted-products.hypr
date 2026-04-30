@@ -1,0 +1,116 @@
+﻿{% if not pageContext.query.partial %}
+<script type="text/json" id="data-mz-preload-facetedproducts">
+{
+        
+	"facets": {% json model.facets %},
+	"currentPage": {{ model.currentPage }},
+	"firstIndex": {{ model.firstIndex }},
+	"hasNextPage": {{ model.hasNextPage|lower }},
+	"hasPreviousPage": {{ model.hasPreviousPage|lower }},
+	"lastIndex": {{ model.lastIndex }},
+	"middlePageNumbers": {% json model.middlePageNumbers %},
+	"pageCount": {{ model.pageCount }},
+	"pageSize": {{ model.pageSize }},
+	"startIndex": {{ model.startIndex }},
+	"totalCount": {{ model.totalCount }},
+	"currentSort": "{{ model.currentSort }}"
+}
+</script>
+<script type="text/javascript">
+    var productData = [
+        {% for item in model.items %}
+            {
+                "productCode": "{{item.productCode}}",
+                "productName": "{{item.content.productName}}",
+                "price": "{% if item.price.salePrice %}{{item.price.salePrice}}{% else %}{{item.price.price}}{% endif %}",
+                "productBrand": '{% for itemProp in item.properties %}{% if itemProp.attributeFQN == "tenant~brand" %}{{itemProp.values|first|prop("stringValue")|lower}}{% endif %}{% endfor %}'
+            },
+        {% endfor %}
+    ];
+    window.plpProductData = productData;
+</script>
+{% endif %}
+<div class="plp-container afg-ms-plp-container">
+    <input type="hidden" class="facet-data-available" value="{% if model.facets %}1{% else %}0{% endif %}" >
+{% if model.facets %}
+<div data-mz-facets class="mz-l-sidebar filter-facets-container afg-ms-filter-sidebar">
+    <div class="mobile-filter-loader-section">
+        <div class="mobile-filter-loader">&nbsp;</div>    
+    </div>
+	{% dropzone "sidebar-above-facets" scope="template" %}
+    {% include "modules/product/faceting-form" %}
+	{% dropzone "sidebar-below-facets" scope="template" %}
+    <div class="mobile-filter-view-items">
+        <button data-mz-action="viewFilterFacetsMobile" class="filter-results-mobile" data-mz-url="">{{ labels.viewItems }} <span id="view-items-btn-count" style="display: none;">({{ model.totalCount }})<span> </button>
+    </div>
+</div>
+{% endif %}
+
+<div class="modal fade" id="mz-my-store-selector">
+    {% include "modules/my-store/my-store-location-select" %}
+</div>
+<div class="mz-l-paginatedlist">
+    <div class="mz-l-paginatedlist-header">
+        {% if themeSettings.allowFilterByLocationInventory %}
+            <div data-mz-my-store class="mz-my-store">
+                {% include "modules/common/my-store" %}
+            </div>
+        {% endif %}
+        {% comment %} <div data-mz-pagenumbers class="mz-pagenumbers">
+            {% include "modules/common/page-numbers" %}
+        </div> {% endcomment %}
+        <div data-mz-pagingcontrols class="mz-pagingcontrols">
+            {% include "modules/common/paging-controls" %}
+        </div>
+    </div>
+
+    <div class="filter-mobile-container">
+        <span>{{ model.totalCount }} {{labels.items}}</span>
+        <div class="filter-btn">
+            <span class="d-flex filter-icon"><svg width="25px" height="25px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>icon/Filter</title>
+                <g id="icon/Filter" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <path d="M17.2222222,18.1428571 L11,18.1428571 L11,21.2857143 L17.2222222,21.2857143 L17.2222222,24.4285714 L20.3333333,24.4285714 L20.3333333,15 L17.2222222,15 L17.2222222,18.1428571 Z M39,18.1428571 L18.7777778,18.1428571 L18.7777778,21.2857143 L39,21.2857143 L39,18.1428571 Z M32.7777778,33.8571429 L39,33.8571429 L39,30.7142857 L32.7777778,30.7142857 L32.7777778,27.5714286 L29.6666667,27.5714286 L29.6666667,37 L32.7777778,37 L32.7777778,33.8571429 Z M11,33.8571429 L31.2222222,33.8571429 L31.2222222,30.7142857 L11,30.7142857 L11,33.8571429 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                </g>
+            </svg>
+            </span>
+            <span>{{labels.filters}}</span>
+            <span  class="d-flex filter-active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </span>
+        </div>
+    </div>
+
+    <div class="filter-sort-bar">
+        <div class="filter-sort-bar-item-count">{{ model.totalCount }} {{labels.items}}</div>
+        <div class="wrapper">
+            <div class="grid-layout-selection">
+                {% include "modules/product/product-grid" %}
+            </div>
+            <div data-mz-pagesort class="mz-sortby filter-sort-by sort-order-dropdown">
+                {% include "modules/common/page-sort" %}
+            </div>
+        </div>
+    </div>
+
+    <div data-mz-productlist class="mz-l-paginatedlist-list">
+        {% include "modules/product/product-list-tiled" %}
+    </div>
+    <div class="mz-l-paginatedlist-footer">
+     {% if model.hasNextPage %}
+        <div class="mz-loader-icon plp-loader" style="display:none;">
+        Loading
+        </div>
+        <button id="loadMoreBtn" class="afg-load-more-btn"
+            data-mz-next-start="{{ model.lastIndex }}"
+            data-mz-total="{{ model.totalCount }}"
+            style="display: none;">{{labels.loadMore}}</button>
+     {% endif %}
+    </div>
+    {% if pageContext.cmsContext.template.path|lower == "category" %}
+        <div id="mz-bannersPLPContainer">
+            {% include_entities "modules/product/plp-banners" listFQN="banners@afg" %}
+        </div>
+    {% endif %}
+</div>
+</div>

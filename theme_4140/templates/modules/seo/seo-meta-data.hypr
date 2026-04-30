@@ -1,0 +1,48 @@
+{% if pageContext.cmsContext.template.path == 'home' %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "{{themeSettings.organizationlName}}",
+            "alternateName": "M&S",
+            "url": "{{pageContext.url}}",            
+            {% if {{pageContext.url|contains(siteContext.siteSubdirectory)}} %}
+                {% if {{pageContext.url|contains('/en-sa/')}} or {{pageContext.url|contains('/en-kw/')}} or {{pageContext.url|contains('/en-ae/')}} or {{pageContext.url|contains('/en-bh/')}} or {{pageContext.url|contains('/en-qa/')}} or {{pageContext.url|contains('/en-om/')}} or {{pageContext.url|contains('/ar-sa/')}} or {{pageContext.url|contains('/ar-kw/')}} or {{pageContext.url|contains('/ar-ae/')}} or {{pageContext.url|contains('/ar-bh/')}} or {{pageContext.url|contains('/ar-qa/')}} or {{pageContext.url|contains('/ar-om/')}}  %}
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "{{pageContext.url}}search?query={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+            {% else %}
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "{{pageContext.url}}/search?query={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+            {% endif %}
+            {% else %}
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "{{pageContext.url}}search?query={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+            {% endif %}          
+    }
+    </script>
+{% if themeSettings.isMarckupSchemaSite %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "{% if themeSettings.isArabicLanguageSite %}{{labels.arabicorgname}}{% else %}{{themeSettings.organizationlName|safe}} {% endif %}",
+        "url": "{{pageContext.url}}",
+        "logo": "{{themeSettings.markAndSpencerLogo.imageUrl}}",
+        "sameAs":[
+                    "{{themeSettings.facebokURLOne}}",
+                    "{{themeSettings.youtubeURL}}",
+                    "{{themeSettings.instagramURLOne}}"
+                ]                     
+    }
+    </script>
+{% endif %}    
+{% endif %}

@@ -1,0 +1,37 @@
+{% if detail.info|first %} 
+	<div class="product-details-care-container">
+		<div class="product-details-care-name">
+		{% if detail.name == "STYLE" || detail.name == "COMPOSSIONS" || detail.name == "COMPOINCIONS" %}
+			{% if detail.name == "STYLE" %}
+				{{labels.style}}
+			{% endif %}
+			{% if detail.name == "COMPOSSIONS" %}
+				{{labels.compossions}}
+			{% endif %}
+			{% if detail.name == "COMPOINCIONS" %}
+				{{labels.compoincions}}
+			{% endif %}
+		{% else %}
+			{{detail.name}}
+		{% endif %}
+		</div>
+		<ul>
+			{% for item in detail.info %}
+			{% if item !== null %}
+				{% if item.icon %}
+					<li>
+						<span><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}{{item.icon}}.svg"/></span>
+						<span>{{item.name}}</span>
+					</li>
+				{% else %}
+					{% if item.name%}
+						<li>{{item.name}}</li>
+					{% else %}
+						<li >{{item}}</li>
+					{% endif %}
+				{% endif %}
+			{% endif %}	
+			{% endfor%}
+		</ul>
+	</div>
+{% endif %}

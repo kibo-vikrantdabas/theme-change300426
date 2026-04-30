@@ -1,0 +1,66 @@
+{% if items %}
+    {% set_var totalCategories=items.length %}
+    {% set_var totalHiddenCategories=0 %}
+    {% for sublink in items %}
+        {% if sublink.isHidden==true %}
+            {% with totalHiddenCategories|add(1) as increment%}
+                {% set_var totalHiddenCategories=increment %}
+            {% endwith %}
+        {% endif %}
+    {% endfor %}
+    <div class="mz-sitenav-sub-container mz-hide-on-mobile {% if totalCategories == totalHiddenCategories %} mz-emptyCategory {% endif %}">
+
+        {% if totalCategories == totalHiddenCategories %}
+            {% comment %} {% include "modules/global-nav/desktop/global-nav-desktop-no-categories" %} {% endcomment %}
+        {% else %}
+            <div class="mz-sitenav-child-container">
+                {% for sublink in items %}
+                    {% if not sublink.isHidden %}
+                        <div data-mz-role="sitemenu-item" class="mz-sitenav-item">
+                            <!-- uncoment out  this block to get 3rd laver of nav -->
+                            
+                            {% if sublink.items %}
+                                <div class="second-level-item">
+                                    <a class="mz-sub-sitenav-link mz-placeholder-sitenav-link">{{ sublink.name|safe }}</a>
+                                    <div class="mz-sitenav-sub-sub">
+                                        {% for subsublink in sublink.items %}
+                                            {% if not subsublink.isHidden %}
+                                                <div class="mz-sitenav-sub-sub-item">
+                                                    {% if subsublink.name|split(" ")|first|lower == "view"  %}
+                                                            <a class="mz-sitenav-sub-sub-item-link mz-view-category" {% if sublink.openInNewWindow %}target='_self'{% endif %} href="{{sublink.url}}">{{ subsublink.name|safe }}
+                                                                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}green-right-arrow.svg" alt="parent-category-icon" class="mz-view-category-right-arrow">
+                                                            </a>
+                                                    {% else %}
+                                                        <a class="mz-sitenav-sub-sub-item-link" {% if sublink.openInNewWindow %}target='_self'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|safe }}</a>
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <a class="mz-sub-sitenav-link mz-placeholder-sitenav-link" {% if sublink.openInNewWindow %}target='_self'{% endif %} href="{{sublink.url}}">{{ sublink.name|safe }}</a>
+                            {% endif %}
+                            
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% comment %} {% with index|add(1) as firstImagePane %}
+        {% with firstImagePane|multiply(50)|add(firstImagePane) as secondImagePane %}
+            {% include "modules/global-nav/desktop/global-nav-dropzone" firstImagePane secondImagePane %}
+        {% endwith %}
+        {% endwith %}   {% endcomment %}
+
+        {% include_entities "modules/global-nav/desktop/global-nav-image-entity" listFQN="megamenuimage@afg"  categoryCode %}  
+        
+    </div>
+{% else %}
+    {% comment %} <div class="mz-sitenav-sub-container mz-hide-on-mobile ">
+        {% include "modules/global-nav/desktop/global-nav-desktop-no-categories" %}
+    </div> {% endcomment %}
+{% endif %}
+
+

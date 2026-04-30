@@ -1,0 +1,9 @@
+{% if pageContext.cmsContext.template.path == 'parent-category'  or pageContext.cmsContext.template.path == 'category' %} 
+    <meta name="description" content="{{ pageContext.metaDescription|safe }}">    
+{% else %}
+    {% if pageContext.cmsContext.template.path == 'product' %}
+        <meta name="description" content="{{ pageContext.metaDescription|safe }}"> 
+    {% else %}
+        <meta name="description" content="{{ pageContext.metaDescription|safe }}">  
+    {% endif %}
+{% endif %}

@@ -1,0 +1,12 @@
+
+<div class="mz-signup-email-main hide-section">
+    <div class="mz-sinup-email-footer-clp">
+        <div class="mz-sinup-email-footer-clp-text">{{labels.signInFooterText}}</div>
+        <div class="mz-sinup-email-footer-clp-field">
+            <form>
+                <input type="text" class="sinup-email-field" name="footer-signup-email" placeholder="{{labels.signInFormemail}}" disabled="disabled" />
+                <input type="submit" class="sinup-email-submit" name="submit" value="{{labels.go}}" disabled="disabled" />
+            </form>
+        </div>
+    </div>
+</div>

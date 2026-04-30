@@ -1,0 +1,9 @@
+<ul class="hours-dropdown">
+	<li class="hours-dropdown-day">{{labels.monday}}: {{regHrs.monday.label}}</li>
+	<li class="hours-dropdown-day">{{labels.tuesday}}: {{regHrs.tuesday.label}}</li>
+	<li class="hours-dropdown-day">{{labels.wednesday}}: {{regHrs.wednesday.label}}</li>
+	<li class="hours-dropdown-day">{{labels.thursday}}: {{regHrs.thursday.label}}</li>
+	<li class="hours-dropdown-day">{{labels.friday}}: {{regHrs.friday.label}}</li>
+	<li class="hours-dropdown-day">{{labels.saturday}}: {{regHrs.saturday.label}}</li>
+	<li class="hours-dropdown-day">{{labels.sunday}}: {{regHrs.sunday.label}}</li>
+<ul>

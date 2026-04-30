@@ -1,0 +1,63 @@
+{% if facetValues and facetValues.length > 0 %}
+<div class="mz-l-sidebaritem fl-container">
+    <h4 class="facets-label accordion-toggle ">
+    {% if facet.label|lower == 'price' %} {{labels.price}}{% endif %}
+    {% if facet.label|lower == 'category' and themeSettings.isArabicLanguageSite %} {{ labels.facetCategoryLabel }}
+    {% else %}{{ facet.label }}{% endif %}
+    </h4>
+    <div class="facets-lists-container accordion-content mobile-collapse">
+        {% if facetValues and facetValues.length > 1 %}
+        <div class="filter-search">
+            <input type="text" value="" class="search-filter" placeholder="{{ labels.search }}" />
+        </div>
+        {% endif %}
+       
+        <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy facets-lists">
+            {% for fval in facetValues %}
+            {% if fval.isDisplayed %}
+            <li class="not-hierarchy">
+                        <div class="filter-select">
+                          <div class="input-check">
+                            <span style="display:none;">{% dump fval %}</span>
+                            <input type="checkbox" id="{{facet.field|slugify }}_{{ fval.value|slugify }}" 
+                            class="mz-facetingform-value" {% if fval.isApplied %}checked="checked"{% endif %} data-mz-facet="{{ facet.field }}" 
+                            data-mz-facet-value="{{ fval.value }}" data-mz-facet-label="{{ fval.label }}" {% if fval.value != pageContext.categoryId %} data-mz-url="{{siteContext.siteSubdirectory}}{% make_url "facet" fval %}" data-mz-mobile-url="{{siteContext.siteSubdirectory}}{% make_url "facet" fval %}" {% endif %}>
+                            <span class="chkmark"></span>
+                            <label class="mz-facetingform-valuelabel" for="{{facet.field|slugify }}_{{ fval.value|slugify }}">{{ fval.label }}</label>
+                            </div>
+                            </div>
+               {% if themeSettings.showChildCategoriesInFaceting and fval.childrenFacetValues.length > 0 %}
+                <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy">
+                {% for child in fval.childrenFacetValues %}
+                    {% if child.isDisplayed and not child.isEmpty %}
+                    <li>
+                        <div  class="hierarchy-child">
+                          <a href="{% make_url "facet" child %}" class="mz-facetingform-link" data-mz-action="drillDown" data-mz-hierarchy-id="{{ child.value }}" data-mz-facet-value="{{ child.filterValue }}" data-mz-facet="{{ facet.field }}">{{ child.label|safe }}</a>
+                          <span class="filter-count">({{ child.count }})</span>
+                        </div>
+                          <!-- 3rd Level Sub Categories-->
+                          {% if themeSettings.showChildCategoriesInFaceting and child.childrenFacetValues.length > 0 %}
+                          <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy grand-hierarchy-container">
+                            {% for grandchild in child.childrenFacetValues %}
+                            <li>
+                              <div class="grand hierarchy-child">
+                                <a href="{% make_url "facet" grandchild %}" class="mz-facetingform-link" data-mz-action="drillDown" data-mz-hierarchy-id="{{ grandchild.value }}" data-mz-facet-value="{{ grandchild.filterValue }}" data-mz-facet="{{ facet.field }}">{{ grandchild.label|safe }}</a>
+                                <span class="filter-count">({{ grandchild.count }})</span>
+                              </div>
+                            </li>
+                            {% endfor %}
+                          </ul>
+                          {% endif %}
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <span class="filter-count">({{ fval.count }})</span>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+</div>
+</div>
+{% endif %}

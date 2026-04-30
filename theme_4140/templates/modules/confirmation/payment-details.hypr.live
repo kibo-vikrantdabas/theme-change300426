@@ -1,0 +1,118 @@
+<div class="mz-confirmation-payment-details">
+    <div class="mz-checkout-payment">
+        <dd class="mz-l-stack-item">
+        {% if model.billingInfo.paymentType == "Check" %}{{ labels.cashOnDelivery }}{% endif %}
+        {% comment %} {% if model.billingInfo.paymentType == "CreditCard" %}{{ labels.creditCard }}{% endif %} {% endcomment %}
+        {% if model.billingInfo.paymentType == "GiftCard" %}{{ labels.giftCard }}{% endif %}
+        {% if model.billingInfo.paymentType == "StoreCredit" %}{{ labels.digitalCredit }}{% endif %}
+        {% if model.billingInfo.paymentType == "PurchaseOrder" %}{{ labels.purchaseOrder }} - {{ model.billingInfo.purchaseOrder.purchaseOrderNumber }}{% endif %}
+        {% if model.billingInfo.paymentType|lower == "token" %}
+          {%if model.billingInfo.token.type|lower == "paywithamazon" %}
+              {{ labels.payWithAmazon }}
+          {%endif%}
+          {% if model.billingInfo.token.type|lower == "applepay" %}
+              {{ labels.applePay }}
+          {% endif %}
+          {% if model.billingInfo.token.type|lower == "bluewallet" %}
+              {{labels.blueWalletPayment}}
+         {% endif %}
+         {% if model.billingInfo.token.type|lower == "blueprepaidcard" %}
+              Blue Prepaid Card
+         {% endif %}
+        {% endif %}
+        </dd>
+        {% if model.billingInfo.paymentType == "StoreCredit" or model.billingInfo.paymentType == "GiftCard" or model.billingInfo.paymentType|lower == "paypalexpress2" or model.billingInfo.paymentType|lower == "paywithamazon" or model.paymentType|lower == "token"%}
+            {% if model.paymentType|lower == "token"%}
+                {%if model.billingInfo.token.type|lower == "paywithamazon" %}
+                    <dd class="mz-l-stack-item"><img src="{{siteContext.cdnPrefix}}/resources/images/amazonpay60x38.png"/></dd>
+                {%endif%}
+                {% if model.billingInfo.token.type|lower == "applepay" %}
+                <dd class="mz-l-stack-item"><img width="100px" src="{{siteContext.cdnPrefix}}/resources/images/Apple_Pay_Mark.png"/></dd>
+                {% endif %}
+            {%endif%}
+            {%if model.billingInfo.paymentType|lower == "paywithamazon" %}
+                <dd class="mz-l-stack-item"><img src="{{siteContext.cdnPrefix}}/resources/images/amazonpay60x38.png"/></dd>
+            {%endif%}
+            {% if model.billingInfo.paymentType|lower == "paypalexpress2" %}
+                <dd class="mz-l-stack-item">
+                    <img alt="PayPal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" align="left" width="100px" height="26px" style="margin-right:7px;">
+                </dd>
+            {% endif %}
+            {% if model.billingInfo.paymentType|lower == "storecredit" %}
+            <div class="mz-l-stack-item">
+                <dt>{{ labels.digitalCreditCode }}:</dt>
+                <dd>{{ model.billingInfo.storeCreditCode }}</dd>
+            </div>
+            {% endif %}
+            {% if model.billingInfo.paymentType|lower == "giftcard" %}
+            <div class="mz-l-stack-item">
+                <small>{{ labels.cardNumber }}:</small>
+                <div>{{ model.billingInfo.card.cardNumberPartOrMask|default("****************") }}</div>
+            </div>
+            {% endif %}
+        {% endif %}
+        {% if model.billingInfo.paymentType == "CreditCard" %}
+            <div class="mz-l-stack-item">
+                {% comment %} <small>{{ labels.cardType }}:</small> {% endcomment %}
+                <div>
+                    {% if model.billingInfo.card.paymentOrCardType == 'BLUEPREPAIDCARD' or model.billingInfo.card.paymentOrCardType|lower == 'mc' %}
+                        {% if model.billingInfo.card.paymentOrCardType == 'BLUEPREPAIDCARD' %}
+                            {{labels.bluePrepaidPayment}}
+                        {% endif %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'mc' %}
+                            {{labels.ccMastercard}}
+                        {% endif %}
+                    {% else %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'visa' %}
+                            {{labels.ccVisa}}
+                        {% endif %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'amex' %}
+                            {{labels.ccAmericanExpress}}
+                        {% endif %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'jcb' %}
+                            {{labels.ccJcb}}
+                        {% endif %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'discover' %}
+                            {{labels.ccDiscover}}
+                        {% endif %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'knetcard' %}
+                            {{labels.paidThroughCreditCardKNET}}
+                        {% endif %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'applepay' %}
+                            {{labels.paidThroughCreditCardApplePay}}
+                        {% endif %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'benefitwallet' %}
+                            {{labels.benefitCard}}
+                        {% endif %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'qpaywallet' %}
+                            {{labels.qpayCard}}
+                        {% endif %}
+                        {% if model.billingInfo.card.paymentOrCardType|lower == 'omanwallet' %}
+                            {{labels.omannetCard}}
+                        {% endif %}
+                       {% comment %} {{ model.billingInfo.card.paymentOrCardType|title  }} {% endcomment %} 
+                    {% endif %}
+                </div>
+            </div>
+            {% comment %} <div class="mz-l-stack-item">
+                <small>{{ labels.cardNumber }}:</small>
+                <div>{{ model.billingInfo.card.cardNumberPartOrMask|default("****************") }}</div>
+            </div> {% endcomment %}
+        {% endif %}
+        {% if model.billingInfo.paymentType == "Check" %}
+            <!--
+            <small>{{ labels.checkNumber }}</small>
+            <div>{{ model.billingInfo.check.checkNumber }}</div>
+            -->
+            {% comment %} <div class="mz-l-stack-item">
+                <small><strong>{{ labels.mailCheckTo }}</strong></small>
+                <div class="mz-addresssummary">
+                    <span>{{ ViewData.mailCheckTo.shippingOriginContact.firstName}} {{ ViewData.mailCheckTo.shippingOriginContact.lastNameOrSurname }}</span>
+                    <span>{{ ViewData.mailCheckTo.shippingOriginContact.companyOrOrganization }}</span>
+                    {% include "modules/common/address-summary" with model=ViewData.mailCheckTo %}
+                </div>
+            </div>
+            {% endcomment %}
+        {% endif %}
+    </div>   
+</div>

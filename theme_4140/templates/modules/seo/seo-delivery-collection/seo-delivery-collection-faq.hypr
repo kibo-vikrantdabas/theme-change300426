@@ -1,0 +1,55 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What are your delivery options?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TRACKED DELIVERY: 6-8 working days.STORE COLLECTION: 7-10 working days.CASH ON DELIVERY: 7-10 working days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I have to pay to any customs and/or duty chargers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, the amount paid by you is fully inclusive of delivery to the specified delivery address and all duties, taxes and customs clearance fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will all my items be shipped together?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In most cases your whole order will be delivered at the same time, however it may be in separate parcels due to product availability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What details are required when collecting my order from store?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You will need to show photo identification when collecting your order. If someone else is collecting an order on your behalf, they will also need to provide the order number."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I know when my order is ready to collect from store?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You will receive an email when your order is available for collection in your selected store."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long do I have to collect my order from store?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You will have 7 days to collect your order."
+        }
+      }
+      ]
+    }
+</script>

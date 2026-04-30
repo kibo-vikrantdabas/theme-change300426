@@ -1,0 +1,3 @@
+{% if pageContext.cmsContext.template.path == "personal-details" %}
+    {% include "modules/seo/seo-personal-details/seo-personal-details-faq" %}
+{% endif %}

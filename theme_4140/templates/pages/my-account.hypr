@@ -1,0 +1,112 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.yourAccount %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-myaccount {% endblock body-tag-classes %}
+
+{% block body-content %}
+
+{% require_script "pages/myaccount" %}
+
+{% preload_json model "customer" %}
+
+<div class="mz-l-container page-container">
+    <div class="myacc__breadcrumbs">
+        <a href="{{siteContext.siteSubdirectory}}/" class="myacc__breadcrumb">{{labels.home}} /</a>
+        <span class="backto-myacc myacc__breadcrumb"> <span class="mobile-arrow-ac" style="display: none;"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}left-arrow.svg" alt="Chevron" class="mz-myacc-arrow-icon"> </span> {{labels.myAccount}}</span>
+        <span class="myacc-page-title myacc__breadcrumb"></span>
+    </div>
+</div>
+<div class=" myacc myaccwithnav">
+    <div class="myacc_wrapper" id="myaccount-main" style="display:none">
+        <div class="myacc__top">
+            <h2>{{labels.accountWelcomBack}}, {{model.firstName}}</h2>
+            <a href="{{siteContext.siteSubdirectory}}/logout" data-mz-action="logout" class="mz-utilitynav-link logout" onclick="window.globalEventBus.emit('dataLayerEvent',{'event': 'eventTracker','custom_event':'account','event_params':{'event_act':'sign out', 'event_lbl': 'sign out', 'login_status':'logged-out'}})">
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}LogOut.svg" alt="logout-icon" class="mz-sigout-icon"  loading="lazy">
+                <span>{{ labels.signOut }}</span>
+            </a>
+        </div>
+        {% comment %} <div class="myacc__banner">
+        {% dropzone "my-account-top" scope="template" %}
+        </div> {% endcomment %}
+          <div class="myacc__banner_new">
+            {% dropzone "my-account-top-new" scope="template" %}
+         </div>  
+         {% comment %} <div class="hero-image">
+            <div class="hero-text">
+              <h1>BLUE LOYALTY IS HERE</h1>
+              <p>Get ready unlimited experience with Blue and enjoy amazing rewards everytime you shop at your favourite stores.</p>
+              
+            </div>
+          </div> {% endcomment %}
+        <div class="myacc__links_container myaccount_links_container_view">
+            {% include "modules/my-account/my-account-nav" with navtarget="body" %}
+        </div>
+        <div class="myacc__signout">
+            <a href="{{siteContext.siteSubdirectory}}/logout" data-mz-action="logout" class="mz-utilitynav-link logout">
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}LogOut.svg" alt="logout-icon" class="mz-sigout-icon"  loading="lazy">
+                {{ labels.signOut }}
+            </a>
+        </div>
+    </div>
+    {% comment %} <div class="mz-l-sidebar mz-myaccount-nav">
+        {% include "modules/my-account/my-account-nav" with navtarget="body" %}
+    </div> {% endcomment %}
+
+    <div id="account-panels" class="mz-myaccount-panels mz-l-stack mz-l-stack-large " >
+        {% if model.messages %}
+        <div id="account-messages">
+            {% include "modules/common/message-bar" with model=model.messages %}
+        </div>
+        {% endif %}
+
+        <div class="mz-l-stack-section mz-accountsettings hide-sections" id="account-settings" >
+            {% include "modules/my-account/my-account-settings" %}
+        </div>
+
+
+        <div class="mz-l-stack-section mz-passwordsection hide-sections" id="password-section">
+            {% include "modules/my-account/my-account-password" %}
+        </div>
+
+        {% if siteContext.generalSettings.isWishlistCreationEnabled %}
+
+        <div class="mz-l-stack-section mz-accountwishlist hide-sections" id="account-wishlist">
+            {% include "modules/my-account/my-account-wishlist" with model=model.wishlist %}
+        </div>
+        {% endif %}
+
+
+        <div class="mz-l-stack-section mz-accountorderhistory hide-sections" id="account-orderhistory">
+            {% include "modules/my-account/my-account-orderhistory" with model=model.orderHistory showPaging=true %}
+        </div>
+
+
+        <div class="mz-l-stack-section mz-accountreturnhistory hide-sections" id="account-returnhistory">
+            {% include "modules/my-account/my-account-returnhistory" with model=model.returnHistory %}
+        </div>
+
+
+        <div class="mz-l-stack-section mz-accountpaymentmethods hide-sections" id="account-paymentmethods">
+            {% include "modules/my-account/my-account-paymentmethods" %}
+        </div>
+
+
+        <div class="mz-l-stack-section mz-accountaddressbook hide-sections" id="account-addressbook">
+            {% include "modules/my-account/my-account-addressbook" %}
+        </div>
+
+        <a id="{{ labels.digitalCreditsAnchor }}"></a>
+        <div class="mz-l-stack-section mz-accountstorecredit hide-sections" id="account-storecredit">
+            {% include "modules/my-account/my-account-storecredit" %}
+        </div>
+
+        {% include "modules/my-account/my-account-print-window" %}
+
+
+    </div>
+</div>
+{% endblock body-content %}
+
+{% block body-below-content %}
+{% endblock body-below-content %}

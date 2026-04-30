@@ -1,0 +1,48 @@
+﻿
+<div class="myacc__links_container-left">
+    <div class="nav_links">
+        <h2>{{ labels.orders }}</h2>
+        <ul>
+            <li class="order-list-view"><a href="{{siteContext.siteSubdirectory}}/myaccount#account-orderhistory" data-mz-acc-link="account-orderhistory">{{labels.onlineOrderAndReturn}}</a></li>
+        </ul>
+    </div>
+    <div class="nav_links_blue">
+        <h2>{{ labels.blueLoyalty }}</h2>
+        <ul>
+            <li><a href="{{siteContext.siteSubdirectory}}/blue-rewards">{{labels.yourBlueLoyaltysOffers}}</a></li>
+            <li><a href="{{siteContext.siteSubdirectory}}/blue-rewards#blue-loyalty-howWorks">{{labels.howDoesItWork}}</a></li>
+            <li><a href="https://www.mybluerewards.com/rewards/faqs" target="_blank">{{labels.blueLoyaltyFAQ}}</a></li> 
+        </ul>
+    </div>
+    {% comment %} <div class="nav_links account_settings">
+        <h2>{{ labels.accountSettings }}</h2>
+        <ul>
+            <li><a href="">{{labels.marketingPreference}}</a></li>
+        </ul>
+    </div>  {% endcomment %}
+    
+   
+</div>
+<div class="myacc__links_container-right">
+    <div class="nav_links">
+        <h2>{{ labels.profile }}</h2>
+        <ul>
+            <li><a class="mz-scrollnav-link"  data-mz-acc-link="account-settings">{{labels.personalAndContactDetails}}</a></li>
+            <li><a class="mz-scrollnav-link"  data-mz-acc-link="password-section">{{labels.changePassword}}</a></li>
+        </ul>
+    </div>
+    <div class="nav_links payment_and_delivery">
+        <h2>{{ labels.paymentAndDelivery }}</h2>
+        <ul>
+            <li><a data-mz-acc-link="account-paymentmethods">{{labels.paymentCards}}</a></li>
+            <li><a data-mz-acc-link="account-addressbook">{{labels.deliveryAddress}}</a></li>
+        </ul>
+    </div>
+    {% comment %} <div class="nav_links account_settings">
+        <h2>{{ labels.accountSettings }}</h2>
+        <ul>
+            <li><a href="">Marketing preferences</a></li>
+        </ul>
+    </div> {% endcomment %}
+</div>    
+{% require_script "modules/scroll-nav" %}

@@ -1,0 +1,40 @@
+.mz-sitenav-sub-container-mobile > .global-nav-m-no-categories {
+	display: flex;
+	flex-direction: column;
+
+	img{
+		width: 78px;
+		height: 85px;
+		margin: 27px auto;
+	}
+
+	div{
+		margin: 0 auto;
+	}
+	.categoryListing.no-categories{
+		width:100%;
+		padding-top: 48px;
+		.mainCategories{
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			overflow-x: hidden;
+			.categoriesBlock{
+				width: inherit;
+			}
+			.categoriesBlock, img {
+				margin: 0;
+			}
+		}
+	}
+	.no-categories-whoops{
+		font-size: 26px;
+		font-weight: @fontBold;
+		line-height: 40px;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	.check-other-categories-m{
+		font-size: @fontSize;
+		text-align: center;
+	}
+}

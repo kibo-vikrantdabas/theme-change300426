@@ -1,0 +1,73 @@
+.account-left-nav {
+    margin-left: 40px;
+    width: 32%;
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
+    .title {
+        font-size: 16px;
+        font-weight: @fontBold;
+        color: @blackColor;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        cursor: pointer;
+        position: relative;
+        &:after {
+           background: url('@{iconsPath}/arrow-down.png') no-repeat;
+           width: 35px;
+           height: 24px;
+           background-size: 50% 45%;
+           position: absolute;
+           display: inline-block;
+           content: '';
+           left: -7px;
+           top: -10px;
+           transform: rotate(-180deg);
+       }
+       &.active:after {
+           transform: none;
+           top: 6px;
+           left: 10px;
+       }
+    }
+    .nav_links, .nav_links_blue {
+        margin-bottom: 20px;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        background: @lightGray;
+        border-bottom: 1px solid @lightWhite;
+        li {
+           padding: 10px 15px 15px 20px;
+           font-size: 16px;
+           font-weight: 600;
+
+           border-top: 1px solid @lightWhite;
+           a {
+               text-decoration: none;
+               color: @blackColor;
+
+           }
+        }
+    }
+}
+.myaccwithnav {
+   //width: 100%;
+   //max-width: 98%;
+   .order-history-container {
+       display: flex;
+    //    column-gap: 42px;
+   }
+}
+.myacc {
+.mz-accountorderhistory {
+   h2 {
+       font-weight: @fontBold;
+       font-size: 22px;
+       color: @blackColor;
+       margin: 0px 0 20px 0;
+       font-family: 'MSLondon',sans-serif;
+   }
+}
+}

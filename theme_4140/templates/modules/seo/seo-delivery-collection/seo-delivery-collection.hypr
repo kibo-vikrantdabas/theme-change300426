@@ -1,0 +1,4 @@
+{% if pageContext.cmsContext.template.path == 'delivery-collection' %}
+    {% include "modules/seo/seo-delivery-collection/seo-delivery-collection-faq" %}
+    {% comment %} {% include "modules/seo/seo-delivery-collection/seo-delivery-collection-howTo" %} {% endcomment %}
+{% endif %}

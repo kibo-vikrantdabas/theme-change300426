@@ -1,0 +1,5 @@
+﻿<ul class="mz-locationlist">
+    {% for location in locations %}
+        <li>{% include "modules/location/location-listing-v2" with location=location %}</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,4 @@
+﻿{% extends "back-office/base" %}
+{% block body-content %}
+{% include "back-office/pick-list-content" with shipments=shipments %}
+{% endblock body-content %}

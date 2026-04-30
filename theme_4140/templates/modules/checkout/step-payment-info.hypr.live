@@ -1,0 +1,277 @@
+<h3 class="mz-formstep-header mz-checkoutform-header {% if model.stepStatus  == 'new' %} payment-header {% else %} payment-header-incomplete {% endif %} ">
+    3. {{ labels.paymentInformation }}
+    {%if not model.isExternalCheckoutFlowComplete%}
+        {% comment %} <a href="javascript:;" class="mz-formstep-edit" data-mz-action="edit">{{ labels.change }}</a> {% endcomment %}
+    {%endif%}
+    {% if model.isAwsCheckout and model.stepStatus == "incomplete" %}
+        {% comment %} <a href="javascript:;" class="mz-formstep-cancel" data-mz-action="cancel">{{ labels.cancel }}</a> {% endcomment %}
+    {% endif %}
+    {% if model.stepStatus  == "new" %}
+    <div class="payment-method-type-header checkout-display-payment-method">
+        <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Visa.svg" alt="cardPayment" class="card-type">
+        <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Masters.svg" alt="cardPayment" class="card-type">
+        {% if themeSettings.isApplePayPaymentApply and window.ApplePaySession %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/ApplePayIcon-2.svg" alt="cardPayment" class="card-type">
+        {% endif %}
+        {% if themeSettings.isMADAPaymentApply %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/MadaLogo-2.svg" alt="cardPayment" class="card-type">
+        {% endif %}
+        {% if themeSettings.isPaywithBlueOnCheckout %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/BluePayment.svg" alt="bluePayment" class="card-type">
+        {% endif %}
+        {% if themeSettings.isKNETPaymentApply %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/knet-icon.svg" alt="cardPayment" class="card-type">
+        {% endif %}
+        {% if themeSettings.isBenefitPayApply %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/benefitpay_logo.svg" alt="cardPayment" class="card-type">
+        {% endif %}
+        {% if themeSettings.isQpayApply %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/qpay_logo.svg" alt="cardPayment" class="card-type">
+        {% endif %}
+        {% if themeSettings.isOmanNetApply %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/omannet_logo.svg" alt="cardPayment" class="card-type">
+        {% endif %}
+        <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/AmericanExpress-2.svg" alt="cardPayment" class="card-type">
+    </div>
+    {%endif%}
+</h3>
+<div class="mz-formstep-body payment-section-area">
+    <div class="total-to-pay-div">
+        <div class="total-to-pay"> {{labels.totalCheckout}}: <span class="total-amount-span"> {% include "modules/common/currency-code" %} {{ model.nonStoreCreditOrGiftCardTotal|floatformat(pageContext.currencyInfo.precision) }} </span> </div>
+     </div>
+     <div class="payment-method-div">
+         <div class="payment-method">
+             {{labels.paymentMethodCheckout}}
+         </div>
+        
+         <div class="payment-method-type">
+             <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Visa.svg" alt="cardPayment" class="card-type">
+             <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Masters.svg" alt="cardPayment" class="card-type">
+             {% if themeSettings.isApplePayPaymentApply and window.ApplePaySession %}
+                <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/ApplePayIcon-2.svg" alt="cardPayment" class="card-type" >
+             {% endif %}
+             {% if themeSettings.isMADAPaymentApply %}
+                <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/MadaLogo-2.svg" alt="cardPayment" class="card-type">
+             {% endif %}
+             {% if themeSettings.isPaywithBlueOnCheckout %}
+                <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/BluePayment.svg" alt="cardPayment" class="card-type">
+             {% endif %}
+             {% if themeSettings.isKNETPaymentApply %}
+                <img src="{{siteContext.cdnPrefix}}/resources/images/icons/knet-icon.svg" alt="cardPayment" class="card-type">
+             {% endif %}
+             {% if themeSettings.isBenefitPayApply %}
+                <img src="{{siteContext.cdnPrefix}}/resources/images/icons/benefitpay_logo.svg" alt="cardPayment" class="card-type">
+             {% endif %}
+             {% if themeSettings.isQpayApply %}
+                <img src="{{siteContext.cdnPrefix}}/resources/images/icons/qpay_logo.svg" alt="cardPayment" class="card-type">
+             {% endif %}
+             {% if themeSettings.isOmanNetApply %}
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/omannet_logo.svg" alt="cardPayment" class="card-type">
+        {% endif %}
+             <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/AmericanExpress-2.svg" alt="cardPayment" class="card-type">
+         </div>
+    
+    
+     </div>
+    <div class="mz-formstep-summary mz-l-stack">
+        
+                {% if model.nonStoreCreditOrGiftCardTotal == 0%}
+                    <h4 class="mz-checkout-nopaymentrequired">{{ labels.noPaymentRequired|string_format(model.remainingTotal|currency) }}</h4>
+                {% endif %}
+            {% for payment in model.activePayments %}
+                    {% comment %} {% if payment.billingInfo.paymentType == "Check" and model.nonStoreCreditOrGiftCardTotal > 0 %}
+                    <div class="mz-l-stack-section mz-checkout-payment  mz-checkoutform">
+                        <div class="mz-l-stack-section mz-checkout-current-payment">{{ labels.checkByMail }}</div>
+                        <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress">
+                            <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
+                            <div class="mz-addresssummary">
+                                {% include "modules/common/address-summary" with model=model.billingContact %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %} {% endcomment %}
+                {% if payment.billingInfo.paymentType == "CreditCard" and model.nonStoreCreditOrGiftCardTotal > 0  %}
+                    <div class="mz-l-stack-section mz-checkout-payment {% if model.activePayments.length >1 %} multipayment-view {%endif%}">
+                        {% include "modules/checkout/credit-card-current-payment" with cardPayment=payment.billingInfo %}
+                        {% comment %} <div class="mz-l-stack-section mz-checkout-current-payment">
+                            <p>{{ model.card.paymentOrCardType }} {{ model.card.cardNumberPartOrMask }}
+                            <br/>{{ labels.expires }} {{ model.card.expireMonth }}/{{ model.card.expireYear }}</p>
+                        </div> {% endcomment %}
+                        {% comment %} <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress">
+                            <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
+                            <div class="mz-addresssummary">
+                                {% include "modules/common/address-summary" with model=model.billingContact %}
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+                {% endif %}
+                <!-- THis is added to handle ui breaking when reloading page after selecting blue wallet or cod payment -->
+                {% if  payment.billingInfo.paymentType == "token" or payment.billingInfo.paymentType == "Check" and model.nonStoreCreditOrGiftCardTotal > 0  %}
+                <div class="mz-l-stack-section mz-checkout-current-payment testn1 mz-checkout-saved-card  {% if model.activePayments.length >1 %} multipayment-view {%endif%}">
+                    {% include "modules/checkout/payment-credit-card-current"  with model=model %}
+
+                </div>
+                {% endif %}
+                
+                {% if payment.billingInfo.paymentType == "PurchaseOrder" and model.nonStoreCreditOrGiftCardTotal > 0  %}
+                    <div class="mz-l-stack-section mz-checkout-payment  mz-checkoutform">
+                        <div class="mz-l-stack-section mz-checkout-current-payment">
+                        <!--
+                            <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-amount-row">
+                                <div class="mz-l-formfieldgroup-cell">
+                                    <span>{{ labels.purchaseOrderAmount }}: </span> <span>{{ payment.amountRequested | currency }}</span>
+                                </div>
+                            </div>
+                            -->
+                            <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-number-row">
+                                <div class="mz-l-formfieldgroup-cell">
+                                    <span >{{ labels.purchaseOrderNumber }}: </span><span name="purchase-order-number" id="mz-payment-purchase-order-number">{{ payment.billingInfo.purchaseOrder.purchaseOrderNumber }}</span>
+                                </div>
+                            </div>
+                            <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-payment-terms-row">
+                                <div class="mz-l-formfieldgroup-cell">
+                                    <span>{{ labels.purchaseOrderPaymentTerms }}: </span><span id="mz-payment-purchase-order-payment-terms">{{ payment.billingInfo.purchaseOrder.paymentTerm.description }}</span>
+                                </div>
+                            </div>
+                            {% for field in payment.billingInfo.purchaseOrder.customFields %}
+                            <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-custom-field-row">
+                                <div class="mz-l-formfieldgroup-cell">
+                                    <span>{{ field.label }}: </span><span id="mz-payment-purchase-order-custom-field-{{ field.code }}">{{ field.value }}</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress">
+                            <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
+                            <div class="mz-addresssummary">
+                                {% include "modules/common/address-summary" with model=model.billingContact %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if payment.billingInfo.paymentType|lower == "paypalexpress2" ||  payment.paymentType|lower  == "paywithamazon"  %}
+                    {% if model.nonStoreCreditOrGiftCardTotal > 0%}
+                    {%if model.isExternalCheckoutFlowComplete%}
+                        <a class="mz-checkout-payment-change" href="javascript:;" data-mz-action="cancelExternalCheckout">{{ labels.remove }} </a>
+                    {% endif %}
+                    {%if payment.paymentWorkflow|lower  == "paywithamazon" %}
+                            {% include "modules/checkout/payment-paybyamazon" with model=payment.billingInfo.billingContact%}
+                        {%endif%}
+                    {%if payment.paymentType|lower == "token" %}
+                            {%if payment.billingInfo.token.type|lower  == "paywithamazon" %}
+                                {% include "modules/checkout/payment-paybyamazon" with model=payment.billingInfo.billingContact%}
+                            {%endif%}
+                            {% if payment.billingInfo.token.type|lower == "applepay" %}
+                            <div class="mz-l-stack-section">
+                                <div class="mz-l-formfieldgroup-cell">
+                                <img width="100px" src="{{siteContext.cdnPrefix}}/resources/images/Apple_Pay_Mark.png"/>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {%endif%}
+                        {% if payment.paymentWorkflow|lower  == "paypalexpress2" %}
+                        <div class="mz-l-stack-section">
+                                <div class="mz-l-formfieldgroup-cell">
+                                    <img alt="PayPal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" align="left" width="100px" height="26px" style="margin-right:7px;">
+                                </div>
+
+                            {%if model.billingContact.firstName %}
+                                <div class="mz-addresssummary">
+                                    {% include "modules/common/address-summary" with model=model.billingContact %}
+                                </div>
+                            {%endif%}
+
+                            </div>
+                        {%endif%}
+                    {%endif%}
+
+                {% endif %}
+            {% endfor %}
+                {% comment %} 
+                <div class="mz-l-stack-section mz-paymentselector-separator mz-checkoutform">
+                    <p>
+                        {{ labels.billingContact }}: <strong>{{ model.billingContact.email }}</strong>
+                    </p>
+                </div> {% endcomment %}
+                {% comment %} {% if siteContext.checkoutSettings.supportedGiftCards.giftcard %}
+                <div class="mz-l-stack-section mz-paymentselector-separator mz-checkoutform">
+                    {% include "modules/checkout/checkout-gateway-giftcard" %}
+                </div>
+                {% endif %}
+                <div class="mz-l-stack-section mz-paymentselector-separator mz-checkoutform">
+                    {% include "modules/checkout/checkout-digital-credit" %}
+                </div> {% endcomment %}
+    </div>
+
+    <div class="mz-formstep-fields mz-l-stack">
+
+        {% if model.nonStoreCreditOrGiftCardTotal > 0 %}
+
+            {% if model.hasSavedCardPayment %}
+
+                {% if editing.savedCard %}
+                    <div class="mz-l-stack-section mz-checkout-current-payment testn mz-checkout-saved-card-editing">
+                        {% include "modules/checkout/payment-selector" %}
+                    </div>
+                {% else %}
+                    <div class="mz-l-stack-section mz-checkout-current-payment testn1 mz-checkout-saved-card">
+                        {% include "modules/checkout/payment-credit-card-current"  with model=model %}
+                        {% comment %} <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress">
+                            <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
+                            <div class="mz-addresssummary">
+                                {% include "modules/common/address-summary" with model=model.billingContact %}
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+                {% endif %}
+
+            {% else %}
+
+                <div class="mz-l-stack-section maintest">
+                    {% include "modules/checkout/payment-selector" %}
+                </div>
+            {% endif %}
+        {% else %}
+
+            <h4 class="mz-checkout-nopaymentrequired mz-checkoutform">{{ labels.noPaymentRequired|string_format(model.remainingTotal|currency) }}</h4>
+
+        {% endif %}
+
+        {% comment %} <div class="mz-l-stack-section mz-formfieldgroup-row mz-paymentselector-separator mz-checkoutform">
+            <div class="mz-l-formfieldgroup">
+                <div class="mz-l-formfieldgroup-row">
+                    <div class="mz-l-formfieldgroup-cell">
+                        <label for="billing-email">
+                            {{ labels.billingContact }}<span class="is-required"> *</span>:
+                        </label>
+                    </div>
+                    <div class="mz-l-formfieldgroup-cell">
+                        <input type="text" id="billing-email" name="billing-email" data-mz-value="billingContact.email" value="{{ model.billingContact.email }}"/>
+                        <span class="mz-validationmessage" data-mz-validationmessage-for="billingContact.email"></span>
+                    </div>
+                </div>
+                <div class="mz-l-formfieldgroup-row">
+                    <div class="mz-l-formfieldgroup-cell"></div>
+                    <div class="mz-l-formfieldgroup-cell">
+                        <label class="mz-inline">
+                            <input type="checkbox" name="special-offers" {% if model.acceptsMarketing %}checked="checked" {% endif %}data-mz-value="acceptsMarketing" class="mz-checkout-optin" /> {{ labels.optIn|string_format(siteContext.generalSettings.websiteName) }}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        {% if siteContext.checkoutSettings.supportedGiftCards.giftcard %}
+        <div class="mz-l-stack-section mz-formfieldgroup-row mz-paymentselector-separator mz-checkoutform">
+            {% include "modules/checkout/checkout-gateway-giftcard" %}
+        </div>
+        {% endif %}
+        {% comment %} <div class="mz-l-stack-section mz-formfieldgroup-row mz-paymentselector-separator mz-checkoutform">
+            {% include "modules/checkout/checkout-digital-credit" %}
+        </div> {% endcomment %}
+    </div>
+
+    {% comment %} <div class="mz-formstep-next">
+        <button class="mz-button payment-next" data-mz-action="next">{{ labels.placedOrder }}</button>
+    </div> {% endcomment %}
+</div><!-- .mz-panel-wrap -->

@@ -1,0 +1,54 @@
+﻿.mz-breadcrumbs {
+    margin: 20px auto 0 auto;
+    @media only screen and (min-width:@desktopGridWidth) {
+        width: @desktopGridWidth;
+    }
+    .mz-breadcrumb-link,
+    .mz-breadcrumb-current,
+    .mz-breadcrumb-separator {
+        color: #333333;
+        font-family: @fontFamily;
+        font-size: @fontSize;
+        font-weight: @fontBold;
+        letter-spacing: 0;
+        line-height: 21px;
+        text-decoration: none;
+    }
+    .mz-breadcrumb-separator {
+        display: inline-block;
+        margin: 0 2px;
+        &:last-of-type {
+            display: none;
+        }
+    }
+    @media @mobileScreens {
+        clear: both;
+        display: inline-block;
+        overflow: hidden;
+        // white-space: nowrap;
+    }
+}
+
+
+// New UI Design
+
+.afg-ms-mz-breadcrumbs {
+    @media (min-width: 1300px) {
+        width: 1300px;
+    }
+    @media (max-width: 1299px) {
+        margin-left: 20px!important; 
+        margin-right: 20px!important;
+        padding: 0!important;
+    }
+    @media (max-width: 992px) {
+        margin-bottom: 0!important;
+    }
+    .mz-breadcrumb-link,
+    .mz-breadcrumb-separator {
+        color: #999;
+    }
+    .mz-breadcrumb-current {
+        color: @black;
+    }
+}

@@ -1,0 +1,189 @@
+{% extends "page" %}
+
+{% block cacheheaders %}
+{% if themeSettings.akamaiEdgeControlEnabledParentCategory %}
+    {% include "modules/cache-headers" %}
+{% endif %}
+{% endblock cacheheaders %}
+{% block title-tag-content %}
+	{% firstof pageContext.metaTitle model.name %}
+{% endblock title-tag-content %}
+{% block body-tag-classes %} mz-category mz-category-{{ pageContext.categoryId }} {% if not themeSettings.isArabicLanguageSite %} mz-category-{{ pageContext.title|lower }} {% else %} mz-category-{% with pageContext.url|split:"/" as elements %}{% for element in elements %}{% if forloop.last %}{{element}}{% endif %}{% endfor %}{% endwith %}{% endif %}{% endblock body-tag-classes %}
+{% block body-content %}
+
+{% require_script "pages/category" %}
+{# Subcategories Section #}
+{% if(pageContext.cmsContext.template.path == 'parent-category') %}
+{% if model.childrenCategories && model.shouldSlice %}
+
+{% set_var testBool=false %}
+{% if themeSettings.showCategoryName && themeSettings.selectMultiCategory.length > 0 %}
+	{% for multicatname in themeSettings.selectMultiCategory %}
+		{% if multicatname == model.categoryId %}
+			{% set_var testBool=true %}
+		{% endif %}
+	{% endfor %} 
+{% endif %}
+
+<div class="categoryListing widget-spacer no-pad_spacing {% if testBool %} hidespace {% endif %}" >
+{% if testBool %}
+	<h1 class='catheading' style='display: none;'> {{ model.content.name }}</h1>
+{% else %}
+	<h1 class='catheading'> {{ model.content.name }}</h1>
+{% endif %}
+
+	<div class="mainCategories">
+			{% for child in model.childrenCategories %}
+			 {% if child.isDisplayed %}
+				{% include "templates/pages/parent-subcategory" %}
+			{% endif %}
+			{% endfor %}
+	</div>
+</div>
+{% endif %}
+{% endif %}
+
+<div class="spacing_mar"></div>
+
+{# for lunar page #}
+<div class="text-with-image-section">
+	{% dropzone "text-with-image-section" scope="page" %}
+</div>
+<div class="lunar-buttons-section">
+	{% dropzone "lunar-buttons-section" scope="page" %}
+</div>
+
+{# for offers page #}
+<div class="offers-image-section">
+	{% dropzone "offers-image-section" scope="page" %}
+</div>
+
+
+<div data-mz-category="{{model.categoryId}}" class="mz-l-container hidden">
+    <div class="mz-pagetitle">parent cat{{ model.name }}</div>
+	{% dropzone "parent-category-page-top" scope="page" %}
+	{# todo list of child cats #}
+    {% include_products "modules/product/faceted-products" with includeFacets=themeSettings.showCategoryFacets and pageWithUrl=true and pageSize=themeSettings.defaultPageSize as_parameter %}
+	{% dropzone "parent-category-page-bottom" scope="page" %}
+</div>
+
+{# Make season anything Section #}
+<div class="category-wrapper make-season-anything widget-spacer">
+	{% dropzone "parent-category-page-bottom2" scope="page" %}
+</div>
+{# Junper Joy Section #}
+<div class="clp-jumper-container widget-spacer">
+	{% dropzone "clp-women" scope="page" %}
+</div>
+
+{# CLP look behind the label  #}
+<div class="clp-look-label">
+	<div class="clp-look-label">
+		{% dropzone "clp-look-label" scope="page" %}
+	</div>
+</div>
+
+{# More to Explore Section  Heading #}
+<div class="explore-heading">
+	{% dropzone "explore-heading" scope="page" %}
+</div>
+{# 4 column featured image  #}
+<div class="gift-container widget-spacer">
+    {% dropzone "gift-container" scope="page" %}
+</div>
+
+
+{# 2 column feature image widget heading  #}
+<div class="two-column-widget-heading">
+	{% dropzone "clp-two-column-widget-heading" scope="page" %}
+</div>
+{# 2 column feature image widget #}
+<div class="two-column-widget widget-spacer">
+	{% dropzone "clp-two-column-widget" scope="page" %}
+</div>
+
+{# html widget #}
+<div class="explore-image widget-spacer">
+    {% dropzone "explore-image" scope="page" %}
+</div>
+
+
+
+
+
+{# New Shoes Section Header #}
+<div class="category-newshoeswrapper-header">
+	{% dropzone "parent-category-page-newshoes-header" scope="page" %}
+</div>
+{# New Shoes Section Section #}
+<div class="category-newshoeswrapper">
+	{% dropzone "parent-category-page-newshoes" class="widget-spacer" scope="page" %}
+</div>
+
+
+{# 3 column feature image widget heading  #}
+<div class="three-column-widget-heading">
+	{% dropzone "clp-three-column-widget-heading" scope="page" %}
+</div>
+
+{# 3 column feature image widget #}
+<div class="three-column-widget widget-spacer">
+	{% dropzone "clp-three-column-widget" scope="page" %}
+</div>
+
+
+{# Sports bra #}
+<div class="sports-bra widget-spacer">
+	{% dropzone "clp-sports-bra" scope="page" %}
+</div>
+
+{# CLP product carousel  #}
+{% comment %} <div class="clp-product-carousel">
+	<div class="clp-product-carousel-head">
+		{% dropzone "clp-product-carousel-head" scope="page" %}
+	</div>
+	{% dropzone "clp-product-carousel" scope="page" %}
+</div>
+
+{# CLP product offers  #}
+<div class="home-offers-bg widget-spacer">
+    {% dropzone "home-offers-bg" scope="page" %}
+</div>
+
+<div class="home-offers-wrappers widget-spacer">
+    {% dropzone "home-offers" scope="page" %}
+</div> {% endcomment %}
+
+{# CLP style update Heading  #}
+<div class="clp-style-update-heading">
+    
+        <div class="style-update-heading">
+            {% dropzone "style-update-heading" scope="page" %}
+        </div> 
+</div>
+
+{# CLP style update  #}
+<div class="clp-style-update">
+    <div class="col-half">
+        <div class="clp-top-ftr-section gift-container widget-spacer">
+            {% dropzone "clp-top-ftr-section" scope="page" %}
+        </div>
+    </div>
+    
+</div>
+{# CLP shop-by-brand  #}
+<div class="row-full shop-by-brand-wrapper">
+    <div class="col-full">
+        <div class=" shop-by-brand">
+            {% dropzone " shop-by-brand" scope="scope" %}
+        </div>
+    </div> 
+    
+</div>
+
+
+</div> 
+
+{% include "modules/common/signup-email" %}
+
+{% endblock body-content %}

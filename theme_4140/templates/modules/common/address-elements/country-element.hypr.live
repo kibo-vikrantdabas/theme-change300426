@@ -1,0 +1,11 @@
+{% comment %} {% dump model %} {% endcomment %}
+<div class="mz-l-formfieldgroup-row mz-addressform-country ">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="country">{{ labels.country }}<span class="is-required">*</span></label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+        <input type="text" id="{% block id-prefix %}{% endblock id-prefix %}country"  data-mz-value="{{ addresscontext }}address.countryCode" class="mz-address-country billing-country {% if model.address.countryCode %} add-input-border {% endif %}" value="{{model.address.countryName}}" disabled>
+    {% comment %} <img src="../../resources/images/icons/green tick.svg" class="country-name-image {% if model.address.countryCode %} active {% endif %}" alt=""> {% endcomment %}
+    <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}address.countryCode"></span>
+    </div>
+</div>

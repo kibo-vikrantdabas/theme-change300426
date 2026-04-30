@@ -1,0 +1,11 @@
+<div class="mz-shippingSavedAddressContainer">
+    {% include  "modules/checkout/address/shipping/shipping-icon" %}
+     
+    {% include  "modules/checkout/address/shipping/shipping-address-summary" %}
+    
+</div>
+<div class="mz-changeAddressButton">
+    {% if model.requiresFulfillmentInfo and  model.hasRequiredBehavior %}
+        <a href="javascript:;" class="mz-formstep-edit-summary-address" data-mz-action="edit">{{labels.change}}</a>
+    {% endif %}
+</div>

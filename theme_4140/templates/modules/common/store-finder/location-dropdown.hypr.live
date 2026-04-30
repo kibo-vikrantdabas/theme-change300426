@@ -1,0 +1,61 @@
+<div class="location-select-dropdown-container" data-mz-action="toggleDropdown" data-mz-displayDrop="{{location.code}}" data-mz-storeName="{{location.name}}">
+	<div class="location-select-container {% if model.activeDropdown == location.code %} active {% endif %}" style="display:flex"  id="{{location.name}}"data-mz-cart-item= "">
+		<div class="location-dropdown-container {% if model.activeDropdown == location.code %} active {% endif %}" style="flex:1">
+			{% comment %} <img class="location-select-logo" src= "../../../resources/images/MS-Logo.png"/> {% endcomment %}
+			{% if themeSettings.isArabicLanguageSite %}
+				{% for item in location.attributes  %}
+					{% if item.fullyQualifiedName == 'tenant~ar-location-name' %}
+						{% for locationName in item.values %}
+								<h4 class="location-select-name">{{ locationName }}</h4>
+						{% endfor %}
+					{% endif %}	
+				{% endfor %}
+				{% else %}
+					<h4 class="location-select-name">{{location.name}}</h4>
+				{% endif %}
+			<div class='location-info-container'>
+				{% if model.selectedLocation == location.name  %}
+					<div class="selected-store-display {% if model.selectedLocation == location.name %}active {% endif %}">
+						<img class="store-confirmation-tick"src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Tick-Green.svg"/>
+						<span class="selected-store-message"> {{labels.selectedstore}}</span>
+					</div>
+				{% else %}
+					<div></div>
+				{% endif %}
+				{% if model.searchInput %}
+					<div class="location-distance-display">{{location.approxDistance}} {{labels.km}}</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="dropdown-info-container">
+		<div>
+			<div class="dropdown-info">
+				{% if themeSettings.isArabicLanguageSite %}
+					{% for item in location.attributes  %}
+						{% if item.fullyQualifiedName == 'tenant~ar-physical-address' %}
+							{% for locationAddress in item.values %}
+								<div class="location-address-line">
+									<span>{{ locationAddress }}</span>
+								</div>
+							{% endfor %}
+						{% endif %}	
+					{% endfor %}
+				{% else %}
+					<div class="location-address-line">
+						<span>{{location.address.address1}} {{location.address.address2}} {{location.address.cityOrTown}}</span>
+					</div>
+				{% endif %}
+				<div class="opening-hours-display">
+					<div>{{labels.openingHours}}</div> 
+					{% for hrs in location.condensedHours%}
+						<p>{{hrs.days}}: {{hrs.hrs|lower}}</p>
+					{% endfor %}
+				</div> 
+			</div>
+		<div class="select-store-btn-display">
+			<button type="button" class="cnc-select-button mz-store-select-button" aria-hidden: "true", data-mz-location-data='{ "address": "{{location.address.address1}} {{location.address.address2}} {{location.address.cityOrTown}}", "code":{{location.code}}, "name":"{{location.name}}", "geo":{"lat": {{location.geo.lat}}, "lng": {{location.geo.lng}}}}' data-mz-action="selectStoreForPickup">{{labels.selectStoreFree}}</button>
+		</div>
+		</div>
+	</div>
+</div>

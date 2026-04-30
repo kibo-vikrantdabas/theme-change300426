@@ -1,0 +1,11 @@
+<div class="popup-container {% if not userLoggedInStatus %}not-loggedin-popup-container {% endif %}">
+    <div class="mz-signin-popover"> 
+        <div class="arrow"></div>
+        {% if userLoggedInStatus %}
+            {% include "modules/page-header/non-anonymous-user.hypr" %}
+        {% else %}
+            {% include "modules/page-header/anonymous-user.hypr" %}
+        {% endif %}
+
+    </div>
+</div>

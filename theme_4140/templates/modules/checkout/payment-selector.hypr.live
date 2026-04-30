@@ -1,0 +1,105 @@
+{% with paymentId|default(0) as paymentId %}
+<div class="mz-l-formfieldgroup mz-paymentselector">
+    <div class="payment-option-selector">
+        <div class="choose-payment-div">
+            <span class="forDesktopPay">{{labels.choosePaymentMethod}}</span>
+            <span class="forMobilePay">{{labels.choosePayment}}</span>
+        </div>
+          {% include "modules/checkout/blue-pay-selector" with model %}
+          {% include "modules/checkout/apple-pay-selector"%}
+            {% if model.paymentType == "PayWithAmazon" %}
+                <div class="mz-l-formfieldgroup-row mz-l-security-box" >
+                    {{ labels.awsPaymentWarning }}
+                </div>
+            {%endif%}
+            {% if siteContext.checkoutSettings.purchaseOrder.isEnabled and model.purchaseOrder.isEnabled %}
+            <div class="mz-l-formfieldgroup-row mz-paymentselector-option mz-paymentselector-newcreditcard mz-checkoutform {% if model.paymentType == "PurchaseOrder" %}mz-checkoutform-active{% endif %}">
+                <div class="mz-l-formfieldgroup-row">
+                    <div class="mz-l-formfieldgroup-cell">
+                        <input data-mz-value="paymentType" data-mz-purchase-order data-mz-payment-type id="paymentType-purchase-order-{{ paymentId }}" name="paymentType" type="radio" class="mz-paymenttype-input" value="PurchaseOrder" {% if model.paymentType == "PurchaseOrder" %}checked="true"{% endif %} {% if model.paymentType != "PurchaseOrder" and model.disablePaymentOption %}disabled="disabled"{% endif %} />
+                    </div>
+                    <div class="mz-l-formfieldgroup-cell">
+                        <label class="mz-paymentselector-label mz-paymentselector-label-purchaseorder mz-checkoutform-radio" for="paymentType-purchase-order-{{ paymentId }}">{{ labels.purchaseOrder }}</label>
+                    </div>
+                </div>
+                {% if model.paymentType == "PurchaseOrder" %}
+                {% include "modules/checkout/billing-purchase-order-form" with model=model.purchaseOrder %}
+                {% comment %} <div class = "mz-l-stack-section">
+                    <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
+                    {% include "modules/checkout/billing-address-purchase-order-selector" %}
+                </div> {% endcomment %}
+                {% endif %}
+            </div>
+            {% endif %}
+            {% include "modules/checkout/checkout-knet-card-payment"%}
+            {% include "modules/checkout/checkout-benefitpay-card-payment"%}
+            {% include "modules/checkout/checkout-qpay-card-payment"%}
+            {% include "modules/checkout/checkout-omannet-card-payment"%}
+            <label class="container-radio" for="paymentType-newcreditcard-paymentCreditCard" >
+            <div class="credit-cart-payment rectangle {% if model.isCreditCardPayment %} mz-payment-selected {%endif%}">
+            {% include "modules/checkout/credit-card-payment"  with model=model %}
+            </div>
+            </label>
+
+            {% if siteContext.checkoutSettings.payByMail %}
+            {% comment %} <div class="mz-l-formfieldgroup-row mz-paymentselector-option mz-paymentselector-check mz-checkoutform {% if model.paymentType == "Check" %}mz-checkoutform-active{% endif %}">
+                <div class="mz-l-formfieldgroup-row">
+                    <div class="mz-l-formfieldgroup-cell">
+                        <input data-mz-value="paymentType" data-mz-check data-mz-payment-type id="paymentType-check-{{ paymentId }}" name="paymentType" type="radio" class="mz-paymenttype-input" value="Check" {% if model.paymentType == "Check" %}checked="checked"{% endif %} {% if model.paymentType != "Check" and model.disablePaymentOption %}disabled="disabled"{% endif %} />
+                    </div>
+                    <div class="mz-l-formfieldgroup-cell">
+                        <label class="mz-paymentselector-label mz-paymentselector-label-check mz-checkoutform-radio" for="paymentType-check-{{ paymentId }}">{{ labels.checkByMail }}</label>
+                    </div>
+                </div>
+                {% if model.paymentType == "Check" %}
+                {% include "modules/checkout/checking-account-form" %}
+                <div class="mz-l-stack-section">
+                    <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
+                    {% include "modules/checkout/billing-address-selector" %}
+                </div>
+                {% endif %}
+            </div> {% endcomment %}
+            {% endif %}
+
+            {% comment %} {% with siteContext.checkoutSettings.externalPaymentWorkflowSettings|findwhere("isEnabled", true) as externalPaymentWorkflowsEnabled %}
+                {% if externalPaymentWorkflowsEnabled %}
+                    <div class="mz-l-formfieldgroup-row">
+                        <div class="mz-paymentselector-label-separator">&ndash; {{ labels.or }} &ndash;</div>
+                    </div>
+                    {% for externalPayment in siteContext.checkoutSettings.externalPaymentWorkflowSettings %}
+                        {% if externalPayment.isEnabled %}
+                        {% with externalPayment.name|lower as name %}
+                            <div class="mz-l-formfieldgroup-row mz-paymentselector-externalworkflows">
+                                <div class="mz-l-formfieldgroup-cell">
+                                </div>
+                                <div class="mz-l-formfieldgroup-cell">
+                                    {% if name == "visacheckout"%}
+                                        <div class="mz-digitalwallets">
+                                            <img alt="Visa Checkout" class="v-button" role="button"
+                                            src="{{pageContext.visaCheckoutButtonUrl}}?size=154&amp;color=neutral"/>
+                                        </div>
+                                    {% endif %}
+                                    {% if name == "paypalexpress2" %}
+                                        <img id="btn_xpressPaypal" class="p-button" alt="Check out with PayPal" role="button" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" width="170px" height="32px" align="left" style="margin-right:7px; float:right;"/>
+                                    {%endif%}
+                                    {% if name == "paywithamazon" %}
+                                        <div class="mz-paymenttype" id="amazonButtonPaymentSection">
+                                        </div>
+                                    {% endif %}
+                                    {% if name == "applepay" %}
+                                    <div class="apple-pay-button" role="button" width="200px" style="display: none" id="applePayButton"></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endwith %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %} {% endcomment %}
+            {%include "modules/checkout/cod-pay-selector"%}
+        </div>
+    </div>
+</div>
+
+
+{% endwith %}

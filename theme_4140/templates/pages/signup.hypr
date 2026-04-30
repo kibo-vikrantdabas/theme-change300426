@@ -1,0 +1,41 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.signUp %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-signuppage {% endblock body-tag-classes %}
+
+{% block body-content %}
+{% require_script "pages/signup" %}
+    <div class="mz-l-container mz-signup-main-container">
+        <div class="mz-signup-form-main-container">
+            <div class="mz-signup-form-container">
+                    {% with labels.signUpLink as pageTitle %}
+                        {% with header as labels.signUpText %}
+                           {% include "modules/signup/signup-header" %}
+                        {%endwith%}
+                    {%endwith%}
+                    
+                    {% comment %} {% include_entities "modules/signup/dialing-code-entity" listFQN="dialingcodes@afg"  pageSize=200 %} {% endcomment %}
+
+                    <div id="signUpContainer">
+                        {% include "modules/signup/signup-form"  %}
+                    </div>
+                    {% with labels.signUpQueryText as signUpQuery %}
+                        {% with labels.signUpQueryLink as signUpQueryLink %}
+                            {% with labels.signUpAcknowledgement|string_format('user/signup','Privacy Policy')|safe as acknowledment %}
+                                {% with "/user/login" as signUpURL %}
+                                    {% include "modules/signup/signup-footer" %}
+                                {%endwith%}
+                            {%endwith%}
+                        {%endwith%}
+                    {%endwith%}
+            </div>
+        </div>
+        <div class="mz-signup-sidebar-main-container">
+            {% dropzone "signup-message-box" scope="template" %}
+        </div>       
+    </div> 
+  
+{% endblock body-content %}
+
+{% block page-footer %} {% endblock page-footer %}

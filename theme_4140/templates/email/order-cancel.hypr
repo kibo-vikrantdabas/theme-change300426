@@ -1,0 +1,1112 @@
+﻿{% extends "email/email" %}
+
+{% block body-content %}
+{% set_var isCashOnDelivery=false %}
+
+
+
+	<!--[if mso]>
+{% if themeSettings.isArabicLanguageSite %}
+<div class="mz-email-template-order-confirmation" style="max-width:490px;font-family: Arial, Helvetica, sans-serif;">
+
+    <table width="100%">
+		<tr> 
+			<td style="text-align:center;margin:30px 0; padding-bottom:32px;">
+				<img src="https://cdn-tp1.euw1.kibocommerce.com/100067-m1/cms/files/cd619a01-49ed-49eb-9bf6-714a3688ee07" alt="MS-Logo" style="width: 103px;height: 39px;" width="103" height="39">
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 20px 77px; background-color: #163E35; color: #fff; text-align: center; font-size: 21px; font-family: Arial, Helvetica, sans-serif;">
+				{{labels.orderCancelledTitle}} 
+			</td>
+		</tr>
+    </table>
+	<div class="mz-orderheader-created" style="font-size: 14px; line-height: 28px;">
+		<div class="mz-orderheader-order-value" style="margin: 0; font-family: Arial, Helvetica, sans-serif;">
+			<span style="font-family: Arial, Helvetica, sans-serif; color:#000">
+				<strong>{{ labels.orderShipmentNumberEmail }}:</strong>
+			</span>
+			<span style="font-family: Arial, Helvetica, sans-serif; color:#000">
+				{{ model.orderNumber }} 
+			</span>
+		</div>
+		<div class="mz-orderheader-date-value" style="margin: 0;">
+			<span style="font-family: Arial, Helvetica, sans-serif;color:#000"><strong>{{ labels.orderDateEmail }}:</strong></span>
+			<span style="font-family: Arial, Helvetica, sans-serif;color:#000">{% include "modules/common/date-time-format" with dateTimeFormatInput=model.submittedDate %}</span>
+		</div>
+	</div>
+    <br>
+    <div style="margin-bottom:5px; width:100%;">
+        <p style="margin-bottom:15px;font-size: 14px;letter-spacing: 0;line-height: 21px;font-family: Arial, Helvetica, sans-serif;color:#000">
+			{{ labels.emailOpeningHi }} {{ model.billingInfo.billingContact.firstName }},
+		</p>
+        
+		  {% if model.siteId == 100299 or model.siteId == 100300 or model.siteId == 100166 or model.siteId == 100167 %} 
+		  		<p style="font-size: 14px;letter-spacing: 0;line-height: 15px;font-family: Arial, Helvetica, sans-serif;color:#000">
+						{{ labels.orderCancelledTextOnlineAE }}
+				</p>
+				<p style="font-size: 14px;letter-spacing: 0;line-height: 15px;font-family: Arial, Helvetica, sans-serif;color:#000">
+					{{ labels.orderCancelledTextOnline1AE }}
+				</p>
+		  {% else %}
+				<p style="font-size: 14px;letter-spacing: 0;line-height: 15px;font-family: Arial, Helvetica, sans-serif;color:#000">
+						{{ labels.orderCancelledTextOnline }}
+				</p>
+				<p style="font-size: 14px;letter-spacing: 0;line-height: 15px;font-family: Arial, Helvetica, sans-serif;color:#000">
+					{{ labels.orderCancelledTextOnline1 }}
+				</p>
+		  {% endif %}
+		
+    </div>
+
+		{% if model.siteId == 100299 or model.siteId == 100300 %} 
+			<div style="width:100%;">
+				<span style='font-size:12px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.returnCreatedWhatHappendNext1|safe }}<span>
+				<ul style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;'>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.orderCancelledNext1AE|safe }}</li>					
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.orderCancelledNext2AE|safe }}</li>						
+				</ul>
+			</div>
+		{% endif %}
+
+		{% if model.siteId == 100166 or model.siteId == 100167 %} 
+			<div style="width:100%;">
+				<span style='font-size:12px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.returnCreatedWhatHappendNext1|safe }}<span>
+				<ul style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;'>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.orderCancelledNext1KW|safe }}</li>					
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.orderCancelledNext2KW|safe }}</li>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.orderCancelledNext3KW|safe }}</li>						
+				</ul>
+			</div>
+		{% endif %}
+
+
+	{% comment %}
+		<div style="width:100%;">
+			<span style='font-size:12px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.returnCreatedWhatHappendNext1|safe }}<span>
+			<ul style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;'>
+				<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.orderCancelledNext1|safe }}</li>					
+				<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;color:#000'>{{ labels.orderCancelledNext2|safe }}</li>						
+			</ul>
+		</div>
+	{% endcomment %}
+   <div style="border-top: 1px solid #ccc; margin-top: 20px ; width:100%;">
+    <p style="font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;color:#000" class="mz-desktop-display">{{ labels.orderShippedDetails }}<p>
+    <table class="mz-ordersummary" style="background: transparent; width: 100%;">
+        <thead></thead>
+        <tbody style="width:100%;">
+            {% for item in model.items %}	
+            {% set_var isBrandAvailable=false %}
+                <tr class="mz-ordersummary-line mz-ordersummary-line-item" style="border-bottom:0.1px solid #cccccc; width:490px;">
+                    <td {% if themeSettings.isArabicLanguageSite%} style="padding: 20px 0 20px 16px; width:83px;"{% else %} style="padding: 20px 16px 20px 0; width:83px"{% endif %}><img src="https:{{ item.product.imageUrl }}" width="83.87" height="108" /></td>
+                    <td {% if themeSettings.isArabicLanguageSite%} style="text-align:right;padding: 20px 10px; vertical-align: top;"{% else %} style="text-align:left; padding: 20px 10px; vertical-align: top;"{% endif %}>
+                        <p style="font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 18px; margin:0 0 5px; font-family: Arial, Helvetica, sans-serif;color:#000">  
+                        {% for property in item.product.properties %}
+                                {% if property.values and not property.isHidden %}
+                                    {%if property.name == 'Brand' %}
+                                        {% set_var isBrandAvailable=true %}
+                                        {% for v in property.values %}
+                                            {% if v.stringValue %}{{v.stringValue}}{% else %}{{v.value}}{% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                        <p style="font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 18px; margin: 0; font-family: Arial, Helvetica, sans-serif;color:#000">{{ item.product.name }}</p>
+                        <p> 
+                            {% if item.product.options %}
+                                <dl class="mz-propertylist">
+                                    <dd class="mz-propertylist-data" {% if themeSettings.isArabicLanguageSite%} style="font-size: 14px; letter-spacing: 0; line-height: 18px; margin-left:12px; margin-right: 0px; font-family: Arial, Helvetica, sans-serif;color:#000" {% else %} style="font-size: 14px; letter-spacing: 0; line-height: 18px; margin-left:0; margin-right: 12px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>
+                                    {% for option in item.product.options %}
+                                
+                                    {% if option.value %}
+                                        {{ option.stringValue|default(value.value)}}
+                                        {% if forloop.last == false %},{% endif%}
+                                    {% else %}
+                                        {{ option.shopperEnteredValue }}
+                                        {% if forloop.last == false %},{% endif%}
+                                    {% endif %}
+                                    
+                                    {% endfor %}
+                                </dd>
+                                </dl>
+                            {% endif %}
+                        </p>
+                        {% comment %} {% for reason in item.reasons %} {% endcomment %}
+                        <p style="font-size: 14px; letter-spacing: 0; font-family: Arial, Helvetica, sans-serif;color:#000">{{labels.qty}}: {{ item.quantity }}</p>
+                        {% comment %} {% endfor %} {% endcomment %}
+                    </td>
+                    <td {% if themeSettings.isArabicLanguageSite%} style="vertical-align:top; text-align:left; {% if isBrandAvailable %} padding: 43px 15px 0 0; {% else %}padding: 20px 15px 0 0;{% endif %} font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="text-align:right; vertical-align:top; {% if isBrandAvailable %} padding: 43px 0 0 15px; {% else %}padding: 20px 0 0 15px;{% endif %}  font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{model.currencyCode}} {%if item.product.price.salePrice %} {{ item.product.price.salePrice|multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }} {% else %} {{ item.product.price.price|multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }} {%endif%}</td>
+                </tr>	
+            {% endfor %}
+            </tbody>
+            <tfoot style="width:100%;">
+                <tr>
+                    <td {% if themeSettings.isArabicLanguageSite%} style="float:right; padding: 25px 0 0 0; width: 100px; font-size: 14px; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;"{% else %} style="color:#000;padding: 25px 0 0 0; width: 100px; font-size: 14px; letter-spacing: 0; line-height: 16px; float:left; font-family: Arial, Helvetica, sans-serif;"{% endif %}>{{ labels.orderSummary }}</td> 
+                    <td></td>
+                </tr>
+                <tr class="mz-ordersummary-subtotal">
+                    <td colspan="4" style="padding: 20px 0 10px 0">
+                    <span class="mz-ordersummary-totalname" {% if themeSettings.isArabicLanguageSite%} style="float:right; padding-right:0; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{ labels.subtotal }}</span>
+                    <span class="mz-ordersummary-totalvalue" {% if themeSettings.isArabicLanguageSite%}style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{model.currencyCode}} {{model.subtotal|floatformat(pageContext.currencyInfo.precision)}}</span>
+                    </td>
+                </tr>
+                {% if  model.discountTotal > 0  %}
+                    {% with model.shippingSubTotal|subtract(model.shippingTotal) as shippingDiscount %}                        
+					{% with model.discountTotal|subtract(shippingDiscount) as remainingDiscount  %}    
+					{% if remainingDiscount > 0 %}      
+					<tr class="mz-ordersummary-subtotal">
+                            <td colspan="4" style="padding: 0px 0 10px 0">
+                            <span class="mz-ordersummary-totalname" {% if themeSettings.isArabicLanguageSite%} style="float:right; padding-right:0; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{ labels.totalDiscount }}</span>
+                            <span class="mz-ordersummary-totalvalue" {% if themeSettings.isArabicLanguageSite%} style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{siteContext.currencyInfo.currencyCode}} {{model.discountTotal|subtract(shippingDiscount)|floatformat(pageContext.currencyInfo.precision)}}</span>
+                            </td>
+                        </tr>
+					{% endif %}
+					{% endwith%}
+                    {% endwith %}
+                {% endif %}
+				{% if model.handlingTotal > 0 %}
+					<tr class="mz-ordersummary-subtotal">
+						<td colspan="4" style="padding: 20px 0 10px 0">
+						<span class="mz-ordersummary-totalname" {% if themeSettings.isArabicLanguageSite%} style="float:right; padding-right:0; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{ labels.additionalHandling }}</span>
+						<span class="mz-ordersummary-totalvalue" {% if themeSettings.isArabicLanguageSite%}style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{model.currencyCode}} {{model.handlingTotal|floatformat(pageContext.currencyInfo.precision)}}</span>
+						</td>
+					</tr>
+				{% endif %}    
+                <tr class="mz-ordersummary-shippingtotal">
+                    <td colspan="4" style="padding: 0 0 10px 0">
+                    <span class="mz-ordersummary-totalname" {% if themeSettings.isArabicLanguageSite%} style="float:right; padding-right:0px; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{ labels.deliveryCost }}</span>
+                    {% if  model.shippingTotal > 0  %}
+                    <span class="mz-ordersummary-totalvalue" {% if themeSettings.isArabicLanguageSite%} style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{model.currencyCode}} {{ model.shippingTotal|floatformat(pageContext.currencyInfo.precision) }}</span>
+                {% else %}
+                <span class="mz-ordersummary-totalvalue" {% if themeSettings.isArabicLanguageSite%} style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{labels.free|upper}}</span>
+                {% endif %}   
+                </td>
+                </tr>
+                <tr class="mz-ordersummary-grandtotal">
+                    <td colspan="4" style="border-top: 1px solid #cccccc; border-bottom: 0.1px solid #cccccc; padding: 10px 0">
+                        <span class="mz-ordersummary-totalname" {% if themeSettings.isArabicLanguageSite%} style="float:right; padding-right:0px; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{ labels.total }}</span>
+                        <span class="mz-ordersummary-totalvalue" {% if themeSettings.isArabicLanguageSite%} style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{model.currencyCode}} {{ model.total|floatformat(pageContext.currencyInfo.precision) }}</span>
+                    </td>
+                </tr>
+            </tfoot>
+    </table>
+	<div style="width:100%;padding-top:0px;">
+        <table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+            <tr align="left">
+                <td width="100%" style="padding-top:0px;padding-left:0px;padding-bottom:0px;border-top: 1px solid #ccc;">         
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+            <div>
+                <p style="font-size: 12px; font-weight: 600; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;">
+                    {{ labels.paymentMethod }}
+                </p>
+                <p style="font-size: 14px; letter-spacing: 0;   line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;">{{ model.billingInfo.billingContact.firstName }} {{ model.billingInfo.billingContact.lastNameOrSurname }}<br />
+                    {{labels.paymentThrough}}
+                            {% if model.billingInfo.paymentType == 'CreditCard' and model.billingInfo.card.paymentOrCardType != 'BLUEPREPAIDCARD' %} 
+								{% if model.billingInfo.card.paymentOrCardType|lower == 'knetcard' %}
+								{{labels.creditCardKNET}}
+								{% endif %}
+								{% if model.billingInfo.card.paymentOrCardType|lower == 'applepay' %}
+									{{labels.paidThroughCreditCardApplePay}}
+								{% endif %}
+								{% if model.billingInfo.card.paymentOrCardType|lower != 'applepay' and model.billingInfo.card.paymentOrCardType|lower != 'knetcard' %}
+									{{labels.creditCard}}
+								{% endif %}
+							{% else %} {% if model.billingInfo.paymentType|lower == 'check'%} {% set_var isCashOnDelivery=true %} {{labels.cashOnDelivery}} {% endif %} {% endif %}
+                            {% if model.billingInfo.paymentType == 'token' and model.billingInfo.token.type|lower == "bluewallet" %} {{labels.blueWalletPayment}} {% endif %}
+                            {% if not isCashOnDelivery and model.billingInfo.paymentType == 'token' and model.billingInfo.token.type|lower == "blueprepaidcard" %} {{labels.bluePrepaidPayment}} {% endif %}  
+                </p>
+            </div>
+    
+            <div style="">
+                <p style="font-size: 12px; font-weight: 600; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;">{{ labels.deliveryDetails }}</p>
+                <p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;">
+                    {% if model.fulfillmentInfo.fulfillmentContact.address %}
+                        {{ model.fulfillmentInfo.fulfillmentContact.address.address1 }}<br />
+                        {% if model.fulfillmentInfo.fulfillmentContact.address.address2 %}
+                        {{ model.fulfillmentInfo.fulfillmentContact.address.address2 }}<br />
+                    {% endif %}
+                    {% if model.fulfillmentInfo.fulfillmentContact.address.address3 %}
+                                {{ model.fulfillmentInfo.fulfillmentContact.address.address3 }}
+                                {% endif %}
+                                {{ model.fulfillmentInfo.fulfillmentContact.address.cityOrTown }}, {{ model.fulfillmentInfo.fulfillmentContact.address.stateOrProvince }} {{ model.fulfillmentInfo.fulfillmentContact.address.postalOrZipCode }}<br />
+                                {{ model.fulfillmentInfo.address.countryCode }}<br />
+                    {% endif %}
+                </p>
+            </div>
+    </div>
+
+    <div>
+        <p style="font-size: 12px; font-weight: 600; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;">
+                {{ labels.contactDetails }}
+        </p>
+        <p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;">{{labels.contactFullName}}: {{ model.billingInfo.billingContact.firstName }} {{ model.billingInfo.billingContact.lastNameOrSurname }}<br />
+                {{labels.mobile}}: {{model.billingInfo.billingContact.phoneNumbers.home}} 
+        </p>
+    </div>
+
+    <br>
+
+    <div style="padding-bottom: 30px; margin-bottom: 30px">
+        <table style="background: #163E35; color: #fff; text-align: center;" width="100%">
+            <tr>
+                <td style="font-size: 16px; letter-spacing: 0; line-height: 21px; margin: 0; padding: 26px 0 5px; font-family: Arial, Helvetica, sans-serif;" width="490">
+                    {{ labels.needHelp }}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0; padding: 0 12% 20px; font-family: Arial, Helvetica, sans-serif; color:#FFF;" width="490">
+                    {% if model.siteId == 100300 or  model.siteId == 100299 or model.siteId == 100460 or model.siteId == 100461 or model.siteId == 100150 or model.siteId == 100151 or model.siteId == 100375 or model.siteId == 100376  %}
+						{{ labels.getInTouchAE|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+					{% if model.siteId == 100167 or  model.siteId == 100166 or model.siteId == 100148 or model.siteId == 100149 or model.siteId == 100371 or model.siteId == 100374 or model.siteId == 100379 or model.siteId == 100380 or model.siteId ==  100447 or model.siteId ==  100448 or model.siteId ==  100454 or model.siteId ==  100455 %}
+						{{ labels.getInTouchKW|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+					{% if  model.siteId == 100443 or model.siteId == 100444 or model.siteId == 100331 or model.siteId == 100330 %}
+                        {{ labels.getInTouchKSA|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+                     {% endif %}
+					{% if model.siteId != 100299  and   model.siteId != 100300  and  model.siteId != 100166 and  model.siteId != 100167 and model.siteId != 100443 and model.siteId != 100444 and model.siteId != 100331 and model.siteId != 100330 and model.siteId != 100150 and model.siteId != 100151 and model.siteId != 100375 and model.siteId != 100376 and model.siteId != 100148 and model.siteId != 100149 and model.siteId != 100371 and model.siteId != 100374 and model.siteId != 100379 and model.siteId != 100380 %}
+						{{ labels.getInTouch|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+                </td>
+            </tr>
+            <tr><td style="padding-bottom: 2px;"></td></tr>
+        </table>
+    </div>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="490px" style="margin:15px 0 15px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;">
+        <tr style="padding-top:3px;padding-bottom:3px;"> 
+            <td width="32%" style="text-align:center;letter-spacing: 0;font-weight: 600;font-size: 10px;line-height: 13px;">
+                <a href="https://{{themeSettings.localeDomain}}/contact" target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">
+                    {{labels.contactUs|safe }}
+                </a>
+            </td>
+
+            <td style="padding-left:20px;padding-right:20px;">
+                <span style="text-align:center;">|</span>
+            </td>
+
+            <td width="32%" style="text-align:center;letter-spacing: 0;font-weight: 600;font-size: 10px;line-height: 13px;">
+                <a href="https://{{themeSettings.localeDomain}}/return-refund"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">
+                    {{ labels.returnsAndRefunds|safe}}
+                </a>
+            </td>
+
+            <td style="padding-left:20px;padding-right:20px;">
+                <span style="text-align:center;">|</span>
+            </td>
+
+            <td width="32%" style="text-align:center;letter-spacing: 0;font-weight: 600;font-size: 10px;line-height: 13px;">
+                <a href="https://{{themeSettings.localeDomain}}/terms-conditions"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">
+                    {{ labels.termsAndConditions|safe}}
+                </a>
+            </td>
+        </tr>
+    </table>
+	 <div style="text-align:center; font-size:10px; line-height:16px">
+			<p style="color:#000">
+			  <a style="padding:10px" href="https://www.facebook.com/MarksandSpencerME" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="4"><img data-imagetype="External" src="https://t100016-s100148.sb.euw1.kibocommerce.com/resources/images/icons/svg/facebook.png"></a> 
+			  <a style="padding:10px" href="https://www.youtube.com/user/MandSArabia" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="5"><img data-imagetype="External" src="https://t100016-s100148.sb.euw1.kibocommerce.com/resources/images/icons/svg/youtube.png"></a>
+			  <a style="padding:10px" href="https://www.instagram.com/marksandspencerme" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="6"><img data-imagetype="External" src="https://t100016-s100148.sb.euw1.kibocommerce.com/resources/images/icons/svg/instagram.png"></a>
+			</p>
+		  </div>
+
+    <div style="text-align:center;font-size:10px; line-height:20px;width:100%; font-family: Arial, Helvetica, sans-serif;">
+        <p style="color:#000">
+			{{themeSettings.emailFooterAddress}}<br />{{themeSettings.emailFooterAddress1}}<br />{{themeSettings.emailFooterAddress2}}
+		</p>
+    </div>
+</div>
+{%else%}
+	
+	<div class="mz-email-template-product-instock" style="max-width:490px;font-family: Arial, Helvetica, sans-serif!important;">
+        <div style="text-align:center;margin:30px 0;">
+            <img src="https://cdn-tp1.euw1.kibocommerce.com/100067-m1/cms/files/cd619a01-49ed-49eb-9bf6-714a3688ee07" alt="MS-Logo" style="width: 103px;height: 39px;" width="103" height="39">
+        </div>
+
+		<table align="center" width="650" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;background-color:#fff;">
+			<tbody>
+				<tr align="center" >
+					<td colspan="2" style="text-align:center; height: 64px; width:490px; vertical-align:middle; background-color: #163E35; color: #ffffff; font-size: 21px; line-height: 24px;font-weight: 600;letter-spacing: 0;font-family: Arial, Helvetica, sans-serif;">
+					{{labels.orderCancelledTitle}} 
+					</td>
+				</tr>
+				<br>
+				
+				<tr align="left">
+					<td style="padding-left:0px;padding-top: 20px; padding-bottom: 0;font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif;">
+						<span style="font-weight:bold;font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif;">
+							{{ labels.orderShipmentNumberEmail }}: </span> {{ model.orderNumber }} 
+					</td>
+				</tr>
+				
+				<tr align="left">
+					<td style="padding-left:0px;padding-bottom: 0;padding-top:6px;font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif;">
+						<span style="font-weight:bold;font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif;">
+						{{ labels.orderDateEmail }}: </span> {% include "modules/common/date-time-format" with dateTimeFormatInput=model.submittedDate %} 
+					</td>
+				</tr>
+
+				<tr align="left">
+					<td style="padding-left:0px;padding-bottom: 0; padding-top: 20px;font-size: 14px;letter-spacing: 0;line-height: 21px;font-family: Arial, Helvetica, sans-serif;"> 
+						{{ labels.emailOpeningHi }} {{ model.billingInfo.billingContact.firstName }},
+					</td>
+				</tr>				
+				<tr align="left">
+					{% if model.siteId == 100299 or model.siteId == 100300 or model.siteId == 100166 or model.siteId == 100167 %} 
+
+						
+					<td style="padding-left:0px;padding-top: 20px;font-size: 14px;letter-spacing: 0;line-height: 21px;font-family: Arial, Helvetica, sans-serif;"> 
+						{{ labels.orderCancelledTextOnlineAE }}
+					</td>
+					<td style="padding-left:0px;padding-top: 20px;font-size: 14px;letter-spacing: 0;line-height: 21px;font-family: Arial, Helvetica, sans-serif;"> 
+						{{ labels.orderCancelledTextOnline1AE }}
+					</td>
+					{% else %}
+						<td style="padding-left:0px;padding-top: 20px;font-size: 14px;letter-spacing: 0;line-height: 21px;font-family: Arial, Helvetica, sans-serif;"> 
+						{{ labels.orderCancelledTextOnline }}
+					</td>
+					<td style="padding-left:0px;padding-top: 20px;font-size: 14px;letter-spacing: 0;line-height: 21px;font-family: Arial, Helvetica, sans-serif;"> 
+						{{ labels.orderCancelledTextOnline1 }}
+					</td>
+					 {% endif %}
+					
+				</tr>
+
+				{% if model.siteId == 100299 or model.siteId == 100300 %} 
+				<tr align="left">
+					<td style="padding-left:0px;padding-top: 5px;padding-bottom:5px;font-size:12px; letter-spacing: 0; line-height: 21px; color: #000;font-weight: bold;font-family: Arial, Helvetica, sans-serif;"> 
+						{{ labels.returnCreatedWhatHappendNext1|safe }}
+					</td>
+				</tr>
+				<tr align="left">
+					<td style="padding-left:40px;padding-bottom:20px;padding-top: 0px;font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;"> 
+						<ul style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif;'>
+							<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;'>
+								{{ labels.orderCancelledNext1AE|safe }}
+							</li>
+							
+							<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;'>
+								{{ labels.orderCancelledNext2AE|safe }}
+							</li>
+						</ul>
+					</td>
+				</tr>
+				{% endif %}
+
+				{% if model.siteId == 100166 or model.siteId == 100167 %} 
+				<tr align="left">
+					<td style="padding-left:0px;padding-top: 5px;padding-bottom:5px;font-size:12px; letter-spacing: 0; line-height: 21px; color: #000;font-weight: bold;font-family: Arial, Helvetica, sans-serif;"> 
+						{{ labels.returnCreatedWhatHappendNext1|safe }}
+					</td>
+				</tr>
+				<tr align="left">
+					<td style="padding-left:40px;padding-bottom:20px;padding-top: 0px;font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;"> 
+						<ul style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif;'>
+							<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;'>
+								{{ labels.orderCancelledNext1KW|safe }}
+							</li>
+							
+							<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;'>
+								{{ labels.orderCancelledNext2KW|safe }}
+							</li>
+
+							<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;'>
+								{{ labels.orderCancelledNext3KW|safe }}
+							</li>
+						</ul>
+					</td>
+				</tr>
+				{% endif %}
+
+				{% comment %}
+				<tr align="left">
+					<td style="padding-left:0px;padding-top: 5px;padding-bottom:5px;font-size:12px; letter-spacing: 0; line-height: 21px; color: #000;font-weight: bold;font-family: Arial, Helvetica, sans-serif;"> 
+						{{ labels.returnCreatedWhatHappendNext1|safe }}
+					</td>
+				</tr>
+				<tr align="left">
+					<td style="padding-left:40px;padding-bottom:20px;padding-top: 0px;font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif;"> 
+						<ul style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif;'>
+							<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;'>
+								{{ labels.orderCancelledNext1|safe }}
+							</li>
+							
+							<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;'>
+								{{ labels.orderCancelledNext2|safe }}
+							</li>
+						</ul>
+					</td>
+				</tr>
+				{% endcomment %}				
+		
+				<tr align="left">
+					<td width="100%" style="padding-top: 15px;padding-left:0px;padding-bottom:0px;border-top: 1px solid #ccc;"> 
+							
+					</td>
+				</tr>
+
+				<tr align="left" style="padding-left:0px;padding-top:0px;">
+					<td width="100%" style="padding-left:0px;padding-top:0px;font-weight: bold;font-family: Arial, Helvetica, sans-serif;"> 
+							{{ labels.orderShippedDetails }}
+					</td>
+				</tr>
+
+				<tr align="left">
+					<td  width="100%" style="padding-left:0px;padding-top:0px;"> 
+							<table cellpadding="0" cellspacing="0" border="0" width="100%" id="producttable" style="padding-left:0px;padding-top:0px;">
+								<tbody style="padding-left:0px;padding-top:0px;">
+								{% for item in model.items %}	
+									<tr style="padding-left:0px;padding-top:0px;" >
+										{% if item.product.imageUrl %}
+											<td align="left"  style="padding:0;vertical-align: middle;">
+												<img src="https:{{ item.product.imageUrl }}" width="83.87" height="100" />
+											</td>
+										{% else %}
+											<td align="left"  style="padding:0;vertical-align: top;">
+												<img src="https://{{themeSettings.localeDomain}}/resources/images/icons/NoSwatch.png" width="83.87" height="120" />
+											</td>
+										{% endif %}
+										
+										<td style="padding:0; text-align: left; vertical-align: middle;">
+											<p style="font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 18px;font-family: Arial, Helvetica, sans-serif;">
+												{% for property in item.product.properties %}
+													{% if property.values and not property.isHidden %}
+														{%if property.name == 'Brand' %}
+															{% for v in property.values %}
+																{% if v.stringValue %}{{v.stringValue}}{% else %}{{v.value}}{% endif %}
+															{% endfor %}
+														{% endif %}
+													{% endif %}
+												{% endfor %}
+											</p>
+											<p style="font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 18px;text-align: left;font-family: Arial, Helvetica, sans-serif;">
+												{{ item.product.name }}
+											</p>
+											<p style="font-family: Arial, Helvetica, sans-serif;"> 
+												{% if item.product.options %}
+													{% for option in item.product.options %}
+													
+														{% if option.value %}
+															{{ option.stringValue|default(value.value)}}
+															{% if forloop.last == false %},{% endif%}
+														{% else %}
+															{{ option.shopperEnteredValue }}
+															{% if forloop.last == false %},{% endif%}
+														{% endif %}
+														
+														{% endfor %}
+												{% endif %}
+											</p> 
+											<p style="font-size: 14px;letter-spacing: 0;text-align: left;font-family: Arial, Helvetica, sans-serif;">
+												{{labels.qty}}: {{ item.quantity }}
+											</p>
+										</td>
+										<td align="right" style="padding:0 0 0 30px; text-align: right;font-size: 14px; letter-spacing: 0; line-height: 18px; vertical-align: top;font-family: Arial, Helvetica, sans-serif; ">
+											{{model.currencyCode}} {{item.product.price.price |floatformat(pageContext.currencyInfo.precision)}}
+										</td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+					</td>
+				</tr>
+			</tbody> 
+    	</table>
+
+		<div style="width:100%;padding-bottom:20px;">
+			<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+				<tr align="left">
+					<td width="100%" style="padding-left:0px;padding-bottom:0px;border-top: 1px solid #ccc;">         
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div>
+        	<p style="font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif;" class="mz-desktop-display">
+				{{ labels.orderSummary }}
+			<p>
+    	</div>
+
+		<table cellpadding="0" cellspacing="0" border="0" width="650" style="table-layout: fixed;background-color:#fff;">
+			<tbody>
+				<tr width="650" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+					<td align="left" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+						<p style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{ labels.subtotal }}</p>
+					</td> 
+					<td align="right" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+						<p style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;font-weight: 500;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{model.currencyCode}} {{model.subtotal  |floatformat(pageContext.currencyInfo.precision)}} <p>
+					</td>
+				</tr>
+				{% if  model.discountTotal > 0  %}
+                    {% with model.shippingSubTotal|subtract(model.shippingTotal) as shippingDiscount %}
+					{% with model.discountTotal|subtract(shippingDiscount) as remainingDiscount  %}    
+					{% if remainingDiscount > 0 %} 
+						<tr width="650" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+                            <td align="left" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+                                <p style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{ labels.totalDiscount }}</p>
+                            </td>
+                            <td align="right" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+                                <p style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;font-weight: 500;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{model.currencyCode}} {{model.discountTotal|subtract(shippingDiscount)|floatformat(pageContext.currencyInfo.precision)}} <p>
+                            </td>
+                        </tr>
+					{% endif %}
+                    {% endwith%}
+                {% endwith %}
+            {% endif %}
+				<tr width="650" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+					<td align="left" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+						<p style="font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{ labels.deliveryCost}}</p>
+					</td> 
+					<td align="right" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+						{% if  model.shippingTotal > 0  %}
+							<p style="float:right;font-weight: 500;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{model.currencyCode}} {{ model.shippingTotal  |floatformat(pageContext.currencyInfo.precision)}}<p>
+						{% else %}
+							<p style="float:right;font-weight: 500;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{labels.costFree}}<p>
+						{% endif %} 
+					</td>
+				</tr>
+				{% if model.handlingTotal > 0 %}
+					<tr width="650" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+						<td align="left" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+							<p style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{ labels.additionalHandling }}</p>
+						</td> 
+						<td align="right" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+							<p style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;font-weight: 500;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{model.currencyCode}} {{model.handlingTotal  |floatformat(pageContext.currencyInfo.precision)}} <p>
+						</td>
+					</tr>
+				{% endif %}
+			</tbody>
+		</table>
+   
+		<div style="width:100%;padding-top:0px;">
+			<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+				<tr align="left">
+					<td width="100%" style="padding-top:0px;padding-left:0px;padding-bottom:0px;border-top: 1px solid #ccc;">         
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div style="width:100%;padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+			<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+				<tr align="left">
+				<td align="left" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+						<p style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{ labels.total }}</p>
+					</td> 
+					<td align="right" width="300" style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;">
+						<p style="padding-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;font-weight: 500;font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;">{{model.currencyCode}} {{model.total  |floatformat(pageContext.currencyInfo.precision)}} <p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div style="width:100%;padding-top:0px;">
+			<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+				<tr align="left">
+					<td width="100%" style="padding-top:0px;padding-left:0px;padding-bottom:0px;border-top: 1px solid #ccc;">         
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div>
+				<div>
+					<p style="font-size: 12px; font-weight: 600; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;">
+						{{ labels.paymentMethod }}
+					</p>
+					<p style="font-size: 14px; letter-spacing: 0;   line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;">{{ model.billingInfo.billingContact.firstName }} {{ model.billingInfo.billingContact.lastNameOrSurname }}<br />
+						{{labels.paymentThrough}}
+								{% if model.billingInfo.paymentType == 'CreditCard' and model.billingInfo.card.paymentOrCardType != 'BLUEPREPAIDCARD' %} 
+									{% if model.billingInfo.card.paymentOrCardType|lower == 'knetcard' %}
+									{{labels.creditCardKNET}}
+									{% endif %}
+									{% if model.billingInfo.card.paymentOrCardType|lower == 'applepay' %}
+										{{labels.paidThroughCreditCardApplePay}}
+									{% endif %}
+									{% if model.billingInfo.card.paymentOrCardType|lower != 'applepay' and model.billingInfo.card.paymentOrCardType|lower != 'knetcard' %}
+										{{labels.creditCard}}
+									{% endif %}
+								{% else %} {% if model.billingInfo.paymentType|lower == 'check'%} {% set_var isCashOnDelivery=true %} {{labels.cashOnDelivery}} {% endif %} {% endif %}
+								{% if model.billingInfo.paymentType == 'token' and model.billingInfo.token.type|lower == "bluewallet" %} {{labels.blueWalletPayment}} {% endif %}
+								{% if not isCashOnDelivery and model.billingInfo.paymentType == 'token' and model.billingInfo.token.type|lower == "blueprepaidcard" %} {{labels.bluePrepaidPayment}} {% endif %}  
+					</p>
+				</div>
+				{% if model.siteId != 100299  and   model.siteId != 100300  and  model.siteId != 100166 and  model.siteId != 100167 %}
+				<div style="">
+					<p style="font-size: 12px; font-weight: 600; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;">{{ labels.deliveryDetails }}</p>
+					<p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;">
+						{% if model.fulfillmentInfo.fulfillmentContact.address %}
+							{{ model.fulfillmentInfo.fulfillmentContact.address.address1 }}<br />
+							{% if model.fulfillmentInfo.fulfillmentContact.address.address2 %}
+							{{ model.fulfillmentInfo.fulfillmentContact.address.address2 }}<br />
+						{% endif %}
+						{% if model.fulfillmentInfo.fulfillmentContact.address.address3 %}
+									{{ model.fulfillmentInfo.fulfillmentContact.address.address3 }}
+									{% endif %}
+									{{ model.fulfillmentInfo.fulfillmentContact.address.cityOrTown }}, {{ model.fulfillmentInfo.fulfillmentContact.address.stateOrProvince }} {{ model.fulfillmentInfo.fulfillmentContact.address.postalOrZipCode }}<br />
+									{{ model.fulfillmentInfo.address.countryCode }}<br />
+						{% endif %}
+					</p>
+				</div>
+				{% endif %}
+		</div>
+    
+		<div>
+			<p style="font-size: 12px; font-weight: 600; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;">
+					{{ labels.contactDetails }}
+			</p>
+			<p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;">{{labels.contactFullName}}: {{ model.billingInfo.billingContact.firstName }} {{ model.billingInfo.billingContact.lastNameOrSurname }}<br />
+					{{labels.mobile}}: {{model.billingInfo.billingContact.phoneNumbers.home}} 
+			</p>
+		</div>
+
+    	<br>
+
+		<div style="padding-bottom: 30px; margin-bottom: 30px">
+			<table style="background: #163E35; color: #fff; text-align: center;" width="100%">
+				<tr>
+					<td style="font-size: 16px; letter-spacing: 0; line-height: 21px; margin: 0; padding: 26px 0 5px; font-family: Arial, Helvetica, sans-serif;" width="490">
+						{{ labels.needHelp }}
+					</td>
+				</tr>
+				<tr>
+					<td style="font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0; padding: 0 12% 20px; font-family: Arial, Helvetica, sans-serif; color:#FFF;" width="490">
+					{% if model.siteId == 100300 or  model.siteId == 100299 or model.siteId == 100460 or model.siteId == 100461 or model.siteId == 100150 or model.siteId == 100151 or model.siteId == 100375 or model.siteId == 100376 %}
+						{{ labels.getInTouchAE|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+					{% if model.siteId == 100167 or  model.siteId == 100166 or model.siteId == 100148 or model.siteId == 100149 or model.siteId == 100371 or model.siteId == 100374 or model.siteId == 100379 or model.siteId == 100380 or model.siteId ==  100447 or model.siteId ==  100448 or model.siteId ==  100454 or model.siteId ==  100455 %}
+						{{ labels.getInTouchKW|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+					{% if  model.siteId == 100443 or model.siteId == 100444 or model.siteId == 100331 or model.siteId == 100330 %}
+                        {{ labels.getInTouchKSA|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+                     {% endif %}
+					{% if model.siteId != 100299  and   model.siteId != 100300  and  model.siteId != 100166 and  model.siteId != 100167 and model.siteId != 100443 and model.siteId != 100444 and model.siteId != 100331 and model.siteId != 100330 and model.siteId != 100150 and model.siteId != 100151 and model.siteId != 100375 and model.siteId != 100376 and model.siteId != 100148 and model.siteId != 100149 and model.siteId != 100371 and model.siteId != 100374 and model.siteId != 100379 and model.siteId != 100380 %}
+						{{ labels.getInTouch|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+					</td>
+				</tr>
+				<tr><td style="padding-bottom: 2px;"></td></tr>
+			</table>
+		</div>
+    
+		<table cellpadding="0" cellspacing="0" border="0" width="490px" style="margin:15px 0 15px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;">
+			<tr style="padding-top:3px;padding-bottom:3px;"> 
+				<td width="32%" style="text-align:center;letter-spacing: 0;font-weight: 600;font-size: 10px;line-height: 13px;">
+					<a href="https://{{themeSettings.localeDomain}}/contact" target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">
+						{{labels.contactUs|safe }}
+					</a>
+				</td>
+
+				<td style="padding-left:20px;padding-right:20px;">
+					<span style="text-align:center;">|</span>
+				</td>
+
+				<td width="32%" style="text-align:center;letter-spacing: 0;font-weight: 600;font-size: 10px;line-height: 13px;">
+					<a href="https://{{themeSettings.localeDomain}}/return-refund"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">
+						{{ labels.returnsAndRefunds|safe}}
+					</a>
+				</td>
+
+				<td style="padding-left:20px;padding-right:20px;">
+					<span style="text-align:center;">|</span>
+				</td>
+
+				<td width="32%" style="text-align:center;letter-spacing: 0;font-weight: 600;font-size: 10px;line-height: 13px;">
+					<a href="https://{{themeSettings.localeDomain}}/terms-conditions"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">
+						{{ labels.termsAndConditions|safe}}
+					</a>
+				</td>
+			</tr>
+		</table>
+		 <div style="text-align:center; font-size:10px; line-height:16px">
+			<p style="color:#000">
+			  <a style="padding:10px" href="https://www.facebook.com/MarksandSpencerME" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="4"><img data-imagetype="External" src="https://t100016-s100148.sb.euw1.kibocommerce.com/resources/images/icons/svg/facebook.png"></a> 
+			  <a style="padding:10px" href="https://www.youtube.com/user/MandSArabia" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="5"><img data-imagetype="External" src="https://t100016-s100148.sb.euw1.kibocommerce.com/resources/images/icons/svg/youtube.png"></a>
+			  <a style="padding:10px" href="https://www.instagram.com/marksandspencerme" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="6"><img data-imagetype="External" src="https://t100016-s100148.sb.euw1.kibocommerce.com/resources/images/icons/svg/instagram.png"></a>
+			</p>
+		  </div>
+
+    	<div style="text-align:center;font-size:10px; line-height:20px;width:100%; font-family: Arial, Helvetica, sans-serif;">
+			<p style="color:#000">
+				{{themeSettings.emailFooterAddress}}<br />{{themeSettings.emailFooterAddress1}}<br />{{themeSettings.emailFooterAddress2}}
+			</p>
+		</div>
+	</div>
+{%endif%}
+
+
+	<![endif]-->
+	
+	<!--[if !mso]> <!---->
+
+	<!--POSE stands for Post Order Submit Edit. EX: An order has been submitted and items are added to the order-->
+    <!--If the cancelled order includes POSE items a different template is used for the email-->
+    
+	{% if model.hasPOSEItems %}
+        <br>
+        <p style="font-family: Arial, Helvetica, sans-serif!important;">{{ labels.orderWelcome }} {{ model.billingInfo.billingContact.firstName }} {{ model.billingInfo.billingContact.lastNameOrSurname }},</p>
+        <br>
+        <p style="font-family: Arial, Helvetica, sans-serif!important;">{{ labels.orderCancelBlob1|string_format(model.orderNumber, model.externalId)|safe }}</p>
+        <br>
+        <table cellpadding="1" width="100%">
+            <thead>
+                <tr>
+                    <td bgcolor="#666666" style="font-family: Arial, Helvetica, sans-serif!important;"><font color="#ffffff">{{ labels.product }}</font></td>
+                    <td bgcolor="#666666" style="font-family: Arial, Helvetica, sans-serif!important;"><font color="#ffffff">{{ labels.qty }}</font></td>
+                    <td align="right" bgcolor="#666666" style="font-family: Arial, Helvetica, sans-serif!important;"><font color="#ffffff">{{ labels.subtotal }}</font></td>
+                </tr>
+            </thead>
+            {% for shipment in model.omsShipments %}
+                {% for item in shipment.canceledItems %}
+                    <tbody class="mz-ordersummary-lineitems">
+                        <tr class="mz-ordersummary-line mz-ordersummary-line-item {% if item.itemDiscount > 0 %}is-discounted{% endif %}">
+                            <td class="mz-ordersummary-item-product" style="font-family: Arial, Helvetica, sans-serif!important;">
+                                {{ item.name }}
+                            </td>
+                            <td style="font-family: Arial, Helvetica, sans-serif!important;">
+                                {{ item.quantity }}
+                            </td>
+                            <td align="right" style="font-family: Arial, Helvetica, sans-serif!important;"> {% include "modules/common/email-item-total" %}</td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            {% endfor %}
+        </table>
+
+           <br>
+            <p style="font-family: Arial, Helvetica, sans-serif!important;">{{ labels.orderCancelBlob2|string_format(siteContext.generalSettings.websiteName)|safe }}</p>
+
+            {% if model.shopperNotes.comments %}
+                <h5 style="font-family: Arial, Helvetica, sans-serif!important;">{{ labels.comments }}</h5>
+                <br><p style="font-family: Arial, Helvetica, sans-serif!important;">{{ model.shopperNotes.comments }}</p>
+            {% endif %}
+
+            {% if model.shopperNotes.giftMessage %}
+                <h5 style="font-family: Arial, Helvetica, sans-serif!important;">{{ labels.giftMessage }}</h5>
+                <br><p style="font-family: Arial, Helvetica, sans-serif!important;">{{ model.shopperNotes.giftMessage }}</p>
+            {% endif %}
+
+            {{ labels.emailClosing|string_format(siteContext.generalSettings.websiteName)|safe }}
+            
+    {% else %}
+        <div style="text-align:center;margin:30px 0;">
+			<img src="https://cdn-tp1.euw1.kibocommerce.com/100067-m1/cms/files/cd619a01-49ed-49eb-9bf6-714a3688ee07" alt="MS-Logo" style="width: 103px;height: 39px;" width="103" height="39">
+		</div>
+		<span style="padding: 20px 77px; line-height:normal; background-color: #163E35; color: #fff; display: block; text-align: center; font-size: 21px; margin-bottom: 32px;font-family: Arial, Helvetica, sans-serif!important;" class="mz-return-confirmation-title">{{labels.orderCancelledTitle}}</span>
+		<div class="mz-orderheader-created" style="font-size: 14px; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;">
+				<div class="mz-orderheader-order-value" style="margin: 0; font-family: Arial, Helvetica, sans-serif!important;">					
+					<span style="font-family: Arial, Helvetica, sans-serif!important;">
+						<strong>{{ labels.orderShipmentNumberEmail }}:</strong>
+					</span>
+					<span style="font-family: Arial, Helvetica, sans-serif!important;">
+						{{ model.orderNumber }}
+					</span>
+				</div>
+				<div class="mz-orderheader-date-value" style="margin: 0; font-family: Arial, Helvetica, sans-serif!important;">
+					<span style="font-family: Arial, Helvetica, sans-serif!important;"><strong>{{ labels.orderCancelledDate }}:</strong></span>
+					<span style="font-family: Arial, Helvetica, sans-serif!important;">{% include "modules/common/date-time-format" with dateTimeFormatInput=model.submittedDate %}</span>
+				</div>
+		</div>
+        <div style="width:100%;">
+			<br>
+			<p style="font-family: Arial, Helvetica, sans-serif!important;">
+				{{ labels.orderWelcome }} {{ model.billingInfo.billingContact.firstName }},
+			</p>
+			{% if model.siteId == 100299 or model.siteId == 100300 or model.siteId == 100166 or model.siteId == 100167 %} 
+				 <p style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif!important;'>
+					{{ labels.orderCancelledTextOnlineAE }}
+				</p>
+				<p style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif!important;'>
+					{{ labels.orderCancelledTextOnline1AE }}
+				</p>
+				 {% else %}
+					<p style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif!important;'>
+				{{ labels.orderCancelledTextOnline }}
+			</p>
+			<p style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif!important;'>
+				{{ labels.orderCancelledTextOnline1 }}
+			</p>
+			 {% endif %}
+			
+			<br>
+
+			{% if model.siteId == 100299 or model.siteId == 100300 %} 
+			<div style="width:100%;margin-bottom: 20px;">
+				<span style='font-size:12px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.returnCreatedWhatHappendNext1|safe }}<span>
+				<ul style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;margin-top:3px'>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.orderCancelledNext1AE|safe }}</li>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.orderCancelledNext2AE|safe }}</li>
+				</ul>
+			</div>
+			{% endif %}
+
+				{% if model.siteId == 100166 or model.siteId == 100167 %}
+			<div style="width:100%;margin-bottom: 20px;">
+				<span style='font-size:12px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.returnCreatedWhatHappendNext1|safe }}<span>
+				<ul style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;margin-top:3px'>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.orderCancelledNext1KW|safe }}</li>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.orderCancelledNext2KW|safe }}</li>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.orderCancelledNext3KW|safe }}</li>
+				</ul>
+			</div>
+			{% endif %}
+
+			{% comment %}
+			<div style="width:100%;margin-bottom: 20px;">
+				<span style='font-size:12px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.returnCreatedWhatHappendNext1|safe }}<span>
+				<ul style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;width:490px;margin-top:3px'>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.orderCancelledNext1|safe }}</li>
+					<li style='font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;font-family: Arial, Helvetica, sans-serif!important;'>{{ labels.orderCancelledNext2|safe }}</li>
+				</ul>
+			</div>
+			{% endcomment %}				
+        </div>
+        <div style="border-top: 1px solid #ccc; margin-top: 10px">
+			<p style="font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 16px;margin-bottom:0;font-family: Arial, Helvetica, sans-serif!important;" class="mz-desktop-display">{{ labels.orderCancelledDetails }}</p>
+			<table class="mz-ordersummary" style="background: transparent; width: 100%;">
+				<thead></thead>
+			    <tbody>
+                    {% for item in model.items %}
+					{% set_var isBrandAvailable=false %}		
+					<tr class="mz-ordersummary-line mz-ordersummary-line-item" style="border-bottom:0.1px solid #cccccc; position :relative">
+						
+						{% if item.product.imageUrl %}
+							<td {% if themeSettings.isArabicLanguageSite%} style="padding: 20px 0 20px 16px;  width:83px; height:118px"{% else %} style="padding: 20px 16px 20px 0; width:83px; height:118px"{% endif %}>
+								<img src="https:{{ item.product.imageUrl }}" width="83.87" height="118" />
+							</td>
+						{% else %}
+							<td {% if themeSettings.isArabicLanguageSite%} style="padding: 20px 0 20px 16px; width:83px; height:118px"{% else %} style="padding: 20px 16px 20px 0; width:83px; height:118px"{% endif %}>
+								<img src="https://{{themeSettings.localeDomain}}/resources/images/icons/NoSwatch.png" width="83.87" height="120" />
+							</td>
+						{% endif %}
+						
+						<td {% if themeSettings.isArabicLanguageSite%} style="text-align:right;padding: 20px 10px;  vertical-align: baseline;"{% else %}  style="text-align:left; padding: 0 10px; vertical-align: baseline;"{% endif %}>
+							<p style="font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 18px; margin: 0 0 5px;font-family: Arial, Helvetica, sans-serif!important;">
+								{% for property in item.product.properties %}
+									{% if property.values and not property.isHidden %}
+										{%if property.name == 'Brand' %}
+										{% set_var isBrandAvailable=true %}
+											{% for v in property.values %}
+												{% if v.stringValue %}{{v.stringValue}}{% else %}{{v.value}}{% endif %}
+											{% endfor %}
+										{% endif %}
+									{% endif %}
+								{% endfor %}
+							</p>
+							<p style="font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 18px; margin: 0;font-family: Arial, Helvetica, sans-serif!important;">{{ item.product.name }}</p>
+							<p> 
+								{% if item.product.options %}
+									<dl class="mz-propertylist" style="margin:0;font-family: Arial, Helvetica, sans-serif!important;">
+										{% for option in item.product.options %}
+										<span class="mz-propertylist-data" style="font-size: 14px; letter-spacing: 0; line-height: 18px; margin-left:0;font-family: Arial, Helvetica, sans-serif!important;">
+										{% if option.value %}
+											{{ option.stringValue|default(value.value)}}
+											{% if forloop.last == false %},{% endif%}
+										{% else %}
+											{{ option.shopperEnteredValue }}
+											{% if forloop.last == false %},{% endif%}
+										{% endif %}
+										</span>
+										{% endfor %}
+									</dl>
+								{% endif %}
+								{% if item.quantity %}
+								    <dl class="mz-propertylist-quantity">
+									    <dd class="mz-propertylist-data" {% if themeSettings.isArabicLanguageSite%} style="font-size: 14px; letter-spacing: 0; line-height: 18px; margin-left:12px; margin-right: 0;font-family: Arial, Helvetica, sans-serif!important;" {% else %} style="font-size: 14px; letter-spacing: 0; line-height: 18px; margin-left:0; margin-right: 12px;font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>
+									        {{labels.qty}}: {{item.quantity}}
+									    </dd>
+									</dl>
+								{% endif %}
+							</p>
+							{% for reason in item.reasons %}
+							<p style="font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif!important;">{{labels.qty}}: {{ reason.quantity }}</p>
+							{% endfor %}
+						</td>
+						<td {% if themeSettings.isArabicLanguageSite%} style="vertical-align:top; text-align:left; {% if isBrandAvailable %} padding: 43px 15px 0 0; {% else %} padding: 20px 15px 0 0;{% endif %} font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="text-align:right; vertical-align:top;{% if isBrandAvailable %} padding: 43px 0 0 15px; {% else %}padding: 20px 0 0 15px;{% endif %} font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}> {{siteContext.currencyInfo.currencyCode}} {%if item.product.price.salePrice %} {{ item.product.price.salePrice|multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }} {% else %} {{ item.product.price.price|multiply(item.quantity)|floatformat(pageContext.currencyInfo.precision) }} {%endif%}</td>
+					</tr>
+
+				{% endfor %}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4" style="padding: 25px 0 0 0;">
+						<span  {% if themeSettings.isArabicLanguageSite%}style=" float:right; text-align:right; font-size: 14px; letter-spacing: 0; line-height: 18px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="text-align:left; font-size: 14px; letter-spacing: 0; line-height: 18px; float:left; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{ labels.orderSummary }}</span>
+						<span style="font-size: 14px; letter-spacing: 0; line-height: 18px; float:right; font-family: Arial, Helvetica, sans-serif!important;"></span>
+						</td>
+					</tr>
+					<tr class="mz-ordersummary-subtotal">
+						<td colspan="4" style="padding: 20px 0 10px 0">
+						<span class="mz-ordersummary-totalname" {% if themeSettings.isArabicLanguageSite%}style="text-align:right; float:right; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="text-align:left; float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{ labels.subtotal }}</span>
+						<span class="mz-ordersummary-totalvalue" {% if themeSettings.isArabicLanguageSite%}style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{siteContext.currencyInfo.currencyCode}} {{model.subtotal |floatformat(pageContext.currencyInfo.precision)}}</span>
+						</td>
+					</tr>
+					{% if  model.discountTotal > 0  %}
+						{% with model.shippingSubTotal|subtract(model.shippingTotal) as shippingDiscount %}     
+						{% with model.discountTotal|subtract(shippingDiscount) as remainingDiscount  %}                       
+						{% if remainingDiscount > 0 %}      
+						<tr class="mz-ordersummary-subtotal">
+								<td colspan="4" style="padding: 0px 0 10px 0">
+								<span class="mz-ordersummary-totalname" {% if themeSettings.isArabicLanguageSite%}style="text-align:right; float:right; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="text-align:left; float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{ labels.totalDiscount }}</span>
+								<span class="mz-ordersummary-totalvalue" {% if themeSettings.isArabicLanguageSite%}style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif;color:#000"{% endif %}>{{siteContext.currencyInfo.currencyCode}} {{model.discountTotal|subtract(shippingDiscount)|floatformat(pageContext.currencyInfo.precision)}}</span>
+								</td>
+							</tr>
+							{% endif %}
+							{% endwith%}
+						{% endwith %}
+					{% endif %}   
+					{% if model.handlingTotal > 0 %}
+						<tr class="mz-ordersummary-subtotal">
+							<td colspan="4" style="padding: 20px 0 10px 0">
+							<span class="mz-ordersummary-totalname" {% if themeSettings.isArabicLanguageSite%}style="text-align:right; float:right; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="text-align:left; float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{ labels.additionalHandling }}</span>
+							<span class="mz-ordersummary-totalvalue" {% if themeSettings.isArabicLanguageSite%}style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{siteContext.currencyInfo.currencyCode}} {{model.handlingTotal |floatformat(pageContext.currencyInfo.precision)}}</span>
+							</td>
+						</tr>
+					{% endif %} 
+					<tr class="mz-ordersummary-shippingtotal">
+						 <td colspan="4" style="padding: 0 0 10px 0">
+							<span class="mz-ordersummary-totalname" {%if themeSettings.isArabicLanguageSite%}style="text-align:right; float:right; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="text-align:left; float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{ labels.deliveryCost }}</span>
+							{% if  model.shippingTotal > 0  %}
+								<span class="mz-ordersummary-totalvalue" {%if themeSettings.isArabicLanguageSite%}style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{siteContext.currencyInfo.currencyCode}} {{ model.shippingTotal |floatformat(pageContext.currencyInfo.precision)}}</span>
+							{% else %}
+								<span class="mz-ordersummary-totalvalue" {%if themeSettings.isArabicLanguageSite%}style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{labels.free|upper}}</span>
+							{% endif %} 
+						 </td>
+					</tr>
+					<tr class="mz-ordersummary-grandtotal">
+						<td colspan="4" style="border-top: 1px solid #cccccc; border-bottom: 0.1px solid #cccccc; padding: 10px 0">
+							<span class="mz-ordersummary-totalname"  {% if themeSettings.isArabicLanguageSite%}style="text-align:right; float:right; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="text-align:left; float:left; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{ labels.total }}</span>
+							<span class="mz-ordersummary-totalvalue"  {% if themeSettings.isArabicLanguageSite%}style="float:left; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% else %} style="float:right; font-weight: 500; font-size: 14px; letter-spacing: 0; line-height: 28px; font-family: Arial, Helvetica, sans-serif!important;"{% endif %}>{{siteContext.currencyInfo.currencyCode}} {{model.total |floatformat(pageContext.currencyInfo.precision) }}</span>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+        <div>
+            <div style="margin-bottom: 20px">
+                <p style="font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 16px;color: black; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.orderCancelPaymentMethod }}</p>
+                <p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; margin: 0; font-family: Arial, Helvetica, sans-serif!important;">{{ model.billingInfo.billingContact.firstName }} {{ model.billingInfo.billingContact.lastNameOrSurname }}</p>
+                <p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; margin: 0; font-family: Arial, Helvetica, sans-serif!important;">
+					{{labels.paymentThrough}}
+							{% if model.billingInfo.paymentType == 'CreditCard' and model.billingInfo.card.paymentOrCardType != 'BLUEPREPAIDCARD' %} 
+								
+									{% if model.billingInfo.card.paymentOrCardType|lower == 'knetcard' %}
+									{{labels.creditCardKNET}}
+									{% endif %}
+									{% if model.billingInfo.card.paymentOrCardType|lower == 'applepay' %}
+										{{labels.paidThroughCreditCardApplePay}}
+									{% endif %}
+									{% if model.billingInfo.card.paymentOrCardType|lower != 'applepay' and model.billingInfo.card.paymentOrCardType|lower != 'knetcard' %}
+										{{labels.creditCard}}
+									{% endif %}
+							{% else %} {% if model.billingInfo.paymentType|lower == 'check'%} {% set_var isCashOnDelivery=true %}{{labels.cashOnDelivery}} {% endif %} {% endif %}
+							{% if model.billingInfo.paymentType == 'token' and model.billingInfo.token.type|lower == "bluewallet" %} {{labels.blueWalletPayment}} {% endif %}
+							{% if not isCashOnDelivery and model.billingInfo.paymentType == 'token' and model.billingInfo.token.type|lower == "blueprepaidcard" %} {{labels.bluePrepaidPayment}} {% endif %}  
+				</p>
+            </div>
+			{% if model.fulfillmentInfo.shippingMethodName  %}
+				<div style="margin-bottom: 20px">
+				 {% if model.siteId != 100299  and   model.siteId != 100300  and  model.siteId != 100166 and  model.siteId != 100167 %}
+					<p style="font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 16px;color: black; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.orderCancelDeliveryDetails }}</p>
+					<p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif!important;">
+						{% if model.fulfillmentInfo.fulfillmentContact.address %}
+							{{ model.fulfillmentInfo.fulfillmentContact.address.address1 }}<br />
+							{% if model.fulfillmentInfo.fulfillmentContact.address.address2 %}
+								{{ model.fulfillmentInfo.fulfillmentContact.address.address2 }}<br />
+							{% endif %}
+							{% if model.fulfillmentInfo.fulfillmentContact.address.address3 %}
+								{{ model.fulfillmentInfo.fulfillmentContact.address.address3 }}<br />
+							{% endif %}
+							{{ model.fulfillmentInfo.fulfillmentContact.address.cityOrTown }}<br />
+							{{ model.fulfillmentInfo.fulfillmentContact.address.countryCode }}<br />
+						{% endif %}
+					</p>
+					{% endif %}
+				</div>
+			{% endif %}
+            <div style="margin-bottom: 20px">
+                <p style="font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 16px;color: black; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.orderCancelContactDetails }}</p>
+                <p style="font-size: 14px; letter-spacing: 0;	line-height: 21px; color: #000; margin: 0;color: black; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.orderCancelNameTitle }}: {{ model.billingInfo.billingContact.firstName }} {{ model.billingInfo.billingContact.lastNameOrSurname }}</p>
+                <p style="font-size: 14px; letter-spacing: 0;	line-height: 21px; color: #000; margin: 0;color: black; font-family: Arial, Helvetica, sans-serif!important;">
+                    {{ labels.orderCancelMobileTitle }}: 
+                    {% if model.billingInfo.billingContact.phoneNumbers.mobile %}
+                        {{ model.billingInfo.billingContact.phoneNumbers.mobile }} 
+                    {% else %}
+                        {{ model.billingInfo.billingContact.phoneNumbers.home }}
+                    {% endif %}  
+                </p>
+            </div>
+			{% if not model.fulfillmentInfo.shippingMethodName %}
+                {% if model.locations  %}
+                    {% with model.locations|first as location %}
+                        <div>
+                            <p style="font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;color:#000">{{ labels.selectedstore }}</p>
+                            <p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;color:#000">{{ location.name }} <br />
+                            {{location.address.address1}},{{location.address.cityOrTown}}<br />
+                            {{location.address.countryCode}}</p>    
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 16px; font-family: Arial, Helvetica, sans-serif;color:#000">{{ labels.openingHours }}</p>
+                            <p style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000; font-family: Arial, Helvetica, sans-serif;color:#000">{{location.regularHours.sunday.openTime}} {{labels.to}} {{location.regularHours.sunday.closeTime}} {{ labels.daily }}</p>
+                        </div>
+                    {% endwith %}
+                {% endif %}
+            {% endif %}
+        </div>
+        <div style="background-color: #163E35; color: #fff;  text-align: center; margin-top: 30px; width:100%">
+			<div style="margin:0 auto;width: 384px">
+				<p style="font-size: 16px; letter-spacing: 0; line-height: 21px; margin: 0;  padding-top: 21px;  font-family: Arial, Helvetica, sans-serif!important;">{{ labels.needHelp }}</p>
+				<p style="font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0 auto; padding-top: 3px; padding-bottom: 21px;width: 384px; font-family: Arial, Helvetica, sans-serif!important; color:#FFF;">
+				 {% if model.siteId == 100300 or  model.siteId == 100299 or model.siteId == 100460 or model.siteId == 100461 or model.siteId == 100150 or model.siteId == 100151 or model.siteId == 100375 or model.siteId == 100376 %}
+						{{ labels.getInTouchAE|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+					{% if model.siteId == 100167 or  model.siteId == 100166 or model.siteId == 100148 or model.siteId == 100149 or model.siteId == 100371 or model.siteId == 100374 or model.siteId == 100379 or model.siteId == 100380 or model.siteId ==  100447 or model.siteId ==  100448 or model.siteId ==  100454 or model.siteId ==  100455 %}
+						{{ labels.getInTouchKW|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %}
+					{% if  model.siteId == 100443 or model.siteId == 100444 or model.siteId == 100331 or model.siteId == 100330 %}
+                        {{ labels.getInTouchKSA|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+                     {% endif %}
+					{% if model.siteId != 100299  and   model.siteId != 100300  and  model.siteId != 100166 and  model.siteId != 100167 and model.siteId != 100443 and model.siteId != 100444 and model.siteId != 100331 and model.siteId != 100330 and model.siteId != 100150 and model.siteId != 100151 and model.siteId != 100375 and model.siteId != 100376 and model.siteId != 100148 and model.siteId != 100149 and model.siteId != 100371 and model.siteId != 100374 and model.siteId != 100379 and model.siteId != 100380 %}
+						{{ labels.getInTouch|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}
+					{% endif %} 
+				</p>
+			</div>
+     	</div>
+		<div style="margin:30px 0 30px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px 0;width:100%;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" >
+				<tr>
+					<td width="32%" style="padding:0;text-align:center;">
+					 <a href="https://{{themeSettings.localeDomain}}/contact" target="_blank" style="font-size:10px;text-decoration:none;color:#000; font-family: Arial, Helvetica, sans-serif!important;">{{labels.contactUs|safe }}</a>
+					</td>
+					<td width="32%" style="padding:0;border-right:1px solid #ccc;border-left:1px solid #ccc;text-align:center;">
+					 <a href="https://{{themeSettings.localeDomain}}/return-refund"  target="_blank" style="font-size:10px;text-decoration:none;color:#000; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.returnsAndRefunds|safe}}</a>
+					</td>
+					<td width="32%" style="padding:0;text-align:center;">
+					  <a href="https://{{themeSettings.localeDomain}}/terms-conditions"  target="_blank" style="font-size:10px;text-decoration:none;color:#000; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.termsAndConditions|safe}}</a>
+					</td>
+				  </tr>
+			</table>
+		</div>
+		<div style="text-align:center; font-size:10px; line-height:16px">
+			<p style="color:#000">
+			  <a style="padding:10px" href="https://www.facebook.com/MarksandSpencerME" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="4"><img data-imagetype="External" src="https://t100016-s100148.sb.euw1.kibocommerce.com/resources/images/icons/svg/facebook.png"></a> 
+			  <a style="padding:10px" href="https://www.youtube.com/user/MandSArabia" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="5"><img data-imagetype="External" src="https://t100016-s100148.sb.euw1.kibocommerce.com/resources/images/icons/svg/youtube.png"></a>
+			  <a style="padding:10px" href="https://www.instagram.com/marksandspencerme" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="6"><img data-imagetype="External" src="https://t100016-s100148.sb.euw1.kibocommerce.com/resources/images/icons/svg/instagram.png"></a>
+			</p>
+		  </div>
+		<div style="text-align:center;font-size:10px; line-height:20px; font-family: Arial, Helvetica, sans-serif!important;">
+			<p style="color:#000">
+				{{themeSettings.emailFooterAddress}}<br />{{themeSettings.emailFooterAddress1}}<br />{{themeSettings.emailFooterAddress2}}
+			</p>
+		</div>
+    {% endif %}
+	<!-- <![endif]-->
+
+	
+{% endblock body-content %}

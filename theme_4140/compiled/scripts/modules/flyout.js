@@ -1,0 +1,1 @@
+define(["modules/jquery-mozu","modules/backdrop"],function(e,t){var a=function(a){e(a.currentTarget).find(".mz-sitenav-link").hasClass("mz-emptyCategory")||t.applyRemoveBackdrop("active","deactive")},n=function(){t.applyRemoveBackdrop("deactive","active")};return{desktopFlyout:function(){!function(e){e.hover(a,n)}(e(".mz-sitenav [data-mz-parent-item]"))}}});

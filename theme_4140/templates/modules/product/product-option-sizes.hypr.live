@@ -1,0 +1,46 @@
+<div class="mz-size-container">
+	{% if size1 and not size2%}
+		{% if option.attributeFQN|lower == "tenant~size1" %}
+			{% if model.sizes %}
+				<div class="mz-secondary-size">
+					<ul class="size-range-container single-size" id="product-size1-range">
+						{% for value in model.sizes%}
+							{% with value.inventoryInfo.onlineStockAvailable as stockVal%}
+								{% with value.options|findwhere("attributeFQN", "tenant~size1") as selectSize %}
+									<li class="product-size-variant {% if value.isSelected %} selected-size{% endif %} {% if stockVal == 0%} out-of-stock {% endif %}" data-mz-product-option="{{selectSize.attributeFQN}}" data-value="{{selectSize.value}}">
+										<div class="size-swatches-link {% if value.isSelected %} selected-size{% endif %} {% if stockVal == 0%} out-of-stock {% endif %}">
+											<span>{{selectSize.value}}</span>
+										</div>
+									</li>
+								{% endwith %}
+							{% endwith %}
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+		{% endif %}
+	{% else %}
+		{% if option.attributeFQN|lower == "tenant~size2" %}
+			{% if model.sizes %}
+				{% for size2 in model.sizes %}
+					<div class="mz-secondary-size">
+						<div class="product-size-secondary">{{size2.size2}}</div>
+							<ul class="product-swatches size-range-container" id="product-size2-range">
+								{% for size1 in size2.sizeOneOptions %}
+									{% with size1.inventoryInfo.onlineStockAvailable as stock%} 
+										{% with size1.options|findwhere("attributeFQN", "tenant~size1") as size1 %}
+											<li class="product-size-variant {% if (size2.isSelected and size1.isSelected) %} selected-size {% endif %} {% if stock == 0 %}out-of-stock{% endif %}" data-mz-product-option="tenant~size2" data-value="{{size2.size2}}">
+												<div class="size-swatches-link {% if (size2.isSelected and size1.isSelected) %} selected-size {% endif %} {% if stock == 0 %}out-of-stock{% endif %}" data-mz-product-option="tenant~size1" data-value="{{size1.value}}">
+													<span>{{size1.value}}</span>
+												</div>
+											</li>                                
+										{% endwith %}
+									{% endwith %}
+								{% endfor %}
+							</ul>
+					</div>
+				{% endfor %}
+			{% endif %}                      
+		{% endif %}
+	{% endif %}
+</div>  

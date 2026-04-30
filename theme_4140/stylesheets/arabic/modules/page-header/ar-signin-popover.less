@@ -1,0 +1,113 @@
+.mz-utilitynav {
+    .popup-container {
+        padding-right:27.5px;
+        padding-left:27.5px;
+        box-sizing: border-box;
+        height: 420px;
+        width: 380px;
+        position: absolute;        
+        top: 40px;
+        z-index: 10;
+        display: none;
+        @media (max-width: 992px) {
+            display: none!important;
+        }
+    }
+    .mz-signin-popover {
+        padding-right:27.5px;
+        padding-left:27.5px;
+        box-sizing: border-box;
+        width: 341px;
+        border: 1px solid @lightWhite;
+        background-color: @white;
+        box-shadow: 0 8px 8px 0 rgba(0,0,0,0.24);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 10;
+        display: none;
+        &:hover {
+            display: block;
+        }
+    }
+    .mz-signin-popover:after {
+        content:"";
+        border:15px solid;
+        border-color: transparent transparent @lightWhite;
+        position:absolute;
+        top: -31px;
+        right: 293px;
+    }
+    .arrow {
+        border: 14px solid;
+        border-color: transparent transparent @white;
+        position: absolute;
+        top: -28px;
+        left: 17px;
+        z-index: 5;
+    }
+    .mz-profile-icon-container + .mz-signin-popover {
+        right: 84px;
+    }
+    .mz-wishlist-container{
+        @media only screen and (max-width:767px) {
+            display: none !important;
+        }
+        @media @tabletScreens{
+            display: none !important;
+        }
+    }
+    .display-in-mobile{
+        display:none;
+        @media @mobileScreens {
+            display: block !important;
+        }
+        @media @tabletScreens {
+            display: block !important;
+        }
+        .mz-utility-signin-icon{
+            @media @tabletAndMobileScreens {
+                display: block !important;
+            }
+        }
+    }
+    .display-in-mobile-unauth{
+        display:none;
+        @media @mobileScreens {
+            display: block !important;
+            position: relative;
+            top: 0px;
+            right: 3px;
+        }
+        @media only screen and (min-width:400px) and (max-width:412px) {
+            right: 25px;
+            top: -6px;
+        }
+        @media only screen and (min-width:413px) and (max-width:420px) {
+            right: 25px;
+            top: -6px;
+        }
+        @media @tabletScreens {
+            display: block !important;
+            position: relative;
+            top: 6px;
+            right: 4px;
+        }
+        @media only screen and (min-width:700px) and (max-width:715px) {
+            top: -3px;
+            right: -107px;
+        }
+        .mz-utility-signin-icon{
+            @media @tabletAndMobileScreens {
+                display: block !important;
+                position: relative;
+                top: 2px;                
+                left:8px;
+            }
+            @media only screen and (min-width:710px) and (max-width:715px) {
+                top: -2px;
+                left: 131px;
+            }
+        }
+    }
+}

@@ -1,0 +1,546 @@
+.mz-loc {
+    //background-color: rgba(255, 0, 0, 0.1);
+    min-height: 300px;
+    position: relative;
+
+    aside {
+
+        border: 1px solid @inputBorder;
+        left: 0;
+        padding: 8px;
+        position: absolute;
+        top: 40px;
+        width: 240px;
+
+        h3 {
+            background-color: @inputBorder;
+            margin: -8px;
+            padding: 8px;
+        }
+
+        input[type="text"] {
+            margin-right: 5px;
+            width: 80px;
+        }
+    }
+
+    article {
+        margin-left: 280px;
+    }
+}
+
+.mz-loc-name {
+    font-weight: bold;
+}
+
+.mz-loc-table {
+    border: 1px solid @inputBorder;
+
+    min-width: 240px;
+    max-width: 620px;
+    width: 100%;
+
+    th {
+        background-color: @inputBorder;
+        border-bottom: 1px solid @inputBorder;
+        font-size: @fontSizeLarger;
+        padding: 5px;
+        text-align: left;
+    }
+
+    td {
+        border-bottom: 1px solid @inputBorder;
+        padding: 5px;
+    }
+}
+
+.mz-loc-store-hours {
+    margin-top: 16px;
+}
+
+.mz-loc-dialog-cover {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 2000;
+}
+
+.mz-loc-dialog {
+    background-color: @bodyBackgroundColor;
+    height: 300px;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -150px;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    width: 400px;
+}
+
+.mz-locations {
+    .mz-l-pagecontent {
+        padding: 25px 0;
+        @media @mobileScreens {
+            padding: 0;
+        }
+        .mz-l-paginatedlist {
+            // @media only screen and (min-width:410px) and (max-width:412px) {
+            //     margin: 0 26px !important;
+            // }
+            // @media only screen and (min-width:370px) and (max-width:375px) {
+            //     margin: 0 7px !important;
+            // }
+            // @media only screen and (min-width:710px) and (max-width:712px) {
+            //     width:100%;
+            // }     
+            // @media only screen and (min-width:810px) and (max-width:820px) {
+            //     width:100%;
+            // }   
+            // @media only screen and (min-width:1060px) and (max-width:1061px) {
+            //    margin: 0 40px !important;
+            // }    
+            // @media @desktopScreens {
+            //     margin: 0 70px;
+            // }
+        }
+
+    }
+
+    .location-search {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 20px auto;
+    }
+
+    .locations-map {
+       display: none;
+    }
+    .locations-map.no-location-found {
+        #googlemap {
+            @media only srceen and (min-width:410px) and (max-width:412px) {
+                top: 0;
+            }
+            display: none;
+        }
+        .location-container {
+            width: 100% !important;
+            overflow-y: hidden !important;
+     
+            @media only screen and (min-width:370px) and (max-width:375px) {
+                top: 8px !important;
+            }
+            @media only screen and (min-width:410px) and (max-width:414px) {
+                top: 5px !important;
+                left: 15px;
+            }
+            @media only screen and (min-width:380px) and (max-width:390px) {
+                top: 5px !important;
+            }
+        }
+    }
+
+    .locations-map.active {
+        width: 100%;
+        display: flex;
+        //height: 496.48px;
+
+        @media @mobileScreens {
+            flex-direction: column-reverse;
+            width: auto;
+        }
+        @media only srceen and (min-width:410px) and (max-width:412px) {
+            //top: -435px;
+        }
+
+        .location-container {
+            width: 44.25%;
+            max-height: 494px;
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            @media @mobileScreens {
+                width: 100%;
+                //position: relative;
+                max-height: none;
+                display: block;
+                //top: 280px;
+            }
+            @media only screen and (min-width:710px) and (max-width:712px) {
+                width: 62%;
+            }
+            @media only screen and (min-width:1130px) and (max-width:1138px) {
+                width: 61%;
+            }
+            #location-list {
+                .location-distance-display{
+                    font-size: 16px;
+                    font-weight: bold;
+                    white-space: nowrap;
+                }
+                .location-dropdown-container.active {
+                    background-image: url(../resources/images/icons/svg/downArrow.svg);
+                }
+            
+                .location-dropdown-container {
+                    display: flex;
+                    font-size:16px;
+                    justify-content: space-between;
+                    align-items: center;
+                    background-image: url(../resources/images/icons/svg/left-arrow.svg);
+                    background-position-x: 99%;
+                    background-repeat: no-repeat;
+                    background-position-y: center;
+                    background-size: 20px;
+                    cursor: pointer;
+                    padding-right: 16px;
+                    @media @tabletScreens {
+                        background-size: 16px;
+                    }
+                    @media only screen and (min-width:810px) and (max-width:820px) {
+                        padding-right: 22px;
+                    }
+                    @media only screen and (min-width:1130px) and (max-width:1138px) {
+                        padding-right: 38px;
+                    }
+        
+                    @media @mobileScreens{
+                        grid-template-columns: 7fr 2fr;
+                        padding-right: 1.5rem;
+                        background-size: 14px;
+                    }
+                    .location-select-name {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        //width:418px;
+                        // margin-left:30px;
+                        margin-right:20px;
+                        margin-top: 17px;
+                        margin-bottom: 17px;
+                        @media @tabletAndMobileScreens {
+                            margin-left: 22px;
+                            max-width: 230px;
+                        }
+                    }
+                    .location-distance-display {
+                        margin-left: 2em;
+                    }
+                }
+                
+                .location-select-container {
+                    border-top: 1px solid @lightWhite;
+                    font-size: 15px;
+                    @media @mobileScreens {
+                        margin-left: .5em;
+                        margin-right: .5em;
+                    }
+                }
+                .location-select-container.active + .dropdown-info-container {
+                    display: block;
+                    //grid-template-columns: 1fr 8fr 1fr;
+                    
+                    @media @mobileScreens {
+                        margin-left: 0;
+                    }
+                    @media only screen and (min-width:375px) and (max-width:414px) {
+                        margin-left: 3px;
+                    }
+                    
+                    .location-select-logo {
+                        width: 35px;
+                        height: auto;
+                        margin: 0 1rem 0 2rem;
+                    }
+                }
+                .location-select-container + .dropdown-info-container {
+                    display: none;
+                }
+            
+                .dropdown-info-container {
+                    .dropdown-info{
+                        @media @mobileScreens{
+                            padding-left: 2.5rem;
+                        }
+                    }
+                    .location-address-line {
+                        margin-bottom: 20px;
+                        font-size: @fontSize + 1px;
+                        color:@lightBlack;
+                        font-family: "MSLondon";
+                        font-weight: 600;
+                        letter-spacing: 0;
+                        line-height: 20px;
+                        @media only screen and (min-width:374px) and (max-width:389px) {
+                            //margin-left: 12px;
+                            width: 231px;
+                        }
+                        @media @mobileScreens{
+                            width: 262px;
+                        }
+                    }
+                }
+            }
+
+            .mz-locationsearch-list {
+                //overflow: hidden !important;
+                //position: unset !important;
+                height: 100%;
+                @media @tabletScreens {
+                    margin: 0 !important;
+                }
+            }  
+          
+        }
+
+        #googlemap {
+            min-height: 250px;
+            height: 496px;
+            max-height: 496px;
+            width: 55.85%;
+
+            @media @mobileScreens {
+                width: 100%;
+                min-height: 450px;
+                //top: -140px;
+            }
+            @media only screen and (min-width: 360px) and (max-width: 375px) {
+                width: 359px;
+                //top: -360px !important;
+                left: 8px;
+            }
+            @media only screen and (min-width: 410px) and (max-width: 412px) {
+                left: 25px;
+                width: 359px;
+                //top: -362px !important;
+            }
+            @media only screen and (min-width: 380px) and (max-width: 390px) {
+                left: 8px;
+                width: 359px;
+                //top: -360px !important;
+            }
+        }
+    }
+
+    #store-finder {
+        @media @desktopScreens {
+            margin-left: 111px;
+            padding: 0 37px;
+        }
+        .find-your-nearest-st {
+            color: @lightBlack;
+            font-family: "MSLondon";
+            font-size: @fontSize + 11px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 40px;
+            // margin-left: 100px;
+            // margin-top: -15px;
+            @media only screen and (min-width:410px) and (max-width: 414px){
+                margin-left: 25px !important;
+                margin-top: 50px;
+            }
+            @media only screen and (min-width:370px) and (max-width: 375px){
+                margin-top: 64px !important;
+            }
+            @media only screen and (min-width:350px) and (max-width: 360px){
+                margin-top: 20px;
+                margin-left: 0 !important;
+            }
+            @media only screen and (min-width:1170px) and (max-width: 1180px){
+                margin-left: 148px;
+            }
+            @media only screen and (min-width:710px) and (max-width: 712px){
+                margin-left: -1px !important;
+                padding-top: 25px !important;
+            }
+            @media only screen and (min-width:1130px) and (max-width: 1138px){
+                margin-left: 128px !important;
+            }
+            @media only screen and (min-width:810px) and (max-width: 820px){
+                margin-left: 7px !important;
+                margin-top: 0px;
+            }
+            @media only screen and (min-width:1050px) and (max-width: 1061px){
+                margin-left: 90px;
+            }
+            @media @mobileScreens {
+                margin-left: 8px;
+                margin-right: 8px;
+                //padding-top: 15px;
+                margin-top: 35px;
+                margin-bottom: 0;
+            }
+
+            @media @tabletScreens {
+                margin-left: 18px;
+                //padding-top: 15px;
+            }
+        }
+
+        .location-search {
+            display: flex;
+            flex-wrap: wrap;
+
+            @media @tabletScreens {
+                position: relative;
+                left: -52px;
+            }
+            @media only screen and (min-width:810px) and (max-width:820px) {
+                left: -26px;
+            }
+            @media @mobileScreens {
+                margin: 20px 8px;
+                flex-direction: column;
+                width: auto;
+            }
+
+            .town-street-name {
+                box-sizing: border-box;
+                height: 48px;
+                width: 562px;
+                border: 1px solid #CCCCCC;
+                background-color: @white;
+                padding: 13px 14px 13px;
+                font-size: 16px;
+
+                &::placeholder {
+                    color: @lightBlack;
+                    font-family: "MSLondon";
+                    font-size: @fontSizeLarger;
+                    font-weight: 600;
+                    letter-spacing: 0;
+                    line-height: 21px;
+                }
+
+                @media only screen and (max-width:500px) {
+                    width: auto;
+                    margin-bottom: 10px;
+                }
+
+                @media only screen and (min-width:501px) and (max-width:767px) {
+                    width: 530px;
+                    left: 0px;
+                }
+
+                @media only screen and (min-width:768px) and (max-width:1024px) {
+                    width: 416px;
+                }
+
+            }
+            input{
+                border-radius: 0;
+                -webkit-appearance: none;
+            }
+
+            .submit-location {
+                height: 48px;
+                width: 71px;
+                background-color: #BED855;
+                color: @lightBlack;
+                font-family: "MSLondon";
+                font-size: @fontSizeLarger;
+                font-weight: @fontBold;
+                letter-spacing: 0;
+                line-height: 21px;
+                text-align: center;
+                position: relative;
+                left: 20px;
+                border: none;
+
+                @media only screen and (max-width:500px) {
+                    width: auto;
+                    left: 0px;
+                }
+
+                @media only screen and (min-width:501px) and (max-width:767px) {
+                    width: 530px;
+                    left: 0px;
+                }
+            }
+
+            .submit-location+.use-my-location {
+                color: @black;
+                font-family: "MSLondon";
+                font-size: @fontSizeLarger;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 24px;
+                text-decoration-line: underline;
+                background-color: transparent;
+                border: none;
+                position: relative;
+                left: 25px;
+                top: -5px;
+
+                @media only screen and (max-width:500px) {
+                    left: 0;
+                    position: static;
+                    margin-left: 0;
+                    padding: 0;
+                    text-align: left;
+                    margin-top: 20px;
+                }
+
+                @media only screen and (min-width:501px) and (max-width:767px) {
+                    left: -128px;
+                }
+
+                @media @tabletAndMobileScreens {
+                    top: 13px;
+                }
+            }
+
+            .use-my-location {
+                @media @mobileScreens {
+                    margin-left: -46px;
+                }
+                @media only screen and (min-width:410px) and (max-width:414px) {
+                    left: -84px !important;
+                }
+                @media only screen and (min-width:350px) and (max-width:360px) {
+                    left: -84px !important;
+                }
+                @media only screen and (min-width:810px) and (max-width:820px) {
+                    top: -5px !important;
+                }
+                @media only screen and (min-width:710px) and (max-width:712px) {
+                    left: -192px !important;
+                }
+            }
+
+            .mz-location-icon {
+                width: 30px;
+                height: 30px;
+
+                @media @mobileScreens {}
+            }
+
+        }
+    }
+}
+
+// header search bar changes
+@media screen and (orientation: portrait) and (max-width: 1023px) {
+    .mz-locations {
+        .mz-searchbox-container.desktop {
+            display: block !important;
+        }
+
+        .mz-searchbox-icon {
+            visibility: hidden;
+        }
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 1023px) {
+    .mz-locations {
+        .mz-searchbox-icon {
+            visibility: visible !important;
+        }
+    }
+}

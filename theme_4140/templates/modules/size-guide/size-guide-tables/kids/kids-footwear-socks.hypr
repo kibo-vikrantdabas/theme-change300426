@@ -1,0 +1,402 @@
+<div class="footwear-size-guide">
+	<h3>MEASURING GUIDE</h3>
+	<img src="{{siteContext.cdnPrefix}}/resources/images/size-guide/shoe-width.png" class="inset">
+	<p>Do you know their shoe size? Check their measurements to see if they are a standard, wide or narrow fitting.</p>
+	<div class="">
+		<h3 class="subhead">Length</h3>
+		<div class="size-guide-pics">
+			<div class="col-md-3">
+				<img src="{{siteContext.cdnPrefix}}/resources/images/size-guide/length-step-1.png">
+				<div class="copy">
+					<h4>Step 1</h4>
+					<p>Tape a piece of paper to the floor, making sure it is on a hard, flat surface. Place your child’s foot on the paper, with their heel at the bottom edge.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<img src="{{siteContext.cdnPrefix}}/resources/images/size-guide/length-step-2.png">
+				<div class="copy">
+					<h4>Step 2</h4>
+					<p>Draw around the top of their foot with a pen or pencil. Repeat for the other foot, as they could measure differently.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<img src="{{siteContext.cdnPrefix}}/resources/images/size-guide/length-step-3.png">
+				<div class="copy">
+					<h4>Step 3</h4>
+					<p>Measure the lengths from heel to toe for both feet. Compare the measurements to our size chart.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="">
+		<h3 class="subhead">Width</h3>
+		<div class="size-guide-pics">
+			<div class="col-md-3">
+				<img src="{{siteContext.cdnPrefix}}/resources/images/size-guide/width-step-1.png">
+				<div class="copy">
+					<h4>Step 1</h4>
+					<p>Ensure your child is standing up straight and distributing their weight evenly on their feet.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<img src="{{siteContext.cdnPrefix}}/resources/images/size-guide/width-step-2.png">
+				<div class="copy">
+					<h4>Step 2</h4>
+					<p>Wrap a measuring tape around the widest part of their foot – for most people, this will be at the joint, which is located just before the toes.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<img src="{{siteContext.cdnPrefix}}/resources/images/size-guide/width-step-3.png">
+				<div class="copy">
+					<h4>Step 3</h4>
+					<p>Make sure the tape is not slack but also not too tight. Take the measurement and compare it to our size chart below.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+		<div class="chart">
+			<div class="table-container footwear">
+			<div class="table footwear" style="width: 100%">
+				<table>
+					<tr>
+						<td><span>&nbsp;</span></td>
+						<td><span>&nbsp;</span></td>
+						<td><span>&nbsp;</span></td>
+						<td><span>&nbsp;</span></td>
+						<td><span>&nbsp;</span></td>
+						<td style="background: #FAE6F0;"><span>Narrow</span></td>
+						<td style="background: #C2EAB0;"><span>Standard</span></td>
+						<td style="background: #85CD25;"><span>Wide</span></td>
+					</tr>
+					<tr>
+						<td><span>UK Size</span></td>
+						<td><span>EU Size</span></td>
+						<td><span>AUS Size</span></td>
+						<td><span>USA Size</span></td>
+						<td><span>Length (mm)</span></td>
+						<td><span>Joint (mm)</span></td>
+						<td><span>Joint (mm)</span></td>
+						<td><span>Joint (mm)</span></td>
+					</tr>
+					<tr>
+					<td><span>4S</span></td>
+					<td><span>20.5</span></td>
+					<td><span>4.5</span></td>
+					<td><span>4.5</span></td>
+					<td><span>123</span></td>
+					<td style="background: #FAE6F0;"><span>130 </span></td>
+					<td style="background: #C2EAB0;"><span>136</span></td>
+					<td style="background: #85CD25;"><span>142</span></td>
+					</tr>
+					<tr>
+					<td><span>4.5S</span></td>
+					<td><span>21</span></td>
+					<td><span>5</span></td>
+					<td><span>5</span></td>
+					<td><span>126</span></td>
+					<td style="background: #FAE6F0;"><span>133 </span></td>
+					<td style="background: #C2EAB0;"><span>139</span></td>
+					<td style="background: #85CD25;"><span>145</span></td>
+					</tr><tr>
+					<td><span>5S</span></td>
+					<td><span>21.5</span></td>
+					<td><span>5.5</span></td>
+					<td><span>5.5</span></td>
+					<td><span>130</span></td>
+					<td style="background: #FAE6F0;"><span>136 </span></td>
+					<td style="background: #C2EAB0;"><span>142</span></td>
+					<td style="background: #85CD25;"><span>148</span></td>
+					</tr><tr><td><span>5.5S</span></td>
+					<td><span>22</span></td>
+					<td><span>6</span></td>
+					<td><span>6</span></td>
+					<td><span>134</span></td>
+					<td style="background: #FAE6F0;"><span>139 </span></td>
+					<td style="background: #C2EAB0;"><span>145</span></td>
+					<td style="background: #85CD25;"><span>151</span></td>
+					</tr><tr><td><span>6S</span></td>
+					<td><span>23</span></td>
+					<td><span>6.5</span></td>
+					<td><span>6.5</span></td>
+					<td><span>138</span></td>
+					<td style="background: #FAE6F0;"><span>142</span></td>
+					<td style="background: #C2EAB0;"><span>148</span></td>
+					<td style="background: #85CD25;"><span>154</span></td>
+					</tr><tr><td><span>6.5S</span></td>
+					<td><span>23.5</span></td>
+					<td><span>7</span></td>
+					<td><span>7</span></td>
+					<td><span>142</span></td>
+					<td style="background: #FAE6F0;"><span>145 </span></td>
+					<td style="background: #C2EAB0;"><span>151</span></td>
+					<td style="background: #85CD25;"><span>157</span></td>
+					</tr><tr><td><span>7S</span></td>
+					<td><span>24</span></td>
+					<td><span>7.5</span></td>
+					<td><span>7.5</span></td>
+					<td><span>146</span></td>
+					<td style="background: #FAE6F0;"><span>148 </span></td>
+					<td style="background: #C2EAB0;"><span>154</span></td>
+					<td style="background: #85CD25;"><span>160</span></td>
+					</tr><tr><td><span>7.5S</span></td>
+					<td><span>25</span></td>
+					<td><span>8</span></td>
+					<td><span>8</span></td>
+					<td><span>149</span></td>
+					<td style="background: #FAE6F0;"><span>151 </span></td>
+					<td style="background: #C2EAB0;"><span>157</span></td>
+					<td style="background: #85CD25;"><span>163</span></td>
+					</tr><tr><td><span>8S</span></td>
+					<td><span>25.5</span></td>
+					<td><span>8.5</span></td>
+					<td><span>8.5</span></td>
+					<td><span>153</span></td>
+					<td style="background: #FAE6F0;"><span>154</span></td>
+					<td style="background: #C2EAB0;"><span>160</span></td>
+					<td style="background: #85CD25;"><span>166</span></td>
+					</tr><tr><td><span>8.5S</span></td>
+					<td><span>26</span></td>
+					<td><span>9</span></td>
+					<td><span>9</span></td>
+					<td><span>157</span></td>
+					<td style="background: #FAE6F0;"><span>156</span></td>
+					<td style="background: #C2EAB0;"><span>162</span></td>
+					<td style="background: #85CD25;"><span>168</span></td>
+					</tr><tr><td><span>9S</span></td>
+					<td><span>26.5</span></td>
+					<td><span>9.5</span></td>
+					<td><span>9.5</span></td>
+					<td><span>161</span></td>
+					<td style="background: #FAE6F0;"><span>159</span></td>
+					<td style="background: #C2EAB0;"><span>165</span></td>
+					<td style="background: #85CD25;"><span>171</span></td>
+					</tr><tr><td><span>9.5S</span></td>
+					<td><span>27.5</span></td>
+					<td><span>10</span></td>
+					<td><span>10</span></td>
+					<td><span>165</span></td>
+					<td style="background: #FAE6F0;"><span>162</span></td>
+					<td style="background: #C2EAB0;"><span>168</span></td>
+					<td style="background: #85CD25;"><span>174</span></td>
+					</tr><tr><td><span>10S</span></td>
+					<td><span>28</span></td>
+					<td><span>10.5</span></td>
+					<td><span>10.5</span></td>
+					<td><span>169</span></td>
+					<td style="background: #FAE6F0;"><span>165</span></td>
+					<td style="background: #C2EAB0;"><span>171</span></td>
+					<td style="background: #85CD25;"><span>177</span></td>
+					</tr><tr><td><span>10.5S</span></td>
+					<td><span>28.5</span></td>
+					<td><span>11</span></td>
+					<td><span>11</span></td>
+					<td><span>172</span></td>
+					<td style="background: #FAE6F0;"><span>168</span></td>
+					<td style="background: #C2EAB0;"><span>174</span></td>
+					<td style="background: #85CD25;"><span>180</span></td>
+					</tr><tr><td><span>11S</span></td>
+					<td><span>29</span></td>
+					<td><span>11.5</span></td>
+					<td><span>11.5</span></td>
+					<td><span>176</span></td>
+					<td style="background: #FAE6F0;"><span>171</span></td>
+					<td style="background: #C2EAB0;"><span>177</span></td>
+					<td style="background: #85CD25;"><span>183</span></td>
+					</tr><tr><td><span>11.5S</span></td>
+					<td><span>30</span></td>
+					<td><span>12</span></td>
+					<td><span>12</span></td>
+					<td><span>180</span></td>
+					<td style="background: #FAE6F0;"><span>174</span></td>
+					<td style="background: #C2EAB0;"><span>180</span></td>
+					<td style="background: #85CD25;"><span>186</span></td>
+					</tr><tr><td><span>12S</span></td>
+					<td><span>30.5</span></td>
+					<td><span>12.5</span></td>
+					<td><span>12.5</span></td>
+					<td><span>184</span></td>
+					<td style="background: #FAE6F0;"><span>177</span></td>
+					<td style="background: #C2EAB0;"><span>183</span></td>
+					<td style="background: #85CD25;"><span>189</span></td>
+					</tr><tr><td><span>12.5S</span></td>
+					<td><span>31</span></td>
+					<td><span>13</span></td>
+					<td><span>13</span></td>
+					<td><span>188</span></td>
+					<td style="background: #FAE6F0;"><span>180</span></td>
+					<td style="background: #C2EAB0;"><span>186</span></td>
+					<td style="background: #85CD25;"><span>192</span></td>
+					</tr><tr><td><span>13S</span></td>
+					<td><span>32</span></td>
+					<td><span>13.5</span></td>
+					<td><span>13.5</span></td>
+					<td><span>192</span></td>
+					<td style="background: #FAE6F0;"><span>183</span></td>
+					<td style="background: #C2EAB0;"><span>189</span></td>
+					<td style="background: #85CD25;"><span>195</span></td>
+					</tr><tr><td><span>13.5S</span></td>
+					<td><span>32.5</span></td>
+					<td><span>14</span></td>
+					<td><span>14</span></td>
+					<td><span>196</span></td>
+					<td style="background: #FAE6F0;"><span>186</span></td>
+					<td style="background: #C2EAB0;"><span>192</span></td>
+					<td style="background: #85CD25;"><span>198</span></td>
+					</tr><tr><td><span>1L</span></td>
+					<td><span>33</span></td>
+					<td><span>1.5</span></td>
+					<td><span>1.5</span></td>
+					<td><span>200</span></td>
+					<td style="background: #FAE6F0;"><span>190</span></td>
+					<td style="background: #C2EAB0;"><span>196</span></td>
+					<td style="background: #85CD25;"><span>202</span></td>
+					</tr><tr><td><span>1.5L</span></td>
+					<td><span>33.5</span></td>
+					<td><span>2</span></td>
+					<td><span>2</span></td>
+					<td><span>205</span></td>
+					<td style="background: #FAE6F0;"><span>193</span></td>
+					<td style="background: #C2EAB0;"><span>199</span></td>
+					<td style="background: #85CD25;"><span>205</span></td>
+					</tr><tr><td><span>2L</span></td>
+					<td><span>34.5</span></td>
+					<td><span>2.5</span></td>
+					<td><span>2.5</span></td>
+					<td><span>209</span></td>
+					<td style="background: #FAE6F0;"><span>197</span></td>
+					<td style="background: #C2EAB0;"><span>203</span></td>
+					<td style="background: #85CD25;"><span>209</span></td>
+					</tr><tr><td><span>2.5L</span></td>
+					<td><span>35</span></td>
+					<td><span>3</span></td>
+					<td><span>3</span></td>
+					<td><span>213</span></td>
+					<td style="background: #FAE6F0;"><span>199</span></td>
+					<td style="background: #C2EAB0;"><span>205</span></td>
+					<td style="background: #85CD25;"><span>211</span></td>
+					</tr><tr><td><span>3L</span></td>
+					<td><span>35.5</span></td>
+					<td><span>3.5</span></td>
+					<td><span>3.5</span></td>
+					<td><span>217</span></td>
+					<td style="background: #FAE6F0;"><span>202</span></td>
+					<td style="background: #C2EAB0;"><span>208</span></td>
+					<td style="background: #85CD25;"><span>214</span></td>
+					</tr><tr><td><span>3.5L</span></td>
+					<td><span>36</span></td>
+					<td><span>4</span></td>
+					<td><span>4</span></td>
+					<td><span>222</span></td>
+					<td style="background: #FAE6F0;"><span>205</span></td>
+					<td style="background: #C2EAB0;"><span>211</span></td>
+					<td style="background: #85CD25;"><span>217</span></td>
+					</tr><tr><td><span>4L</span></td>
+					<td><span>37</span></td>
+					<td><span>4.5</span></td>
+					<td><span>4.5</span></td>
+					<td><span>226</span></td>
+					<td style="background: #FAE6F0;"><span>209</span></td>
+					<td style="background: #C2EAB0;"><span>215</span></td>
+					<td style="background: #85CD25;"><span>221</span></td>
+					</tr><tr><td><span>4.5L</span></td>
+					<td><span>37.5</span></td>
+					<td><span>5</span></td>
+					<td><span>5</span></td>
+					<td><span>230</span></td>
+					<td style="background: #FAE6F0;"><span>213</span></td>
+					<td style="background: #C2EAB0;"><span>219</span></td>
+					<td style="background: #85CD25;"><span>225</span></td>
+					</tr><tr><td><span>5L</span></td>
+					<td><span>38</span></td>
+					<td><span>5.5</span></td>
+					<td><span>5.5</span></td>
+					<td><span>234</span></td>
+					<td style="background: #FAE6F0;"><span>218</span></td>
+					<td style="background: #C2EAB0;"><span>224</span></td>
+					<td style="background: #85CD25;"><span>230</span></td>
+					</tr><tr><td><span>5.5L</span></td>
+					<td><span>38.5</span></td>
+					<td><span>6</span></td>
+					<td><span>6</span></td>
+					<td><span>238</span></td>
+					<td style="background: #FAE6F0;"><span>222</span></td>
+					<td style="background: #C2EAB0;"><span>228</span></td>
+					<td style="background: #85CD25;"><span>234</span></td>
+					</tr><tr><td><span>6L</span></td>
+					<td><span>39.5</span></td>
+					<td><span>6.5</span></td>
+					<td><span>6.5</span></td>
+					<td><span>242</span></td>
+					<td style="background: #FAE6F0;"><span>226</span></td>
+					<td style="background: #C2EAB0;"><span>232</span></td>
+					<td style="background: #85CD25;"><span>238</span></td>
+					</tr><tr><td><span>6.5L</span></td>
+					<td><span>40</span></td>
+					<td><span>7</span></td>
+					<td><span>7</span></td>
+					<td><span>247</span></td>
+					<td style="background: #FAE6F0;"><span>230</span></td>
+					<td style="background: #C2EAB0;"><span>236</span></td>
+					<td style="background: #85CD25;"><span>242</span></td>
+					</tr><tr><td><span>7L</span></td>
+					<td><span>40.5</span></td>
+					<td><span>7</span></td>
+					<td><span>7.5</span></td>
+					<td><span>251</span></td>
+					<td style="background: #FAE6F0;"><span>235</span></td>
+					<td style="background: #C2EAB0;"><span>241</span></td>
+					<td style="background: #85CD25;"><span>247</span></td>
+					</tr><tr><td><span>7.5L</span></td>
+					<td><span>41.5</span></td>
+					<td><span>7.5</span></td>
+					<td><span>8</span></td>
+					<td><span>255</span></td>
+					<td style="background: #FAE6F0;"><span>239</span></td>
+					<td style="background: #C2EAB0;"><span>245</span></td>
+					<td style="background: #85CD25;"><span>251</span></td>
+					</tr>
+
+				</table>
+			</div>
+
+
+		</div>
+	</div>
+		
+
+	<div class="chart">
+		<h5>Socks & Tights</h5>
+		<div class="table-container">
+			<div class="legend">
+			<span>Age (Years)</span>
+			<span>Size</span>
+			</div>
+			<div class="table">
+				<table>
+					<tr>
+					<td class="active"><6 Months</td>
+					<td class="active">0.5-1</td>
+					<td class="active">1-2</td>
+					<td class="active">2-3</td>
+					<td class="active">3-6</td>
+					<td class="active">7-10</td>
+					<td class="active">11-13</td>
+					<td class="active">14+</td>
+					</tr>
+					<tr>
+					<td class="active">0-0</td>
+					<td class="active">0-2½</td>
+					<td class="active">3-5½</td>
+					<td class="active">6-8½</td>
+					<td class="active">9-12</td>
+					<td class="active">12½-3½</td>
+					<td class="active">4-7</td>
+					<td class="active">7½-10</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,44 @@
+﻿.mz-storebranding {
+	a {
+		text-decoration: none;
+	}
+}
+
+//New Design UI
+.afg-ms-pageheader {
+    .mz-storebranding {
+        a {
+            .mz-site-logo {
+				@media (min-width: 992px) {
+					width: 80px;
+					height: 46.51px;
+					object-fit: contain;	
+				}                
+            }
+        }
+    }
+}
+@media (max-width: 992px) {
+	.afg-ms-pageheader {
+		.afg-ms-mobile-header {	
+            .mz-storebranding {
+				a {
+					.mz-site-logo {
+						width: 52.05px;
+						height: 30px;
+						object-fit: contain;
+					}
+				}
+			}
+            &.scrolled {
+				.mz-storebranding {
+					a {
+						.mz-site-logo {
+							width: 47.73px;							
+						}
+					}
+				}
+			}
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<div class="mz-blue-popup-header">
+    {% if not model.displayBluePaymentMethods %}
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="open-arrow" class="mz-open-arrow-icon">
+    {% endif %}
+    <div class="mz-blue-lable">{{labels.payWithBlue}}</div>
+    <div class="mz-blue-popup-close-container {% if model.displayBluePaymentModal %} active {% endif %}">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Close.svg" alt="close-icon" class="mz-close-icon">
+    </div>
+</div>

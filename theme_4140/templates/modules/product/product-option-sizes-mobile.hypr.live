@@ -1,0 +1,51 @@
+<div class="mz-size-container-mobile">
+    {% if size1 and not size2%}
+        {% if option.attributeFQN|lower == "tenant~size1" %}
+            {% if model.sizes %}
+                <select id="dropdown-select-size">
+                    <option value="undefined">{{labels.selectSize|title}}</option>
+                    {% for value in model.sizes %}
+                        {% with value.inventoryInfo.onlineStockAvailable as stockVal%}
+                            {% with value.options|findwhere("attributeFQN", "tenant~size1") as selectSize %}
+                                <option class="test"{% if value.isSelected %}selected="selected"{% endif %}data-mz-product-option="tenant~size1"data-sizeOne-value="{{selectSize.value}}" data-sizeOne="tenant~size1" value="{{selectSize.value}}">
+                                    {{selectSize.value}}
+                                    {% if stockVal > 0 and stockVal < themeSettings.quantityPurchaseAlert %}
+                                        {{labels.lowStock}}
+                                        {% else %}
+                                        {% if stockVal == 0 %} - {{labels.outOfStock}}{% endif %}
+                                    {% endif %}
+                                </option>
+                            {% endwith %}
+                        {% endwith %}
+                    {% endfor %}
+                </select>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        {% if option.attributeFQN|lower == "tenant~size2" %}
+            {% if model.sizes %}
+            <select id="dropdown-select-size">
+                <option value="Select Size"> {{labels.selectSize|title}}</option>
+                {% for size2 in model.sizes %}
+                    <optgroup label={{size2.size2}} data-mz-product-option="tenant~size1" data-value="{{size1.value}}" value="{{size1.value}}">
+                        {% for size1 in size2.sizeOneOptions%}
+                            {% with size1.options|findwhere("attributeFQN", "tenant~size1") as size1 %}
+                                {% with size1.inventoryInfo.onlineStockAvailable as stock%}
+                                    <option class="test"{% if size2.isSelected and size1.isSelected %} selected="selected" {% endif %} data-mz-product-option="tenant~size1"data-sizeOne-value="{{size1.value}}" data-sizeTwo-value="{{size2.size2}}" data-sizeOne="tenant~size1" data-sizeTwo="tenant~size2" value="{{size1.value}}/{{size2.size2}}">
+                                        {% if size1.stringValue %}{{size1.stringValue}} {% else %} {{size1.value}} {% endif %} / {% if size2.stringValue %}{{size2.stringValue}} {% else %} {{size2.size2}} {% endif %} 
+                                        {% if stock > 0 and stock < themeSettings.quantityPurchaseAlert %}
+                                            {{labels.lowStock}}
+                                            {% else %}
+                                            {% if stock == 0 %} - {{labels.outOfStock}}{% endif %}
+                                        {% endif %}
+                                    </option>
+                                {% endwith %}
+                            {% endwith %}
+                        {% endfor %}
+                    </optgroup>
+                {% endfor %}
+            </select>
+            {% endif %}                      
+        {% endif %}
+    {% endif %}
+</div>   

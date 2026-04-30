@@ -1,0 +1,43 @@
+<div class="mz-l-formfieldgroup-row mz-addressform-address1">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="address-line1">{{ labels.address }}<span class="is-required">*</span></label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+        <input id="{% block id-prefix %}{% endblock id-prefix %}address-line-1" class="mz-address-field billing-input billing-street-address {% if model.address.address1 %} add-input-border {% endif %}"  type="text" {% if not model.hasRequiredBehavior %} disabled {% endif %}  name="address-line1" data-mz-value="{{ addresscontext }}address.address1" value="{{ model.address.address1 }}" maxlength="200" autocomplete="address-line1">
+        {% comment %} <img src="../../resources/images/icons/green tick.svg" class="address-name-image {% if model.address.address1 %} active {% endif %}" alt=""> {% endcomment %}
+        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}address.address1"></span>
+    </div>
+</div>
+
+<div class="mz-l-formfieldgroup-row mz-addressform-address2">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="address-line2">{{ labels.areaLabel }}<span class="is-required">*</span></label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+        <input id="{% block id-prefix %}{% endblock id-prefix %}address-line-2" class="mz-address-field-area billing-input billing-area-address {% if model.address.address2 %} add-input-border {% endif %}"  type="text" {% if not model.hasRequiredBehavior %} disabled {% endif %}  name="address-line2" data-mz-value="{{ addresscontext }}address.address2" value="{{ model.address.address2 }}" maxlength="200" autocomplete="address-line2">
+        {% comment %} <img src="../../resources/images/icons/green tick.svg" class="address-name-image-area {% if model.address.address2 %} active {% endif %}" alt=""> {% endcomment %}
+        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}address.address2"></span>
+    </div>
+</div>
+<div class="mz-l-formfieldgroup-row mz-addressform-address3">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="address-line3">{{ labels.streetLabel }}<span class="is-required">*</span></label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+        <input id="{% block id-prefix %}{% endblock id-prefix %}address-line-3" class="mz-address-field-street billing-input billing-street-input-address {% if model.address.address3 %} add-input-border {% endif %}"  type="text" {% if not model.hasRequiredBehavior %} disabled {% endif %}  name="address-line3" data-mz-value="{{ addresscontext }}address.address3" value="{{ model.address.address3 }}" maxlength="200" autocomplete="address-line3">
+        {% comment %} <img src="../../resources/images/icons/green tick.svg" class="address-name-image-street {% if model.address.address3 %} active {% endif %}" alt=""> {% endcomment %}
+        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}address.address3"></span>
+    </div>
+</div>
+ {% if themeSettings.nationalAddressShortCodeRequired %} 
+    <div class="mz-l-formfieldgroup-row mz-addressform-address4">
+        <div class="mz-l-formfieldgroup-cell">
+            <label for="address-line4">{{ labels.nationalAddressShortCode }}<span class="is-required">*</span></label>
+        </div>
+        <div class="mz-l-formfieldgroup-cell">
+            <input id="{% block id-prefix %}{% endblock id-prefix %}address-line-4" class="mz-address-field-street billing-input billing-street-input-address {% if model.address.address4 %} add-input-border {% endif %}"  type="text" {% if not model.hasRequiredBehavior %} disabled {% endif %}  name="address-line4" data-mz-value="{{ addresscontext }}address.address4" value="{{ model.address.address4 }}" maxlength="8" autocomplete="address-line4" style="text-transform: uppercase;" oninput="this.value = this.value.toUpperCase();" placeholder="Eg: JIEA8414">
+            {% comment %} <img src="../../resources/images/icons/green tick.svg" class="address-name-image-street {% if model.address.address4 %} active {% endif %}" alt=""> {% endcomment %}
+            <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}address.address4"></span>
+        </div>
+    </div>
+ {% endif %} 

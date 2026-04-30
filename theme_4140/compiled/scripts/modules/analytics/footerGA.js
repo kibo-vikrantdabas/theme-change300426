@@ -1,0 +1,1 @@
+define(["modules/jquery-mozu"],function(t){return{footerLinksGTM:function(){t(".accordian .footer-link-text").click(function(){const e={custom_event:"navigation",event_params:{event_act:"footer links",event_lbl:t(this).text().toLowerCase()}};window.globalEventBus&&window.globalEventBus.emit("dataLayerEvent",e)})}}});

@@ -1,0 +1,163 @@
+﻿<div class="mz-cms-image" data-mz-cms-image="{% json_attribute Model.config|default:'{}' %}">
+
+{% if not Model.config  %}
+
+    <img class="mz-cms-image-cover" alt="add-photos" style="background-image: url('/admin/scripts/resources/images/legacy/AddPhotos.png');"></div>
+
+{% endif %}
+
+{% if Model.config.imageSize == 'maintain' %}
+
+    {% if Model.config.imageClickAction == 'url' and pageContext.isEditMode != 'true' %}
+        <a
+            target="_blank"
+            title="{{Model.config.imageAltText}}"
+
+            {% if Model.config.linkSource == 'externalUrl' %}
+                href="{{Model.config.linkExternalUrl}}"
+            {% endif %}
+            {% if Model.config.linkSource == 'internalUrl' %}
+                href="{{Model.config.linkInternalUrl}}"
+            {% endif %}
+            {% if Model.config.linkSource == 'file' %}
+                {% if Model.config.linkFileId %}
+                    href="{% make_url "cdn" "/cms/files/"|add(Model.config.linkFileId) %}"
+                {% endif %}
+            {% endif %}
+            >
+
+
+    {% endif %}
+
+    <img
+        class="mz-cms-image-maintain"
+        data-alt="promo-image"
+        loading="lazy"
+
+        style="
+          border-width: {{Model.config.borderWidth}};
+          border-style: {{Model.config.borderStyle}};
+          border-color: {{Model.config.borderColor}};
+          box-sizing: border-box;
+          min-height: 120px
+        "
+
+        {% if Model.config.imageSource == 'externalUrl' %}
+            data-src="{{Model.config.imageExternalUrl}}"
+        {% endif %}
+        {% if Model.config.imageSource == 'file' %}
+            {% if Model.config.imageFileId %}
+                data-src="{% make_url "cdn" "/cms/files/"|add(Model.config.imageFileId) %}"
+            {% endif %}
+        {% endif %}
+         >
+
+    {% if Model.config.imageClickAction == 'url' and pageContext.isEditMode != 'true' %}
+        </a>
+    {% endif %}
+
+{% else %}
+    <{% if Model.config.imageClickAction == 'url' and pageContext.isEditMode != 'true' %}a{% else %}div{% endif %}
+        class="mz-cms-image-cover"
+        title="{{Model.config.imageAltText}}"
+        alt="image-cover-icon"
+
+        {% if Model.config.imageClickAction == 'url' %}
+            target="_blank"
+            {% if Model.config.linkSource == 'externalUrl' %}
+                href="{{Model.config.linkExternalUrl}}"
+            {% endif %}
+            {% if Model.config.linkSource == 'internalUrl' %}
+                href="{{Model.config.linkInternalUrl}}"
+            {% endif %}
+            {% if Model.config.linkSource == 'file' %}
+                {% if Model.config.linkFileId %}
+                    href="{% make_url "cdn" "/cms/files/"|add(Model.config.linkFileId) %}"
+                {% endif %}
+            {% endif %}
+        {% endif %}
+
+        style="background-image: url(
+            {% if Model.config.imageSource == 'externalUrl' %}
+                '{{Model.config.imageExternalUrl}}'
+            {% endif %}
+            {% if Model.config.imageSource == 'file' %}
+                {% if Model.config.imageFileId %}
+                    '{% make_url "cdn" "/cms/files/"|add(Model.config.imageFileId)&max=486&quality=60 %}'
+                {% endif %}
+            {% endif %}
+        );
+        border-width: {{Model.config.borderWidth}};
+        border-style: {{Model.config.borderStyle}};
+        border-color: {{Model.config.borderColor}};
+        box-sizing: border-box;
+        background-position: {{Model.config.positionHorizontal}} {{Model.config.positionVertical}};
+        min-height: 140px"
+        >
+        </{% if Model.config.imageClickAction == 'url' and pageContext.isEditMode != 'true' %}a{% else %}div{% endif %}>
+
+{% endif %}
+</div>
+{% require_script "widgets/image" %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // clp-look-label
+    var clpLookLabelContainer = document.querySelector(".clp-look-label");
+    var clpLookLabelImages = (clpLookLabelContainer && clpLookLabelContainer.querySelectorAll("img")) || [];
+    if (clpLookLabelImages.length > 0) {
+        for (var clpLookLabelImage = 0; clpLookLabelImage < clpLookLabelImages.length; clpLookLabelImage++) {
+            if(clpLookLabelImages[clpLookLabelImage].hasAttribute("data-src")) {
+                var clpLookLabelImageURL = clpLookLabelImages[clpLookLabelImage].getAttribute("data-src");
+                clpLookLabelImages[clpLookLabelImage].srcset = clpLookLabelImageURL + "?quality=75&maxWidth=288 288w,";
+                clpLookLabelImages[clpLookLabelImage].alt = clpLookLabelImages[clpLookLabelImage].getAttribute("data-alt")
+            }
+        }
+    }
+        
+    // explore-image
+    var exploreImages = document.querySelectorAll(".explore-image .mz-cms-image-maintain") || [];
+    if (exploreImages.length > 0) {
+        for (var exploreImage = 0; exploreImage < exploreImages.length; exploreImage++) {
+            if(exploreImages[exploreImage].hasAttribute('data-src')) {
+                var exploreImageURL = exploreImages[exploreImage].getAttribute("data-src");
+                exploreImages[exploreImage].alt = exploreImages[exploreImage].getAttribute("data-alt");
+                exploreImages[exploreImage].srcset =
+                    exploreImageURL +
+                    "?quality=75&maxWidth=280 280w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=300 300w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=350 350w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=400 400w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=450 450w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=500 500w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=550 550w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=600 600w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=650 650w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=700 700w," +
+                    exploreImageURL +
+                    "?quality=75&maxWidth=778 7780w";
+          
+                exploreImages[exploreImage].sizes =
+                    "(max-width: 501px) 87vw,(max-width: 600px) 56vw,(max-width: 751px) 62vw,(max-width: 1286px) 60vw,778px";
+            }
+        }
+    }
+        
+    //default image
+    var defaultImages = document.querySelectorAll(".mz-cms-image-maintain") || [];
+    for (var defaultImage = 0; defaultImage < defaultImages.length; defaultImage++) {
+        if (!defaultImages[defaultImage].hasAttribute("srcset") && defaultImages[defaultImage].hasAttribute("data-src")) {
+            defaultImages[defaultImage].alt = defaultImages[defaultImage].getAttribute("data-alt")
+            defaultImages[defaultImage].srcset = defaultImages[defaultImage].getAttribute("data-src") + "?quality=75";
+        }
+    }
+});
+</script>

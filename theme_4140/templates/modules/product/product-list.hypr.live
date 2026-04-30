@@ -1,0 +1,10 @@
+﻿<div class="mz-productlist {% block module-classes %}{% endblock module-classes %}">
+    {% if model.items %}
+    <div class="mz-productlist-list four-column mz-plpBanners {% block list-classes %}{% endblock list-classes %}">
+        {% for prod in model.items %}
+            <div class="mz-productlist-item" data-mz-product="{{ prod.productCode }}">{% include "modules/product/product-listing" with model=prod %}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+

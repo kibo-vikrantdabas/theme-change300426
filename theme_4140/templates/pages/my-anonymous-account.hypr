@@ -1,0 +1,29 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.orderStatus %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-anonymous-account {% endblock body-tag-classes %}
+
+{% block body-content %}
+
+{% require_script "pages/myaccount" %}
+
+{% preload_json model "customer" %}
+<div class="mz-l-container anonymous-trackorder">
+    <div id="account-panels" class="mz-myaccount-panels mz-l-stack mz-l-stack-large">
+
+        {% dropzone "my-account-top" scope="template" %}
+
+        <div class="mz-l-stack-section mz-accountorderhistory" id="account-orderhistory">
+            {% include "modules/my-account/my-account-orderhistory" with model=model.orderHistory showPaging=false %}
+        </div>
+        
+        <div class="mz-l-stack-section mz-accountreturnhistory" id="account-returnhistory">
+            {% include "modules/my-account/my-account-returnhistory" with model=model.returnHistory %}
+        </div>
+
+        {% include "modules/my-account/my-account-print-window" %}
+
+    </div>
+</div>
+{% endblock body-content %}

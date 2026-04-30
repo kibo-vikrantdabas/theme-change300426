@@ -1,0 +1,95 @@
+<table class="mz-printable-order mz-printable-order-packingslip">
+<thead class="header"><tr>
+    <th class="company-info">
+        <div class="company-name">{{ customContent.companyName }}</div>
+        <div class="company-contacts">{{ customContent.companyAddress }}</div>
+        <div class="company-url">{{ customContent.websiteUrl }}</div>
+    </th>
+    <th class="order-essentials">
+        <div class="order-number"><span class="label">Pick List #</span><span>{{ model.pickWaveNumber }}</span></div>
+    </th>
+</tr></thead>
+<tbody><tr><td colspan="4">
+    <table class="grid">
+        <thead><tr>
+            <th>Image</th>
+            <th>Part#</th>
+            <th>UPC</th>
+            <th>SKU</th>
+            <th>Product Name</th>
+            <th>Order#s</th>
+			<th>External Order#s</th>
+            <th>Qty Needed</th>
+            <th>Qty Picked</th>
+        </tr></thead>
+        <tbody>
+                
+        {% for shipment in model.shipments %}
+            {% for item in shipment.items %}
+                <tr>
+                    <td>
+                        {% if item.imageUrl %}
+                            <img style="height: 100px;" src="{{ item.imageUrl }}">
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.productCode %}
+                            {{ item.productCode }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.productCode %}
+                            {{ item.productCode }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.productCode %}
+                            {{ item.productCode }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="product-name">{{ item.productName }}</div>
+                    </td>
+                    <td>
+                        {% if model.orderNumber %}
+                            {{ model.orderNumber }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if model.externalOrderId %}
+                            {{ model.externalOrderId }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.quantity %}
+                            {{ item.quantity }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.quantity %}
+                            {{ item.quantity }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+</td></tr></tbody>
+</table>

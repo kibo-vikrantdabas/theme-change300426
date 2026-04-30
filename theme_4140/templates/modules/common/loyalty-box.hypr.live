@@ -1,0 +1,32 @@
+<ul class="need-help-options">
+    <li>
+        <div class="loyalty-box need-sqr-section">
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/mobile.svg" alt="customer" loading="lazy">
+            <h2>{{labels.customerContactService}}</h2>
+            <a class="store-finder" href="{{siteContext.siteSubdirectory}}/contact">{{labels.customerService}}</a>
+        </div>
+    </li>
+    <li>
+         <div class="loyalty-box need-sqr-section">
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/chat.svg" alt="email us" loading="lazy">
+            <h2>{{labels.emailUs}}</h2>
+            <p>{{labels.plsChooseEmailText}}</p>
+            <div class="email-subject-wrapper">
+                <select class="choose-email-list">
+                    <option class="email-choose-ttl">{{labels.chooseSubject}}</option>
+                    <optgroup class="choose-email-list2" label="{{labels.ordering}}">
+                        <option value="{{labels.whereIsMyOrder}}">{{labels.whereIsMyOrder}}</option>
+                        <option value="{{labels.placingAnOrder}}">{{labels.placingAnOrder}}</option>
+                        <option value="{{labels.amendMyOrder}}">{{labels.amendMyOrder}}</option>
+                        <option value="{{labels.returnAndRefund}}">{{labels.returnAndRefund}}</option>
+                    </optgroup>
+                    <optgroup class="choose-email-list2" label="{{labels.storesAndProducts}}">
+                        <option value="{{labels.productInfoNeeded}}">{{labels.productInfoNeeded}}</option>
+                        <option value="{{labels.storeServicefeedback}}">{{labels.storeServicefeedback}}</option>
+                    </optgroup>
+                </select>
+                <button>{{labels.go}}</button>
+            </div>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,17 @@
+<ul class="need-help-options">
+    <li>
+        <div class="loyalty-box need-sqr-section">
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/SDR-2159-Blue-logo.png" alt="Blue loyalty">
+            <h2>{{labels.blueLoyalty}}</h2>
+            <p><a href="https://www.mybluerewards.com/rewards/faqs"> {{labels.blueLoyaltyText|safe}}</a></p>
+        </div>
+    </li>
+    <li>
+        <div class="loyalty-box need-sqr-section">
+            <img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/profile.svg" alt="account">
+            <h2>{{labels.myAccount}}</h2>
+            <p>{{labels.myAccountText}}</p>
+            <a class="store-finder" href="{{siteContext.siteSubdirectory}}/myaccount">{{labels.login}}</a>
+        </div>
+    </li>
+</ul>

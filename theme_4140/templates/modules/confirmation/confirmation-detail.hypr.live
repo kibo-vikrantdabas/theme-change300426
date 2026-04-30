@@ -1,0 +1,106 @@
+<div class="mz-l-container mz-order-confirmation-page">
+    <div class="mz-thankyou-head">
+        <h1 class="mz-pagetitle">{{ labels.thankyouOrder }}</h1>
+        <p class="mz-thankyou-main">
+               {% if model.paymentStatus == "Errored" %}
+                <span class="mz-thankyou-text-ordernumber">
+                   {{ labels.thankyouOrder }} {{ model.orderNumber }} {{ labels.processingPayment }}
+                </span>
+            {% else %}
+                <span class="mz-thankyou-text-ordernumber">
+                    {{ labels.thankyouTextOrderNumber|string_format(model.orderNumber)|safe }}
+                </span>
+            {%if model.billingInfo.billingContact.email %}
+                <span class="mz-thankyou-text-customeremail">{{ labels.thankyouTextCustomerEmail|string_format(model.billingInfo.billingContact.email)|safe }}</span>
+            {% else %}
+                <span class="mz-thankyou-text-customeremail">{{ labels.thankyouTextCustomerEmail|string_format(user.email)|safe }}</span>
+            {% endif %}
+         {% endif %}
+        </p> 
+        <div class="mz-continue-shopping">
+            <button class="mz-button mz-button-large mz-continue-shopping-btn">
+                <a href="{{siteContext.siteSubdirectory}}" class="mz-continue-shopping-link">{{ labels.continueShopping }}</a>
+            </button>
+        </div>
+    </div>
+
+    <div class="mz-l-stack mz-thankyou-ordersummary">
+        <div class="mz-thankyou-ordersummary-head">
+            <h3 class="mz-l-stack-sectiontitle mz-label-row">{{ labels.orderSummary }}</h3>
+            <h5 class="mz-label-row mz-label-price">{{ labels.price }}</h5>
+            <h5 class="mz-label-row mz-label-total">{{ labels.total }}<h5>
+        </div> 
+        {% include "modules/confirmation/order-summary" %}
+    </div>
+    <div class="mz-l-stack mz-thankyou-delivery-info shipping-method-pickup" style="display:none;" >
+        <h3 class="mz-l-stack-sectiontitle">{{ labels.collectionInformation }}</h3>
+            <div class="mz-l-stack-item mz-delivery-address">
+                <p class="mz-address-label">{{ labels.collectFromOrderDetails }}</p> 
+                <div class="mz-addresssummary">
+                    <div class="mz-confirmation-address-summary">
+                        <p class="mz-address-label mz-pickupLocationName-pickup"></p> 
+                        <div class="mz-address-details purchase-location-deatils">
+                            {% if model.mailCheckTo.address.address1 %}
+                                {{ model.mailCheckTo.address.address1 }},
+                            {% endif %}
+                            {% if model.mailCheckTo.address.address2 %}
+                                {{ model.mailCheckTo.address.address2 }},
+                            {% endif %}
+                            {% if model.mailCheckTo.address.address3 %}
+                                {{ model.mailCheckTo.address.address3 }},
+                            {% endif %}
+                            {% if model.mailCheckTo.address.cityOrTown != "n/a" %}
+                                {{ model.mailCheckTo.address.cityOrTown }},
+                            {% endif %}
+                            {% if model.mailCheckTo.address.countryCode != "n/a" %}
+                                <span class="mz-address-country-code" id="address_{{type}}" style="display:inline;"> {{ model.mailCheckTo.address.countryCode }} </span>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        {% if model.billingInfo.billingContact.address %}
+        <div class="mz-l-stack-item mz-billing-address">
+            <p class="mz-address-label">{{ labels.billingAddress }}</p> 
+            <div class="mz-addresssummary">{% include "modules/confirmation/address-summary" with model=model.billingInfo.billingContact type='billing' %}</div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="mz-l-stack mz-thankyou-delivery-info shipping-method-ship">
+        <h3 class="mz-l-stack-sectiontitle">{{ labels.delievryInfo }}</h3>
+        {% if model.fulfillmentInfo.fulfillmentContact.address %}
+        <div class="mz-l-stack-item mz-delivery-address">
+            <p class="mz-address-label">{{ labels.delievryAddress }}</p> 
+            <div class="mz-addresssummary">{% include "modules/confirmation/address-summary" with model=model.fulfillmentInfo.fulfillmentContact type='fulfillment' %}</div>
+        </div>
+        {% endif %}
+        {% if model.billingInfo.billingContact.address %}
+        <div class="mz-l-stack-item mz-billing-address">
+            <p class="mz-address-label">{{ labels.billingAddress }}</p> 
+            <div class="mz-addresssummary">{% include "modules/confirmation/address-summary" with model=model.billingInfo.billingContact type='billing' %}</div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="mz-l-stack mz-thankyou-paymentmethod">
+        <h3 class="mz-l-stack-sectiontitle">{{ labels.paymentMethod }}</h3>
+        <div class="mz-tahnkyou-payment-details">
+            {% if model.total == 0 %}
+                {% with model.total|currency as total %}
+                    <h4 class="mz-confirmation-nopaymentrequired">{{ labels.noPaymentWasRequired|string_format(total) }}</h4>
+                {% endwith %}
+            {% else %}
+                {% for payment in model.payments %}
+                {% if payment.status != "Voided" and payment.status != "Declined" %}
+                    {% include "modules/confirmation/payment-details" with model=payment %}
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mz-l-stack mz-thankyou-billing-summary">
+        <h3 class="mz-l-stack-sectiontitle">{{ labels.billingSummary }}</h3>
+        {% include "modules/confirmation/billing-summary" %}
+    </div>
+</div><!-- #order-confirmation -->

@@ -1,0 +1,149 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.checkout %} - {% parent %}{% endblock title-tag-content %}
+
+{% block head-tag-scripts %}
+{% parent %}
+{% if siteContext.checkoutSettings.visaCheckout.isEnabled and not pageContext.isEditMode %}
+{% include "modules/common/anti-clickjacking-script" %}
+{% endif %}
+{% endblock head-tag-scripts %}
+
+{% block body-tag-classes %} mz-checkout {% endblock body-tag-classes %}
+
+{% block site-nav %}{% endblock site-nav %}
+
+{% block body-content %}
+
+{% require_script "pages/checkout" %}
+
+{% preload_json model "checkout" %}
+
+{% include "modules/countries" %}
+<div class="mz-l-container">
+    <h1 class="mz-pagetitle">
+        {{ labels.checkout }}
+        {% if not user.isAuthenticated %}
+        <span class="mz-pagetitle-note">
+            {{ labels.registeredCustomer }} <a data-mz-action="login" data-placement="left" href="javascript;">{{ labels.logIn }}</a>
+        </span>
+        {% endif %}
+    </h1>
+    {% if themeSettings.isSplitShipmentApply %}
+        <div class="mz-checkoutBannerContainer">
+            <div class="mz-checkoutBannerIcon">
+                <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}help.svg" alt="help-icon" class="mz-help-icon" alt="help-icon">
+            </div>
+            <div class="mz-checkoutBannerMessage">
+                {{labels.checkoutBannerMsg}}
+            </div>
+        </div>
+    {% endif %}
+    {% comment %} <div id="mz-discount-threshold-messages">
+        {% include "modules/checkout/checkout-discount-threshold-messages" with model=model %}
+    </div> {% endcomment %}
+    <form id="checkout-form" class="mz-checkoutform mz-l-2column mz-l-2column-right fades-in" method="post" onsubmit="return false;">
+
+        {% include "modules/common/message-bar" with model=model.messages %}
+        <div class="mz-l-column" id="checkout-rightcol">
+            <div class="mz-formstep mz-checkoutform-ordersummary" id="order-summary">
+            {% include "modules/checkout/checkout-order-summary" %}
+            </div>
+
+            <div class="mz-l-formfieldgroup">
+                <div class="mz-checkoutform-couponcode mz-l-formfieldgroup-row" id="coupon-code-field" >
+                    {% include "modules/checkout/coupon-code-field" %}
+                </div>
+                {% if themeSettings.showCheckoutCommentsField %}
+                <div class="mz-checkoutform-comments mz-l-formfieldgroup-row" id="comments-field" >
+                    {% include "modules/checkout/comments-field" %}
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="mz-l-column-shipmentInfo">
+            {# No Longer Needed  As Delivery Methods Will Be On Cart Page #}
+            {% comment %} <div class="mz-formstep mz-checkoutform-deliverymethod" id="step-delivery-method">
+                {% include "modules/checkout/step-delivery-method" %}
+            </div> {% endcomment %}
+
+            <div class="mz-formstep mz-checkoutform-shippingaddress" {% if model.isNewAddressForm %} is-new-address-form {%endif%} id="step-shipping-address">
+                {% include "modules/checkout/step-shipping-address" %}
+            </div>
+            
+            <div class="mz-formstep mz-checkoutform-billingmethod" id="step-billing-address" {% if model.requiresFulfillmentInfo %}style="display:none"{% endif %}>                
+                {% include "modules/checkout/step-billing-address" %}
+            </div>
+            
+            <div class="mz-formstep mz-checkoutform-shippingmethod" id="step-shipping-method" {% if not model.requiresFulfillmentInfo %}style="display:none"{% endif %}>
+                {% include "modules/checkout/step-shipping-method" %}
+            </div>
+
+            <div class="mz-formstep mz-checkoutform-paymentinfo" id="step-payment-info">
+                {% include "modules/checkout/step-payment-info" %}
+            </div>
+
+            <div class="mz-formstep mz-checkoutform-review" id="step-review">
+                {% include "modules/checkout/step-review" %}
+            </div>
+
+        </div><!-- left .column -->
+        <div id="AmazonPayButton" style="display:none;"/>
+    </form>
+ </div>
+</div>
+
+{% endblock body-content %}
+
+{% block page-footer %}
+<footer class="checkout_mz-pagefooter">
+<div class="checkout_paymentBrandLogos">
+<img src="{{siteContext.cdnPrefix}}/resources/images/icons/visa.png" alt="visa-logo">
+<img src="{{siteContext.cdnPrefix}}/resources/images/icons/americanexpress.png" alt="americanexpress-logo" >
+<img src="{{siteContext.cdnPrefix}}/resources/images/icons/mastercard.png" alt="mastercard-logo" >
+</div>
+
+<div class="checkout_sub-foot" id="copyright">
+        <div class="checkout_sub-foot--main">
+            {% comment %}
+ <span class="website-name">
+                &copy; {% now Y %}
+                {{ siteContext.generalSettings.websiteName }} {{ labels.plc }}
+            </span> 
+{% endcomment %}
+                <a href="{{siteContext.siteSubdirectory}}/need-help"
+                class="help"> {{labels.help}}</a>
+                 <span class="separator">|</span>
+
+                 <a href="{{siteContext.siteSubdirectory}}/accessibility"
+                 class="accessibility"> {{labels.accessibility}}</a>
+                 
+                 <span class="separator">|</span>
+
+                <a href="{{siteContext.siteSubdirectory}}/privacy-policy"
+                 class="privacy-and-cookies"> {{labels.privacy}}</a>
+                 <span class="separator">|</span>
+
+                <a href="{{siteContext.siteSubdirectory}}/terms-conditions"
+                class="terms-and-condition"> {{labels.termsAndConditions}}</a>
+                
+
+                <p href="" class="rights-reserved">
+                    &copy; {% now Y %}
+                    {{ siteContext.generalSettings.websiteName }} {% comment %} {{ labels.plc }}  ({{themeSettings.countrySpecificCode}})  {% endcomment %}   
+                </p>
+        </div>
+    </div>
+</footer>
+<div class="mz-checkout-sticky-place-order-btn" style="display:none">  
+    <div class="mz-sticky-padding">
+        <div class="mz-checkout-sticky-order-total">
+            <div><strong>{{labels.total}}</strong> {{labels.orderTotalEd}}</div>
+            <div class="mz-checkout-sticky-total">{{model.currencyCode}} {{ model.total|floatformat(pageContext.currencyInfo.precision)}}</div>
+        </div> 
+        <button type="button" id="place-order-sticky-btn" class="place-order-sticky-btn" data-mz-action="submit" disabled><span><img class="mz-sticky-lock"src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Lock.svg" alt="lock-icon">{{ labels.placedOrder }}</span></button>
+    </div>
+</div>
+{% endblock page-footer %}

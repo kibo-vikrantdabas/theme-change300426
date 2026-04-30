@@ -1,0 +1,70 @@
+<div class="chart">
+	<h5>Baby</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Age (Months) </span>
+			<span>Weight</span>
+			<span>Height</span>
+		</div>
+		<div class="table">
+			<table>
+				<tr>
+					<td class="active">Tiny</td>
+					<td class="active">Newborn</td>
+					<td class="active">1</td>
+					<td class="active">1-3</td>
+					<td class="active">3-6</td>
+					<td class="active">6-9</td>
+					<td class="active">9-12</td>
+					<td class="active">12-18</td>
+					<td class="active">18-24</td>
+					<td class="active">24-36</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">2.8kg</td>
+					<td class="unit-cm active">3.2kg</td>
+					<td class="unit-cm active">4.5kg</td>
+					<td class="unit-cm active">6kg</td>
+					<td class="unit-cm active">8kg</td>
+					<td class="unit-cm active">9kg</td>
+					<td class="unit-cm active">10kg</td>
+					<td class="unit-cm active">11kg</td>
+					<td class="unit-cm active">12.5kg</td>
+					<td class="unit-cm active">14.5kg</td>
+					<td class="unit-in">6½lbs</td>
+					<td class="unit-in">7lbs</td>
+					<td class="unit-in">10lbs</td>
+					<td class="unit-in">13¼lbs</td>
+					<td class="unit-in">17¾lbs</td>
+					<td class="unit-in">19¾lbs</td>
+					<td class="unit-in">22lbs</td>
+					<td class="unit-in">24¼lbs</td>
+					<td class="unit-in">27¼lbs</td>
+					<td class="unit-in">32lbs</td>
+				</tr>
+				<tr>
+					<td class="unit-cm active">48</td>
+					<td class="unit-cm active">50</td>
+					<td class="unit-cm active">54</td>
+					<td class="unit-cm active">62</td>
+					<td class="unit-cm active">69</td>
+					<td class="unit-cm active">72</td>
+					<td class="unit-cm active">76</td>
+					<td class="unit-cm active">83</td>
+					<td class="unit-cm active">90</td>
+					<td class="unit-cm active">98</td>
+					<td class="unit-in">19</td>
+					<td class="unit-in">19½</td>
+					<td class="unit-in">21¼</td>
+					<td class="unit-in">24½</td>
+					<td class="unit-in">27</td>
+					<td class="unit-in">28¼</td>
+					<td class="unit-in">30</td>
+					<td class="unit-in">32¾</td>
+					<td class="unit-in">35½</td>
+					<td class="unit-in">38½</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

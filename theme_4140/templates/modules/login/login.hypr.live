@@ -1,0 +1,50 @@
+<form method="post" class="mz-loginform mz-loginform-page" name="mz-loginform">
+
+ <input type="hidden" value="{{ pageContext.cmsContext.template.path }}" class="guestcheckoutUrl" data-mz-returnUrl > 
+   
+   <div class="login-validation-error-msg"></div>
+    <div class="mz-login-form-field">
+         <div class="mz-login-email-div">
+             <div class="mz-l-formfieldgroup-cell">
+                 <label for="email" class="text-label">{{ labels.email }}</label>
+             </div>
+             <div class="mz-l-formfieldgroup-cell">
+                 <input name="email" class="text-input" data-mz-value="email" type="email" placeholder="{{ labels.signInFormemail }}" data-mz-login-email />
+             </div>
+         </div>
+         <div class="mz-login-email-valid-div element-div hidden">
+            
+        </div>
+         <div class="mz-login-password-div element-div">
+             <div class="mz-l-formfieldgroup-cell">
+                 <label for="password" class="text-label" >{{ labels.password }}</label>
+             </div>
+             <div class="password-field-input">
+                 <input name="password" class="text-input" data-mz-value="password"  type="password" data-mz-login-password  placeholder="{{ labels.signUpFormPassword }}" />
+                   <a id="eye-password-register" class="eye">
+                    <span class="eye-open eye-text"><img class="eye-image" alt="eyeopen" src="{{siteContext.cdnPrefix}}/resources/images/icons/Eye.svg"> {{ labels.show }}</span>
+                    <span class="eye-close eye-text hidden"><img class="eye-image" alt="eyehidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/EyeHidden.svg"> {{ labels.hide }}</span>
+                  </a> 
+             </div>
+         </div>
+        
+         <div class="mz-forget-password-div element-div">
+             <div class="mz-l-formfieldgroup-cell"></div>
+             <div class="mz-l-formfieldgroup-cell">
+                  <a href="{{siteContext.siteSubdirectory}}/user/forgotpassword" class="mz-forgot" data-mz-action="forgotpassword" onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'account','event_params':{'event_act': 'forgot password','event_lbl': 'forgot password'}})">{{ labels.forgotPasswordLink }}</a> 
+                  <div class="mz-l-formfieldgroup-cell">
+                     {% comment %} <section data-mz-role="popover-message" class="mz-popover-message"></section> {% endcomment %}
+                 </div>
+             </div>
+         </div>
+         <div class="mz-login-div">
+             <div class="mz-l-formfieldgroup-cell"></div>
+             <div class="mz-l-formfieldgroup-cell">
+                 <button class="mz-login-button mz-login-page-button" data-mz-action="loginpage-submit" >{{ labels.signIn }}</button>
+                 <div class="mz-l-formfieldgroup-cell">
+                     {% comment %} <section data-mz-role="popover-message" class="mz-popover-message"></section> {% endcomment %}
+                 </div>
+             </div>
+         </div>
+     </div>
+ </form>

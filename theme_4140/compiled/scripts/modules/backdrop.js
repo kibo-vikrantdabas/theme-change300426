@@ -1,0 +1,1 @@
+define(["modules/jquery-mozu"],function(e){return{applyRemoveBackdrop:function(t,o){"active"===t&&e(".mz-backdrop").attr("style","height:"+e(document).height()+"px !important;"),e(".mz-backdrop").addClass(t).removeClass(o)}}});

@@ -1,0 +1,54 @@
+{% extends "page" %}
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %} mz-size-guide {% endblock body-tag-classes %}
+{% block body-content %}
+<div class="mz-size-guide-container">
+    {% include "modules/size-guide/size-guide-nav" %}
+    <div class="mz-size-guide-display">
+        <div class="mz-size-guide-title-desc">
+            <h3>{{ labels.womenSizeGuide }}</h3>
+            <p>{{ labels.ourStandardWomenswearRange }}</p>
+        </div>
+        <div class="mz-mobile-swipe-info">
+            <img src='{{siteContext.cdnPrefix}}/resources/images/icons/svg/left-arrow.svg'   loading="lazy">
+            <span>{{ labels.swipeLeftOrRight }}</span>
+            <img src='{{siteContext.cdnPrefix}}/resources/images/icons/svg/right-arrow.svg'   loading="lazy">
+        </div>
+        <div class="mz-size-guide-unit-toggle">
+            <div class="mz-toggle-btn-container">
+                <button class="mz-size-guide-toggle-btn active">{{labels.cms}}</button>
+                <button class="mz-size-guide-toggle-btn">{{labels.inches}}</button>
+            </div>
+        </div>
+        {% dropzone zoneid='middle-table' scope='page' %}
+        <div class="mz-size-guide-measure">
+            <div>
+                <h3>{{labels.measuringAdvice}}</h3>
+                <p>{{labels.takeYourActualBodyMeasurements}}</p>
+            </div>
+            <div>
+                <ol>
+                    <li>{{labels.bust}}
+                    <p>{{labels.bustMeasure}}</p>
+                    </li>
+                    <li>{{labels.waist}}
+                    <p>{{labels.waistMeasure}}</p>
+                    </li>
+                    <li>{{labels.hips}}
+                    <p>{{labels.hipsMeasure}}</p>
+                    </li>
+                    <li>{{labels.insideLeg}}
+                    <p>{{labels.insideLegMeasure}}</p>
+                    </li>
+                    <li>{{labels.heightGuide}}
+                    <p>{{labels.heightMeasure}}</p>
+                    </li>
+                    <li>{{labels.skirtLength}}
+                    <p>{{labels.skirtLengthMeasure}}</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body-content %}

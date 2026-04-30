@@ -1,0 +1,36 @@
+{% if not model.isEmpty %}
+<div class="mz-collection-delivery-options-section">
+    <p class="mz-collection-delivery-options-heading">{{labels.cartCollectionFulfillmentOptions}}</p>
+    <div class="mz-collection-delivery-options-content">
+        <div class="mz-tracked-delivery-section mz-content-row">
+		<div style="display:flex;align-items:center">
+		      <input class="fulfillment-selection" data-mz-action="setSTHFulfillmentMethod" type="radio" id="cnc-fulfillment" name="cnc-fulfillment-mobile" value="Ship" {% if model.selectedFulfillmentMethod == "Ship"%} checked {% endif%}>
+		</div>
+            <div class="icon"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}DeliveryTrack.svg" height="32" width="32" alt="delivery-track-icon" /></div>
+            <div class="details fulfillment">
+                <span class="title">{{labels.homeDelivery}}</span>
+            </div>
+        </div>
+        <div class="mz-click-collect-section  mz-content-row">
+			<div style="display:flex;align-items:center" class="{% if model.isGiftHamper %} cnc-disabled{% endif %}">
+		    	<input class="fulfillment-selection" data-mz-action="setPickupFulfillmentMethod"type="radio" id="cnc-fulfillment" name="cnc-fulfillment-mobile" value="Pickup" {% if not model.displayPickupLinks and model.isGiftHamper %} disabled{% endif %} {% if model.selectedFulfillmentMethod == "Pickup"%} checked {% endif%}>
+			</div>
+            <div class="icon {% if not model.displayPickupLinks or  model.isGiftHamper %} cnc-disabled{% endif %}"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Collect.svg" height="32" width="32" alt="collect-icon" /></div>
+            <div class="details fulfillment {% if not model.displayPickupLinks or model.isGiftHamper %} cnc-disabled{% endif %}">
+                {% if model.displayPickupLinks and not model.isGiftHamper %}
+                    <span class="mz-desktop-collectAt" data-mz-action="changeFulfillmentMethod" data-mz-cart-item="{{item.id}}" data-value="Pickup">{{ labels.storeCollectAt }} {% if model.cookieLocation or model.defaultLocation%} {{ labels.at }} {% endif %} <span class="collect-location {% if not model.isModalReady%} cnc-disabled {% endif %}" data-mz-action="changeFulfillmentMethod" data-mz-cart-item="{{item.id}}" data-value="Pickup">{% if model.cookieLocation %}  {{model.cookieLocation}} {% else %} {{model.defaultLocation}}{% endif %}</span></span>
+                    <span class="mz-mobile-click-collectAt" data-mz-action="changeFulfillmentMethod" data-mz-cart-item="{{item.id}}" data-value="Pickup">{{ labels.storeCollectAt }} {% if model.cookieLocation or model.defaultLocation%} {{ labels.at }} {% endif %} <span class="collect-location {% if not model.isModalReady%} cnc-disabled {% endif %}" data-mz-action="changeFulfillmentMethod" data-mz-cart-item="{{item.id}}" data-value="Pickup">{% if model.cookieLocation %} {{model.cookieLocation}} {% else %} {{model.defaultLocation}}{% endif %}</span></span>
+                {% else %}
+                    <span class="title">{{labels.clickCollect}}</span>
+                {% endif %}
+            </div>
+        </div>
+        {% if model.isGiftHamper %}
+            <div class="cnc-warning-box">
+                <span class="cnc-warning-img"><img class="warning-img" src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}help-gh.svg" height="20" width="20" alt="help-icon" /></span>
+                <span class="cnc-warning-msg">{{labels.giftHamperClickCollectMsg}}</span>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}

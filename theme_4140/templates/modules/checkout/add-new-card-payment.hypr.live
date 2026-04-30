@@ -1,0 +1,8 @@
+{% include "modules/checkout/billing-credit-card-form" with model=model.card %}
+{% include "modules/checkout/billing-address-selector" %}
+<div class="mz-l-stack-section">
+    
+</div> 
+<div class=" save-card-button-div">
+    <button class="save-card-details-btn" data-mz-action="next">{% if not user or user.isAnonymous %} {{labels.confirm}} {% else %} {{ labels.confirm }} {% endif %}</button>
+</div>

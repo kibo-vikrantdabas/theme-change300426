@@ -1,0 +1,204 @@
+.mz-collection-delivery-options-section {
+    // width: ~"calc(61% - 66px)";
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(176,176,176,0.5);
+    padding: 24px 25px 29px;
+    margin-top: 30px;
+    @media @desktopMediumScreen {
+        width: auto;
+    }
+    @media @tabletAndMobileScreens {
+        width: auto;
+        padding: 16px 17px;        
+    }
+    @media @mobileScreens {
+        display: none;
+    }
+    .mz-collection-delivery-options-heading {
+        font-size: 22px;
+        letter-spacing: 0;
+        line-height: 26px;
+        font-weight: @fontBold;
+        color: @lightBlack;
+        border-bottom: 1px solid @lightWhite;
+        margin: 0;
+        padding-bottom: 28px;
+        @media @mobileScreens {
+            font-size: @fontSizeLarger;            
+            line-height: 26px;
+            padding-bottom: 16px;
+        }
+    }
+    .mz-collection-delivery-options-content {
+        .cnc-disabled{
+            opacity: 30%; 
+            pointer-events: none;
+        }
+        .mz-content-row {
+            display: flex;
+            margin-top: 24px;
+            font-size: @fontSizeLarger;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 24px;
+            @media @mobileScreens {
+                font-size: @fontSizeSmall;
+                font-weight: 600;            
+                line-height: 21px;
+            }
+            
+            .cnc-disabled{
+                opacity: 30%; 
+                pointer-events: none;
+            }
+            .collect-location{
+                text-decoration: underline;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            .mz-desktop-collectAt {
+                @media @mobileScreens {
+                    display: none;
+                }
+            }
+            .mz-mobile-click-collectAt {
+                display: none;
+                @media @mobileScreens {
+                    display: block;
+                }
+            }
+            
+            .fulfillment-selection{
+                margin-right: 28px;
+                accent-color: #005640;
+                @media @mobileScreens {
+                    margin-right: 16px;
+                }
+            }
+            .icon {
+                margin-right: 28px;
+                @media @mobileScreens {
+                    margin-right: 16px;
+                }
+            }
+            .details {
+                display: flex; 
+                flex-direction: column;
+            }
+            .details.fulfillment{
+                justify-content: center;
+            }
+            .title {
+                @media @mobileScreens {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                .business-days {
+                    @media @mobileScreens {
+                        width: 100%;
+                    }
+                }
+            }
+            .price {
+                margin-left: auto;
+                font-size: @fontSizeLarger;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 21px;
+            }
+            &.mz-cod-section {
+                .price {
+                    width: 100px;
+                    text-align: right;
+                    @media @mobileScreens {
+                        width: 50%;                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cnc-warning-box {
+    line-height: 21px;
+    font-size: 14px;
+    background-color: #FFFFCA;
+    border: 1px solid #FFCD00;
+    margin-top: 10px;
+    margin-left: 40px;
+    display: flex;
+    width: 70%;
+    align-items: flex-start;
+    gap: 8px;
+
+    .cnc-warning-img {
+        padding-left: 7.6px;
+        padding-top: 8.6px;
+
+        .warning-img {
+            @media @mobileScreens {
+                width: 15.8px;
+                height: 15.8px;
+            }
+        }
+        
+    }
+    .cnc-warning-msg {
+        padding: 10px 10px 10px 0px;
+        font-weight: 600;
+        @media @mobileScreens {
+            padding-left: 0px;
+            padding-top: 9.6px;
+        }
+    }
+
+    @media @mobileScreens {
+        margin-left: 0px;
+        width: 100%;
+    }
+}
+
+.mz-cart-collection-delivery-mobile {
+    @media @mobileScreens {
+        display: block!important;
+    }
+    .mz-collection-delivery-details {
+        padding: 0;
+    }
+    .mz-collection-delivery-options-section {        
+        display: block;
+    }
+    td.mz-collection-delivery-details.fulfillment{
+        width: 100vw;
+    }
+    .fulfillment-options-mobile{
+        width: 100vw;
+        max-width:452px;
+
+    }
+}
+.mz-collection-delivery-options-main {
+    display: flex;
+    width: ~"calc(65% - 45px)";
+    @media (max-width: 1025px) {
+        width: 100%;
+    }
+    .mz-collection-delivery-list {
+        width: 100%;
+    }
+    .mz-collection-delivery-data {
+        display: block;
+    }
+}
+
+.cart-collection-delivery-options {
+    @media @mobileScreens {
+        width: 100%;
+        tr,td {
+            
+                width: 100%;
+                display: block;
+        }
+    }
+}

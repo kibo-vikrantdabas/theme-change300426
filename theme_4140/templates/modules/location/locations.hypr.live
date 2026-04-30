@@ -1,0 +1,22 @@
+﻿<div class="mz-locationsearch-list">
+    {% if model.locations.items and model.locations.items.length > 0 %}
+      {% if model.positionError %}
+      <p class="mz-locationsearch-positionerror is-warning">{{ model.positionError }}</p>
+      {% endif %}
+      <div class="mz-l-paginatedlist-list">
+        {% include "modules/location/location-list" with locations=model.locations.items %}
+    </div>
+    {% else %}
+        <div class="no-location-found-list">
+          <ul class="mz-no-location-text">
+          <li class="mz-nolocation-found">{{ labels.noLocationFound }} {% if search %}'{{search}}' {% else %} {{labels.currentLocation}}{% endif%} </li>
+          <li class="no-location-text"> {{ labels.noSearchLocationText }} </li>
+          </ul>
+          <ul class="no-location">
+          <li class="no-location-text1"> {{labels.noSearchLocationText1}}</li>
+          <li class="no-location-text2"> {{labels.noSearchLocationText2}}</li>
+          <li class="no-location-text3"> {{labels.noSearchLocationText3}}</li>
+          </ul>
+        </div>
+    {% endif %}
+</div>

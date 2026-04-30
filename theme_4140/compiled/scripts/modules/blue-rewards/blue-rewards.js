@@ -1,0 +1,1 @@
+require(["modules/jquery-mozu"],function(u){u(document).ready(function(){})});

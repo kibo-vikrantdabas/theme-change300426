@@ -1,0 +1,45 @@
+﻿<div class="payment-methods-container">
+<h3 class="mz-l-stack-sectiontitle">{{ labels.creditanddebitcards }} <a href="javascript:;" class="hidden" data-mz-card="new" data-mz-action="beginEditCard">{{ labels.addNewCard }}</a></h3>
+<p class="cards-info">{{ labels.savedCardsInfo }}</p>
+
+<div class="account-credit-card-alert-message {% if not editing.displayError %}hidden {%endif%}">
+    <div class="mz-messagebar">
+        <ul class="is-showing mz-errors">
+            <li class="mz-message-item" >{{editing.displayErrorMessage}}</li>
+        </ul>
+    </div>
+</div>
+
+<div class="mz-accountpaymentmethods-list">
+
+{% if model.hasSavedCards or editing.card == "new" or model.purchaseOrder and model.purchaseOrder.isEnabled %}
+
+    {% if model.purchaseOrder and model.purchaseOrder.isEnabled and siteContext.checkoutSettings.purchaseOrder.isEnabled %}
+    {% include "modules/my-account/my-account-paymentmethod" with model=model.purchaseOrder hasRequiredBehavior=model.hasRequiredBehavior savedAddress = modelAddress%}
+    {% endif %}
+
+    {% for card in model.cards %}
+    {% if editing.card == card.id %}
+    {% include "modules/my-account/my-account-credit-card-form" with model=model.editingCard editingContact=model.editingContact %}
+    {% else %}
+    {% include "modules/my-account/my-account-paymentmethod" with model=card address=model.contacts hasRequiredBehavior=model.hasRequiredBehavior %}
+
+    {% endif %}
+    {% endfor %}
+    {% if editing.card == "new" %}
+    {% include "modules/my-account/my-account-credit-card-form" with model=model.editingCard editingContact=model.editingContact %}
+    {% endif %}
+{% else %}
+<p class="mz-accountpaymentmethods-empty hidden">{{ labels.noSavedCards }}
+<a href="javascript:;" data-mz-card="new" data-mz-action="beginEditCard">{{ labels.addNewCard }}</a></p>
+{% endif %}
+    <div class="cards-list">
+        <div class="no-savedcards-wrapper savedcards-wrapper"   >
+            <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}CardGreen.svg" alt="card-icon" class="mz-order-history-icon">
+            <div class="title">{{ labels.addNewCard }}</div>
+            <p> {{labels.creditcardinfo}} </p>
+            <button class="btn-add-new-card pointer" data-mz-card="new" data-mz-action="beginEditCard">{{ labels.addCard }}</button>
+        </div>
+    </div>
+</div>
+</div>

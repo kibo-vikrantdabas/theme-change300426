@@ -1,0 +1,18 @@
+{% if buttonType|lower == "primary" %}
+<a href="{{linkUrl}}" class="primary cta-container" onclick="window.globalEventBus.emit('dataLayerEvent',{'eventCategory':'category navigation','moreCategory':'{{pageContext.title}}:about category','eventAction': 'cta','eventLabel': '{{ctaTitle}}'})">
+    <span>{{ctaTitle}}</span>
+    <i><img src="{{siteContext.cdnPrefix}}/resources/images/icons/Arrow.svg" alt="" align="left" loading="lazy"/></i>
+</a>
+{% endif %}
+{% if buttonType|lower == "secondary" %}
+<a href="{{linkUrl}}" class="secondary cta-container">
+    <span>{{ctaTitle}}</span>
+    <i><img src="{{siteContext.cdnPrefix}}/resources/images/icons/Arrow.svg" alt="" align="left" loading="lazy"/></i>
+</a>
+{% endif %}
+{% if buttonType|lower == "tertiary" %}
+<a href="{{linkUrl}}" class="secondary cta-container">
+    <span>{{ctaTitle}}</span>
+    <i><img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Arrows-white.svg" alt="" align="left" loading="lazy"/></i>
+</a>
+{% endif %}

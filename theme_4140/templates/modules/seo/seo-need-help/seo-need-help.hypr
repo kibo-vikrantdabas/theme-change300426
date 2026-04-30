@@ -1,0 +1,4 @@
+{% if pageContext.cmsContext.template.path == 'need-help' %}
+    {% include "modules/seo/seo-need-help/seo-need-help-faq" %}
+    {% include "modules/seo/seo-need-help/seo-need-help-howTo" %}
+{% endif %}

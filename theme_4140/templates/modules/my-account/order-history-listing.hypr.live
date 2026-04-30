@@ -1,0 +1,171 @@
+{% extends "modules/common/order-listing" %}
+{% block order-items %}
+<div class="order-history-listing">
+    {% if user.isAuthenticated %}
+    {% for m in model.shipments%}
+        {% for shipment in m.shipments %}
+            <div id="shipment-field">
+                {% if shipment.parentShipmentNumber %}
+                    <span class="shipment-count" data-mz-shipment-id="{{ shipment.parentShipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}}</span>
+                {% else %}
+                    <span class="shipment-count" data-mz-shipment-id="{{ shipment.shipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}} </span>
+                {% endif %}
+            </div>
+            {% for item in shipment.items%}
+                <div class="myaccount-order-detail-list">
+                {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "no" orderLevelStatus = model.status %}
+                </div>
+            {% endfor %}
+            {% for item in shipment.canceledItems%}
+                <div class="myaccount-order-detail-list">
+                {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "yes" orderLevelStatus = model.status %}
+                </div>
+            {% endfor %}
+        {% endfor %} 
+    {% endfor %}
+    {% else %}
+    {% if model.hasFulfilledPackages or model.hasFulfilledPickups %}
+        <div class="mz-orderlisting-prompt is-warning" data-mz-message-for="noReturnableItems"></div>
+            <div class="mz-orderlisting-header">
+                {% if themeSettings.allowCustomerInitiatedReturns and not model.limitPlaceReturns %}
+                    <div class="mz-orderlisting-return">
+                        <span class="mz-itemlisting-action">
+                            <button type="submit" class="mz-button" data-mz-order-id="{{ model.id }}" data-mz-action="startOrderReturn" >{{ labels.returnOrReplace }}</button>
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+    {% endif %}
+
+    {% if model.hasFulfilledPackages %}
+        <h2 class="mz-orderlisting-heading">{{labels.shipped}}</h2>
+        <div class="data-mz-order-packages">
+            {% if model.customShipment %}
+                {% for m in model.customShipment%}
+                    {% for shipment in m.shipments %}
+                        <div id="shipment-field">
+                            {% if shipment.parentShipmentNumber %}
+                                <span class="shipment-count" data-mz-shipment-id="{{ shipment.parentShipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}} </span>
+                            {% else %}
+                                <span class="shipment-count" data-mz-shipment-id="{{ shipment.shipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}} </span>
+                            {% endif %}
+                        </div>
+                        {% for item in shipment.items%}
+                            <div class="myaccount-order-detail-list">
+                            {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "no" orderLevelStatus=model.status %}
+                            </div>
+                        {% endfor %}
+                        {% for item in shipment.canceledItems%}
+                            <div class="myaccount-order-detail-list">
+                            {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "yes" orderLevelStatus = model.status %}
+                            </div>
+                        {% endfor %}
+                    {% endfor %} 
+                {% endfor %}
+            {% else %}
+                {% include "modules/my-account/order-history-package-group" with model=model packages=model.packages %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if model.hasFulfilledPickups %}
+        <h2 class="mz-orderlisting-heading">{{labels.orderItemsPickup}}</h2>
+        <div class="mz-orderlisting-pickup">
+             {% if model.customShipment %}
+                {% for m in model.customShipment%}
+                    {% for shipment in m.shipments %}
+                        <div id="shipment-field">
+                            {% if shipment.parentShipmentNumber %}
+                                <span class="shipment-count" data-mz-shipment-id="{{ shipment.parentShipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}} </span>
+                            {% else %}
+                                <span class="shipment-count" data-mz-shipment-id="{{ shipment.shipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}} </span>
+                            {% endif %}
+                        </div>
+                        {% for item in shipment.items%}
+                            <div class="myaccount-order-detail-list">
+                            {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "no" orderLevelStatus=model.status %}
+                            </div>
+                        {% endfor %}
+                        {% for item in shipment.canceledItems%}
+                            <div class="myaccount-order-detail-list">
+                            {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "yes" orderLevelStatus = model.status %}
+                            </div>
+                        {% endfor %}
+                    {% endfor %} 
+                {% endfor %}
+            {% else %}
+                {% include "modules/my-account/order-history-package-group" with model=model packages=model.pickups %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if model.hasFulfilledDigital%}
+        <h2 class="mz-orderlisting-heading">{{labels.orderDigitalItems}}</h2>
+        <div class="mz-orderlisting-pickup">
+            {% if model.customShipment %}
+                {% for m in model.customShipment%}
+                    {% for shipment in m.shipments %}
+                        <div id="shipment-field">
+                            {% if shipment.parentShipmentNumber %}
+                                <span class="shipment-count" data-mz-shipment-id="{{ shipment.parentShipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}} </span>
+                            {% else %}
+                                <span class="shipment-count" data-mz-shipment-id="{{ shipment.shipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}} </span>
+                            {% endif %}
+                        </div>
+                        {% for item in shipment.items%}
+                            <div class="myaccount-order-detail-list">
+                            {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "no" orderLevelStatus=model.status %}
+                            </div>
+                        {% endfor %}
+                        {% for item in shipment.canceledItems%}
+                            <div class="myaccount-order-detail-list">
+                            {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "yes" orderLevelStatus = model.status %}
+                            </div>
+                        {% endfor %}
+                    {% endfor %} 
+                {% endfor %}
+            {% else %}
+                {% include "modules/my-account/order-history-package-group" with model=model packages=model.digitalPackages %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if model.getNonShippedItems.length > 0 and not model.hasFulfilledPackages and not model.hasFulfilledPickups and not model.hasFulfilledDigital%}
+        {% comment %} <h2 class="mz-orderlisting-heading">{{labels.orderItemsNotShipped}}</h2> {% endcomment %}
+        <div class="mz-orderlisting-nonShipped">
+        {% if model.customShipment %}
+            {% for m in model.customShipment%}
+                {% for shipment in m.shipments %}
+                    <div id="shipment-field">
+                        {% if shipment.parentShipmentNumber %}
+                            <span class="shipment-count" data-mz-shipment-id="{{ shipment.parentShipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}} </span>
+                        {% else %}
+                            <span class="shipment-count" data-mz-shipment-id="{{ shipment.shipmentNumber }}">{{labels.shipment|string_format(forloop.index, forloop.length)}} </span>
+                        {% endif %}
+                    </div>
+                    {% for item in shipment.items%}
+                        <div class="myaccount-order-detail-list">
+                        {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "no" orderLevelStatus=model.status %}
+                        </div>
+                    {% endfor %}
+                    {% for item in shipment.canceledItems%}
+                        <div class="myaccount-order-detail-list">
+                        {% include "modules/my-account/myaccount-order-detail-list" with canceledItems = "yes" orderLevelStatus = model.status %}
+                        </div>
+                    {% endfor %}
+                {% endfor %} 
+            {% endfor %}
+        {% else %}
+            {% for item in model.getNonShippedItems %}
+                {% if item.Type == "BundleItem" %}
+                    {% include "modules/my-account/my-account-product-bundle" with model=item %}
+                {% else %}
+                    {% include "modules/my-account/order-history-listing-item" with model=item  orderLevelStatus = model.status %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        </div>
+    {% endif %}
+    {% endif %}
+</div>
+{% endblock order-items %}

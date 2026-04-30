@@ -1,0 +1,36 @@
+{% extends "page" %}
+
+{% block body-tag-classes %}mz-blue-loyalty{% endblock body-tag-classes %}
+
+{% block body-content %}
+
+
+<div class="blue-loyalty-topline">
+ {% dropzone "blue-loyalty-topline" scope="template" %}
+</div>
+
+<div class="blue-loyalty-banner">
+ {% dropzone "blue-loyalty-banner" scope="template" %}
+</div>
+
+<div class="blue-loyalty-howWorks">
+ {% dropzone "blue-loyalty-howWorks" scope="template" %}
+</div>
+
+<div class="blue-loyalty-advantage">
+ {% dropzone "blue-loyalty-advantage" scope="template" %}
+</div>
+
+<div class="blue-loyalty-entertain">
+ {% dropzone "blue-loyalty-entertain" scope="template" %}
+</div>
+
+<div class="blue-loyalty-brands">
+ {% dropzone "blue-loyalty-brands" scope="template" %}
+</div>
+
+<div class="blue-loyalty-apps">
+ {% dropzone "blue-loyalty-apps" scope="template" %}
+</div>
+
+{% endblock body-content %}

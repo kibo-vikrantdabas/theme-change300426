@@ -1,0 +1,44 @@
+body.mz-checkout {
+    .mz-pickupLocationContainer {
+        padding:35px 0px;
+        margin-left: 25px;
+        display: flex;
+        justify-content: flex-start;
+        .mz-locationIconContainer {
+            @media @mobileScreens {
+                display: none;
+            }
+        }
+        .mz-pickupLocationName {
+            color: @lightBlack;
+            font-family: "MSLondon";
+            font-size: @fontSizeLarger;
+            font-weight: @fontBold;
+            letter-spacing: 0;
+            line-height: 28px;
+        }
+        .mz-pickupAddressContainer {
+            margin-left: 20px;
+            .mz-addressContainer {
+                .mz-pickupLocationAddress {
+                display: inline-block;
+                    color: @lightBlack;
+                    font-family: "MSLondon";
+                    font-size: @fontSize;
+                    font-weight: 600;
+                    letter-spacing: 0;
+                    line-height: 28px;
+                
+                }
+            }
+            @media @mobileScreens {
+                margin-left: 8px;
+            }
+        }
+        @media only screen and (max-width:700px) {
+            padding: 15px 0px;
+            margin-left: 2px;
+        }
+    }
+    
+}

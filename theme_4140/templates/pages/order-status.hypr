@@ -1,0 +1,139 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.orderTracking %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-loginpage mz-guest-orderTracking{% endblock body-tag-classes %}
+
+{% block body-content %}
+    <div class="mz-l-container">
+        {% include "modules/common/message-bar" with model=model.messages %}
+        <div class="mz-l-2column mz-l-2column-right">
+            <!-- sign up section -->
+            <div class="mz-l-column hidden">
+                <h1 class="mz-pagetitle">{{ labels.logIn2 }}</h1>
+                <p>Orders placed with your account</p>
+                {% dropzone "login-top" scope="template" %}
+                <form method="post" class="mz-loginform mz-loginform-page" name="mz-loginform">
+                   <input type="hidden" name="returnUrl" value="{{ model.returnUrl }}" />
+                   <div class="mz-l-formfieldgroup">
+                        <div class="mz-l-formfieldgroup-row">
+                            <div class="mz-l-formfieldgroup-cell">
+                                <label for="email">{{ labels.logInInput }}</label>
+                            </div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                <input name="email" value="{{model.email|default:user.email}}" type="email" data-mz-login-email />
+                            </div>
+                        </div>
+                        <div class="mz-l-formfieldgroup-row">
+                            <div class="mz-l-formfieldgroup-cell">
+                                <label for="password">{{ labels.password }}</label>
+                            </div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                <input name="password"  type="password" data-mz-login-password/>
+                            </div>
+                        </div>
+                        {% if themeSettings.enableRecaptcha %}
+                        <div class="mz-l-formfieldgroup-row">
+                            <div class="mz-l-formfieldgroup-cell"></div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                <div id="recaptcha-container"></div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="mz-l-formfieldgroup-row">
+                            <div class="mz-l-formfieldgroup-cell"></div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                <a href="{{siteContext.siteSubdirectory}}/user/forgotpassword" class="mz-forgot" data-mz-action="launchforgotpassword">{{ labels.forgotPassword }}</a>
+                            </div>
+                        </div>
+                        <div class="mz-l-formfieldgroup-row">
+                            <div class="mz-l-formfieldgroup-cell"></div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                <a href="{{siteContext.siteSubdirectory}}/user/signup" class="mz-forgot" data-mz-action="signup">{{ labels.signUpLink }}</a>
+                            </div>
+                        </div>
+                        <div class="mz-l-formfieldgroup-row">
+                            <div class="mz-l-formfieldgroup-cell"></div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                {% if themeSettings.enableRecaptcha %}
+                                <button class="mz-button mz-button-large mz-login-button" data-mz-action="recaptcha-submit">{{ labels.logIn }}</button>
+                                {% else %}
+                                <button class="mz-button mz-button-large mz-login-button" data-mz-action="loginpage-submit">{{ labels.logIn }}</button>
+                                {% endif %}
+                                <div class="mz-l-formfieldgroup-cell">
+                                    <section data-mz-role="popover-message" class="mz-popover-message"></section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="wrongData-ErrMsg">
+                <section data-mz-role="popover-message" class="mz-popover-message"></section>
+            </div>
+            <!--Order status -->
+            <div class="mz-l-column orderstatus-wrapper">
+                <h1 class="mz-pagetitle">{{ labels.trackmyorder }}</h1>
+
+                <div class="mz-loginform-page">
+                <p class="mb-30">{{ labels.orderstatusinfo }}</p>
+                <form method="post" class="mz-loginform mz-anonymousorder-form" name="mz-anonymousorder">
+                    <input type="hidden" name="order-returnUrl" value="{{ model.returnUrl }}"/>
+                    <div class="mz-login-form-main-container">
+                        <div class="mz-l-formfieldgroup-row">
+                            <div class="mz-l-formfieldgroup-cell mz-order-number-field">
+                                <label for="ordernum" class="text-label">{{ labels.orderNumber }}<span class="is-required">*</span>
+                                    <span class="mz-help-icon-popup" style="display: none">{{ labels.orderTrackingPopup }}</span>
+                                    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}help.svg" alt="help-icon" class="mz-help-icon">
+                                </label>
+                            </div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                <input name="ordernum" class="text-input mz-guest-ordernum" value="" type="text" data-mz-order-number />
+                                <p class="mz-guest-ordernum-err"></p>
+                            </div>
+                        </div>
+                        <div class="mz-l-formfieldgroup-row hidden">
+                            <div class="mz-l-formfieldgroup-cell">
+                                <label for="verifywith">{{ labels.verifyWith }}</label>
+                            </div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                <select data-mz-verify-with>
+                                    {% if themeSettings.zipCodeEnabled %}<option value="zipCode">{{ labels.billingPostalCode }}</option>{% endif %}
+                                    {% if themeSettings.phoneNumberEnabled %}<option value="phoneNumber">{{ labels.billingPhoneNumber }}</option>{% endif %}
+                                    {% if themeSettings.billingEmailEnabled %}<option value="email" selected>{{ labels.billingEmail }}</option>{% endif %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mz-l-formfieldgroup-row">
+                            <div class="mz-l-formfieldgroup-cell">
+                                <label for="verification" class="text-label">{{ labels.orderemail }}<span class="is-required">*</span></label>
+                            </div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                <input name="verification" value="" class="text-input mz-guest-email-verification" type="text" data-mz-verification />
+                                <p class="mz-guest-email-verification-err"></p>
+                            </div>
+                        </div>
+                        <div class='mb-30 mz-requiredFields'> <span class="is-required"> *</span> {{labels.requiredFields}} </div>
+
+                        <div class="mz-l-formfieldgroup-row">
+                            <div class="mz-l-formfieldgroup-cell"></div>
+                            <div class="mz-l-formfieldgroup-cell">
+                                <button class="mz-button mz-button-large mz-login-button mz-login-page-button mz-track-my-order" data-mz-action="anonymousorder-submit">{{ labels.continue }}</button>
+                                {% comment %} <div class="mz-l-formfieldgroup-cell">
+                                    <section data-mz-role="popover-message" class="mz-popover-message"></section>
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </div>
+
+            </div>
+
+            <div class="mz-l-column">
+              {% dropzone "border-free-order-tracking" scope="site" %}
+            </div>
+        </div>
+    </div>
+    {% include "modules/common/signup-email" %}
+{% endblock body-content %}

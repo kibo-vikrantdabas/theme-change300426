@@ -1,0 +1,127 @@
+
+{% if pageContext.crawlerInfo.canonicalUrl and pageContext.cmsContext.page.path == 'home'  %}
+
+      <link rel="alternate" hreflang="x-default" href="{{pageContext.secureHost}}/{{themeSettings.enSiteLocale}}" />
+    
+      <link rel="alternate" hreflang="{{themeSettings.enSiteLocale}}" href="{{pageContext.secureHost}}/{{themeSettings.enSiteLocale}}"/>
+    
+      <link rel="alternate" hreflang="{{themeSettings.arSiteLocale}}" href="{{pageContext.secureHost}}/{{themeSettings.arSiteLocale}}"/>
+    
+      <link rel="canonical" href="{{PageContext.secureHost}}{{siteContext.siteSubdirectory}}">
+    {{themeSettings.homePage|safe}}
+{% else %}
+{% if pageContext.crawlerInfo.canonicalUrl %}
+      {% with pageContext.crawlerInfo.canonicalUrl|split("?")|first as canonicalUrl%}
+        <link rel="alternate" hreflang="x-default" href="{{PageContext.secureHost}}{% if not themeSettings.isArabicLanguageSite %}{{canonicalUrl}}{% else %}{{canonicalUrl|replace(themeSettings.arSiteLocale, themeSettings.enSiteLocale)}}{% endif %}"/>
+        
+            <link rel="alternate" hreflang="{{themeSettings.enSiteLocale}}" href="{{PageContext.secureHost}}{% if not themeSettings.isArabicLanguageSite %}{{canonicalUrl}}{% else %}{{canonicalUrl|replace(themeSettings.arSiteLocale, themeSettings.enSiteLocale)}}{% endif %}"/>
+        
+            <link rel="alternate" hreflang="{{themeSettings.arSiteLocale}}" href="{{PageContext.secureHost}}{% if themeSettings.isArabicLanguageSite %}{{canonicalUrl}}{% else %}{{canonicalUrl|replace(themeSettings.enSiteLocale, themeSettings.arSiteLocale)}}{% endif %}"/>
+       
+        <link rel="canonical" href="{{PageContext.secureHost}}{{ canonicalUrl }}" />
+      {% endwith %}
+  {% else %}
+    {# LAST ELSE — your requirement, but guarded #}
+    {% if pageContext and pageContext.url %}
+      <link rel="canonical" href="{{ pageContext.url }}" />
+    {% else %}
+      {% if pageContext and pageContext.requestPath %}
+        {% with pageContext.requestPath|split("?")|first|split("#")|first as canonicalUrl %}
+          <link rel="canonical" href="{{ pageContext.secureHost }}{{ canonicalUrl }}" />
+        {% endwith %}
+      {% else %}
+          <link rel="canonical" href="{{ pageContext.secureHost }}/" />
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+{% endif %}
+{% if model and model.content.slug == 'women' and model.categoryCode|lower|contains('women')%}  {{themeSettings.women|safe}}{% endif %} 
+{% if model and model.content.slug == 'men' and model.categoryCode|lower|contains('men')%}  {{themeSettings.men|safe}}{% endif %} 
+{% if model and model.content.slug == 'lingerie' and model.categoryCode|lower|contains('lingerie')%}  {{themeSettings.lingerie|safe}}{% endif %} 
+{% if model and model.content.slug == 'kids' and model.categoryCode|lower|contains('kids')%}  {{themeSettings.kids|safe}}{% endif %} 
+{% if model and model.content.slug == 'baby' and model.categoryCode|lower|contains('baby-v2')%}  {{themeSettings.babyv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'shoes-n-boots' and model.categoryCode|lower|contains('women-all-footwear-v2')%}  {{themeSettings.womenallfootwearv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'skirts' and model.categoryCode|lower|contains('women-skirts-v2')%}  {{themeSettings.womenskirtsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'coats-n-jackets' and model.categoryCode|lower|contains('women-coats-n-jackets-v2')%}  {{themeSettings.womencoatsnjacketsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'cardigans-n-jumpers' and model.categoryCode|lower|contains('women-jumpers-cardigans-v2')%}  {{themeSettings.womenjumperscardigansv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'dresses-n-jumpsuits' and model.categoryCode|lower|contains('women-dresses-v2')%}  {{themeSettings.womendressesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'tops' and model.categoryCode|lower|contains('women-tops-v2')%}  {{themeSettings.womentopsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'all-accessories' and model.categoryCode|lower|contains('men-accessories-v2')%}  {{themeSettings.menaccessoriesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'socks' and model.categoryCode|lower|contains('lingerie-hosiery-socks-v2')%}  {{themeSettings.lingeriehosierysocksv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'shoes-n-boots' and model.categoryCode|lower|contains('men-footwear-v2')%}  {{themeSettings.menfootwearv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'jumpers-n-cardigans' and model.categoryCode|lower|contains('men-jumpers-cardigans-v2')%}  {{themeSettings.menjumperscardigansv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'men-underwear' and model.categoryCode|lower|contains('men-underwear-v2')%}  {{themeSettings.menunderwearv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'tops-t-shirts-n-polos' and model.categoryCode|lower|contains('men-tops-ts-polos-v2')%}  {{themeSettings.mentopstspolosv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'coats-n-jackets' and model.categoryCode|lower|contains('men-coats-n-jackets-v2')%}  {{themeSettings.mencoatsnjacketsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'casual-shirts' and model.categoryCode|lower|contains('men-casual-shirts-v2')%}  {{themeSettings.mencasualshirtsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'formal-shirts' and model.categoryCode|lower|contains('men-fw-formal-shirts-v2')%}  {{themeSettings.menfwformalshirtsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'bodies' and model.categoryCode|lower|contains('lingerie-shapewear-bodies-v2')%}  {{themeSettings.lingerieshapewearbodiesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'slips' and model.categoryCode|lower|contains('lingerie-shapewear-slips-v2')%}  {{themeSettings.lingerieshapewearslipsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'shapewear' and model.categoryCode|lower|contains('lingerie-shapewear-v2')%}  {{themeSettings.lingerieshapewearv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'kids-thermals' and model.categoryCode|lower|contains('kids-thermals-v2')%}  {{themeSettings.kidsthermalsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'maternity-n-nursing' and model.categoryCode|lower|contains('lingerie-bras-maternity-v2')%}  {{themeSettings.lingeriebrasmaternityv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'plunge-bras' and model.categoryCode|lower|contains('lingerie-bras-plunge-v2')%}  {{themeSettings.lingeriebrasplungev2|safe}}{% endif %} 
+{% if model and model.content.slug == 'nightwear' and model.categoryCode|lower|contains('lingerie-nightwear-v2')%}  {{themeSettings.lingerienightwearv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'handbags-n-accessories' and model.categoryCode|lower|contains('women-handbags-accessories-v2')%}  {{themeSettings.womenhandbagsaccessoriesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'shapewear-panties' and model.categoryCode|lower|contains('lingerie-panties-shapewear-v2')%}  {{themeSettings.lingeriepantiesshapewearv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'post-surgery-bras' and model.categoryCode|lower|contains('lingerie-bras-post-surgery-v2')%}  {{themeSettings.lingeriebraspostsurgeryv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'suits' and model.categoryCode|lower|contains('men-fw-suits-v2')%}  {{themeSettings.menfwsuitsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'shirts-n-blouses' and model.categoryCode|lower|contains('women-shirts-blouses-v2')%}  {{themeSettings.womenshirtsblousesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'strapless-bras' and model.categoryCode|lower|contains('lingerie-bras-strapless-v2')%}  {{themeSettings.lingeriebrasstraplessv2|safe}}{% endif %} 
+{% if model and model.content.slug == 't-shirt-bras' and model.categoryCode|lower|contains('lingerie-bras-tshirt-v2')%}  {{themeSettings.lingeriebrastshirtv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'bras' and model.categoryCode|lower|contains('lingerie-bras-v2')%}  {{themeSettings.lingeriebrasv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'leggings-n-joggers' and model.categoryCode|lower|contains('women-joggers-n-sweat-v2')%}  {{themeSettings.womenjoggersnsweatv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'all-baby-boys' and model.categoryCode|lower|contains('all-baby-boys-v2')%}  {{themeSettings.allbabyboysv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'all-baby-girls' and model.categoryCode|lower|contains('all-baby-girls-v2')%}  {{themeSettings.allbabygirlsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'girls' and model.categoryCode|lower|contains('girls-v2')%}  {{themeSettings.girlsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'boys' and model.categoryCode|lower|contains('boys-v2')%}  {{themeSettings.boysv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'clothing' and model.categoryCode|lower|contains('women-clothing-v2')%}  {{themeSettings.womenclothingv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'clothing' and model.categoryCode|lower|contains('men-clothing-v2')%}  {{themeSettings.menclothingv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'wireless-bras' and model.categoryCode|lower|contains('lingerie-bras-non-wired-v2')%}  {{themeSettings.lingeriebrasnonwiredv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'skirts' and model.categoryCode|lower|contains('girls-skirts-n-shorts-v2')%}  {{themeSettings.girlsskirtsnshortsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'trousers' and model.categoryCode|lower|contains('women-trousers-v2')%}  {{themeSettings.womentrousersv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'thongs' and model.categoryCode|lower|contains('lingerie-panties-thongs-v2')%}  {{themeSettings.lingeriepantiesthongsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'sandals' and model.categoryCode|lower|contains('women-footwear-sandals-v2')%}  {{themeSettings.womenfootwearsandalsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'florals' and model.categoryCode|lower|contains('beauty-florals-v2')%}  {{themeSettings.beautyfloralsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'accessories' and model.categoryCode|lower|contains('baby-accessories-v2')%}  {{themeSettings.babyaccessoriesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'shorts' and model.categoryCode|lower|contains('women-shorts-v2')%}  {{themeSettings.womenshortsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'autograph' and model.categoryCode|lower|contains('men-brands-autograph')%}  {{themeSettings.menbrandsautograph|safe}}{% endif %} 
+{% if model and model.content.slug == 'minimizer-bras' and model.categoryCode|lower|contains('lingerie-bras-minimizer-v2')%}  {{themeSettings.lingeriebrasminimizerv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'bath-body' and model.categoryCode|lower|contains('beauty-bath-body-v2')%}  {{themeSettings.beautybathbodyv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'handcare' and model.categoryCode|lower|contains('beauty-handcare-v2')%}  {{themeSettings.beautyhandcarev2|safe}}{% endif %} 
+{% if model and model.content.slug == 'perfume' and model.categoryCode|lower|contains('beauty-perfume-v2')%}  {{themeSettings.beautyperfumev2|safe}}{% endif %} 
+{% if model and model.content.slug == 'push-up-bras' and model.categoryCode|lower|contains('lingerie-bras-push-up-v2')%}  {{themeSettings.lingeriebraspushupv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'swimwear' and model.categoryCode|lower|contains('men-swimwear-v2')%}  {{themeSettings.menswimwearv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'first-bras' and model.categoryCode|lower|contains('lingerie-bras-first-bras-v2')%}  {{themeSettings.lingeriebrasfirstbrasv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'belts-n-braces' and model.categoryCode|lower|contains('men-accessories-belts-v2')%}  {{themeSettings.menaccessoriesbeltsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'ties' and model.categoryCode|lower|contains('men-accessories-ties-v2')%}  {{themeSettings.menaccessoriestiesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'pyjamas-n-onesies' and model.categoryCode|lower|contains('kids-girls-pyjamas-onsies-v2')%}  {{themeSettings.kidsgirlspyjamasonsiesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'dresses' and model.categoryCode|lower|contains('baby-dresses-v2')%}  {{themeSettings.babydressesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'tops' and model.categoryCode|lower|contains('baby-tops-v2')%}  {{themeSettings.babytopsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'dresses' and model.categoryCode|lower|contains('baby-dresses-v2')%}  {{themeSettings.babydressesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'thermals' and model.categoryCode|lower|contains('men-thermals-v2')%}  {{themeSettings.menthermalsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'trainers' and model.categoryCode|lower|contains('women-footwear-trainers-v2')%}  {{themeSettings.womenfootweartrainersv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'hats' and model.categoryCode|lower|contains('men-accessories-hats-v2')%}  {{themeSettings.menaccessorieshatsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'bags-n-briefcases' and model.categoryCode|lower|contains('men-accessories-bags-wallet-v2')%}  {{themeSettings.menaccessoriesbagswalletv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'jeans' and model.categoryCode|lower|contains('men-clothing-jeans-v2')%}  {{themeSettings.menclothingjeansv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'shorts' and model.categoryCode|lower|contains('men-shorts-v2')%}  {{themeSettings.menshortsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'blazer' and model.categoryCode|lower|contains('men-fw-blazer-v2')%}  {{themeSettings.menfwblazerv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'dressing-gowns' and model.categoryCode|lower|contains('lingerie-dressing-gowns-v2')%}  {{themeSettings.lingeriedressinggownsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'nightdresses' and model.categoryCode|lower|contains('lingerie-night-dresses-v2')%}  {{themeSettings.lingerienightdressesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'pyjamas' and model.categoryCode|lower|contains('women-pyjamas-v2')%}  {{themeSettings.womenpyjamasv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'vests-thermals' and model.categoryCode|lower|contains('lingerie-vests-n-thermals-v2')%}  {{themeSettings.lingerievestsnthermalsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'formal-trousers' and model.categoryCode|lower|contains('men-fw-trousers-v2')%}  {{themeSettings.menfwtrousersv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'sports-bras' and model.categoryCode|lower|contains('lingerie-bras-sports-v2')%}  {{themeSettings.lingeriebrassportsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'brazilian-panties' and model.categoryCode|lower|contains('lingerie-panties-brazilian-v2')%}  {{themeSettings.lingeriepantiesbrazilianv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'high-leg-panties' and model.categoryCode|lower|contains('lingerie-panties-high-leg-v2')%}  {{themeSettings.lingeriepantieshighlegv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'tops' and model.categoryCode|lower|contains('baby-tops-v2')%}  {{themeSettings.babytopsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'loafers' and model.categoryCode|lower|contains('women-footwear-loafers-v2')%}  {{themeSettings.womenfootwearloafersv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'shoes-boots-n-slippers' and model.categoryCode|lower|contains('kids-girls-footwear-v2')%}  {{themeSettings.kidsgirlsfootwearv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'heels' and model.categoryCode|lower|contains('women-footwear-heels-pumps-v2')%}  {{themeSettings.womenfootwearheelspumpsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'goodmove' and model.categoryCode|lower|contains('men-brands-goodmove')%}  {{themeSettings.menbrandsgoodmove|safe}}{% endif %} 
+{% if model and model.content.slug == 'jeans' and model.categoryCode|lower|contains('women-clothing-jeans-v2')%}  {{themeSettings.womenclothingjeansv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'trousers-jeans-n-joggers' and model.categoryCode|lower|contains('boys-bottoms-v2')%}  {{themeSettings.boysbottomsv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'pyjamas-n-onesies' and model.categoryCode|lower|contains('kids-boys-pyjamas-onsies-v2')%}  {{themeSettings.kidsboyspyjamasonsiesv2|safe}}{% endif %} 
+{% if model and model.content.slug == 'vests' and model.categoryCode|lower|contains('men-vests-v2')%}  {{themeSettings.menvestsv2|safe}}{% endif %} 
+

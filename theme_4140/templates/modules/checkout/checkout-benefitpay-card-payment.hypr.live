@@ -1,0 +1,40 @@
+{% if themeSettings.countrySpecificCode|lower == 'bh' and themeSettings.isBenefitPayApply %}
+<label for="paymentType-newPayment-paymentBenefitPay">
+<div class="credit-cart-payment rectangle benefitpay {% if model.isBenefitPayApply and model.paymentType == 'CreditCard' %} mz-payment-selected{% endif %}">
+    <div class="mz-l-formfieldgroup-row mz-paymentselector-option mz-paymentselector-newcreditcard mz-checkoutform1">
+        <div class="credit-debit-card-div">
+            <div class="credit-debit-card-div-radio">
+                <label class="container-radio">
+                    <input data-mz-value="paymentType"
+                           data-mz-payment-type
+                           name="paymentType"
+                           data-mz-cardType='BenefitPay'
+                           id="paymentType-newPayment-paymentBenefitPay"
+                           type="radio"
+                           class="mz-paymenttype-input mz-credit-card-payment-type"
+                           value="CreditCard"
+                           {% if model.isBenefitPayApply and model.paymentType == 'CreditCard' %} checked {% endif %}
+                           {% if not model.isBenefitPayApply and model.disablePaymentOption %}disabled="disabled"{% endif %} />
+                    <span class="checkmark-radio {% if model.isBenefitPayApply and model.paymentType == 'CreditCard' %} checkmark-radio-selected {% endif %}"></span>
+                </label>
+            </div>
+
+            <div class="credit-debit-card-div-info">
+                <img src="{{siteContext.cdnPrefix}}/resources/images/icons/benefitpay_logo.svg"
+                     alt="cardPayment"
+                     class="card-payment benefitpay-card">
+                <div class="card-payment-detail-div">
+                    <label for="paymentType-newPayment-paymentBenefitPay"
+                           class="mz-paymentselector-label mz-paymentselector-label-newcreditcard mz-checkoutform-radio credit-debit-card">
+                        BenefitPay
+                    </label>
+                    <label for="paymentType-newPayment-paymentBenefitPay" class="use-card-info">
+                        {{ labels.payWithBenefitPay }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</label>
+{% endif %}

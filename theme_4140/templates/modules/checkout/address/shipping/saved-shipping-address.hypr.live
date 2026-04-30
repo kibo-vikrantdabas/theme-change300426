@@ -1,0 +1,31 @@
+<div class="contact-saved-container">
+    
+    <label class="country-saved-contact">{{labels.savedContact}}</label>
+    
+    <a href="javascript:;" class="mz-formstep-cancel" data-mz-action="cancel">{{ labels.cancel }}</a>
+    
+    <select id="mz--contactselector-savedcontact" class="mz-contactselector {% if pageContext.cmsContext.template.path|lower == "checkout" %} mz-shippingAdreessDropdown {% endif %}" data-mz-value="{{ contactcontext }}contactId" name="contactId" >
+        {% for contact in model.contacts %}
+              {% if contact.firstName and contact.address.cityOrTown  %}
+                  <option value="{{ contact.id }}"  {% if model.id == contact.id %} selected {% endif %}> {% include "modules/common/address-list" with model=contact %}</option>
+              {% endif %}
+        {% endfor %}
+    </select>
+
+    <div class="{% if pageContext.cmsContext.template.path|lower == "checkout" %} mz-editShippingAddressLink {% endif %}" >
+      {% if model.hasRequiredBehavior %}
+          <a href="javascript:;" class="mz-formstep-edit-address" data-mz-action="edit" style="display:block;">{{ labels.editAddress }}</a>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if model.hasRequiredBehavior and model.contacts  %}
+            <button class="addcontact-button" id="address-btn" data-mz-action="beginAddContact">{{labels.addAddress}}</button>
+        {% endif %}
+    </div>
+
+    <div class="mz-formstep-summary mz-addresssummary mz-checkoutform" style="display:block;">
+        {% include "modules/checkout/checkout-selected-delivery-address-summary" %}
+    </div>
+
+  </div>

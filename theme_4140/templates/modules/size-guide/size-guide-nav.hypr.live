@@ -1,0 +1,91 @@
+<div class="mz-size-guide-dropdown-display">
+	<ul class="size-guide-dropdown-list">
+		<li class="size-guide-main-cat-item">
+			<input type="checkbox" class="size-guide-main-cat" id="women" style="display:none">
+			<div class="size-guide-main-name">
+				<label for="women">
+					<h4>{{labels.women}}</h4>
+				</label>
+			</div>
+			<ul class="size-guide-subcategory">
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="womens-dresses"%}"><li>{{labels.dresses}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="womens-footwear"%}"><li>{{labels.footwear}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="womens-bottoms"%}"><li>{{labels.bottoms}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="womens-nightwear"%}"><li>{{labels.nightwear}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="womens-petite"%}"><li>{{labels.petite}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="womens-plus"%}"><li>{{labels.plus}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="womens-skirts"%}"><li>{{labels.skirts}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="womens-swimwear"%}"><li>{{labels.swimwear}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="womens-tops"%}"><li>{{labels.tops}}</li></a>
+			</ul>
+		</li>
+		<li class="size-guide-main-cat-item">
+			<input type="checkbox"class="size-guide-main-cat" id="lingerie" style="display:none">
+			<div class="size-guide-main-name">
+				<label for="lingerie">
+					<h4>{{labels.lingerie}}</h4>
+				</label>
+			</div>
+				<ul class="size-guide-subcategory">
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="lingerie-bras"%}"><li>{{labels.bras}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="lingerie-dressing-gowns"%}"><li>{{labels.dressingGown}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="lingerie-knickers"%}"><li>{{labels.knickers}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="lingerie-pyjama-bottoms"%}"><li>{{labels.pyjamasBottom}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="lingerie-pyjama-top"%}"><li>{{labels.pyjamasTop}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="lingerie-tights"%}"><li>{{labels.tights}}</li></a>
+				</ul>
+		</li>
+		<li class="size-guide-main-cat-item">
+			<input type="checkbox"class="size-guide-main-cat" id="men" style="display:none">
+				<div class="size-guide-main-name">
+					<label for="men">
+						<h4>{{labels.men}}</h4>
+					</label>
+				</div>
+				<ul class="size-guide-subcategory">
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-casual-shirt"%}"><li>{{labels.casualShirt}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-casual-trouser"%}"><li>{{labels.casualTrousers}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-footwear"%}"><li>{{labels.footwear}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-formal-trousers"%}"><li>{{labels.formalTrousers}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-dressing-gown"%}"><li>{{labels.dressingGown}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-jumpers-cardigans"%}"><li>{{labels.jumpers}} {{labels.shortAnd}} {{labels.cardigans}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-night-sets"%}"><li>{{labels.nightSets}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-outerwear"%}"><li>{{labels.outerwear}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-suits"%}"><li>{{labels.suits}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-tops"%}"><li>{{labels.tops}}</li></a>
+					<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="mens-underwear"%}"><li>{{labels.underwear}}</li></a>
+				</ul>
+		</li>
+		<li class="size-guide-main-cat-item">
+			<input type="checkbox"class="size-guide-main-cat" id="kids" style="display:none">
+				<div class="size-guide-main-name">
+					<label for="kids">
+						<h4>{{labels.kids}}</h4>
+					</label>
+				</div>
+			<ul class="size-guide-subcategory">
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="kids-baby"%}"><li>{{labels.baby}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="kids-boys"%}"><li>{{labels.boys}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="kids-boys-school-uniform"%}"><li>{{labels.boysSchoolUniform}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="kids-footwear"%}"><li>{{labels.footwear}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="kids-girls"%}"><li>{{labels.girls}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="kids-girl-school-uniforms"%}"><li>{{labels.girlsSchoolUniform}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="kids-hat"%}"><li>{{labels.hat}}</li></a>
+			</ul>
+		</li>
+		<li class="size-guide-main-cat-item">
+			<input type="checkbox"class="size-guide-main-cat" id="home" style="display:none">
+				<div class="size-guide-main-name">
+					<label for="home">
+						<h4>{{labels.home}}</h4>
+					</label>
+				</div>
+			<ul class="size-guide-subcategory">
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="home-plain-towel"%}"><li>{{labels.plainTowel}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="home-design-towel"%}"><li>{{labels.designTowel}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="home-bedding"%}"><li>{{labels.bedding}}</li></a>
+				<a href="{{siteContext.siteSubdirectory}}{% make_url "document" name="home-throws"%}"><li>{{labels.throws}}</li></a>
+			</ul>
+		</li>
+	</ul>
+</div>

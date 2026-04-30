@@ -1,0 +1,7 @@
+<div class="terms-and-condition"> {{labels.termsAndConditions}}  <span class="separator-two">|</span> </div>
+                
+<div class="privacy-and-cookies"> {{labels.privacyAndCookies}} <span class="separator-three">|</span> </div> 
+                
+<div class="accessibility"> {{labels.accessibility}} <span class="separator-four">|</span> </div>
+                
+<div class="data-promise"> {{labels.customerDataPromise}} </div>

@@ -1,0 +1,20 @@
+{% extends "page" %}
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %} mz-size-guide {% endblock body-tag-classes %}
+{% block body-content %}
+<div class="mz-size-guide-container">
+    {% include "modules/size-guide/size-guide-nav" %}
+    <div class="mz-size-guide-display">
+        <div class="mz-size-guide-title-desc">
+            <h3>{{labels.kidSizeGuide}}</h3>
+            <p>{{labels.hatMeasure}}</p>
+        </div>
+        <div class="mz-mobile-swipe-info">
+            <img src='{{siteContext.cdnPrefix}}/resources/images/icons/svg/left-arrow.svg'>
+            <span>{{labels.swipeLeftOrRight}}</span>
+            <img src='{{siteContext.cdnPrefix}}/resources/images/icons/svg/right-arrow.svg'>
+        </div>
+        {% dropzone zoneid='middle-table' scope='page' %}
+    </div>
+</div>
+{% endblock body-content %}

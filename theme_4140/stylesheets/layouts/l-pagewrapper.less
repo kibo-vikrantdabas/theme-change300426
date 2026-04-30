@@ -1,0 +1,33 @@
+﻿.mz-l-pagewrapper {
+    > * {
+        .clearfix();
+    }
+}
+
+.mz-l-pagewrapper.sticky {
+    position: sticky;
+    top: 0px;
+    background-color: @white;
+    z-index: 2;
+    width: 100%;
+
+    .scroll-height {
+        height: auto !important;
+    }
+
+    .desktop.mz-fade-in{
+        visibility: visible;
+        display: block;
+        opacity: 1;
+        transition: display 0s linear 0s, opacity 300ms;
+    }
+    .desktop.mz-fade-out{
+        visibility: hidden;
+        display: none !important;
+        opacity: 0;
+        transition: display 0s linear 0s, opacity 300ms;
+    }
+    .mz-searchbox-icon.mz-fade-out{
+        visibility: hidden;
+    }
+}

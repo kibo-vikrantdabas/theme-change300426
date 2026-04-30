@@ -1,0 +1,29 @@
+<div class="search-bar-container">
+	<div class="search-bar-input-container">
+		<input type="text" class="search-bar-input town-street-name" placeholder="{{labels.cartStoreSearch}}" value="{% if model.searchInput %} {{model.searchInput}}{% endif %}">
+		<div class="search-bar-button {% if not model.searchInput %}disabled {% endif %}" data-mz-action="searchByInputLocation">
+		</div>
+	</div>
+	<div class="location-button-container">
+		<button class="get-location-button" data-mz-action="getCurrentLocation" data-useCurrentLocation=true>
+			<img class="get-current-location-img" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/locate.svg"/>
+		</button>
+	</div>
+	{% comment %} <div class="search-bar-current-location-container">
+		<button class="get-location-button" data-mz-action="getCurrentLocation" data-useCurrentLocation=true>
+			<img class="get-current-location-img" src="../../../resources/images/icons/svg/locate.svg"/>
+		</button>
+		<span class="get-location-mobile-text" data-mz-action="getCurrentLocation">{{labels.useCurrentLocation}}</span>
+	</div> {% endcomment %}
+</div>
+<div class="map-toggle-container">
+	<div class="toggle-container">
+		<button class="toggle-button {% if model.activeDisplay == "list" %} active {% endif %}" data-mz-action="toggleDisplay" data-mz-display='list'>
+			{{labels.list}}
+		</button>
+		<button class="toggle-button {% if model.activeDisplay == "map" %} active {% endif %}" data-mz-action="toggleDisplay" data-mz-display='map'>
+			{{labels.map}}
+		</button>
+	</div>
+	<button class="update-location-button" data-mz-action="searchByInputLocation">{{labels.locateMe}}</button>
+</div>

@@ -1,0 +1,35 @@
+<div class="mz-anonymous-signin-container forDesktop">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Profile.svg" alt="signin-icon" class="mz-sinin-icon">
+    <div class="mz-signin-link">
+        <a onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'account', 'event_params':{ 'event_act': 'sign in','event_lbl': 'sign in'}})" href="{{siteContext.siteSubdirectory}}/user/login">{{labels.signIn|replace("In","in")}}</a> 
+    </div>
+</div>
+<div class="mz-anonymous-signin-container mz-wishlist-container forMobile">
+    {% comment %} <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart.svg" alt="wishlist-icon" class="mz-wishlist-icon"> {% endcomment %}
+      <div class="wishlist-popup-mob">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart.svg" alt="wishlist-icon" class="mz-wishlist-icon">
+        <div class="mz-signin-link">
+            <a href="javascript:;" class="wishlist-label">{{labels.wishlist}}</a>
+            <span class="wishlist-loader"></span>
+        </div>
+         </div>
+        {% comment %} <div id="wishlist-popover-mobile-guest">
+        {% include "modules/page-header/wishlist-popover" %}
+         </div> {% endcomment %}
+        {% comment %} </div> {% endcomment %}
+        {% comment %} {% require_script "modules/wishlist" %} {% endcomment %}
+</div>
+
+<div class="mz-anonymous-signup-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}SignIn.svg" alt="create-account-icon" class="mz-creataccount-icon">
+    <div class="mz-signup-link">
+        <a onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'account','event_params':{'event_act': 'create an account','event_lbl': 'create an account'}})" href="{{siteContext.siteSubdirectory}}/user/signup">{{labels.signUpLink|replace("A","a")}}</a> 
+    </div>
+</div>
+
+<div class="mz-anonymous-order-track-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Track.svg" alt="order-track-icon" class="mz-ordertracking-icon">
+    <div class="mz-order-track">
+        <a onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'account','event_params':{'event_act': 'guest order tracking','event_lbl': 'guest order tracking'}})" href="{{siteContext.siteSubdirectory}}/user/order-status?returnUrl=/myaccount">{{labels.guestOrderTracking}}</a> 
+    </div>
+</div>

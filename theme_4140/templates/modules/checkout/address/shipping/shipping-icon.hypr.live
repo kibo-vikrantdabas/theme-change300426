@@ -1,0 +1,3 @@
+<div class="mz-locationIconContainer">
+    <img src="{{labels.svgIconPath}}shippingLocationIcon.svg" alt="location-icon" class="mz-locationIcon">
+</div>

@@ -1,0 +1,144 @@
+﻿@mobileMax:                {{ themeSettings.siteMobileBreakpoint}}px;
+@tabletMax:                {{ themeSettings.siteTabletBreakpoint }}px;
+@desktopMedium:            {{ themeSettings.siteDesktopMediumBreakpoint }}px;
+@desktopMax:               {{ themeSettings.siteDesktopMaxBreakpoint }}px;
+
+@tabletMin:                @mobileMax+1px;
+@desktopMin:               @tabletMax+1px;
+@extraWideMin:             @desktopMax+1px;
+
+@onlyExtraWideScreens:     e(%("only screen and (min-width: %a)", @extraWideMin));
+@desktopScreens:           e(%("only screen and (min-width: %a)", @desktopMin));
+@tabletScreens:            e(%("only screen and (max-width: %a) and (min-width: %d)", @tabletMax, @tabletMin));
+@mobileScreens:            e(%("only screen and (max-width: %a)", @mobileMax));
+@tabletAndMobileScreens:   e(%("only screen and (max-width: %a)", @tabletMax));
+@desktopMediumScreen:      e(%("only screen and (max-width: %a) and (min-width: %d)", @desktopMedium, @desktopMin));
+@mobileLandscape:          e(%("only screen and (max-width: %a) and (orientation: landscape)", @tabletMax));
+@desktopSansWide:          e(%("only screen and (max-width: %a) and (min-width: %d)", @extraWideMin, @desktopMin));
+@tabletAndDesktopScreens:   e(%("only screen and (min-width: %a)", @tabletMin));
+
+// @onlyExtraWideScreens: e(%("only screen and (min-width: %a)", @desktopMax));
+// @desktopScreens: e(%("only screen and (min-width: %a)", @tabletMax));
+// @tabletScreens: e(%("only screen and (max-width: %a) and (min-width: %d)", @tabletMax, @mobileMax));
+// @mobileScreens: e(%("only screen and (max-width: %a)", @mobileMax));
+
+@maxContentWidth:          1440px;
+@desktopGridWidth:         1248px;
+@extraWidePadding:         e(%(calc(~'(100vw - %a) / 2'), @maxContentWidth));
+
+@fontFamily:            'MSLondon', sans-serif;
+@secondaryFont:         'MSLeeds', serif;
+@fontSize:              14px;
+@fontSizeSmall:         @fontSize - 2px;
+@fontSizeLarger:        @fontSize + 2px;
+@fontSizeLarge:         @fontSize + 6px;
+@fontSizeMedium:        @fontSize + 4px;
+@fontSizeBig:           @fontSize + 8px;
+@fontBold:              bold;
+@storeBrandingFontSize: 36px;
+@headingFont26:         26px;
+@headingFont28:         28px;
+@headingFont40:         40px;
+@headingFont48:         48px;
+@headingFont30:         30px;
+
+@textColor:             {{ themeSettings.textColor }};
+@linkColor:             #4F4F4F;
+@linkHoverColor:        #666;
+@linkVisitedColor:      #3F3F3F;
+@savedpriamry:          #F8F8F8;
+@savedBG:               #DEDEDE;
+@errorText:             #b94a48;
+@errorBackground:       #f2dede;
+@warningText:           @textColor;
+@warningBackground:     #ffefcf;
+@successText:           @textColor;
+@successBackground:     #eef2ee;
+
+@availableText:         #237e0e;
+@unavailableText:       #ae1231;
+@blackColor:            #333333;
+@blue:                  #0179FF;
+@footerBackgroundColor:  #161616;
+@offerLink:             #B60000;
+@bodyBackgroundColor:   {{ themeSettings.bodyBackgroundColor }};
+@highlightColor:        #ffffe0;
+@white:                 #ffffff;
+@lightWhite:            #ccc;
+@grey:                  #666;
+@black:                 #000;
+@lightBlack:            #333;
+@lightBlack9:           #999;
+@lightGray1:            #DDDDDD;
+@lightGray2:            #7C7C7C;
+@lightGray3:            #EFF1F3;
+@lightGray:             #f5f5f5;
+@sliderProgress:        #eee;
+@footerwhitebackground: #FBFBFB;
+@iconsPath:             "../resources/images/icons/";
+@svgIconsPath:          "../resources/images/icons/svg/";
+@footerText:            #222222;
+@scrollBarColor:        #6D6161;
+@errorBorder:           darken(spin(@errorBackground, -10), 3%);
+@successBorder:         darken(spin(@successBackground, -10), 3%);
+@warningBorder:         darken(spin(@warningBackground, -10), 3%);
+
+@errorIcon:				"../resources/images/error-exclamation.png";
+@columnWidth-2col:		435px;
+@gutter:				{{themeSettings.gutterWidth}};
+@inputBorder:			#a7a7a7;
+@ctaBtnColor:           #BED855;
+@darkGray:              #627786;
+@saleColor:             #A6192E;
+@lunarBg:               #FAE5CE;
+@lunartext:             #C12D35;
+@activeAnchor:          #E8E8E8;
+@aboutBanner:           #003B4D;
+@lightGreen:            #BDD755;
+@greenBackground:       #163E35;
+@kidsOffer:             #647D5F;
+@mensOffer:             #3F5574;
+@defaultTileHeight:            250px;
+@defaultTileWidth:             250px;
+@productTileHeight:            360px;
+@productTileWidth:             @defaultTileWidth;
+@addressTileHeight:            240px;
+@addressTileWidth:             @defaultTileWidth;
+@productImagesContainerWidth:  {{ themeSettings.productImagesContainerWidth }}px;
+@orderDetailWidth:      200px;
+@itemListingThumbSize:  {{ themeSettings.itemListingThumbSize }}px;
+@productListingThumbSize: {{ themeSettings.listProductThumbSize }}px;
+
+// New UI v2 common classes need to be extended can be removed later to new file
+.font-bold{
+font-weight: bold;
+}
+.afg-h1{
+    font-size: 48px;
+    line-height: 52px;
+    .font-bold();   
+}
+.afg-h2{
+    font-size: 30px;
+    line-height: 36px;
+    .font-bold();
+}
+.afg-h3{
+    font-size: 22px;
+    line-height: 24px;
+    .font-bold();
+}
+.afg-h4{
+    font-size: 18px;
+    line-height: 24px;
+    .font-bold();   
+}
+.afg-b1{
+    font-size: 14px;
+    line-height: 20px !important; 
+}
+.afg-b2{
+    font-size: 12px;
+    line-height: 18px !important;   
+}
+//textbox myaccount

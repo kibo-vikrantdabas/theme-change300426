@@ -1,0 +1,16 @@
+{% extends "page" %}
+
+{% block title-tag-content %} {% firstof pageContext.metaTitle model.name %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} afg-privacy {% endblock body-tag-classes %}
+
+{% block body-content %}
+{% require_script "pages/home" %}
+<div class="wrapper-static-page">
+    {% dropzone "privacy-policy" scope="template" %}
+</div>
+
+{% endblock body-content %}
+
+{% block body-below-content %}
+{% endblock body-below-content %}

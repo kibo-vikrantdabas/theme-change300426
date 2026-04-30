@@ -1,0 +1,162 @@
+﻿{% extends "modules/common/credit-card-form" %}
+{% block credit-card-form %}
+{% set cardcontext="editingCard." %}
+
+<div id="myModal" class="custom-modal">
+   <div class="custom-modal-content {% if model.saveCardFirstStep or model.saveCardSecondStep %}credit-step-one-width{% endif %}">      
+      <div class="mz-messagebar show-card-error-msg">
+
+      </div>
+      
+      <div class="mz-accountpaymentmethods-method mz-accountpaymentmethods-form">
+         <div class="mz-l-formfieldgroup mz-creditcardform">
+            <div class="custom-modal-header"> 
+               <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Close-white.svg" alt="close-icon" class="mz-close-icon" data-mz-action="cancelEditCard">
+            </div>
+            <!-- STEP 1 Block-->
+            {% if model.saveCardFirstStep %}
+            <div class="credit-step-one">
+               <div class="credit-heading">
+                  <h2>{{ labels.addANewCard }} </h2>
+                  <p>{{ labels.addNewCardStep1 }}</p>
+               </div>
+               <div class="afg-credit-forms">
+                  <div class="afg-ms-fields">
+                     <!-- Credit card type -->
+                     <div class="mz-l-formfieldgroup-row mz-payment-credit-card-type-row">
+                        <div class="mz-l-formfieldgroup-cell">
+                           <label for="mz-payment-credit-card-type">{{ labels.cardType|title }}{% if not model.paymentOrCardType or (model.paymentOrCardType and not themeSettings.disableEditOfSavedCreditCard) %}<span class="is-required">*</span>{% endif %}</label>
+                        </div>
+                        <div class="mz-l-formfieldgroup-cell">
+                           <select required id="mz-payment-credit-card-type" data-mz-value="{{ cardcontext }}paymentOrCardType" class="custom-select cc-required-field mz-credtiCardType"
+                           {% if model.paymentOrCardType and themeSettings.disableEditOfSavedCreditCard %} disabled {% endif %}>
+                           <option value="" class="afg-select-placeholder">{{ labels.pleaseSelect }}</option>
+                           {% if siteContext.checkoutSettings.supportedCards.visa %}
+                           <option value="VISA" {% if model.paymentOrCardType == "VISA" %}selected="selected"{% endif %}>{{ labels.ccVisa }}</option>
+                           {% endif %}
+                           {% if siteContext.checkoutSettings.supportedCards.mc %}
+                           <option value="MC" {% if model.paymentOrCardType == "MC" %}selected="selected"{% endif %}>{{ labels.ccMastercard }}</option>
+                           {% endif %}
+                           {% if siteContext.checkoutSettings.supportedCards.amex %}
+                           <option value="AMEX" {% if model.paymentOrCardType == "AMEX" %}selected="selected"{% endif %}>{{ labels.ccAmericanExpress }}</option>
+                           {% endif %}
+                           {% if siteContext.checkoutSettings.supportedCards.discover %}
+                           <option value="DISCOVER" {% if model.paymentOrCardType == "DISCOVER" %}selected="selected"{% endif %}>{{ labels.ccDiscover }}</option>
+                           {% endif %}
+                           {% if siteContext.checkoutSettings.supportedCards.jcb %}
+                           <option value="JCB" {% if model.paymentOrCardType == "JCB" %}selected="selected"{% endif %}>{{ labels.ccJcb }}</option>
+                           {% endif %}
+                           </select>
+                           <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}paymentOrCardType"></span>
+                        </div>
+                     </div>
+                     <!-- Credit card number  -->
+                     <div class="mz-l-formfieldgroup-row mz-payment-credit-card-number-row">
+                        {% if model.cardNumberPartOrMask and themeSettings.disableEditOfSavedCreditCard %}
+                        <div class="mz-l-formfieldgroup-cell">
+                           <label for="mz-payment-credit-card-number">{{ labels.cardNumber|title }}:</label>
+                        </div>
+                        <div class="mz-l-formfieldgroup-cell">
+                           <input type="number" name="credit-card-number" class="cc-required-field" id="mz-payment-credit-card-number" data-mz-value="{{ cardcontext }}cardNumberPartOrMask" value="{{ model.cardNumberPartOrMask }}" placeholder="{{labels.enterCardNumber}}" disabled>
+                        </div>
+                        {% else %}
+                        <div class="mz-l-formfieldgroup-cell">
+                           <label for="mz-payment-credit-card-number">{{ labels.cardNumber|title }}<span class="is-required">*</span></label>
+                        </div>
+                        <div class="mz-l-formfieldgroup-cell">
+                           <input type="number" name="credit-card-number" class="mz-creditCardNumber cc-required-field mz-preventArrowKey" id="mz-payment-credit-card-number cc-required-field" data-mz-value="{{ cardcontext }}cardNumberPartOrMask" value="{{ model.cardNumberPartOrMask }}" placeholder="{{labels.enterCardNumber}}">
+                           <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}cardNumberPartOrMask"></span>
+                        </div>
+                        {% endif %}
+                     </div>
+                  </div>
+                  <!-- Credit Card Expiry  -->
+                  <div class="mz-l-formfieldgroup-row mz-payment-credit-card-expiration-row">
+                     <div class="mz-l-formfieldgroup-cell">
+                        <label for="mz-payment-expiration-month">{{ labels.expiryDate|title }}<span class="is-required">*</span></label>
+                     </div>
+                     <div class="mz-l-formfieldgroup-cell cc-expiry">
+                        <input type="number" class="mz-l-formfieldgroup-halfsize cc-required-field" id="mz-payment-expiration-month" name="expiration-month" data-mz-value="{{ cardcontext }}expireMonth" value="{{ model.expireMonth }}"  maxlength="2" placeholder="{{labels.mm}}">
+                        {% comment %} <span>/</span> {% endcomment %}
+                        <input type="number" class="mz-l-formfieldgroup-halfsize cc-required-field" name="mz-payment-expiration-year" data-mz-value="{{ cardcontext }}expireYear" value="{{ model.expireYear }}" maxlength="2" placeholder="{{labels.yy}}" id="mz-payment-expiration-year" >
+                        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}expireYear"></span>
+                        <span class="exp-err-msg mz-validationmessage">{% if model.isInvalidDate %}{{labels.cardExpInvalid}}{% endif %}</span>
+                     </div>
+                  </div>
+                  <!--continue cancel  -->
+                  <div class="credit-continue-buttons">
+                     <p> <span class="is-required">* </span>{{labels.requiredFields}}</p>
+                     <div class="buttons-wrapper">
+                        <button class="mz-button mz-creditcard-continue credit-continue" data-mz-action="continueCard">{{ labels.next }}</button>
+                        <button class="mz-creditcard-cancel" data-mz-action="cancelEditCard">{{ labels.cancel }}</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% endif %}
+            <!-- STEP 2 Block-->
+            {% if model.saveCardSecondStep %}
+            <div class="credit-step-two" {% if model.cardNumberPartOrMask != '' %} style="display:block;" {% endif %}>
+               <div class="credit-heading">
+                  <h2>{{ labels.addANewCard }}</h2>
+                  <p>{{ labels.addNewCardStep2 }}</p>
+               </div>
+               <div class="afg-credit-forms">
+                  <!-- Name On Card -->
+                  <div class="mz-l-formfieldgroup-row mz-payment-credit-card-name-row hidden">
+                     <div class="mz-l-formfieldgroup-cell">
+                        <label for="mz-payment-credit-card-name">{{ labels.nameOnCard }}<span class="is-required">*</span></label>
+                     </div>
+                     <div class="mz-l-formfieldgroup-cell">
+                        <input type="text" name="credit-card-name" id="mz-payment-credit-card-name" data-mz-value="{{ cardcontext }}nameOnCard" value="{{ model.nameOnCard }}">
+                        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}nameOnCard"></span>
+                     </div>
+                  </div>
+                  
+                  {% if model.hasSavedContacts %}
+                  <div class="mz-l-formfieldgroup-row mz-creditcard-billingaddresses">
+                     <div class="mz-l-formfieldgroup-cell hidden">
+                        <label>{{ labels.usebillingadd }} <span class="is-required">*</span></label>
+                     </div>
+                     <div class="">
+                        {% include "modules/my-account/my-account-contact-selector" %}
+                        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}contactId"></span>
+                     </div>
+                  </div>
+                  {% else %}
+                  <div class="mz-l-formfieldgroup-row mz-creditcard-billingaddresses">
+                     {% include "modules/common/myaccount-address-form" with addresscontext="editingContact." model=editingContact %}
+                  </div>
+                  <div class="mz-l-formfieldgroup-row">
+                     <div class="mz-l-formfieldgroup-cell">
+                     </div>
+                     <div class="mz-l-formfieldgroup-cell">
+                        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}contactId"></span>
+                     </div>
+                  </div>
+                  {% endif %}
+                  <div class="mz-l-formfieldgroup-row mz-payment-credit-card-defaultflag-row">
+                     <div class="mz-l-formfieldgroup-cell"></div>
+                     <div class="mz-l-formfieldgroup-cell">
+                        <label for="editingcard-is-primary">
+                           <input type="checkbox" id="editingcard-is-primary" {% if model.isDefaultPayMethod %}checked="checked" checked="true"{% endif %} data-mz-value="{{ cardcontext }}isDefaultPayMethod" />
+                           <span class="chkmark"></span>
+                           {{labels.setAsDefaultcard}}
+                        </label>
+                     </div>
+                  </div>
+                  <div class="mz-creditcard-actions  credit-continue-buttons">
+                     <p><span class="is-required">* </span>{{labels.requiredFields}}</p>
+                     <div class="buttons-wrapper">
+                        <button class="mz-button mz-creditcard-save" disabled="disabled" data-mz-action="finishEditCard">{{ labels.save }}</button>
+                        <button class="mz-creditcard-cancel" data-mz-action="cancelEditCard">{{ labels.cancel }}</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock credit-card-form %}

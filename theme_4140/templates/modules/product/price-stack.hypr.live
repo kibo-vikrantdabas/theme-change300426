@@ -1,0 +1,17 @@
+﻿<div itemprop="priceSpecification" itemscope itemtype="http://schema.org/PriceSpecification" class="mz-pricestack{% if model.priceRange %} mz-pricestack-range{% endif %}">
+    {% if model.hasPriceRange %}
+    <span itemprop="minPrice" class="mz-pricestack-price-lower">
+        {% include "modules/common/price" with model=model.priceRange.lower %}
+    </span>
+    {% comment %} <span itemprop="maxPrice" class="mz-pricestack-price-upper">
+        {% include "modules/common/price" with model=model.priceRange.upper %}
+    </span> {% endcomment %}
+    {% else %}
+        {% if (not model.availableInventory == 0) %}
+            {% include "modules/common/price" with model=model.price %}
+        {% endif %}
+    {% endif %}
+</div>
+{% comment %} sale {{model.priceRange.lower}} discount {{model.priceRange.upper}} price {% dump model.price %} {% endcomment %}
+
+

@@ -1,0 +1,11 @@
+{% if model.modalLoaded %}
+	{% if model.cookieLocation %}
+		{{model.cookieLocation}} 
+	{% else %}
+		{{model.defaultLocation}}
+	{% endif %}
+{% else %}
+	{% if model.displayPickupLinks and model.modalLoaded %}
+	Loading
+	{% endif %}
+{% endif %}

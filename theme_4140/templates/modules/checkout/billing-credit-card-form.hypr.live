@@ -1,0 +1,30 @@
+﻿{% extends "modules/common/credit-card-form" %}
+{% block credit-card-form %}
+    {% set cardcontext="card." %}
+        {% parent %}
+		<div class=" mz-payment-credit-card-securitycode-row mz-payment-card-row">
+			<div class="card-text-title">
+				<label for="mz-payment-security-code"><b>{{ labels.cvv }}</b>{% if not model.isCvvOptional %}<span class="">*</span>{% endif %}</label>
+			</div>
+			<div class="cvv-div">
+				<input type="tel" name="security-code" id="mz-payment-security-code" class="card-cvv" data-mz-value="{{ cardcontext }}cvv" value="{{ model.cvv }}" autocomplete="off">
+				<img src="{{siteContext.cdnPrefix}}/resources/images/icons/CVV.svg" alt="CVV" class="card-payment-cvv">
+			</div>
+			<span class="mz-validationmessage cvv-validation-msg" data-mz-validationmessage-for="{{ cardcontext }}cvv"></span>
+		</div>
+		{% if user and not user.isAnonymous %} 
+			<div class="mz-l-formfieldgroup mz-l-formfieldgroup-norows  toSaveCardDetails">
+			<label class="container">
+			<input type="checkbox" class="toSaveCardDetails savedCard" id="toSaveCard" data-mz-value="toSaveCardDetails" value="" checked="checked"   >
+			<span class="checkmark"></span>
+			</label>
+			<span class="useshippinglabel"> {{labels.useSaveCardDetails}}</span>
+			</div>
+		{% endif %}
+        {% comment %} <div class=" mz-payment-credit-card-savepayment-row mz-payment-card-row">
+            <div class=""></div>
+            <div class="class="card-text-title">
+                <label class="mz-inline"><input type="checkbox" name="save-card-info" data-mz-value="{{ cardcontext }}isCardInfoSaved" value="true" {% if model.isCardInfoSaved %}checked="checked"{% endif %}> {{ labels.saveCard }}</label>
+            </div>
+        </div> {% endcomment %}
+{% endblock credit-card-form %}

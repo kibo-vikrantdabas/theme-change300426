@@ -1,0 +1,37 @@
+    {% comment %} <input class="mz-productdetail-qty" type="number" {% if model.quantity %} value="{{ model.quantity }}" {% else %} value="1" {% endif %} min="1" {% if not model.isPurchasable %} disabled="disabled" {% endif %} data-mz-value="quantity" /> {% endcomment %}
+  <div class="mz-productdetail-conversion-buttons">
+    <div class="mz-productdetail-conversion-controls">
+    {% comment %} (model.productUsage == "Standard" and model.availableInventory == 'initial'){% endcomment %}
+      {% if (model.availableInventory == 0 and not model.initialPageLoad) or (model.isPurchasable and model.availableInventory == 0) or (model.isOneSize and model.availableInventory == 0)%}
+        <select name="" id="" class="mz-product-quantity" data-mz-value="quantity" disabled>
+          <option value="0">0</option>
+        </select>
+      {% else %}
+        {% if themeSettings.maxPurchaseQuantity%}
+          <select name="" id="" class="mz-product-quantity" data-mz-value="quantity">
+            {% for value in themeSettings.maxPurchaseQuantity|split(",")%}
+                {% if value <= model.availableInventory%}
+                  <option class="mz-product-quantity-option" value={{value}}>{{value}}</option>
+                {% endif %}
+            {% endfor %}
+          </select>
+        {% else %}
+          <select name="" id="" class="mz-product-quantity" data-mz-value="quantity">
+            {% if model.inventoryArray%}
+              {% for value in model.inventoryArray %}
+                <option class="mz-product-quantity-option" value={{value}}>{{value}}</option>
+              {% endfor %}
+            {% else %}
+              <option class="mz-product-quantity-option" value={{1}}>1</option>
+            {% endif %}
+          </select> 
+        {% endif %}
+      {% endif %}
+      </select>
+      <span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>
+    </div> 
+      <button id="add-to-cart" class="mz-productdetail-addtocart mz-button mz-button-large {% if (not model.initialPageLoad and model.availableInventory == 0) or (model.isPurchasable and model.availableInventory == 0) or (model.isOneSize and model.availableInventory == 0) %}is-disabled{% endif %}"  data-mz-action="addToCart">
+          {% comment %} <span>{{ labels.addToCart }}</span> {# For Some Reason This code is not working #} {% endcomment %} {{ labels.addToCart }}
+      </button>
+  </div>
+

@@ -1,0 +1,75 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.blueReward %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-blue-rewards-page {% endblock body-tag-classes %}
+{% block breadcrumbs %}
+    <div class="mz-breadcrumbs">
+        <a href="{{siteContext.siteSubdirectory}}/" class="mz-breadcrumb-link">{{labels.home}}</a>
+        <span class="mz-breadcrumb-separator">&#47;</span>
+        <span class="mz-breadcrumb-current">{{labels.blueBreadCrumb}}</span>
+    </div>
+{% endblock breadcrumbs %}
+
+{% block body-content %}
+   <div class="blue-loyalty-topline">
+    {% if themeSettings.isArabicLanguageSite%}
+    <img src="{{siteContext.siteSubdirectory}}{{labels.imagePathUrl}}/icons/blue-experience-arabic.png" alt="blue-experience" />
+    {% else %}
+    <img src="{{siteContext.siteSubdirectory}}{{labels.imagePathUrl}}/icons/blue-experience.png" alt="blue-experience" />
+    {% endif %}
+    {% comment %} {% dropzone "blue-loyalty-topline" scope="template" %} {% endcomment %}
+   </div>
+   
+   <div class="blue-loyalty-banner">
+    {% dropzone "blue-loyalty-banner" scope="template" %}
+   </div>
+   
+   <div class="blue-loyalty-howWorks" id="blue-loyalty-howWorks">
+    {% dropzone "blue-loyalty-howWorks" scope="template" %}
+   </div>
+   
+   <div class="blue-loyalty-advantage">
+    {% dropzone "blue-loyalty-advantage-title" scope="template" %}
+    {% dropzone "blue-loyalty-advantage" scope="template" %}
+   </div>
+   
+   <div class="blue-loyalty-entertain">
+    {% dropzone "blue-loyalty-entertain" scope="template" %}
+   </div>
+   
+   {% comment %} <div class="blue-loyalty-brands">
+    {% dropzone "blue-loyalty-brands" scope="template" %}
+    
+    {% if themeSettings.countrySpecificCode|lower == "ae"%}
+         {% include "modules/blue-rewards/blue-loyalty-uae-brands" %} 
+    {% endif %}
+
+    {% if themeSettings.countrySpecificCode|lower == "kw"%} 
+        {% include "modules/blue-rewards/blue-loyalty-kuwait-brands" %} 
+    {% endif %}
+   </div> {% endcomment %}
+
+   {% comment %} <div class="blue-loyalty-apps">
+    {% dropzone "blue-loyalty-apps" scope="template" %}
+    <div class="blue-loyalty-app-store">
+        <span class="blue-loyalty-app-store-text">{{ labels.blueDownloadAppText }}</span>
+        <span class="blue-loyalty-app-store-icons">
+            <a href="https://apps.apple.com/us/app/blue-rewards/id1503337179?ls=1" target="_blank">
+                <img src="{{labels.imagePathUrl}}/icons/app-store-badge.png" alt="app-store" />
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.alfuttaim.blue" target="_blank">
+                <img src="{{labels.imagePathUrl}}/icons/play-store-badge.png" alt="play-store" />
+            </a>
+        </span>
+    </div>
+    <div class="blue-loyalty-app-qr">
+        <span class="blue-loyalty-app-qr-text">{{ labels.blueQRText }}</span>
+        <span class="blue-loyalty-app-qr-icon">
+            <img src="{{labels.imagePathUrl}}/icons/blueloyalty-qr.png" alt="qr-code" />
+        </span>
+    </div>
+   </div> {% endcomment %}
+
+   {% require_script "modules/blue-rewards/blue-rewards" %}
+{% endblock body-content %}

@@ -1,0 +1,14 @@
+﻿{% extends "back-office/base" %}
+{% block body-content %}
+    
+    {% if model.workflowState.activeTaskName == 'Print Pick List' %}
+        <div style="page-break-before: always;">
+            {% include "back-office/packing-slip-with-pick-list" with model=order %}
+        </div>
+    {% else %}
+        <div style="page-break-before: always;">
+            {% include "back-office/packing-slip-content" with order=order %}
+        </div>        
+    {% endif %} 
+
+{% endblock body-content %}

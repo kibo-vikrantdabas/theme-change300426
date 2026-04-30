@@ -1,0 +1,71 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.cart %} - {% parent %}{% endblock title-tag-content %}
+
+{% block head-tag-scripts %}
+{% parent %}
+    <script async src="https://maps.googleapis.com/maps/api/js?key={{themeSettings.googleMapsAPIKey}}"></script>
+{% if siteContext.checkoutSettings.visaCheckout.isEnabled and not pageContext.isEditMode and not pageContext.isAdminMode %}
+{% include "modules/common/anti-clickjacking-script" %}
+{% endif %}
+{% endblock head-tag-scripts %}
+
+{% block body-tag-classes %} mz-cart {% endblock body-tag-classes %}
+
+{% block site-nav %}
+	{% include "modules/site-nav" %}
+{% endblock site-nav %}
+
+{% block body-content %}
+
+{% require_script "pages/cart" %}
+
+{% preload_json model "cart" %}
+
+<div class="modal" id="mz-location-selector"></div>
+
+<div class="mz-l-container">
+	{% if themeSettings.isSplitShipmentApply %}
+		<div class="mz-cart-multiple-location-message">
+			<div class="mz-cart-help-icon"><img src="{{siteContext.cdnPrefix}}/resources/images/icons/help.svg" class="mz-help-icon" alt="help-icon" /></div>
+			<div class="mz-location-cart-message">{{ labels.cartMultiLocationMsg }}</div>
+		</div>
+	{% endif %}
+	
+	<div class="mz-messagebar" id="mz-oos-stock-errMsg" style="display:none;">
+		<ul class="is-showing mz-errors mz-OOS-error-item">
+			<li class="mz-message-item" style="white-space: unset;">
+				<div class="cart-error-msg">
+					<span><img src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/error-black.svg" alt="error-message" /></span>
+					<span class="mz-error-msg-text"><span><strong>Some item(s) are unavailable.</strong></span><span class="mz-err-text">Select <strong>Save for Later</strong> to save the item or <strong>Remove</strong> to delete it from your bag.</span></span>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div id="mz-discount-threshold-messages">
+		{% include "modules/cart/cart-discount-threshold-messages" with model=model %}
+	</div>
+	<h1 class="mz-pagetitle">{{ labels.cart }}</h1>
+	<form method="post" action="{{ siteContext.secureHost }}{{siteContext.siteSubdirectory}}/cart/checkout" id="cartform">
+		{% dropzone "cart-top" scope="template" %}
+		<input type="hidden" name="id" value="{{model.id}}" />
+        {% include "modules/common/message-bar" with model=model.messages %}
+        <table class="mz-table mz-table-cart" id="cart">
+            {% include "modules/cart/cart-table" %}
+		</table>
+		{% comment %} {% block modal-dialog %}
+			<div mz-modal-discount-dialog class="mz-discount-modal">
+				<div id="mzModalDialog" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog">
+					{% include "modules/cart/discount-modal/discount-modal" %} 
+				</div>
+			</div>
+		{% endblock modal-dialog %} {% endcomment %}
+	</form>
+	<div class="mz-continue-shopping-cart">
+		<a
+		onclick="window.globalEventBus.emit('dataLayerEvent', {'event': 'eventTracker','custom_event': 'cart page', 'event_params': { 'event_act':'continue shopping','event_lbl':'continue shopping'}})" 
+		href="{{siteContext.siteSubdirectory}}" class="mz-continue-shopping-link"
+		>< {{ labels.continueShopping }}</a>
+	</div>
+</div>
+{% endblock body-content %}

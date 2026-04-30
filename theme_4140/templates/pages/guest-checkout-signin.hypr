@@ -1,0 +1,32 @@
+{% extends "page" %}
+
+{% block title-tag-content %} {% firstof pageContext.metaTitle model.name %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-loginpage mz-guest-checkout-signin{% endblock body-tag-classes %}
+
+{% block body-content %}
+    <div class="mz-l-container">
+        {% include "modules/common/message-bar" with model=model.messages %}
+        <div class="mz-login-main-container guest-checkout-main-container ">
+            <div class="mz-login-form-main-container guest-checkout-signin-container">
+                {% with labels.checkout as pageTitle%} 
+                {% include "modules/signup/signup-header" with header=labels.signIn %}
+                {% endwith %}
+                <div id="loginContainer"> 
+                    {% include "modules/login/login" %}
+                </div>
+                {% with labels.guestCheckout as signUpQueryLink %}
+                {% with "/guestcheckout" as signUpURL %}
+                    {% include "modules/signup/signup-footer" %}
+                 {%endwith%}
+           {%endwith%}
+            <div class="mz-bottom-gueatcheckout">
+                <span class="bottom-rights-reserved">&copy; {% now Y %} {{ siteContext.generalSettings.websiteName }} </span>
+            </div>
+            </div>
+        </div>
+    </div>
+    {% require_script "pages/login" %}
+{% endblock body-content %}
+
+{% block page-footer %} {% endblock page-footer %}

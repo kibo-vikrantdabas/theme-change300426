@@ -1,0 +1,212 @@
+﻿{% extends "email/email" %}
+
+{% block body-content %}
+<style>
+li{
+    padding-left: 8px;
+}
+
+</style>
+<!--[if mso]>
+<div class="mz-email-template-product-instock" style="max-width:490px;font-family: Arial, Helvetica, sans-serif!important;">
+        <div style="text-align:center;margin:30px 0;">
+            <img width="290" height="49"src="https://{{themeSettings.localeDomain}}{{themeSettings.emailBannerImage}}" alt="MS-Logo"/>
+        </div>
+        <table width="100%" style="margin-bottom: 32px !important;">
+            <tr>
+			    <td style="padding: 20px 13%; background-color: #163E35; color: #fff; text-align: center; font-size: 21px; font-family: Arial, Helvetica, sans-serif; line-height: normal;" width="600">
+				    {{ labels.favouriteItemBackInStock }}
+			    </td>
+			</tr>
+        </table>
+        <div style="padding-bottom:20px; width:100%;color:#000000;">
+             <p style="padding:0;font-size: 14px;letter-spacing:0;line-height:21px; margin:15px 0;">
+               {% if user.firstName %}
+                    {{labels.emailOpening|string_format(user.firstName)}}
+                {% else %}
+                    {{labels.emailOpeningAlternative}}
+                {% endif %}
+            </p>
+            <p style="padding:0;font-size: 14px;letter-spacing:0;line-height:21px; margin:15px 0;">
+              {{ labels.waitIsOver }}
+            </p>
+            <p style="padding:0;font-size: 14px;letter-spacing:0;line-height:21px; margin:15px 0;">
+              {{ labels.productIsBack }}
+            </p>
+        </div>
+
+		<div style="border-top:1px solid #ccc;border-bottom:1px solid #ccc !important; padding: 20px 0">
+			<table cellpadding="0" cellspacing="0" border="0" width="490px">
+				<thead></thead>
+				<tbody>
+					<tr>
+						<td style="padding-right:16.3px!important;padding:0;background-color:#ffffff;" cellpadding="0" cellspacing="0" border="0" height="108" width="83.5">
+						    <img style="display:block;width:83.5px;height:108px" height="135" width="104.3" src="https://{{themeSettings.localeDomain}}/cms/files/{{model.content.productImages.0.cmsId}}"alt="{{model.content.productName}}"> 
+						</td>
+                        <td style="padding:0;vertical-align:top"v-align="top"height="108">
+                            <table height="108">
+                                <tr>
+                                    <td style="margin:0 20px 70px 10px;font-weight: bold;padding:0;vertical-align:top;color:#000000; font-family: Arial, Helvetica, sans-serif!important;" v-align="top">
+                                        {% with model.properties|findwhere('attributeFQN', 'tenant~brand') as brand %}
+                                            {% if brand %}
+                                                <span style="margin:0;font-size:14px;font-weight:bold;line-height:18px;font-family: Arial, Helvetica, sans-serif!important;">{{brand.values.0.stringValue}}</span><br>
+                                            {% endif %}
+                                        {% endwith%}
+                                        <span style="font-size:14px;padding-left:40px;display:inline-block;line-height:18px;font-family: Arial, Helvetica, sans-serif!important;">{{model.content.productName}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:0;vertical-align:bottom;text-align:center;height:48px !important" cellpadding="0" cellspacing="0" border="0"  width="210">
+                                        <table>
+                                           <tr>
+                                                <td  bgcolor="#BED855" style="text-align:center;padding-top:14px;padding-right: 58px; padding-bottom: 14px; padding-left: 58px;">
+                                                    <a class="outlook-padding"href="https://{{themeSettings.localeDomain}}/p/{{model.productCode}}{% if model.variationProductCode %}?vpc={{model.variationProductCode}} {% endif %}" style="text-align:center;text-decoration:none ;color:#000000 !important;font-family: Arial, Helvetica, sans-serif!important;font-size: 16px;font-weight: bold !important;letter-spacing: 0;line-height: 21px;text-align:center !important;">
+                                                    <span>{{labels.shopNow}}</span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>	
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td></td>
+                    </tr>
+				</tbody>
+			</table>
+		</div>
+        <div style="width:490px">
+            <table width="100%" style="border-top:1px solid #ccc;" padding:10px 0;>
+                <td></td>
+            </table>
+        </div>
+      <div style="border-top:1px solid #ccc;text-align: center; width:100%;margin-top: 30px; padding:10px 0;"> 
+          <table style="background: #163E35; color: #fff; text-align: center;margin:0 auto; margin-top:30px;margin-bottom:30px !important;" width="100%">
+            <tr>
+                <td width="490" style="font-size: 16px; letter-spacing: 0; line-height: 21px; margin: 0; padding: 26px 0 5px; font-family: Arial, Helvetica, sans-serif;" width="490">{{ labels.needHelp }}</td>
+            </tr>
+            <tr>
+                <td width="490" style="font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0; padding: 0 12% 20px; font-family: Arial, Helvetica, sans-serif;" width="490">{{ labels.getInTouch|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}</td>
+            </tr>
+            <tr>  
+                <td width="490" bgcolor="#163E35"></td>
+            </tr>
+          </table>
+			<p class="ms-mobile-display" style="display:none;font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0 auto; padding-top: 3px;min-width:283px;max-width: 415px; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.getInTouchPhone|string_format(themeSettings.storephonenumber)|safe }}</p>  
+			<p class="ms-mobile-display" style="display:none;font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0 auto; padding-top: 3px;min-width:283px;max-width: 415px; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.getInTouchHours|string_format(themeSettings.storeopentime,themeSettings.storeclosetime)|safe }}</p>
+      </div>
+      <div style="margin:10px 0;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr><td></td>
+      </tr>
+      </table>
+      </div>
+
+      <div style="margin:30px 0 30px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;padding:10px 0;width:100%;">
+        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-bottom:1px solid #ccc;margin:20px 0 20px 0;border-top:1px solid #ccc;padding:5px 0;">
+            <tr> 
+				<td width="32%" style="padding:0;border-right:1px solid #ccc;text-align:center;">
+				<a href="https://{{themeSettings.localeDomain}}/contact" target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{labels.contactUs|safe }}</a>
+				</td>
+				<td width="32%" style="padding:0;border-right:1px solid #ccc;text-align:center;">
+				<a href="https://{{themeSettings.localeDomain}}/return-refund"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{ labels.returnsAndRefunds|safe}}</a>
+				</td>
+				<td width="32%" style="padding:0;text-align:center;">
+				<a href="https://{{themeSettings.localeDomain}}/terms-conditions"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{ labels.termsAndConditions|safe}}</a>
+				</td>
+			</tr>
+        </table>
+     </div>
+    <div style="text-align:center;font-size:10px; line-height:20px;width:100%; font-family: Arial, Helvetica, sans-serif!important;"><p style="color:#000">{{themeSettings.emailFooterAddress}}<br />{{themeSettings.emailFooterAddress1}}</p></div>
+
+</div>
+<![endif]-->
+<!--[if !mso]> <!---->
+<div class="mz-email-template-product-instock" style="max-width:490px;font-family: Arial, Helvetica, sans-serif!important;">
+        <div style="text-align:center;margin:30px 0;">
+            <img width="290" height="49"src="https://{{themeSettings.localeDomain}}{{themeSettings.emailBannerImage}}" alt="MS-Logo"/>
+        </div>
+		<span class="ms-instock-banner"style="padding: 20px 77px;line-height:normal; background-color: #163E35; color: #fff; display: block; text-align: center; font-size: 21px; margin-bottom: 32px; max-width:490px" class="">{{ labels.favouriteItemBackInStock }}</span>
+        <div style="padding-bottom:20px; width:100%;color:#000000;">
+             <p style="padding:0;font-size: 14px;letter-spacing:0;line-height:21px; margin:15px 0;">
+               {% if user.firstName %}
+                    {{labels.emailOpening|string_format(user.firstName)}}
+                {% else %}
+                    {{labels.emailOpeningAlternative}}
+                {% endif %}
+            </p>
+            <p style="padding:0;font-size: 14px;letter-spacing:0;line-height:21px; margin:15px 0;">
+              {{ labels.waitIsOver }}
+            </p>
+            <p style="padding:0;font-size: 14px;letter-spacing:0;line-height:21px; margin:15px 0;">
+              {{ labels.productIsBack }}
+            </p>
+        </div>
+
+		<div style="border-top:1px solid #ccc;border-bottom:1px solid #ccc; padding: 20px 0">
+			<table cellpadding="0" cellspacing="0" border="0" width="490px">
+				<thead></thead>
+				<tbody>
+					<tr>
+						<td style="padding-right:16.3px!important;padding:0;background-color:#ffffff;" cellpadding="0" cellspacing="0" border="0" height="108" width="83.5">
+						    <img style="display:block;width:83.5px;height:108px" height="135" width="104.3" src="https://{{themeSettings.localeDomain}}/cms/files/{{model.content.productImages.0.cmsId}}"alt="{{model.content.productName}}"> 
+						</td>
+                        <td style="padding:0;vertical-align:top"v-align="top"height="108">
+                            <table height="108">
+                                <tr>
+                                    <td style="font-weight: bold;padding:0;vertical-align:top;color:#000000; font-family: Arial, Helvetica, sans-serif!important;" v-align="top">
+                                        {% with model.properties|findwhere('attributeFQN', 'tenant~brand') as brand %}
+                                            {% if brand %}
+                                                <span style="margin:0;font-size:14px;font-weight:bold;line-height:18px;font-family: Arial, Helvetica, sans-serif!important;">{{brand.values.0.stringValue}}</span><br>
+                                            {% endif %}
+                                        {% endwith%}
+                                        <span style="font-size:14px;margin:0;display:inline-block;line-height:18px;font-family: Arial, Helvetica, sans-serif!important;">{{model.content.productName}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:0;vertical-align:bottom;">
+                                    <a class="outlook-padding"href="https://{{themeSettings.localeDomain}}/p/{{model.productCode}}{% if model.variationProductCode %}?vpc={{model.variationProductCode}} {% endif %}" style="background-color: #BED855; color:#000000;font-size: 16px; font-weight: bold; text-decoration: none; padding: 17px 66px; display: inline-block; mso-padding-alt: 0;font-family: Arial, Helvetica, sans-serif!important;">
+                                        <span>{{labels.shopNow}}</span>
+                                    </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+      <div style="background-color: #163E35; color: #fff; height:100px; text-align: center; width:100%;margin-top: 30px;"> 
+            <div style="margin:0 auto;width: 100%">
+                <p style="font-size: 16px; letter-spacing: 0; line-height: 21px; margin: 0;  padding-top: 20px; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.needHelp }}</p>
+				<p class="ms-desktop-display" style="font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0 auto; padding-top: 3px;min-width:283px;max-width: 415px;color:#ffffff;text-decoration:none;font-family: Arial, Helvetica, sans-serif!important;">{{ labels.getInTouch|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}</p> 
+				<p class="ms-mobile-display" style="display:none;font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0 auto; padding-top: 3px;min-width:283px;max-width: 415px; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.getInTouchPhone|string_format(themeSettings.storephonenumber)|safe }}</p>  
+			    <p class="ms-mobile-display" style="display:none;font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0 auto; padding-top: 3px;min-width:283px;max-width: 415px; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.getInTouchHours|string_format(themeSettings.storeopentime,themeSettings.storeclosetime)|safe }}</p>
+
+            </div>
+      </div>
+
+      <div style="margin:30px 0 30px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;padding:10px 0;width:100%;">
+        <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+            <tr>
+                <td width="32%" style="padding:0;border-right:1px solid #ccc;text-align:center;">
+                 <a href="https://{{themeSettings.localeDomain}}/contact" target="_blank" style="font-size:10px;text-decoration:none;color:#000; font-family: Arial, Helvetica, sans-serif!important;">{{labels.contactUs|safe }}</a>
+                </td>
+                <td width="32%" style="padding:0;border-right:1px solid #ccc;text-align:center;">
+                 <a href="https://{{themeSettings.localeDomain}}/return-refund"  target="_blank" style="font-size:10px;text-decoration:none;color:#000; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.returnsAndRefunds|safe}}</a>
+                </td>
+                <td width="32%" style="padding:0;text-align:center;">
+                  <a href="https://{{themeSettings.localeDomain}}/terms-conditions"  target="_blank" style="font-size:10px;text-decoration:none;color:#000; font-family: Arial, Helvetica, sans-serif!important;">{{ labels.termsAndConditions|safe}}</a>
+                </td>
+              </tr>
+        </table>
+     </div>
+    <div style="text-align:center;font-size:10px; line-height:20px;width:100%; font-family: Arial, Helvetica, sans-serif!important;"><p style="color:#000">{{themeSettings.emailFooterAddress}}<br />{{themeSettings.emailFooterAddress1}}</p></div>
+
+</div>
+<!-- <![endif]-->
+{% endblock body-content %}

@@ -1,0 +1,30 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "When will I get my refund?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It can take up to 28 working days to process your return.We can now process returns instantly in click and collect stores. Customers should receive their refund within standard bank processing time. The select M&S click and collect stores can be found here.We will send you a confirmation email once we’ve refunded you. Any refund will automatically be issued to your original payment method by GlobalE, our international sales facilitation and fulfilment partner.For Cash on Delivery orders, customers will have the option of receiving refunds via Paypal (USD only) or a coupon code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I return an item in store or via post ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Please contact us and our customer service team will sort this for you. We will not charge shipping costs for the return of faulty or damaged items."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I track my delivery ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can check the status of your order and find tracking information at any time in <a href='/myaccount'>My Account </a>.You can also track your order directly on the courier website."
+        }
+      }]
+    }
+</script>

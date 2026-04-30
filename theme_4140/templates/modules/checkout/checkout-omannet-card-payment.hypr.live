@@ -1,0 +1,40 @@
+{% if themeSettings.countrySpecificCode|lower == 'om' and themeSettings.isOmanNetApply %}
+<label for="paymentType-newPayment-paymentOmanNet">
+<div class="credit-cart-payment rectangle omannet {% if model.isOmanNetApply and model.paymentType == 'CreditCard' %} mz-payment-selected{% endif %}">
+    <div class="mz-l-formfieldgroup-row mz-paymentselector-option mz-paymentselector-omannet mz-checkoutform1">
+        <div class="credit-debit-card-div">
+            <div class="credit-debit-card-div-radio">
+                <label class="container-radio">
+                    <input data-mz-value="paymentType"
+                           data-mz-payment-type
+                           name="paymentType"
+                           data-mz-cardType='OmanNet'
+                           id="paymentType-newPayment-paymentOmanNet"
+                           type="radio"
+                           class="mz-paymenttype-input mz-credit-card-payment-type"
+                           value="CreditCard"
+                           {% if model.isOmanNetApply and model.paymentType == 'CreditCard' %} checked {% endif %}
+                           {% if not model.isOmanNetApply and model.disablePaymentOption %}disabled="disabled"{% endif %} />
+                    <span class="checkmark-radio {% if model.isOmanNetApply and model.paymentType == 'CreditCard' %} checkmark-radio-selected {% endif %}"></span>
+                </label>
+            </div>
+
+            <div class="credit-debit-card-div-info">
+                <img src="{{siteContext.cdnPrefix}}/resources/images/icons/omannet_logo.svg"
+                     alt="CardPayment"
+                     class="card-payment omannet-card">
+                <div class="card-payment-detail-div">
+                    <label for="paymentType-newPayment-paymentOmanNet"
+                           class="mz-paymentselector-label mz-paymentselector-label-omannet mz-checkoutform-radio credit-debit-card">
+                        OmanNet
+                    </label>
+                    <label for="paymentType-newPayment-paymentOmanNet" class="use-card-info">
+                        {{ labels.payWithOmanNet }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</label>
+{% endif %}

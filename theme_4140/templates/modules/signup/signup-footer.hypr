@@ -1,0 +1,26 @@
+<div class="mz-signup-footer">
+   <div class="mz-signup-query">
+      {% if signUpURL == '/user/signup' %}
+         {{signUpQuery}} <a class="mz-footer-link" href="{{siteContext.siteSubdirectory}}{{signUpURL}}" onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'account', 'event_params':{'event_act': 'register',  'event_lbl' : 'register'}})">{{ signUpQueryLink }} <img src="{{siteContext.cdnPrefix}}/resources/images/icons/Arrow.svg" class="return-arrow" alt="arrow"></a>
+      {% else %}
+         {{signUpQuery}} <a class="mz-footer-link" href="{{siteContext.siteSubdirectory}}{{signUpURL}}" onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event': 'account', 'event_params':{'event_act': 'sign in', 'event_lbl' : 'sign in'}})">{{ signUpQueryLink }} <img src="{{siteContext.cdnPrefix}}/resources/images/icons/Arrow.svg" class="return-arrow" alt="arrow"></a>
+      {% endif %}
+   </div>
+
+   {% if pageContext.cmsContext.template.path == "login" %}
+   <div class="mz-privacy-policy">
+      {{ labels.signInMessage1 }} <a href='{{siteContext.siteSubdirectory}}/maintenance' target="_blank" onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event':'account','event_params':{'event_act': 'sign in','event_lbl': 'customer data promise'}})"> {{ labels.customerDataPromise }} </a>
+   </div>
+   {% endif %}
+   {% comment %} {% if pageContext.cmsContext.template.path == "signup" %}
+   <div class="mz-privacy-policy">
+    {% if signUpURL == '/user/signup' %}
+         {{ labels.signInMessage1 }} <a href='{{themeSettings.customerDataPromise}}' target="_blank" onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event':'account','event_params':{'event_act': 'sign in','event_lbl': 'customer data promise'}})"> {{ labels.customerDataPromise }} </a>
+    {% else %}
+         {{ labels.signUpAcknowledgement1}} <a href='/privacy-policy' target="_blank" onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event':'account','event_params':{'event_act': 'privacy policy','event_lbl': 'privacy policy'}})" class='mz-link-light' id='privacy-link'>{{labels.titlePrivacy}}</a> {{labels.and}} 
+         <a href='/terms-conditions' target="_blank" onclick="window.globalEventBus.emit('dataLayerEvent',  {'custom_event':'account','event_params':{'event_act': 'terms and condition','event_lbl': 'terms and condition'}})"  class='mz-link-light' id='terms-link'>{{labels.termsAndConditions}}</a> {{labels.signUpAcknowledgement2}} 
+         <a href='/cookie-policy' target="_blank" onclick="window.globalEventBus.emit('dataLayerEvent', {'custom_event':'account','event_params':{'event_act': 'cookie policy','event_lbl': 'cookie policy'}})" class='mz-link-light' id='cookie-link'> {{labels.titleCookie}} </a>. {{labels.signUpAcknowledgement3}}
+    {% endif %}
+   </div>
+   {% endif %} {% endcomment %}
+</div>

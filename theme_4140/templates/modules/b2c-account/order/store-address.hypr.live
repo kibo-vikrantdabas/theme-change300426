@@ -1,0 +1,40 @@
+<h2 class="delivery-header">{{ labels.collectFromOrderDetails }}</h2>
+<li class="store-delivery-address">
+    {% if model.storeName %}
+        <span class='storeName'>{{ model.storeName}}</span></br>
+    {% endif %}
+    
+    <span class='store-address-details'>
+        {% if model.storeAddress1 %}
+            <span class='storeAddressOne'>{{ model.storeAddress1}}</span>
+        {% endif %}
+
+        {% if model.storeAddress2 %}
+        {{ model.storeAddress2}} 
+        {% endif %}
+
+        {% if model.storeAddress3 %}
+            {{ model.storeAddress3}},<br>
+        {% endif %}
+
+        {% if model.storeCityOrTown %}
+            {{ model.storeCityOrTown}}, <br>
+        {% endif %}
+
+        {% if model.storeCountryCode %}
+            {% if not pageContext.billingCountries %}
+                {{model.storeCountryCode}}<br>
+            {% else %}
+                {% for country in pageContext.billingCountries %}
+                    {% if model.storeCountryCode  == country.value %}
+                        {{ country.key }}<br>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+
+        {% if model.storePhoneNumber %}
+            {{ model.storePhoneNumber}}
+        {% endif %}
+    </span>
+</li>

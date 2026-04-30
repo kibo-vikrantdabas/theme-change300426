@@ -1,0 +1,23 @@
+<div class="mz-l-formfieldgroup-row mz-addressform-phone">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="shippingphone">{{ labels.phone }}<span class="is-required">*</span></label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+        <select class="dropdown-toggle mobile-dialed-code bind-country-code" dir="ltr" name="dialingCode" data-mz-value="{{ addresscontext }}phoneNumbers.dialingCode" disabled>
+            <option value="{{themeSettings.countrySpecificDialingCode}}" class="mz-countryCode" {% if model.phoneNumbers.dialingCode == themeSettings.countrySpecificDialingCode %} selected {% endif %}>{{themeSettings.countrySpecificDialingCode}}</option>
+            {% for code in themeSettings.dialingCodes %}
+                  {% if code != themeSettings.countrySpecificDialingCode %}
+                     <option value="{{code}}" class="mz-countryCode" {% if model.dialingCode == code %} selected {% endif %}>{{code}}</option>
+                  {% endif %}
+            {% endfor %}
+        </select>
+        {% if themeSettings.countrySpecificCode|lower == "ae" or themeSettings.countrySpecificCode|lower == "sa" %}<span class="zero-value-phone-number">
+            <input id="{% block id-prefix %}{% endblock id-prefix %}phonenumber" class="mz-address-phoneNumber billing-input billing-phone {% if model.phoneNumbers.home %} add-input-border {%endif%}" type="number" {% if not model.hasRequiredBehavior %} disabled {% endif %} name="shippingphone" data-mz-value="{{ addresscontext }}phoneNumbers.home" value="{{ model.phoneNumbers.home }}" onkeydown="javascript: return event.keyCode == 69 ? false : true" placeholder="{% if themeSettings.countrySpecificCode|lower == "ae" or themeSettings.countrySpecificCode|lower == "sa"%}5xxxxxxxx{%endif%}">
+        </span>
+        {% else %}
+            <input id="{% block id-prefix %}{% endblock id-prefix %}phonenumber" class="mz-address-phoneNumber billing-input billing-phone {% if model.phoneNumbers.home %} add-input-border {%endif%}" type="number" {% if not model.hasRequiredBehavior %} disabled {% endif %} name="shippingphone" data-mz-value="{{ addresscontext }}phoneNumbers.home" value="{{ model.phoneNumbers.home }}" onkeydown="javascript: return event.keyCode == 69 ? false : true" placeholder="{% if themeSettings.countrySpecificCode|lower == "ae" or themeSettings.countrySpecificCode|lower == "sa"%}5xxxxxxxx{%endif%}">
+        {% endif %}
+        {% comment %} <img src="../../resources/images/icons/green tick.svg" class="phone-number-image {% if model.phoneNumbers.home %} active {% endif %}" alt=""> {% endcomment %}
+        <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}phoneNumbers.home"></span>
+    </div>
+</div>

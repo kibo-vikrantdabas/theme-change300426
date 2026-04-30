@@ -1,0 +1,463 @@
+.mz-hamburgmenu-container {
+    order: 1;
+    .mz-hamburgmenu-icon {
+        width: 30px;
+        height: 30px;
+    }
+    @media @tabletAndMobileScreens{
+        .mz-searchbox-icon{
+            position: relative;
+            visibility: hidden;
+
+            img {
+                margin-left: 18px;
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                top: 2px;
+
+            }
+        }
+        .safari-search-icon{
+            display:none;
+        }
+    }
+
+    @media only screen and (max-width:500px) {
+        position: relative;
+       // top: 6px;
+        //left: 1rem;
+        //bottom: 3px;
+    }
+    @media only screen and (min-width:750px) and (max-width:768px) {
+        margin-bottom: 25px;
+    }
+    @media only screen and (min-width:810px) and (max-width:830px) {
+        margin-top: 0px !important;
+    }
+    @media only screen and (min-width:710px) and (max-width:713px) {
+        margin-left: 2em !important;
+    }
+    @media only screen and (min-width:1024px) {
+        display: none !important;
+    }
+}
+
+.mz-hamburgmenu-option-container {
+    width: 319px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 9;
+    background-color: @white;
+    display: none;
+    max-height:102vH;
+    overflow: hidden scroll;
+    overscroll-behavior: contain;
+    .mz-menu-header {
+        border-bottom: 1px solid @black;
+        .mz-menu-site-logo {
+            text-align: center;
+            position: relative;
+            top: 12px;
+            img {
+                width: 75px;
+                height: 47px;
+            }
+        }
+        .mz-menu-close-icon{
+            text-align: right;
+            position: relative;
+            bottom: 30px;
+            right: 8px;
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    .mz-menu-header.active {
+        display: block;
+    }
+    .mz-menu-header.deactive {
+        display: none;
+    }
+
+    .mz-menu-footer {
+        margin-top: 25px;
+        padding-bottom: 19px;
+        @media(max-width:768px){
+            margin-top: 0px;
+        }
+        .mz-account-section {
+            background-color: @lightGray;
+            padding-bottom: 5px;
+            .mz-anonymous-signin-container,
+            .mz-anonymous-signup-container,
+            .mz-anonymous-order-track-container,
+            .mz-anonymous-loyalty-container,
+            .mz-anonymous-signin-container,
+            .mz-nona-signout-link-container {
+                padding-left: 15px;
+            }
+            .mz-anonymous-order-track-container {
+                padding-bottom: 15px;
+            }
+            .mz-signin-link,
+            .mz-signup-link,
+            .mz-order-track,
+            .mz-signin-link,
+            .mz-signout {
+                padding-top: 17.55px;
+                padding-left: 18px;
+                display: inline-block;
+                > a {
+                    color: @black;
+                    font-family: "MSLondon";
+                    font-size: @fontSize;
+                    font-weight: 600;
+                    letter-spacing: 0;
+                    line-height: 28px;
+                    text-decoration: none;
+                }
+            }
+
+            .mz-sinin-icon,
+            .mz-creataccount-icon,
+            .mz-ordertracking-icon,
+            .mz-sigout-icon, 
+            .mz-wishlist-icon {
+                width: 29px;
+                height: 29px;
+            }
+        }
+        .mz-account-section.active {
+            display: block;
+        }
+        .mz-account-section.deactive {
+            display: none;
+        }
+        .mz-menu-footer-country-selector {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 25px;
+            margin-left: 16px;
+            .mz-country-selector-icon-container{
+                .mz-country-selector-icon {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+            .mz-country-selector-name {
+                color:@black;
+                font-family: "MSLondon";
+                font-size: @fontSizeLarger;
+                font-weight: @fontBold;
+                letter-spacing: 0;
+                line-height: 23px;
+                margin-left: 8px;
+            }
+            .mz-country-selector-expand-container {
+                margin-left: 16px;
+                .mz-l-two-arrow-expand {
+                    width: 17px;
+                    height: 17px;
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        .mz-menu-footer-country-selector.active {
+            display: flex;
+        }
+        .mz-menu-footer-country-selector.deactive {
+            display: none;
+        }
+        .mz-menu-country-dropdown-selector {
+            margin-top: 20px;
+            margin-left: 18px;
+            .label-for-country {
+                color: #333333;
+                font-family: "MSLondon";
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 28px;
+            }
+            .country-selector-country-data-container {
+                margin-top: 5px;
+                .mz-country-selector-icon {
+                    width: 18px;
+                    height: 18px;
+                    position: absolute;
+                    margin-left: 16px;
+                    margin-top: 16px;
+                }
+                .country-data-field {
+                    width: 287px;
+                    height: 48px;
+                    border: 1px solid #CCCCCC;
+                    appearance: none;
+                    background-image: url(../resources/images/icons/svg/downArrow.svg);
+                    background-size: 18px;
+                    background-repeat: no-repeat;
+                    background-position-x: 252px;
+                    background-position-y: center;
+                    padding-left: 50px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    background-color: white;
+                }
+                select.country-data-field:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+                select,option {
+                    width: 287px;
+                }
+            }
+            .label-for-language {
+                color: #333333;
+                font-family: "MSLondon";
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 28px;
+                margin-top: 21px;
+            }
+            .country-selector-language-data-container {
+                margin-top: 5px;
+                .language-data-field {
+                    width: 287px;
+                    height: 48px;
+                    border: 1px solid #CCCCCC;
+                    appearance: none;
+                    background-image: url(../resources/images/icons/svg/downArrow.svg);
+                    background-size: 18px;
+                    background-repeat: no-repeat;
+                    background-position-x: 252px;
+                    background-position-y: center;
+                    padding-left: 16px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    background-color: white;
+                }
+                select.language-data-field:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+                select,option {
+                    width: 287px;
+                }
+            }
+            .country-selector-button-container {
+                margin-top: 15px;
+            .button-go-to-site {
+                height: 48px;
+                width: 287px;
+                background-color: #BED855;
+                color: #333333;
+                font-family: "MSLondon";
+                font-size: 16px;
+                font-weight: bold;
+                letter-spacing: 0;
+                line-height: 23px;
+                padding-right: 40px;
+                &:after {
+                    background: url('@{iconsPath}/Arrow.svg') no-repeat;
+                    width: 50px;
+                    height: 50px;
+                    background-size: 50% 50%;
+                    content: '';
+                    display: inline-block;
+                    position: absolute;
+                    right: 85px;
+                }
+            }
+            }
+        }
+        .mz-menu-country-dropdown-selector.is-active {
+            display: block;
+        }
+        .mz-menu-country-dropdown-selector.deactive {
+            display: none;
+        }
+    }
+    .mz-menu-footer + .mz-seprator.active {
+        display: block;
+        border-bottom: 1px solid @grey;
+        margin-bottom: 25px;
+    }
+    .mz-menu-footer + .mz-seprator.deactive {
+        display: none;
+    }
+    @media only screen and (min-width:1024px)  {
+        display: none !important;
+    }
+
+    @media only screen and (max-width:380px) {
+        max-height: 102vh;
+    }
+    @media only screen and (min-width:381px) and (max-width:400px) {
+        max-height: 83vh;
+    }
+    @media only screen and (min-width:401px) and (max-width:450px) {
+        max-height: 78vh;
+    }
+    @media only screen and (min-width:451px) and (max-width:500px) {
+        max-height: 68vh;
+    }
+    @media only screen and (min-width:501px) and (max-width:767px) {
+        max-height: 98vh;
+    }
+    @media only screen and (min-width:768px) and (max-width:791px) {
+        max-height: 68vh;
+    }
+    @media only screen and (min-width:792px) and (max-width:810px) {
+        max-height: 55vh;
+    }
+    @media only screen and (min-width:810px) and (max-width:850px) {
+        max-height: 59vh;
+    }
+    @media only screen and (min-width:851px) and (max-width:920px) {
+        max-height: 55vh;
+    }
+}
+
+.mz-hamburgmenu-option-container::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+.mz-hamburgmenu-fixed-container {
+    display: none;
+    height: 110px;
+    margin-bottom: 65px;
+    .mz-locator-loyality-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 24px;
+        .mz-menu-find-store-container,
+        .mz-nona-loyalty-container {
+            border: 1px solid @black;
+            flex-grow: 5;
+            height: 45px;
+            width: 140px;
+            text-align: center;
+        }
+        .mz-menu-find-store-container { margin-left: 9px;}
+        .mz-nona-loyalty-container {
+            margin-left: 6px;
+            margin-right: 9px;
+        }
+        .mz-find-store-icon,
+        .mz-loyalty-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        .mz-find-store-link,
+        .mz-blueloyality-link {
+            padding-top: 9px;
+            display: inline-block;
+            > a {
+                color: @black;
+                font-family: "MSLondon";
+                font-size: @fontSize;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 28px;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .mz-help-contact-register-container {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin-top: 24px;
+        .mz-help-link,
+        .mz-contact-link,
+        .mz-register-link {
+            > a {
+                color: @lightBlack;
+                font-family: "MSLondon";
+                font-size: @fontSize;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 18px;
+                text-decoration: none;
+            }
+
+        }
+        .mz-seprator {
+            color: @lightBlack;
+            font-family: "MSLondon";
+            font-size: @fontSize;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 18px;
+        }
+    }
+}
+
+.mz-hamburgmenu-fixed-container.active {
+    display: block;
+}
+
+.mz-hamburgmenu-fixed-container.deactive {
+    display: none;
+}
+//Issue fixes for mobile hamburger menu
+@media(max-width:768px){
+   
+  body  .mz-hamburgmenu-option-container .mz-menu-footer .mz-account-section .mz-signin-link,
+  body  .mz-hamburgmenu-option-container .mz-menu-footer .mz-account-section .mz-signout,
+  body  .mz-hamburgmenu-option-container .mz-menu-footer .mz-account-section .mz-signup-link,
+  body  .mz-hamburgmenu-option-container .mz-menu-footer .mz-account-section .mz-order-track
+    {
+        padding-top:0px;
+    }
+    body .mz-hamburgmenu-option-container .mz-menu-footer{
+        margin-top:0px;
+        padding-bottom: 12px;
+    }
+    .mz-hamburgmenu-option-container .mz-menu-footer .mz-account-section.active {
+        display: block;
+        padding: 16px 0 ;
+    }
+    .mz-hamburgmenu-option-container .mz-menu-footer .mz-account-section.active >div{
+        padding-bottom: 16px;
+    }
+    .mz-hamburgmenu-option-container .mz-menu-footer .mz-account-section.active >div:last-child{
+        padding-bottom: 0px !important;
+    }
+    .mz-hamburgmenu-option-container .mz-menu-footer .mz-menu-footer-country-selector{
+        margin-top: 13px;
+    }
+    .mz-hamburgmenu-option-container {
+        max-height: 100vh  !important;
+        height: 100vh !important;
+    }
+    .mz-hamburgmenu-fixed-container.active {
+        display: block;
+        background-color: @lightGray;
+    }
+    .mz-hamburgmenu-fixed-container .mz-locator-loyality-container{
+        background-color: @white;
+        padding-bottom: 24px;
+    }
+    .mz-mobile-site-nav .mz-sitenav-sub-container-mobile{
+        right:7px;
+    }
+    .mz-hamburgmenu-fixed-container .mz-help-contact-register-container{
+        margin-top: 11px;
+    }
+    .mz-hamburgmenu-option-container .mz-menu-footer+.mz-seprator.active{
+        box-shadow: 0 -2.5px 1px 0 #cccccc;
+    min-height: 2px;
+    border-bottom-width: 0px;
+    }
+
+}

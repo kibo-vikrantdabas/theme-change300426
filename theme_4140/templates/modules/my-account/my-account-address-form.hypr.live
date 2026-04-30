@@ -1,0 +1,75 @@
+﻿﻿{% extends "modules/common/myaccount-address-form" %}
+{% block address-form %}
+    {% set addresscontext="editingContact." %}
+    {% if model.isShippingContact %}
+    {% set countries=pageContext.shippingCountries %}
+    {% endif %}
+
+    <div id="myModal" class="custom-modal">
+     <div class="custom-modal-content">          
+    <li class="mz-accountaddressbook-contact mz-accountaddressbook-form">
+        <div class="custom-modal-header">
+            <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Close-white.svg" alt="close-icon" class="mz-close-icon" data-mz-action="cancelEditContact">
+       </div>
+        <div class="afg-ms-accountaddressbook-form">
+    <div class="credit-heading">
+        <h2> {{labels.addNewContact|title}} </h1>
+    </div>
+    {% parent %}
+
+    
+
+    <div class="mz-contacttypes">
+        <div class="mz-l-formfieldgroup mz-l-formfieldgroup-norows mz-contacttype hidden">
+            <label>
+                <input type="checkbox" class="billingContact" data-mz-value="editingContact.isBillingContact" value="true" {% if model.isBillingContact %} checked="checked" {% endif %}> {{ labels.billingContact }}
+            </label>
+            {% if model.isBillingContact %}
+            <label class="mz-contacttype-isprimary">
+                <input type="checkbox" class="primarybillingContact" data-mz-value="editingContact.isPrimaryBillingContact" value="true" {% if model.isPrimaryBillingContact %} checked="checked" {% endif %}> {{ labels.primary }}
+            </label>
+            {% endif %}
+        </div>
+        {% comment %} <div class="mz-l-formfieldgroup mz-l-formfieldgroup-norows mz-contacttype">
+            <label>
+                <input type="checkbox" class="shippingContact" data-mz-value="editingContact.isShippingContact" value="true" {% if model.isShippingContact %} checked="checked" {% endif %}> {{ labels.shippingContact }}
+            </label>
+            {% if model.isShippingContact %}
+            <label class="mz-contacttype-isprimary">
+                <input type="checkbox" class="primaryshippingContact" data-mz-value="editingContact.isPrimaryShippingContact" value="true" {% if model.isPrimaryShippingContact %} checked="checked" {% endif %}> {{ labels.primary }}
+            </label>
+            {% endif %}
+        </div> {% endcomment %}
+        <div class="mz-l-formfieldgroup mz-l-formfieldgroup-norows mz-contacttype">
+            {% comment %}<label>
+                <input type="checkbox" class="shippingContact" data-mz-value="editingContact.isShippingContact" value="true" {% if model.isShippingContact %} checked="checked" {% endif %}> Set as default address
+                <span class="chkmark"></span>
+            </label> {% endcomment %}
+            <label>
+                <input type="checkbox" class="primaryshippingContact" data-mz-value="editingContact.isPrimaryShippingContact" value="true" {% if model.isPrimaryShippingContact %} checked="checked" {% endif %} data-mz-action="handleDefaultAddress"> {{labels.defaultAddressText}}
+                <span class="chkmark"></span>
+            </label>
+            {% comment %} {% if model.isShippingContact %} 
+            <label class="mz-contacttype-isprimary hidden">
+                <input type="checkbox" class="primaryshippingContact" data-mz-value="editingContact.isPrimaryShippingContact" value="true" {% if model.isShippingContact %} checked="checked" {% endif %}> {{ labels.primary }}
+            </label>
+            {% endcomment %}
+        </div>
+    </div>
+
+    <div class="mz-contact-actions credit-continue-buttons">
+        <p> <span class="is-required"> *</span>{{labels.requiredFields}}  </p>
+        <div class="buttons-wrapper">
+        <button class="mz-contact-cancel" data-mz-action="cancelEditContact">{{ labels.cancel }}</button>
+        <button class="mz-button mz-contact-save" data-mz-action="finishEditContact" id="register1" data-accountID="{{model.accountId}}">{{ labels.save }}</button>
+
+        
+        </div>
+    </div>
+
+</div>
+    </li>
+
+    </div>
+    </div>
+{% endblock address-form %}

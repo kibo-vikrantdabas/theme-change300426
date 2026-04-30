@@ -1,0 +1,29 @@
+﻿<div class="nav_links">
+    <div class='title'>{{ labels.orders }}</div>
+    <ul>
+        <li><a href="{{siteContext.siteSubdirectory}}/myaccount#orderhistory" data-mz-acc-link="account-orderhistory" href="javascript:void(0)">{{labels.onlineOrderAndReturn}}</a></li>
+    </ul>
+</div>
+<div class="nav_links">
+    <div class='title'>{{ labels.profile }}</div>
+    <ul>
+        <li><a class="mz-scrollnav-link" href="javascript:void(0)" data-mz-acc-link="account-settings">{{labels.personalAndContactDetails}}</a></li>
+        <li><a class="mz-scrollnav-link"  href="javascript:void(0)" data-mz-acc-link="password-section">{{labels.changePassword}}</a></li>
+    </ul>
+</div>
+<div class="nav_links_blue">
+    <div class='title'>{{ labels.blueRewards }} <span class=''></span></div>
+    <ul>
+        <li><a href="{{siteContext.siteSubdirectory}}/blue-rewards">{{labels.yourBlueRewardsOffers}}</a></li>
+        <li><a href="{{siteContext.siteSubdirectory}}/blue-rewards#blue-loyalty-howWorks">{{labels.howDoesItWork}}</a></li>
+        <li><a href="https://www.mybluerewards.com/rewards/faqs" target="_blank">{{labels.blueLoyaltyFAQ}}</a></li>
+    </ul>
+</div>
+<div class="nav_links">
+    <div class='title'>{{ labels.paymentAndAddresses }}</div>
+    <ul>
+        <li><a data-mz-acc-link="account-paymentmethods" href="javascript:void(0)">{{labels.paymentCards}}</a></li>
+        <li><a data-mz-acc-link="account-addressbook" href="javascript:void(0)">{{labels.delievryAddress}}</a></li>
+    </ul>
+</div>
+{% require_script "modules/scroll-nav" %}

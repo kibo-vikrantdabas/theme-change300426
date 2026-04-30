@@ -1,0 +1,46 @@
+<div class="mz-menu-footer-country-selector deactive">
+    <div class="afg-ms-menu-footer-country-selector">
+        <div class="mz-country-selector-icon-container">
+            {% for c in model %}
+                {% if c.countryCode == themeSettings.countrySpecificCode %}
+                    <img src="{{c.flagURL}}" alt="country-selector-icon" class="mz-country-selector-icon"   loading="lazy">
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="mz-country-selector-name">
+            {{ themeSettings.countryName }} ({{ pageContext.currencyInfo.CurrencyCode }})
+        </div>
+    </div>
+    <div class="mz-country-selector-expand-container">
+        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="parent-category-icon" class="mz-l-two-arrow-expand"   loading="lazy">
+    </div>
+</div>
+<div class="mz-menu-country-dropdown-selector deactive">
+    <div class="label-for-country">
+        <label for="country">{{ labels.selectCountryORRegion }}</label>
+    </div>
+    <div class="country-selector-country-data-container">
+    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}country.svg" id="flag-icon-mobile" alt="country-selector-icon" class="mz-country-selector-icon"  loading="lazy">
+       <select class="country-data-field" id="{% block id-prefix %}{% endblock id-prefix %}country">
+            {% for c in model %}
+            <option value="{{c.code}}" data-mz-id="{{c.id}}" {% if c.countryCode == themeSettings.countrySpecificCode %}selected{% endif %}>{{c.imgPath}} ({{c.currency}})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="label-for-language">
+        <label for="language">{{labels.selectLanguage}}</label>
+    </div>
+    <div class="country-selector-language-data-container">
+        <select class="language-data-field" id="{% block id-prefix %}{% endblock id-prefix %}languageId">
+            {% for l in model %}
+            {% for language in l.langOptions %}
+            <option value="{{language.Language}}" class="language-option">{{language.Language}}</option>
+            {% endfor %}
+            {% endfor %}
+        </select>
+            <input type="hidden" id="langIdPhone" name="langId" class ="language-option-hidden-mobile" value="" >
+    </div>
+    <div class="country-selector-button-container">
+        <button class="button-go-to-site">{{labels.buttonTextForSite}}</button>
+    </div>
+</div>

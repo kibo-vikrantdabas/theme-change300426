@@ -1,0 +1,20 @@
+<div class="mz-l-container">
+    <h1 class="find-your-nearest-st">{{ labels.localStoresTitle }}</h1>
+    <div class="location-search">
+        <input type="text" class="town-street-name" placeholder="{{labels.townAndStreet}}" value="{% if model.searchInput %} {{model.searchInput}}{% endif %}">
+        <button class="submit-location" data-mz-action='searchByInputLocation'>{{labels.find}}</button>
+        <button class="use-my-location" data-mz-action="getCurrentLocation"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Location.svg" alt="Location" class="mz-location-icon">{{labels.useMyLocation}}</button>
+    </div>
+    <div class="locations-map {% if model.locationHasBeenSearched%} active {% endif%} {% if model.locations.items.length == 0 %} no-location-found {% else %} location-found {% endif %}">
+        <div class="location-container">
+            <div id="location-list">
+            {% if model.showLocations%}
+                {% include "modules/location/locations" with search=model.searchInput%}
+            {% endif %}
+            </div>
+        </div>
+        <div class="map" id="googlemap">
+            Map Here
+        </div>
+    </div>
+</div>

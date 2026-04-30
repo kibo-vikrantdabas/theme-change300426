@@ -1,0 +1,186 @@
+{% comment %} <thead class="mz-carttable-tablehead">
+  <tr class="mz-saved-wishlist-items">
+    <td class="mz-carttable-wishlist-items"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}heart.svg" width="18" height="18" alt="" class="mz-heart-cart-icon">&nbsp;{{labels.savedItems}}&nbsp;(<span id="wishlist-count">0</span>)</td>
+  </tr>
+</thead> {% endcomment %}
+<tbody class="mz-table-cart-items {%if model.isEmpty %}mz-table-cart-isempty{% endif %}">
+  <tr class="mz-carttable-heading">
+    <td class="mz-carttable-head">{{ labels.cartHeading}}</td>
+    {% if not model.isEmpty %}
+    <td></td>
+    <td class="mz-carttable-header-qty">{{ labels.qty }}</td>
+    <td class="mz-carttable-header-total">{{ labels.subtotal }}</td>
+    {% endif %}
+  </tr>
+  {% if not model.isEmpty %}
+    {% for item in model.items %}
+      {% include "modules/cart/cart-table-item-v2" with item as item %}
+    {% endfor %}
+  {% else %} 
+  <tr class="mz-carttable-noitems">
+    <td colspan="5" class="mz-empty-bag-section">
+        {% comment %} {{ labels.cartEmpty }} {% endcomment %}
+        <p class="mz-emplty-bag-icon"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Bag.svg" class="mz-bag-icon"></p>
+        <p class="mz-emplty-bag">{{labels.emptyBag}}</p>
+        <p class="mz-empty-bag-text">{{labels.emptyBagText}}</p>
+        <p class="mz-continueshopping-btn"><a href="{{siteContext.siteSubdirectory}}" class="mz-continueshopping-btn-label">{{labels.continueShopping}}</a></p>
+    </td>
+  </tr>
+  {% endif %}
+</tbody>
+<tbody class="mz-cart-collection-delivery-mobile" style="display: none">
+  <tr>
+    <td class="mz-collection-delivery-details fulfillment-options-mobile">
+        {% include "modules/cart/cart-collection-fulfillment-options-mobile" %} 
+    </td>
+  </tr>
+</tbody>
+<tbody class="mz-cart-collection-delivery-mobile cart-collection-delivery-options" style="display: none;">
+  <tr>
+    <td class="mz-collection-delivery-details">
+      {% include "modules/cart/cart-collection-delivery-options" %}
+    </td>
+  </tr>
+</tbody>
+{% if not model.isEmpty %}
+<tfoot class="mz-carttable-footer">
+  <tr class="mz-carttable-summery-heading mz-carttable-footer-row">
+    <td class="mz-carttable-summery-head"><h2 class="mz-carttable-sec-right">{{ labels.shortDesc }}</h2></td>
+  </tr>
+  {% if model.discountTotal %}
+  <tr class="mz-carttable-ordervalue mz-carttable-footer-row">
+    <td class="mz-carttable-ordervalue-wrap" colspan="5">
+      <span class="mz-ordervalue-text"><span>{{ labels.subtotalCheckout }}</span></span>
+        <span id="mz-carttable-total" class="mz-carttable-total">
+          <span class="currency-code"> {{model.currencyCode}} </span>{{ model.subtotal|floatformat(pageContext.currencyInfo.precision) }}
+        </span>
+    </td>
+    <td></td>
+  </tr>
+  {% endif %}
+  {% if model.discountTotal %}
+  <tr class="mz-carttable-total-saving mz-carttable-footer-row" id="mz-total-saving-cart">
+    <td class="mz-carttable-total-saving-wrap" colspan="5">
+      <span class="mz-total-saving-text"> 
+        <img src="{{siteContext.cdnPrefix}}/resources/images/icons/arrow-down.png" alt="down-cart-icon" class="mz-down-cart-icon">
+        <span class="total-saving-text" {% if model.orderDiscounts %}id="mz-total-saving" {% endif %}>{{labels.totalSaving}}</span>
+      </span>
+        <span id="mz-carttable-total-saving" class="mz-carttable-total">
+          - {{model.currencyCode}} {{ model.discountTotal|floatformat(pageContext.currencyInfo.precision) }}
+        </span>
+    </td>
+    <td></td>
+  </tr>
+  {% endif %}
+  <tr class="mz-carttable-item mz-carttable-footer-row" id="mz-discount-cart-section" style="display: none;">
+    {% for item in model.items %}
+      {% for productDiscount in item.productDiscounts %}
+        {% if productDiscount %}
+          <td class="mz-carttable-item-total">
+            <div class="mz-item-discount">
+              <span class="mz-item-discountname">{% comment %}{{ productDiscount.discount.name }}{% endcomment %} {{labels.promotionCode}}</span>
+              {% if productDiscount.discount.freeShipping %}
+                <span class="mz-item-discountamt">{{ labels.freeShipping }}</span>
+              {% else %}
+              <span class="mz-item-discountamt">- {{model.currencyCode}} {{ productDiscount.impact|floatformat(pageContext.currencyInfo.precision) }}</span>
+              {% endif %}
+            </div>
+          </td>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    {% for discount in model.orderDiscounts %}
+      {% if not discount.excluded %}
+        <td class="mz-carttable-item-total">
+          <div class="mz-item-discount">
+            <span class="mz-item-discountname">{% comment %}{{ discount.discount.name }}{% endcomment %} {{labels.promotionCode}}</span>
+            <span class="mz-item-discountamt">- {{model.currencyCode}} {{ discount.impact|floatformat(pageContext.currencyInfo.precision) }}</span>
+          </div>
+        </td>
+      {% endif %}
+    {% endfor %}
+  </tr>
+  {% comment %} {% for discount in model.orderDiscounts %}
+    {% if not discount.excluded %}
+      <tr class="mz-carttable-item mz-carttable-footer-row">
+        <div class="mz-item-discount">
+        <td class="mz-carttable-total-label" colspan="4">
+        </td>
+        <td class="mz-carttable-item-total">
+          <div class="mz-item-discount">
+            <span class="mz-item-discountname">{{ discount.discount.name }}:</span>
+            <span class="mz-item-discountamt"><span class="currency-code"> {{model.currencyCode}} </span> -{{ discount.impact|floatformat(pageContext.currencyInfo.precision) }}</span>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+    {% endif %}
+  {% endfor %} {% endcomment %}
+  <tr class="mz-carttable-total-row mz-carttable-footer-row" id="mz-carttable-total-row ">
+    <td class="mz-carttable-total-wrap" colspan="5">
+      <span class="mz-total-text"><span>{{ labels.total }}</span> <span class="mz-carttable-total-ed">{{ labels.orderTotalEd }}</span></span>
+        <span id="mz-carttable-total" class="mz-carttable-total">
+          <strong><span class="currency-code"> {{model.currencyCode}} </span>{{ model.total|floatformat(pageContext.currencyInfo.precision) }}</strong>
+        </span>
+    </td>
+    {% comment %} <td></td> {% endcomment %}
+  </tr>
+  <tr class="mz-carttable-checkout-row mz-carttable-footer-row">
+    <td colspan="5" class="mz-carttable-checkout-btn">
+      {% if model.hasRequiredBehavior %}<button id="cart-checkout" class="mz-button mz-button-large mz-carttable-button-active"  {% if model.isEmpty %} disabled="disabled" {% endif %}  data-mz-action="proceedToCheckout"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}Lock.svg" width="21" height="21" alt="" class="mz-lock-checkout-icon">{{ labels.checkoutSecurely }}</button>
+        {% if not model.isEmpty and not model.bf_ext_enabled %}
+          {% with siteContext.checkoutSettings.externalPaymentWorkflowSettings|findwhere("isEnabled", true) as externalPaymentWorkflowsEnabled %}
+            {% if externalPaymentWorkflowsEnabled %}
+              <div>
+                <p>{{labels.orWith}}</p>
+                {% for externalPayment in siteContext.checkoutSettings.externalPaymentWorkflowSettings %}
+                    {% if externalPayment.isEnabled %}
+                    <div class="mz-carttable-thirdpartypayment" >
+                      {% if externalPayment.name|lower == "paywithamazon" %}
+                          <div id="AmazonPayButton"></div>
+                      {% endif %}
+                      {% if externalPayment.name == "VisaCheckout" %}
+                        <img alt="Visa Checkout" class="v-button" role="button" src="{{pageContext.visaCheckoutButtonUrl}}"/>
+                      {%endif%}
+                      {% if externalPayment.name == "PayPalExpress2" %}
+                        <img id="btn_xpressPaypal" class="p-button" alt="Check out with PayPal" role="button" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" width="170px" height="32px" />
+                      {%endif%}
+                      {% if externalPayment.name == "APPLEPAY" and themeSettings.isApplePayButtonOnCart %}
+                        <div class="apple-pay-button test-class" role="button" width="200px"  id="applePayButton"></div>
+                      {% endif %}
+                    </div>
+                    {%endif%}
+                {%endfor%}
+              </div>
+            {% endif %}
+          {%endwith%}
+        {% endif %}
+      {% endif %}
+    </td>
+  </tr>
+</tfoot>
+{% endif %}
+<tbody class="mz-collection-delivery-options-main">
+  <tr class="mz-collection-delivery-list">
+    <td class="mz-collection-delivery-data">
+        {% include "modules/cart/cart-collection-fulfillment-options" %} 
+    </td>
+  </tr>
+</tbody>
+<tfoot class="mz-collection-delivery-options-main">
+  <tr class="mz-collection-delivery-list">
+    <td class="mz-collection-delivery-data">
+        {% include "modules/cart/cart-collection-delivery-options" %} 
+    </td>
+  </tr>
+</tfoot>
+{% if not model.isEmpty %}
+<tfoot class="mz-sticky-checkout-main">
+  <tr class="mz-sticky-checkout show-for-sticky">
+    <td  class="cart-sticky-checkout">
+      <div class="cart-sticky-checkout-total"></div>
+      <div class="cart-sticky-checkout-btn"></div>
+    </td>
+  </tr>
+</tfoot>
+{% endif %}

@@ -1,0 +1,39 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is your refund and returns policy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You may return unused products within 35 days of purchase (14 days for sale items) with a printed return note. Your items don’t need to be in the original box or bag as long as they’re securely packaged."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When will I receive my refund?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It can take up to 28 working days to process your return."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I have a damage/faulty item?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If your item is damaged/faulty we will provide a replacement (depending on stock availability) or a refund based on your preference."
+        }
+      },
+       {
+        "@type": "Question",
+        "name": "What if I have a damage/faulty item?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Please our customer service team. We will not charge shipping costs for the return of faulty or damaged items."
+        }
+      }
+      ]
+    }
+</script>

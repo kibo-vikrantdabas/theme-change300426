@@ -1,0 +1,9 @@
+<div class="mz-swatch-img-container">
+	{% with labels.swatchFile|string_format(model.productCode, swatchCode) as swatchFile %}
+		<div data-mz-product-option="{{ option.attributeFQN }}" data-value="{{value.value}}">
+		<a href="{% if themeSettings.isArabicLanguageSite %}{{siteContext.siteSubdirectory}}{% endif %}{% make_url "product" model with color=color %}">
+			<img class="mz-colour-swatch-img" src="{% make_url "cdn" swatchFile %}"  onerror="this.onerror=null;this.src='{{siteContext.cdnPrefix}}{{labels.svgIconPath}}NoSwatch.svg'" alt="{{value.value|split("_"|last)}}"/>
+			</a>
+		</div>
+	{% endwith %}                               
+</div>

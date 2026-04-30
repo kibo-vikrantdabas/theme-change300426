@@ -1,0 +1,100 @@
+﻿{% block credit-card-form %}
+<div class="new-card-div">
+    <span>{{labels.addNewCard}}</span>
+</div>
+
+{% if user and not user.isAnonymous %}
+<div class="save-card-div"> 
+    <span class="saveCardView {% if model.hideSavedCard %} hidden {% endif %}" ><a data-mz-value="saveCardFlag" href="javascript:;" class="saveCardViewlabel">{{labels.saveCardView}}</a></span>
+</div>
+{%endif%}
+{% comment %} {%endif%} {% endcomment %}
+    {% comment %} <div class="mz-payment-credit-card-type-row mz-payment-card-row">
+       
+        <div class="card-text-title">
+            <label for="mz-payment-credit-card-type">{{ labels.cardType }}<span class=""> *</span>:</label>
+        </div>
+        <div class="">
+     <select id="mz-payment-credit-card-type" class="card-text-input" data-mz-value="{{ cardcontext }}paymentOrCardType">
+        <option></option>
+        {% if siteContext.checkoutSettings.supportedCards.visa %}
+        <option value="VISA" {% if model.paymentOrCardType == "VISA" %}selected="selected"{% endif %}>{{ labels.ccVisa }}</option>
+        {% endif %}
+        {% if siteContext.checkoutSettings.supportedCards.mc %}
+        <option value="MC" {% if model.paymentOrCardType == "MC" %}selected="selected"{% endif %}>{{ labels.ccMastercard }}</option>
+        {% endif %}
+        {% if siteContext.checkoutSettings.supportedCards.amex %}
+        <option value="AMEX" {% if model.paymentOrCardType == "AMEX" %}selected="selected"{% endif %}>{{ labels.ccAmericanExpress }}</option>
+        {% endif %}
+        {% if siteContext.checkoutSettings.supportedCards.discover %}
+        <option value="DISCOVER" {% if model.paymentOrCardType == "DISCOVER" %}selected="selected"{% endif %}>{{ labels.ccDiscover }}</option>
+        {% endif %}
+		{% if siteContext.checkoutSettings.supportedCards.jcb %}
+        <option value="JCB" {% if model.paymentOrCardType == "JCB" %}selected="selected"{% endif %}>{{ labels.ccJcb }}</option>
+        {% endif %}
+    </select>
+            <span class="mz-validationmessage" data-mz-validationmessage-for="{{ cardcontext }}paymentOrCardType"></span>
+        </div>
+    </div> {% endcomment %}
+    <input type="hidden" value="" id="mz-payment-credit-card-type" data-mz-value="{{ cardcontext }}paymentOrCardType" data-mz-card-type>
+    <div class=" mz-payment-credit-card-name-row mz-payment-card-row">
+        <div class="card-text-title">
+            <label for="mz-payment-credit-card-name">{{ labels.cardHordersName }}<span class="">*</span></label>
+        </div>
+        <div class="">
+            <input type="text" class="card-text-input mz-cardholder-name" name="credit-card-name" id="mz-payment-credit-card-name" data-mz-value="{{ cardcontext }}nameOnCard" value="{{ model.nameOnCard }}">
+            <span class="mz-validationmessage card-name-validation" data-mz-validationmessage-for="{{ cardcontext }}nameOnCard"></span>
+        </div>
+    </div>
+    <div class=" mz-payment-credit-card-number-row mz-payment-card-row">
+        <div class="card-text-title">
+            <label for="mz-payment-credit-card-number">{{ labels.cardNumber }}<span class="">*</span></label>
+        </div>
+        <div class="card-number-input-div">
+            {% if model.paymentOrCardType %}
+                 {% if model.paymentOrCardType === "VISA" %}
+                <img class="credit-card-image cc " src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/VISA.svg" alt="visa">
+                {% endif %}
+                {% if model.paymentOrCardType === "AMEX"%}
+                <img class="credit-card-image cc" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/AmericanExpress-2.svg" alt="amex">
+                {% endif %}
+                {% if model.paymentOrCardType === "MC" %}
+                <img class="credit-card-image cc" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Masters.svg" alt="mastercard">
+                {% endif %}
+                {% if model.paymentOrCardType === "" %}
+                <img class="credit-card-image cc" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/CreditCard.svg" alt="creditCard">
+                {% endif %}
+                <img class="credit-card-image card hidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/CreditCard.svg" alt="creditCard">
+                <img class="credit-card-image visa hidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/VISA.svg" alt="visa">
+                <img class="credit-card-image amex hidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/AmericanExpress-2.svg" alt="amex">
+                <img class="credit-card-image jcb hidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/JCB.svg" alt="jcb">
+                <img class="credit-card-image mastercard hidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Masters.svg" alt="mastercard">
+            {% else %}
+            <img class="credit-card-image card" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/CreditCard.svg" alt="creditCard">
+            <img class="credit-card-image visa hidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/VISA.svg" alt="visa">
+            <img class="credit-card-image amex hidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/AmericanExpress-2.svg" alt="amex">
+            <img class="credit-card-image jcb hidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/JCB.svg" alt="jcb">
+            <img class="credit-card-image mastercard hidden" src="{{siteContext.cdnPrefix}}/resources/images/icons/svg/Masters.svg" alt="mastercard">
+            {% endif %}
+            <input type="text" class="card-text-input-number" name="credit-card-number" id="mz-payment-credit-card-number" data-mz-value="{{ cardcontext }}cardNumberPartOrMask" value="{{ model.cardNumberPartOrMask}}" data-mz-card-number>
+            {% if model.cardNumberPartOrMask != '' and model.paymentOrCardType == '' %}
+            <span class="mz-validationmessage card-number-validation" data-mz-validationmessage-for="{{ cardcontext }}paymentOrCardType"></span>
+            {%else%}
+            <span class="mz-validationmessage card-number-validation" data-mz-validationmessage-for="{{ cardcontext }}cardNumberPartOrMask"></span>
+            {% endif%}
+            {% comment %} <span class="mz-validationmessage card-number-validation" data-mz-validationmessage-for="{{ cardcontext }}paymentOrCardType"></span> {% endcomment %}
+        </div>
+    </div>
+    
+    <div class=" mz-payment-credit-card-expiration-row mz-payment-card-row">
+        <div class="card-text-title">
+            <label for="mz-payment-expiration-month">{{ labels.expiryDate }}<span class="">*</span></label>
+        </div>
+        <div class="">
+            <input type="text" class=" mz-l-formfieldgroup-halfsize card-text-input-half mz-card-expire-month" placeholder="{{labels.mm}}" id="mz-payment-expiration-month" name="expiration-month" data-mz-value="{{ cardcontext }}expireMonth" value="{{model.expireMonth}}"> <span class="card-slash">/</span>
+            <input type="text" class=" card-text-input-half mz-card-expire-year" placeholder="{{labels.yy}}" name="mz-payment-expiration-year" data-mz-value="{{ cardcontext }}expireYear" value="{{model.expireYear| replace('20')}}">
+            
+           <span class="mz-validationmessage expire-date-validation" data-mz-validationmessage-for="{{ cardcontext }}expireYear"></span>
+        </div>
+    </div>
+{% endblock credit-card-form %}

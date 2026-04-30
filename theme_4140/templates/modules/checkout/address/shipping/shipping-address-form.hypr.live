@@ -1,0 +1,12 @@
+<div class="mz-contactselector-contact mz-contactselector-new mz-checkoutform-shipping">
+    <span class="mz-contactselector-summarywrapper mz-checkout-delivery-address">
+      {% if not model.isSelectedAddress %}
+        {% block enter-new-form %}
+          {% include "modules/common/address-form" with model=editingContact %}
+          <button class="address-cancel-button" data-mz-action="cancel">
+            {{ labels.cancel }}
+          </button>
+        {% endblock enter-new-form %}
+      {% endif %}
+    </span>
+</div>

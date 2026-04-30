@@ -1,0 +1,323 @@
+.mz-pageheader {
+    .mz-location-nav-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        // align-items: flex-end;
+        // height: 32px;
+      //  width: 99.8vW;
+        background-color: #DFECE2;
+        position: relative;
+     //   left: -28px;
+     //   top: -13px;
+        // @media only screen and (max-width:1023px) {
+        //     width: 105vW;
+        //     left: -25px;
+        // }
+        // @media only screen and (max-width:375px) {
+        //     width: 112vW;
+        // }
+        .mz-promotion-bannner {
+            //flex-grow: 70;
+            font-size: @fontSizeSmall;
+            font-weight: 700;
+            color: @black;
+        }
+        .mz-help-section {
+            padding-left: 10px;
+        }
+        .mz-find-store-section {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .mz-country-section {
+            padding-right: 10px;
+            .mz-country-selector-icon {
+                // width: 30px;
+                // height: 30px;
+                cursor: pointer;
+            }
+            @media only screen and (max-width:992px) {
+                display:none;
+            }
+        }
+        .mz-find-store-section,
+        .mz-help-section,
+        .mz-country-section,
+        .mz-seprator {
+            align-self: center;
+        }
+        .mz-find-store-section > a,
+        .mz-help-section,
+        .mz-help-section > a,
+        .mz-seprator {
+            color: #000;
+            font-family: "MSLondon";
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 16px;
+            text-align: center;
+            text-decoration: none;
+            @media only screen and (max-width:992px) { 
+                display:none;
+            }
+        }
+    }
+    .promotion-bannner-container{
+
+    }
+    .mz-promotion-bannner {
+       
+    }
+    .promotion-right{
+        // position: absolute;
+        // right: 6%; 
+        // top:50%;
+        // flex: 30%;
+        // transform: translateY(-50%);
+        display: flex;
+        align-items: flex-end;
+        // padding-right: 20px;
+
+        // @media only screen and (min-width:1137px) and (max-width:1140px) {
+        //     right: 3%;
+        // }
+        // @media only screen and (min-width:1170px) and (max-width:1185px) {
+        //     right: 9%;
+        // }
+    }
+    // @media only screen 
+    //     and (min-device-width: 768px) 
+    //     and (max-device-width: 1024px) 
+    //     and (orientation: landscape) 
+    //     and (-webkit-min-device-pixel-ratio: 1) {
+    //              width: 97%;
+    //     .mz-location-nav-container {
+    //         width: 103%;
+    //     }
+    // }
+    &.mz-checkoutPage {
+        height: 118px !important;
+        @media @mobileScreens {
+            height: 68px !important;
+        }
+    }
+}
+.mz-promotion-bannner{
+        
+    // #carousel {
+    //     position: relative;
+    //     width:60%;
+    //     margin:0 auto;
+    // }
+        
+    #slides {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        // height: 32px;
+        // margin-top: -4px;
+        cursor: pointer;
+        &:hover{
+            cursor: pointer;
+            li a{
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+
+        // @media @mobileScreens {
+        //     margin-left: -30% !important;
+        // }
+
+        // //Airpad 4 Portrait mode
+        // @media only screen and (min-width:790px) and (max-width:830px) {
+        //     margin-left: -30%;
+        // }
+
+        // //Airpad 4 landscape mode
+        // @media only screen and (min-width: 1050px) and (max-width:1255px) and (orientation: landscape) { 
+        //     margin-left: -20%;
+        // }
+    
+        // @media only screen and (min-width:1040px) and (max-width:1100px) {
+        //     margin-left: -20%;
+        // }
+
+        // // Samsung Tab 6 Portrait Mode
+        // @media only screen and (min-width:710px) and (max-width:770px) {
+        //     margin-left: -30%;
+        // }
+    }
+        
+    #slides ul {
+        list-style: none;
+        width:100%;
+        // height:32px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        font-size: 12px;
+        line-height: 16px;
+        font-family: @fontFamily;
+        color: @black;
+        font-weight: bold;
+        @media @mobileScreens {
+            left: -390px;
+        }
+    }
+        
+    #slides li {
+        width:100%;
+        // height:32px;
+        float:left;
+        text-align: center;
+        position: relative;
+        font-size: 12px;
+        line-height: 16px;
+        font-family: @fontFamily;
+        color: @black;
+        font-weight: bold;
+    }
+
+
+    #slides li a{
+        text-decoration:none;
+        font-size: 12px;
+        line-height: 16px;
+        font-family: @fontFamily;
+        color: @black;
+        font-weight: bold;
+    }
+
+    /* Styling for prev and next buttons */
+    #buttons {
+        position: relative;
+        margin-top: -44px;
+
+        @media @tabletScreens{
+            display: none;
+        }
+        @media @mobileScreens {
+            display: none;
+        }
+        @media only screen and (min-width:1137px) and (max-width:1140px) {
+            display: none;
+        }
+
+        @media only screen and (min-width: 1050px) and (max-width:1255px) and (orientation: landscape) { 
+            display: none;
+        }
+    
+        @media only screen and (min-width:1040px) and (max-width:1100px) {
+            display: none;
+        }
+    }
+
+    #buttons a {
+        font-size:26px;
+        color:#363636;
+        text-decoration:none;
+        width:35px;
+    }
+
+    a#prev:hover, a#next:hover {
+        color:#000;
+        text-shadow:.5px 0px #b14943;  
+    }
+
+    /* Next & previous buttons */
+    .prev {
+        //position: absolute;
+        border-radius: 0 3px 3px 0;
+        margin-left: -20px;
+    }
+    
+    /* Position the "next button" to the right */
+    .next {
+        position: absolute;
+        right: -38px;
+        border-radius: 3px 0 0 3px;
+        margin-top: 1px;
+    }
+}
+
+
+// New Design UI
+
+.afg-ms-pageheader {
+    .mz-location-nav-container {
+        @media (min-width: 992px) and (max-width: 1299px) {
+            padding: 0 22px;
+        }
+    }
+    .mz-location-nav-container {    
+        align-items: center;
+        height: 30px;
+        @media (max-width: 992px) {
+            height: 28px;
+        }
+        .mz-country-section {
+            .mz-country-selector-icon {
+                width: 15px;
+                height: auto;
+                padding-top: 2px;
+            }
+        }
+        .promotion-bannner-container {
+            display: flex;
+            justify-content: space-between;
+            @media @mobileScreens {
+                display: block;
+            }
+            .mz-promotion-bannner {
+                flex: 1;                
+                max-width: 82%;
+                direction: ltr;
+                @media @mobileScreens {
+                    max-width: 100%;
+                }
+            }
+            .mz-cms-content {
+                padding: 0;
+            }            
+            #slides {
+                height: 30px;
+                @media (min-width: 992px) {
+                    margin-left: -12%;
+                }
+                @media @mobileScreens {
+                    margin-left: -14%!important;
+                }
+                li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    // @media @mobileScreens {
+                    //     display: block;
+                    // }
+                }
+                // a {
+                //     @media @mobileScreens {
+                //         width: 100%;
+                //         text-align: center;   
+                //     }                    
+                // }
+                ul {
+                    height: 30px;
+                }
+            }
+            #buttons {
+                display: none;
+            }
+        }
+        .promotion-right {
+            justify-content: flex-end;
+            .mz-seprator {
+                font-size: @fontSize!important;
+            }
+        }
+    }
+}

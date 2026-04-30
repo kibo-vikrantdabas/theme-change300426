@@ -1,0 +1,8 @@
+{% comment %}{% if siteContext.currencyInfo.currencyCode == "784" or siteContext.currencyInfo.currencyCode|lower == "aed" %}
+        AED
+{% endif %}
+
+{% if siteContext.currencyInfo.currencyCode == "414" or siteContext.currencyInfo.currencyCode|lower == "kwd" %}
+        KWD
+{% endif %}{% endcomment %}
+{{themeSettings.currencyCode}}

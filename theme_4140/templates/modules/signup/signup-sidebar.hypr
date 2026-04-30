@@ -1,0 +1,12 @@
+<div class="mz-signup-sidebar">
+    <div class="sidebar-info-div">
+        <div class="sidebar-text">
+            <span class="span-header">{{labels.signupSidebarHeader}}</span>
+            <span class="span-text">{{ labels.signupSidebarText1}}</span>
+            <span class="span-text">{{ labels.signupSidebarText2}}</span>
+            <span class="span-text">{{ labels.signupSidebarText3}}</span>
+            <span class="span-text">{{ labels.signupSidebarText4}}</span>
+        </div>
+    </div>
+
+</div>

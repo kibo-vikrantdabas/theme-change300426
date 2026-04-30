@@ -1,0 +1,31 @@
+﻿{% with item.productDiscount as productDiscount %}
+  {% if item.unitPrice.saleAmount %}
+    {% if productDiscount %}
+      <span class="1 mz-item-price is-crossedout" {% block crossedout-inline-style %}{% endblock crossedout-inline-style %}><span class="currency-code"> {{model.currencyCode}} </span>{{ item.unitPrice.extendedAmount|floatformat(pageContext.currencyInfo.precision) }}</span>
+      <span class="2 mz-item-price is-saleprice"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.discountedTotal|divide(item.quantity)|floatformat(pageContext.currencyInfo.precision) }}</span>
+    {% else %}
+      <span class="3 mz-item-price is-crossedout" {% block crossedout-inline-style %}{% endblock crossedout-inline-style %}><span class="currency-code"> {{model.currencyCode}} </span>{{ item.unitPrice.listAmount|floatformat(pageContext.currencyInfo.precision) }}</span>
+      <span class="4 mz-item-price is-saleprice"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.unitPrice.extendedAmount|floatformat(pageContext.currencyInfo.precision) }}</span>
+    {% endif %}
+  {% else %}
+    <span class="5 mz-item-price {% if productDiscount %} is-crossedout{% endif %}"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.unitPrice.extendedAmount|floatformat(pageContext.currencyInfo.precision) }}</span>
+    {% if productDiscount %}
+    <span class="6 mz-item-price is-saleprice"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.discountedTotal|divide(item.quantity)|floatformat(pageContext.currencyInfo.precision) }}</span>
+    {% endif %}
+  {% endif %}
+{% endwith %}
+
+{% comment %} 
+{% with item.productDiscounts|first as productDiscount %}
+  {% if item.unitPrice.saleAmount %}
+    {% if not productDiscount or productDiscount.appliesToSalePrice %} 
+        <span class="mz-item-price is-crossedout" {% block crossedout-inline-style %}{% endblock crossedout-inline-style %}><span class="currency-code"> {{model.currencyCode}} </span>{{ item.unitPrice.listAmount|floatformat(pageContext.currencyInfo.precision) }}</span>
+        <span class="mz-item-price is-saleprice"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.unitPrice.extendedAmount|floatformat(pageContext.currencyInfo.precision) }}</span>
+    {% else %}
+        <span class="mz-item-price"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.unitPrice.extendedAmount|floatformat(pageContext.currencyInfo.precision) }}</span>
+    {% endif %}
+  {% else %}
+    <span class="mz-item-price"><span class="currency-code"> {{model.currencyCode}} </span>{{ item.unitPrice.extendedAmount|floatformat(pageContext.currencyInfo.precision) }}</span>
+  {% endif %}
+{% endwith %}
+{% endcomment %}

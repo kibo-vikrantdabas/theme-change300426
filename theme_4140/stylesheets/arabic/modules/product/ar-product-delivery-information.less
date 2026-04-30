@@ -1,0 +1,169 @@
+.mz-product-container .mz-delivery-information-container {
+    .mz-collection-information-container {
+        .mz-information-text, .mz-details-information-text {
+            color: @black;
+            font-family: 'Helvetica Neue LT Arabic';
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: @fontBold;
+            letter-spacing: 0;
+            box-sizing: border-box;
+            background-repeat: no-repeat;
+            background-position-x: 95%;
+            background-position-y: center;
+            border-left: none;
+            border-right: none;
+            border-top: 1px solid @lightWhite;
+            padding-top: 21px;
+            padding-bottom: 21px;
+            padding-left: 0;
+            cursor: pointer;
+            @media @mobileScreens {
+                padding-top: 21.5px!important;
+                padding-bottom: 19.5px;
+            }      
+        }
+        .mz-information-text{
+            @media @mobileScreens{
+               //margin-left: -10px;
+                width: 100%;
+                padding-top: 17px;
+
+            }
+        }
+        .mz-details-information-text {
+            @media @mobileScreens{
+                 margin-left: 0px;
+                 width: 100%;
+                 padding-top: 17px;
+ 
+             }
+        }
+
+
+        .mz-information-text.active, .mz-details-information-text.active {
+            border-bottom:none;
+            background-image: url('@{svgIconsPath}upArrow1.svg');
+            background-size: 25px;
+            background-position: 100%;
+            background-position: left;
+        }
+        .mz-information-text.deactive, .mz-details-information-text.deactive  {
+            background-image: url('@{svgIconsPath}downArrow.svg');
+            background-size: 21px;
+            background-position: 100%;
+            background-position: left;
+        }
+        .mz-information-text.active + .mz-container, .mz-details-information-text.active + .mz-container  {
+            display: block;
+            padding-bottom: 21px;
+        }
+        .mz-information-text.deactive + .mz-container, .mz-details-information-text.deactive + .mz-container {
+            display: none;
+        }
+
+        .mz-delivery-info-headline,
+        .mz-collection-info-headline {
+            color: @black;            
+            font-size: @fontSize;
+            font-weight: @fontBold;
+            letter-spacing: 0;
+            line-height: 21px;            
+        }
+        
+        .mz-tracked-delivery-info,
+        .mz-cashed-delivery-info,
+        .mz-collect-store-info,
+        .mz-tracked-delivery-text,
+        .mz-cashed-delivery-text,
+        .mz-collect-store-text {
+            color: @black;            
+            font-size: @fontSize;
+            font-weight: @fontBold;
+            letter-spacing: 0;
+            line-height: 21px;
+            @media @mobileScreens{
+                margin-left: 45px;                
+                font-family: @fontFamily;                
+                letter-spacing: 0;
+                line-height: 21px;
+            }
+        }
+        .mz-tracked-delivery-info,
+        .mz-cashed-delivery-info,
+        .mz-collect-store-info {
+            font-weight: @fontBold;
+        }
+        .mz-tracked-delivery-container,
+        .mz-cashed-delivery-container,
+        .mz-collect-store-container {
+            display: grid;
+            grid-template-columns: 1fr 3.5fr 6fr;
+            align-items: center;
+            @media @mobileScreens{
+                display: flex;
+                 flex-direction: column;
+                 align-items: unset;
+            }
+        }
+        .mz-tracked-delivery-text,
+        .mz-cashed-delivery-text,
+        .mz-collect-store-text {
+            font-weight: 600;
+            color: @black;
+            @media @mobileScreens{
+                width: 215px;
+                /* float: left; */
+                position: absolute;
+                margin-right: 45px;                
+                font-family: @fontFamily;
+                font-size: 14px;
+                letter-spacing: 0;
+                line-height: 21px; 
+            }
+        }        
+        .mz-collection-info-container { 
+            margin-top: 21px;            
+        }
+        .mz-tracked-delivery-container,
+        .mz-collect-store-container {
+            margin-top: 16px;
+        }
+        .mz-cashed-delivery-container {
+            margin-top: 16px;
+        }        
+        .mz-delivery-informaion-link,
+        .mz-return-refund-link {
+            color: @black;
+            font-family: "MSLondon";
+            font-size: @fontSize;
+            font-weight: 600;
+            letter-spacing: 0;            
+        }
+        .mz-delivery-informaion-link { margin-top: 21px;}
+        .mz-return-refund-link { margin-top: 15px; }
+        .mz-track-delivery-icon,
+        .mz-cash-delivery-icon,
+        .mz-collect-icon {
+            height: 28px;
+            width: 28px;
+            position: relative;
+            bottom: 2px;
+        }        
+        
+    }
+    
+}
+
+.mz-product-container .mz-delivery-information-container.mz-deliveryCollectionReturn {
+    border-bottom: 1px solid @lightWhite;
+    @media @mobileScreens {
+        width: auto;
+        /* margin-right: 17px; */
+        margin-left: 0px;
+
+    }
+}
+.mz-deliveryCollectionReturn{
+    margin-bottom: 40px;
+}

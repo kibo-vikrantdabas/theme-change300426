@@ -1,0 +1,108 @@
+﻿<div class="mz-locationlisting" data-code="{{model.code}}">
+    <div class="mz-locationlisting-title deactive">
+        <label for="location-{{model.code}}">
+            <h4 class="mz-locationlisting-name">
+                <span class="icon-container closed">
+                    <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="Chevron" class="mz-address-open-icon">
+                </span>
+                {{model.index}}. {{ model.name }}
+            </h4>
+        </label>
+        <span class="stores-distance"> {{model.approxDistance}} {{labels.km}} </span>
+    </div>
+    <input type="checkbox" style="display: none" class="toggleLocationDetails" id="location-{{model.code}}">
+    <div class="mz-locationlisting-details">
+        <div class="mz-addresssummary">
+            {% comment %} {% include "modules/common/address-summary" with locationFlag=true %} {% endcomment %}
+                <div class="mz-location-name">{{ model.firstName }} {{ model.lastNameOrSurname }}</div>
+                <div class="mz-location-first-address">{{ model.address.address1 }}</div>
+                {% if model.address.address2 %}
+                    <div class="mz-location-second-address">{{ model.address.address2 }}</div>
+                {% endif %}
+                {% if model.address.address3 %}
+                    <div class="mz-location-third-address">{{ model.address.address3 }}</div>
+                {% endif %}
+                <div class="mz-location-city">{{ model.address.cityOrTown }}</div> 
+                {% if model.address.stateOrProvince != "n/a" %}<div class="mz-location-state"> {{ model.address.stateOrProvince }} </div>{%endif%}  
+                {% if model.phone %}
+                    <div class="mz-location-phone-number"><img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}CallPhone.svg" alt="telephone-image" class="telephone-icon">{{ model.phone }}</div>
+                {% endif %}
+                {% if model.fulfillmentTypes %}
+                    {% for type in  model.fulfillmentTypes %}
+                        {% if type.code|lower == "sp" %}
+                            <div class="mz-click-collect">{{labels.clickAndCollect}}</div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+        </div>
+        <div class="mz-location-openingtime">
+            <div class="mz-openingtime-title deactive">
+                <label for="location-openingtimes">
+                    <span class="icon-container-closed">
+                        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="Chevron" class="mz-openingtime-open-icon">
+                    </span>
+                    {{labels.openingtimes}}
+                </label>
+            </div>
+            <div class="mz-openingtime-details deactive">
+                <div class="mz-openingtime-hours">
+                <span class="monday">{{labels.mondayForOpeningHours}}:</span>  <span>{{model.regularHours.monday.label}} </span><br>
+                <span class="tuesday">{{labels.tuesdayForOpeningHours}}:</span> <span>{{model.regularHours.tuesday.label}}</span><br>
+                <span class="wednesday">{{labels.wednesdayForOpeningHours}}:</span> <span>{{model.regularHours.wednesday.label}}</span><br>
+                <span class="thursday">{{labels.thursdayForOpeningHours}}:</span> <span>{{model.regularHours.thursday.label}}</span><br>
+                <span class="friday">{{labels.fridayForOpeningHours}}:</span>  <span>{{model.regularHours.friday.label}}</span><br>
+                <span class="saturday">{{labels.saturdayForOpeningHours}}:</span> <span>{{model.regularHours.saturday.label}}</span><br>
+                <span class="sunday">{{labels.sundayForOpeningHours}}:</span> <span>{{model.regularHours.sunday.label}}</span>
+                </div>
+            </div>
+        </div>
+        {% comment %}<div class="mz-location-departments">
+            <div class="mz-department-title deactive">
+                <label for="location-department">
+                    <span class="icon-container-department-closed">
+                        <img src="{{siteContext.cdnPrefix}}{{labels.svgIconPath}}right-arrow.svg" alt="Chevron" class="mz-department-open-icon">
+                    </span>
+                    {{labels.departments}}
+                </label>
+            </div>
+            <div class="mz-location-departments deactive">
+                <div class="mz-location-department-list">
+                   {% for item in model.attributes  %}
+                        {% for department in item.values|first|split(",") %}
+                            <div class="department-list-name">
+                                {{ department }}
+                            </div>
+                        {% endfor %}
+                   {% endfor %}
+                </div>
+            </div>
+        </div>{% endcomment %}
+        {% comment %} <div>
+            {% for attr in model.attributes %}
+                {% if attr.attributeDefinition %}
+                <div>
+                    <span>{{ attr.attributeDefinition.content.value}}:&nbsp;</span>
+                    {% if attr.attributeDefinition.inputType === 'Date' %}
+                        <span>{{ attr.values[0]|date("n/j/Y") }}</span>
+                    {% else %}
+                        {% for idx, value in attr.values %}
+                            {% if idx !== attr.values.length-1 %}
+                                <span>{{ value }},&nbsp;</span>
+                            {% else %}
+                                <span>{{ value }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div> {% endcomment %}
+
+    </div>
+
+    {% if location.distance %}
+    <div class="mz-locationlisting-distance">
+        {{ labels.milesAway|string_format(location.distance) }}
+    </div>
+    {% endif %}
+</div>

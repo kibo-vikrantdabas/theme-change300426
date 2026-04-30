@@ -1,0 +1,23 @@
+.plp-container {
+    .three-column {
+        .mz-plpBannerContainer {
+            @media @mobileScreens {
+                grid-column-start: 1 !important;
+                grid-column-end: 2 !important;
+            }
+            @media @tabletScreens {
+                grid-column-start: 1 !important;
+                grid-column-end: 3 !important;
+            }
+        }
+    }
+    .four-column { 
+        .mz-plpBannerContainer {
+            @media @mobileScreens {
+                grid-column-start: 1 !important;
+                grid-column-end: 3 !important;
+                margin-bottom: 10px;
+            }
+        }
+    } 
+}

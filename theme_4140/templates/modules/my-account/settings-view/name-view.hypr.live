@@ -1,0 +1,13 @@
+<div class="mz-accountsettings-firstnamefull">
+    <label class="mz-account-settings-label-name">{{ labels.firstName }}* </label>
+    <div class="input-holder">
+      <input class="mz-accountsettings-firstname required-field {% if model.firstName != "" %}bdr1 {% endif %}" type="text" placeholder="{{ labels.firstName }}" data-mz-value="firstName" value="{{ model.firstName }}" />
+    </div>
+</div>
+
+<div class="mz-accountsettings-lastnamefull">
+    <label class="mz-account-settings-label-name">{{ labels.lastName }}* </label>
+    <div class="input-holder">
+      <input class="mz-accountsettings-lastname required-field {% if model.lastName != "" %}bdr1 {% endif %}" type="text" placeholder="{{ labels.lastName }}" data-mz-value="lastName" value="{{ model.lastName }}" />
+    </div>
+</div>

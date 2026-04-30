@@ -1,0 +1,72 @@
+.mz-utilitynav {
+    .mz-signin-popover {
+        .mz-anonymous-signin-container,
+        .mz-anonymous-signup-container,
+        .mz-anonymous-order-track-container,
+        .mz-anonymous-loyalty-container {
+            border-bottom: 1px solid #ccc;
+        }
+        .mz-signin-link,
+        .mz-signup-link,
+        .mz-blueloyality-link,
+        .mz-order-track {
+            padding-bottom: 17.65px;
+            padding-top: 17.55px;
+            padding-right: 18px;
+            display: inline-block;
+            > a {
+                color: #000000;
+                font-family: "MSLondon";
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 28px;
+                text-decoration: none; 
+            }
+        }
+        .mz-blueloyality-link {
+            border-bottom: none;
+            padding-bottom: 44px;
+        }
+        .mz-signup-message {
+            .sign-in-or-create-an {
+                color: #000000;
+                font-family: "MSLondon";
+                font-size: 16px;
+                font-weight: bold;
+                letter-spacing: 0;
+                line-height: 32px;
+                padding-top: 26px;
+            }
+            ul { padding-left: 17px; }
+            li {
+                color: #000000;
+                font-family: "MSLondon";
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 0;
+                line-height: 16px;
+                list-style-type: square;
+            }
+        }
+
+        .mz-sinin-icon,
+        .mz-creataccount-icon,
+        .mz-ordertracking-icon,
+        .mz-loyalty-icon{
+            width: 29px;
+            height: 29px;
+        }
+    }
+}
+.forDesktop{
+    @media @mobileScreens{
+        display: none;
+    }
+}
+.forMobile{
+    display:none;
+    @media @mobileScreens{
+        display: block;
+    }
+}

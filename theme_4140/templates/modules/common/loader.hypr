@@ -1,0 +1,7 @@
+{% if pageContext.cmsContext.template.path|lower == 'checkout' or  pageContext.cmsContext.template.path|lower == 'my-account' %}
+    <div class="mz-redirection deactive"> 
+        {% comment %} <div class="redirect-loader"></div> {% endcomment %}
+        <div class="loader"></div>
+        <div class="redirect-text">{{labels.paymentProcessing}}</div>
+    </div>
+{% endif %}

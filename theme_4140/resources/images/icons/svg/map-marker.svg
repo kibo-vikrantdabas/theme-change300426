@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="25" height="25" viewBox="0 0 500 500" xml:space="preserve">
+	<title>icon/map-marker</title>
+	<g transform="matrix(5.85 0 0 5.09 249.87 250)" id="icon/map-marker"  >
+	<path style="stroke: rgb(255,255,255); stroke-opacity: 0; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(1,121,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M 0.00001 48.87709 L -7.377090000000001 34.1229 L -23.89304 34.1229 C -33.61709 34.1229 -41.5 26.240000000000002 -41.5 16.51594 L -41.5 -31.270139999999998 C -41.5 -40.994189999999996 -33.6171 -48.8771 -23.89304 -48.8771 L 23.89304 -48.8771 C 33.61709 -48.8771 41.5 -40.9942 41.5 -31.270139999999998 L 41.5 16.51594 C 41.5 26.23999 33.6171 34.1229 23.89304 34.1229 L 7.377099999999999 34.1229 z" stroke-linecap="round" />
+	</g>
+</svg>

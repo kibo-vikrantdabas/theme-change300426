@@ -1,0 +1,379 @@
+.mz-anonymous-account {
+    color: @lightBlack;
+    .order-history-container {
+        display: flex;
+    }
+    .account-left-nav {
+        display: none;
+    }
+    .page {
+        width: 100%;
+        > .mz-list {
+            display: none;
+        }
+        .mz-orderlisting-headings {
+            padding-right: 0;
+        }
+        .top-hr {
+            width: auto;
+            margin-left: 0;
+        }
+        .mz-orderlisting-detail {
+            .down-hr {
+                margin-left: 0;
+                padding-left: 555%;
+                @media (max-width: 767px) {
+                    margin-left: -19px;
+                    margin-right: -19px;
+                    margin-bottom: 15px;
+                }
+            }
+            
+        }
+        .mz-orderlisting-details-item {
+            width: 18%;
+            .mz-propertylist-order {
+                dt,
+                dd {
+                    margin-left: 0;
+                }
+                dt {
+                   &:after {
+                       content: none;
+                   } 
+                }
+            }            
+        }
+    }
+    #account-returnhistory {
+        display: none;
+    }
+    .anonymous-trackorder {
+        max-width: 1102px;
+        margin: 0 auto;
+        #account-orderhistory {
+            > h2 {                
+                display: none;
+            }
+        }
+    }
+    .mz-order-tracking-section {
+        .order-history-listing {
+            .mz-orderlisting-header,
+            .mz-orderlisting-heading {
+                display: none;
+            }
+        }
+        .down-hr {
+            padding-left: 0!important;
+        }
+        .mz-order-package-items, 
+        .mz-orderlisting-nonShipped {
+            width: 100%;
+            .mz-itemlisting {
+                .mz-itemlisting-thumb {
+                    .mz-noImg {
+                        height: 92px;
+                        width: 71px;
+                        white-space: nowrap;
+                        background-color: #eee;
+                        display: flex;
+                        justify-content: center;
+                        font-size: 14px;
+                        color: #aaa;
+                        align-items: center;
+                    }
+                    .mz-itemlisting-thumb-img {
+                        width: 71px;
+                        height: 92px;
+                        object-fit: cover;
+                    }
+                }               
+                .mz-itemlisting-actions {
+                    margin-right: 0;
+                }
+            }
+        }
+        .mz-order-detail-second {
+            .item-hr {
+                margin-bottom: 14px;
+                @media (max-width: 767px) {
+                    margin-top: 15px;
+                }
+            }
+            .mz-order-package {
+                margin-top: 0;
+                padding-top: 0;
+            }
+        }
+    }
+    .mz-accountorderhistory {
+       > h2 {
+            @media @mobileScreens {
+                padding: 0 19px;   
+            }            
+        }        
+    }
+    .mz-orderlisting-detail {
+        @media @mobileScreens {
+            margin-bottom: 0;
+        }
+        .download-invoice-section {
+            float: right;
+            margin-top: -8px;
+            @media @mobileScreens {
+                margin-top: -60px;
+            }
+        }
+        .download-invoice-button {
+            height: 30px;
+            width: 166px;
+            background-color: #627786;
+            float: right;
+        }
+        .download-invoice-button span {
+            height: 21px;
+            width: 122px;
+            color: #fff;
+            font-family: "MSLondon";
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 21px;
+        }
+        .mz-order-view-head {
+            .order-heading {
+                color: @lightBlack;
+                @media @mobileScreens {
+                    margin-top: 0;
+                }       
+            }
+            .item-price-heading {
+                padding-left: 0;
+            }
+            .subtotal-heading {
+                text-align: left;
+            }
+            .mz-orderlisting-details-item {
+                &:first-child {
+                    flex: 1 1 45%;
+                    max-width: 45%;
+                    padding-left: 7px;
+                }
+            }
+        }
+        .order-button {
+            padding-left: 0;
+            text-align: right;
+        }
+    }
+    #mz-listing-paragraph {
+        @media @mobileScreens {
+            margin-bottom: 5%;
+        }
+    }
+    .mz-list {
+        .mz-orderlisting-detail {  
+            display: none; 
+            .mz-orderlisting-details-list {
+                @media @mobileScreens {
+                    margin-left: 38%;
+                }
+                .mz-orderlisting-details-item {
+                    @media @mobileScreens {
+                        width: 63%;
+                    }                
+                }
+            } 
+            .down-hr {
+                @media @mobileScreens {
+                    padding-left: 0;   
+                }                
+            }       
+        }
+        .mz-l-stack-sectiontitle,
+        .mz-orderlisting-headings {
+            @media @mobileScreens {
+                padding: 0 19px;
+            }
+        }
+        .mz-l-stack-sectiontitle {
+            font-size: 40px;
+            font-weight: 600;
+            @media @mobileScreens {
+                font-size: 28px !important;
+                margin-top: 20px !important;
+            }
+        }
+        .mz-orderlisting-headings {
+            @media @mobileScreens {
+                margin-top: -31px;
+            }
+        }
+    }
+    .mz-order-listing-detail-v2 {
+        width: 100%;
+        .mz-order-view-head {
+            @media (max-width: 767px) {
+                padding: 0 19px;
+            } 
+        }
+        .myaccount-order-detail-list {
+            padding: 16px 19px;
+            border-bottom: 1px solid #ccc;            
+        }
+        #shipment-field {
+            padding: 9px 19px;
+        }
+        .totalAmount, .address, .order-button{
+            @media (max-width: 767px) {
+                padding: 0 19px;
+            }
+        }
+        .order-button {
+            @media (max-width: 767px) {
+                padding: 0 19px;
+            }
+            .cancel-button {
+                @media (max-width: 767px) {
+                    margin-left: 0px;
+                }                
+            }
+        }
+        .mz-orderlisting-details-list {
+            .mz-itemlisting-description {
+                width: 370px;
+                margin: 0;
+                @media (min-width: 992px) and (max-width: 1080px) {
+                    width: 304px;
+                }
+                @media (min-width: 768px) and (max-width: 991px) {
+                    width: 203px!important;
+                    max-width: 203px;
+                }
+                @media (min-width: 768px) and (max-width: 800px) {
+                    width: 184px!important;
+                }
+            }
+            .mz-orderlisting-details-item {
+                @media (max-width: 767px) {
+                    padding: 0;
+                }
+            }
+        }
+        .mz-myaccountorder-view-mobile {
+            @media @mobileScreens {
+                width: auto;
+                margin-left: 87px;
+                margin-top: 10px;
+            }
+        }
+        .mz-itemlisting {
+            .mz-itemlisting-quantity {
+                max-width: 15%;
+                padding-left: 2px!important;
+                @media (min-width: 768px) and (max-width: 991px) {
+                    max-width: 16%;
+                }
+            }
+            .mz-itemlisting-price {
+                max-width: 16%;
+                @media (min-width: 768px) and (max-width: 991px) {
+                    max-width: 17%;
+                }
+            }
+            .mz-itemlisting-itemStatus {
+                width: 14%;
+                word-break: break-word;
+                @media (min-width: 768px) and (max-width: 992px) {
+                    text-align: right;
+                }
+            }
+        }
+        .mz-itemlisting-subtotal {
+            width: 15%;
+            text-align: left;
+            @media (min-width: 768px) and (max-width: 991px) {
+                width: 16%;
+            }
+        }
+        .mz-propertylist-order {
+            .totalAmount {
+                text-align: right;
+                @media (min-width: 768px) and (max-width: 991px) {
+                    padding-left: 0!important;
+                }
+            }
+            .address {
+                .delivery {
+                    @media (min-width: 768px) and (max-width: 991px) {
+                        flex: 1;
+                    }        
+                }
+            }
+        }
+        .order-button {            
+            @media (min-width: 768px) and (max-width: 991px) {
+                padding-left: 50%;
+            }
+            @media @mobileScreens {
+                display: flex;
+                justify-content: space-between;
+            }
+            .back-button {
+                display: none;
+            }
+        }
+        .mz-orderlisting-return {
+            .mz-itemlisting-action {
+                .mz-button {
+                    border: 1px solid @lightWhite;
+                    background-color: #d7d7d7;
+                    border-radius: 0;
+                    font-weight: @fontBold;
+                    height: 48px;
+                    width: 200px;
+                }
+            }
+        }
+        .mz-order-package {
+            padding-bottom: 0!important;
+            margin-bottom: 0!important;
+        }
+        .mz-order-package-status {
+            display: none;
+            justify-content: space-between;
+            border-bottom: 1px solid @lightWhite;
+            padding-bottom: 13px;
+            margin: 15px 0;
+            .mz-package-status-heading {
+                margin: 0;
+            }
+        }
+        .mz-myaccountorder-view-mobile {
+            @media (min-width: 501px) and (max-width: 767px) {
+                margin-left: 109px;
+            }
+        }
+    }
+}
+.mz-order-detail-second {
+    #shipment-field {
+        background: #f5f5f5;
+        padding: 9px 9px;
+        // margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        .shipment-count {
+            font-size: @fontSize;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 24px;
+            color: @lightBlack;
+        }
+    }
+}
+.account-orderhistory-body {
+    .mz-order-detail-second {
+        display: none;
+    }
+}

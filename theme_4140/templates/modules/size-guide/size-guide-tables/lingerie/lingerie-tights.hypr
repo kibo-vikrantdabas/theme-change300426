@@ -1,0 +1,63 @@
+<div class="chart">
+	<h5>Sizes</h5>
+	<div class="table-container">
+		<div class="legend">
+			<span>Size</span>
+			<span>Skirts (UK)</span>
+			<span>Skirts (EU)</span>
+			<span>Skirts (DE)</span>
+			<span>Height</span>
+			<span>Hips</span>
+		</div>
+		<div class="table">
+			<table>
+				<tbody>
+					<tr>
+						<td class="active">Small</td>
+						<td class="active">Medium</td>
+						<td class="active">Large</td>
+						<td class="active">X Large</td>
+					</tr>
+					<tr>
+						<td class="active">8-12</td>
+						<td class="active">8-16</td>
+						<td class="active">10-16</td>
+						<td class="active">18-24</td>
+					</tr>
+					<tr>
+						<td class="active">34-38</td>
+						<td class="active">36-40</td>
+						<td class="active">40-42</td>
+						<td class="active">44-50</td>
+					</tr>
+					<tr>
+						<td class="active">32-36</td>
+						<td class="active">34-38</td>
+						<td class="active">38-40</td>
+						<td class="active">42-48</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">150-164</td>
+						<td class="unit-cm active">150-174</td>
+						<td class="unit-cm active">165-183</td>
+						<td class="unit-cm active">155-176</td>
+						<td class="unit-in">59-65</td>
+						<td class="unit-in">59-69</td>
+						<td class="unit-in">65-72</td>
+						<td class="unit-in">61-69</td>
+					</tr>
+					<tr>
+						<td class="unit-cm active">86-100</td>
+						<td class="unit-cm active">86-107</td>
+						<td class="unit-cm active">86-107</td>
+						<td class="unit-cm active">108-122</td>
+						<td class="unit-in">34-39</td>
+						<td class="unit-in">34-42</td>
+						<td class="unit-in">34-42</td>
+						<td class="unit-in">43-48</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

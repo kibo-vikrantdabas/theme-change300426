@@ -1,0 +1,1 @@
+{% include_products "modules/product/product-list-tiled-toppicks" with  productCodes=Model.config.productCodestest as_parameter %}

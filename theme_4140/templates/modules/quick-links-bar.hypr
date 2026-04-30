@@ -1,0 +1,50 @@
+{% if pageContext.cmsContext.template.path|lower != 'checkout' %}
+{% preload_json model.config "configData" %}
+<div class="mz-promo-bar">
+    {% if pageContext.isEditMode %}
+            <div style="outline-color: #CCC;outline-style:dashed;outline-width: 1.1px;"><span>Quick Link Bar Drop Zone</span></div>
+    {% endif %}
+
+    {% comment %} {% dropzone "quickLinksCheck" scope="site" %}
+     {% endcomment %}
+
+    <div class="mz-quick-link-bar">
+        {% dropzone "quickLinksCheck" scope="site" %}
+    </div>
+
+    {% comment %} {% if model.config.link1 != null or if model.config.link1 != ""  %}
+        <a {% if model.config.link1url %} href="{{ model.config.link1url }}" {% else %} href="#" {% endif %} class="mz-promo-item">
+            {{ model.config.link1 }}
+        </a>
+        <span class="separator"></span>
+    {% endif %}
+
+    {% if model.config.link2 != null or if model.config.link2 != ""  %}
+        <a {% if model.config.link2url %} href="{{ model.config.link2url }}" {% else %} href="#" {% endif %} class="mz-promo-item">
+            {{ model.config.link2 }}
+        </a>
+        <span class="separator"></span>
+    {% endif %}
+
+    {% if model.config.link3 != null or if model.config.link3 != ""  %}
+        <a {% if model.config.link3url %} href="{{ model.config.link3url }}" {% else %} href="#" {% endif %} class="mz-promo-item">
+            {{ model.config.link3 }}
+        </a>
+        <span class="separator"></span>
+    {% endif %}
+
+    {% if model.config.link4 != null or if model.config.link4 != ""  %}
+        <a {% if model.config.link4url %} href="{{ model.config.link4url }}" {% else %} href="#" {% endif %} class="mz-promo-item">
+            {{ model.config.link4 }}
+        </a>
+        <span class="separator"></span>
+    {% endif %}
+
+    {% if model.config.link5 != null or if model.config.link5 != ""  %}
+        <a {% if model.config.link5url %} href="{{ model.config.link5url }}" {% else %} href="#" {% endif %} class="mz-promo-item">
+            {{ model.config.link5 }}
+        </a>
+    {% endif %} {% endcomment %}
+
+</div>
+{%endif %}

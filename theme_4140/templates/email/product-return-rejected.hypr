@@ -1,0 +1,62 @@
+﻿{% extends "email/email" %}
+
+{% block body-content %}
+  <div style="width: 100%; max-width:490px; font-family: 'MSLondon',sans-serif;">
+	  <table width="100%">
+		  <tr> 
+			  <td style="text-align:center;margin:30px 0; padding-bottom:32px;" width="600">
+				  <img src="https://{{themeSettings.localeDomain}}{{themeSettings.emailBannerImage}}" alt="MS-Logo"/>
+			  </td>
+		  </tr>
+		  <tr>
+			  <td style="padding: 20px 13%; background-color: #163E35; color: #fff; text-align: center; font-size: 21px; font-family: Arial, Helvetica, sans-serif; line-height: normal;" width="600">
+				  {{ labels.refundRejectedTitle }}
+			  </td>
+		  </tr>
+	  </table>
+	  
+	  <table style="font-size: 14px; line-height: 28px;" width="100%">
+		  <tr style="font-size: 14px; letter-spacing: 0; line-height: 21px; color: #000;">
+			  <td style="font-family: Arial, Helvetica, sans-serif; padding:20px 0" width="490">
+				  <p style="width: 100%; max-width:490px;font-family: Arial, Helvetica, sans-serif;"><strong>{{ labels.orderNumber }}:</strong> {{ model.order.orderNumber }}</p>
+				  <p style="width: 100%; max-width:490px;font-family: Arial, Helvetica, sans-serif;"><strong>{{ labels.orderDate }}:</strong> {% include "modules/common/date-time-format" with dateTimeFormatInput=model.order.submittedDate %}</p>
+				  <p style="width: 100%; max-width:490px;font-family: Arial, Helvetica, sans-serif;">
+					  {% if user and user.firstName %}
+						  {{ labels.emailOpeningHi|string_format(user.firstName)|safe }}
+					  {% else %}
+						  {{ labels.emailOpeningAlternative|safe }}
+					  {% endif %}
+				  </p>
+				  <p style="width: 100%; max-width:490px;font-family: Arial, Helvetica, sans-serif;">{{ labels.refundRejectedBody1 }}</p>
+				  <p style="width: 100%; max-width:490px;font-family: Arial, Helvetica, sans-serif;">{{ labels.refundRejectedBody2 }}</p>
+			  </td>
+		  </tr>
+	  </table>
+
+	  <table style="background: #163E35; color: #fff; text-align: center;" width="100%">
+		  <tr>
+			  <td style="font-size: 16px; letter-spacing: 0; line-height: 21px; margin: 0; padding: 26px 0 5px; font-family: Arial, Helvetica, sans-serif;" width="490">{{ labels.needHelp }}</td>
+		  </tr>
+		  <tr>
+			  <td style="font-size: 12px; letter-spacing: 0; line-height: 16px; margin: 0; padding: 0 12% 30px; font-family: Arial, Helvetica, sans-serif;" width="490">{{ labels.getInTouch|string_format(themeSettings.storephonenumber, themeSettings.storeopentime, themeSettings.storeclosetime)|safe }}</td>
+		  </tr>
+	  </table>
+	  
+	  <div style="margin:30px 0 30px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;padding:10px 0;width:100%;max-width:490px;" >
+		  <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+			  <tr> 
+				  <td width="32%" style="padding:0;text-align:center;">
+				  <a href="https://{{themeSettings.localeDomain}}/contact" target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{labels.contactUs|safe }}</a>
+				  </td>
+				  <td width="32%" style="padding:0;border-right:1px solid #ccc; border-left:1px solid #ccc;text-align:center;">
+				  <a href="https://{{themeSettings.localeDomain}}/return-refund"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{ labels.returnsAndRefunds|safe}}</a>
+				  </td>
+				  <td width="32%" style="padding:0;text-align:center;">
+				  <a href="https://{{themeSettings.localeDomain}}/terms-conditions"  target="_blank" style="font-size:10px;text-decoration:none;color:#000;font-family: Arial, Helvetica, sans-serif;">{{ labels.termsAndConditions|safe}}</a>
+				  </td>
+			  </tr>
+		  </table>
+		  <div style="text-align:center;font-size:10px; line-height:20px; border-top: 1px solid #ccc; margin-top: 10px;width: 100%; max-width:490px;font-family: Arial, Helvetica, sans-serif;"><p style="color:#000">{{themeSettings.emailFooterAddress}}<br />{{themeSettings.emailFooterAddress1}}</p></div>
+	  </div>
+  </div>
+{% endblock body-content %}
